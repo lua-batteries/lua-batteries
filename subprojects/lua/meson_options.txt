@@ -1,0 +1,23 @@
+option(
+  'readline',
+  type: 'boolean',
+  value : false,
+  description: 'link lua library with readline library',
+  yield: true
+)
+
+option(
+  'apps',
+  type: 'boolean',
+  value : true,
+  description: 'build lua and luac executables',
+  yield: true
+)
+
+option(
+  'icons',
+  type: 'boolean',
+  value : true,
+  description: 'attach icons to lua and luac apps on windows',
+  yield: true
+)

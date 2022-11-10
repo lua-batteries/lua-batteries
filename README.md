@@ -1,0 +1,48 @@
+<h1 align="center">lua-meson</h1>
+
+<p align="center">
+  <a href="https://github.com/clitic/lua-meson/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/clitic/lua-meson?style=flat-square">
+  </a>
+  <a href="https://github.com/clitic/lua-meson">
+    <img src="https://img.shields.io/github/repo-size/clitic/lua-meson?logo=github&style=flat-square">
+  </a>
+  <a href="https://github.com/clitic/lua-meson">
+    <img src="https://img.shields.io/tokei/lines/github/clitic/lua-meson?style=flat-square">
+  </a>
+</p>
+
+`lua-meson` is set of meson build scripts to build [Lua](https://www.lua.org), [LuaJIT](https://luajit.org) and [luarocks](https://github.com/luarocks/luarocks) and install them in a single directory. These sripts are based on [franko's](https://github.com/franko) meson build scripts for [lua](https://github.com/franko/lua) and [luajit](https://github.com/franko/luajit). This project is also similar to [hererocks](https://github.com/mpeterv/hererocks) expect it uses meson instead of make to build lua and luajit. Nothing is modified in lua [sources](https://www.lua.org/download.html) but in luajit [luaconf.h](https://github.com/LuaJIT/LuaJIT/blob/v2.1/src/luaconf.h) is modified to extend package search paths on windows.
+
+<!-- r/lua
+license
+share/doc/luarocks/licence -->
+
+## Building
+
+Install [meson](https://mesonbuild.com/SimpleStart.html) build system. On windows download and install [visual studio](https://visualstudio.microsoft.com) and then select and install `Desktop development with C++` option or install [mingw-w64](https://www.mingw-w64.org/downloads).
+
+```bash
+$ git clone https://github.com/clitic/lua-meson --recursive --depth 1
+$ meson setup build --prefix=d:/lua
+$ meson install -C build
+```
+
+See more information about building from meson's quick [guide](https://mesonbuild.com/Quick-guide.html).
+
+> You can use `--cross-file=cross/x86_64-w64-mingw32.ini` with meson `setup` command when you are building using mingw instead of msvc.
+
+## Usage
+
+Once you have installed lua using `meson install` command then you need to add `PREFIX/bin` in your `PATH` environment variable. The you can use `luarocks` command to install rocks for lua installation and `luarocks-jit` command to install rocks for luajit installation. On windows rocks are installed in `PREFIX/share/lua` and `PREFIX/lib/lua` directories. On other operating systems you might need to manually configure luarocks for `home_tree` path.
+
+```bash
+$ luarocks install busted
+$ busted --help
+```
+
+```bash
+$ luarocks-jit install inspect
+```
+
+> For building `c` modules with msvc you need to open developer command prompt on windows and then run luarocks or luarocks-jit.

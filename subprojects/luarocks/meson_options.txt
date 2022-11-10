@@ -1,0 +1,7 @@
+option(
+  'luajit',
+  type: 'boolean',
+  value : false,
+  description: 'install luajit',
+  yield: true
+)

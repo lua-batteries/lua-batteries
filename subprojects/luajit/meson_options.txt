@@ -1,0 +1,22 @@
+option(
+  'portable',
+  type: 'boolean',
+  value: false,
+  description: 'portable install in a single directory'
+)
+
+option(
+  'apps',
+  type: 'boolean',
+  value : true,
+  description: 'build luajit executable',
+  yield: true
+)
+
+option(
+  'icons',
+  type: 'boolean',
+  value : true,
+  description: 'attach icon to luajit app on windows',
+  yield: true
+)

@@ -1,0 +1,34 @@
+option(
+  'readline',
+  type: 'boolean',
+  value : false,
+  description: 'link lua library with readline library'
+)
+
+option(
+  'apps',
+  type: 'boolean',
+  value : true,
+  description: 'build executables'
+)
+
+option(
+  'icons',
+  type: 'boolean',
+  value : true,
+  description: 'attach icons to apps on windows'
+)
+
+option(
+  'luarocks',
+  type: 'boolean',
+  value: true,
+  description: 'install luarocks'
+)
+
+option(
+  'luajit',
+  type: 'boolean',
+  value: true,
+  description: 'install luajit'
+)

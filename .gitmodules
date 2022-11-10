@@ -1,0 +1,6 @@
+[submodule "subprojects/luajit/LuaJIT"]
+	path = subprojects/luajit/LuaJIT
+	url = https://github.com/LuaJIT/LuaJIT
+[submodule "subprojects/luarocks/luarocks"]
+	path = subprojects/luarocks/luarocks
+	url = https://github.com/luarocks/luarocks
