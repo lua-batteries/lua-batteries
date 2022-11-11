@@ -9,9 +9,7 @@
   </a>
 </p>
 
-`lua-meson` is set of meson build scripts to build [Lua](https://www.lua.org), [LuaJIT](https://luajit.org) and [luarocks](https://github.com/luarocks/luarocks) and install them in a single directory. These sripts are based on [franko's](https://github.com/franko) meson build scripts for [lua](https://github.com/franko/lua) and [luajit](https://github.com/franko/luajit). This project is also similar to [hererocks](https://github.com/mpeterv/hererocks) expect it uses meson instead of make to build lua and luajit. Nothing is modified in lua [sources](https://www.lua.org/download.html) but in luajit [luaconf.h](https://github.com/LuaJIT/LuaJIT/blob/v2.1/src/luaconf.h) is modified to extend package search paths on windows.
-
-<!-- r/lua -->
+`lua-meson` is set of meson build scripts to build [Lua](https://www.lua.org), [LuaJIT](https://luajit.org) and [luarocks](https://github.com/luarocks/luarocks) and install them in a single directory. These scripts are based on franko's [lua](https://github.com/franko/lua) and [luajit](https://github.com/franko/luajit) meson build scripts. This project is also similar to [hererocks](https://github.com/mpeterv/hererocks) expect it uses meson instead of make to build lua and luajit and has different install structure. Lua sources are kept untouched only luajit is patched to extend package search path on windows.
 
 ## Building
 
@@ -25,7 +23,7 @@ $ meson install -C build
 
 See more information about building from meson's quick [guide](https://mesonbuild.com/Quick-guide.html).
 
-> You can use `--cross-file=cross/x86_64-w64-mingw32.ini` with meson `setup` command when you are building using mingw instead of msvc.
+> You can use `--cross-file=cross/x86_64-w64-mingw32.ini` flag with meson `setup` command when you are building using mingw instead of msvc.
 
 ## Usage
 
