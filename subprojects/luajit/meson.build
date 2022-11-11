@@ -12,7 +12,7 @@ project(
 cc = meson.get_compiler('c')
 system = host_machine.system()
 
-run_command('python', '-c', 'import shutil;shutil.copyfile(\'luaconf.h\', \'LuaJIT/src/luaconf.h\')')
+run_command('git', 'apply', 'lua-meson-updated-lua-search-path-on-windows.patch', check: true)
 
 luajit_source_dir = include_directories('LuaJIT/src')
 libm = cc.find_library('m', required: false)
@@ -262,7 +262,6 @@ install_headers(
   ],
   subdir: 'luajit-2.0'
 )
-install_man('LuaJIT/etc/luajit.1')
 
 if get_option('apps')
   install_data(
@@ -281,6 +280,12 @@ if get_option('apps')
     install_dir: jitlib_install_dir
   )
 endif
+
+install_man('LuaJIT/etc/luajit.1')
+install_data(
+  'LuaJIT/COPYRIGHT',
+  install_dir: jitlib_install_dir / '..'
+)
 
 import('pkgconfig').generate(
   libluajit,

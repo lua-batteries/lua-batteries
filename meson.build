@@ -1,6 +1,6 @@
 project(
   'lua-meson',
-  version: '5.4.4', # keep same as lua version
+  version: '5.4.4+2.0.5+3.9.1', # lua+luajit+luarocks
   license: 'MIT',
   default_options: [
     'buildtype=release'
