@@ -11,6 +11,7 @@ project(
 )
 
 cc = meson.get_compiler('c')
+cc_id = cc.get_id()
 system = host_machine.system()
 
 lua_cflags = ['-DLUA_COMPAT_5_3']
@@ -91,7 +92,7 @@ lua_lib = library(
 if get_option('apps')
   res = []
   
-  if system == 'windows' and get_option('icons')
+  if system == 'windows' and get_option('icons') and cc_id not in ['clang', 'clang-cl']
     res += import('windows').compile_resources(
       'lua.rc',
       depend_files: 'lua.ico'

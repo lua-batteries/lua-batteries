@@ -9,5 +9,11 @@ project(
 )
 
 subproject('lua')
-subproject('luajit', required: get_option('luajit'))
-subproject('luarocks', required: get_option('luarocks'))
+
+if get_option('luajit')
+  subproject('luajit')
+endif
+
+if get_option('luarocks')
+  subproject('luarocks')
+endif

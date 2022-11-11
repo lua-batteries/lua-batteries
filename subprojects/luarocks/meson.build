@@ -6,6 +6,7 @@ project(
 )
 
 cc = meson.get_compiler('c')
+cc_id = cc.get_id()
 system = host_machine.system()
 
 install_subdir(
@@ -71,16 +72,30 @@ else
   )
 endif
 
-if cc.get_id() == 'msvc'
+luarocks_config = ''
+
+if cc_id == 'msvc'
+  luarocks_config = 'config/config-windows-msvc.lua'
+elif cc_id == 'clang' or cc_id == 'clang-cl'
+  if system == 'windows'
+    luarocks_config = 'config/config-windows-clang.lua'
+  elif system == 'darwin'
+    luarocks_config = 'config/config-darwin-clang.lua'
+  else
+    luarocks_config = 'config/config-unix-clang.lua'
+  endif
+endif
+
+if luarocks_config != ''
   install_data(
-    'config/config-msvc.lua',
+    luarocks_config,
     rename: 'config-5.4.lua',
     install_dir: 'share/lua'
   )
 
   if get_option('luajit')
     install_data(
-      'config/config-msvc.lua',
+      luarocks_config,
       rename: 'config-5.1.lua',
       install_dir: 'share/lua'
     )

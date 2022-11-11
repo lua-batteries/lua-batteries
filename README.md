@@ -13,7 +13,7 @@
 
 ## Building
 
-Install [meson](https://mesonbuild.com/SimpleStart.html) build system. On windows download and install [visual studio](https://visualstudio.microsoft.com) and then select and install `Desktop development with C++` option or install [mingw-w64](https://www.mingw-w64.org/downloads).
+Install [meson](https://mesonbuild.com/SimpleStart.html) build system. On windows download and install [msvc](https://visualstudio.microsoft.com) or [mingw](https://www.mingw-w64.org/downloads) or [clang](https://github.com/llvm/llvm-project) c compiler.
 
 ```bash
 $ git clone https://github.com/clitic/lua-meson --recursive --depth 1
@@ -23,18 +23,12 @@ $ meson install -C build
 
 See more information about building from meson's quick [guide](https://mesonbuild.com/Quick-guide.html).
 
-> You can use `--cross-file=cross/x86_64-w64-mingw32.ini` flag with meson `setup` command when you are building using mingw instead of msvc.
-
 ## Usage
 
 Once you have installed lua using `meson install` command then you need to add `PREFIX/bin` in your `PATH` environment variable. The you can use `luarocks` command to install rocks for lua installation and `luarocks-jit` command to install rocks for luajit installation. On windows rocks are installed in `PREFIX/share/lua` and `PREFIX/lib/lua` directories. On other operating systems you might need to manually configure luarocks for `home_tree` path.
 
 ```bash
-$ luarocks install busted
-$ busted --help
-```
-
-```bash
+$ luarocks install luasocket
 $ luarocks-jit install inspect
 ```
 

@@ -16,7 +16,7 @@ option(
 option(
   'icons',
   type: 'boolean',
-  value : true,
+  value: true,
   description: 'attach icon to luajit app on windows',
   yield: true
 )

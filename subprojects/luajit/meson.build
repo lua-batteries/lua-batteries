@@ -10,6 +10,7 @@ project(
 )
 
 cc = meson.get_compiler('c')
+cc_id = cc.get_id()
 system = host_machine.system()
 
 run_command('git', 'apply', 'lua-meson-updated-lua-search-path-on-windows.patch', check: true)
@@ -225,7 +226,7 @@ libluajit = library(
 if get_option('apps')
   res = []
   
-  if system == 'windows' and get_option('icons')
+  if system == 'windows' and get_option('icons') and cc_id not in ['clang', 'clang-cl']
     res += import('windows').compile_resources(
       'luajit.rc',
       depend_files: 'luajit.ico'
