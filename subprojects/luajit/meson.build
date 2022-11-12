@@ -13,8 +13,6 @@ cc = meson.get_compiler('c')
 cc_id = cc.get_id()
 system = host_machine.system()
 
-run_command('git', 'apply', 'lua-meson-updated-lua-search-path-on-windows.patch', check: true)
-
 luajit_source_dir = include_directories('LuaJIT/src')
 libm = cc.find_library('m', required: false)
 luajit_dependencies = [
