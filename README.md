@@ -17,6 +17,7 @@ Install [meson](https://mesonbuild.com/SimpleStart.html) build system. On window
 
 ```bash
 $ git clone https://github.com/clitic/lua-meson --recursive --depth 1
+$ cd lua-meson
 $ meson setup build --prefix=d:/lua
 $ meson install -C build
 ```
@@ -32,4 +33,30 @@ $ luarocks install luasocket
 $ luarocks-jit install inspect
 ```
 
-> For building `c` modules with msvc you need to open developer command prompt on windows and then run luarocks or luarocks-jit.
+## Cross Compilation
+
+See meson [cross compilation](https://mesonbuild.com/Cross-compilation.html) documentation. This example shows how to cross compile from ubuntu to windows using mingw.
+
+First install mingw toolchain and wine64.
+
+```bash
+$ apt install mingw-w64 wine64
+```
+
+> Note: wine64 is only needed if you want to build luajit which is enabled by default. It can be disabled by using `-Dluajit=false` option.
+
+Now clone lua-meson repository and build.
+
+```bash
+$ git clone https://github.com/clitic/lua-meson --recursive --depth 1
+$ cd lua-meson
+$ meson setup build --cross-file=cross/x86_64-w64-mingw32.ini --prefix=lua-mingw 
+$ meson install -C build
+```
+
+Now pack generated lua-meson installation directory. 
+
+```bash
+$ cd lua-mingw
+$ zip -r ../lua-v5.4.4-x86_64-mingw.zip *
+```
