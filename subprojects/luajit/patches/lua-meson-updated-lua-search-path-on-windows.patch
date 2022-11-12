@@ -1,0 +1,38 @@
+From 79ebf4ac30476b8988a88db670e772bb54f57be1 Mon Sep 17 00:00:00 2001
+From: clitic <clitic21@gmail.com>
+Date: Fri, 11 Nov 2022 10:00:57 +0530
+Subject: [PATCH] lua-meson: updated lua search path on windows
+
+---
+ src/luaconf.h | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/src/luaconf.h b/src/luaconf.h
+index b33e91b7..546949e3 100644
+--- a/src/luaconf.h
++++ b/src/luaconf.h
+@@ -20,10 +20,18 @@
+ */
+ #define LUA_LDIR	"!\\lua\\"
+ #define LUA_CDIR	"!\\"
+-#define LUA_PATH_DEFAULT \
+-  ".\\?.lua;" LUA_LDIR"?.lua;" LUA_LDIR"?\\init.lua;"
++#define LUA_SHRDIR	"!\\..\\share\\lua\\5.1\\"
++
++#define LUA_PATH_DEFAULT  \
++  "!\\..\\share\\luajit-2.0.5\\?.lua;" \
++  LUA_LDIR"?.lua;"  LUA_LDIR"?\\init.lua;" \
++  LUA_CDIR"?.lua;"  LUA_CDIR"?\\init.lua;" \
++  LUA_SHRDIR"?.lua;" LUA_SHRDIR"?\\init.lua;" \
++  ".\\?.lua;" ".\\?\\init.lua"
+ #define LUA_CPATH_DEFAULT \
+-  ".\\?.dll;" LUA_CDIR"?.dll;" LUA_CDIR"loadall.dll"
++  LUA_CDIR"?.dll;" \
++  LUA_CDIR"..\\lib\\lua\\5.1\\?.dll;" \
++  LUA_CDIR"loadall.dll;" ".\\?.dll"
+ #else
+ /*
+ ** Note to distribution maintainers: do NOT patch the following lines!
+-- 
+2.37.1.windows.1
+

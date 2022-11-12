@@ -15,9 +15,22 @@
 
 Install [meson](https://mesonbuild.com/SimpleStart.html) build system. On windows download and install [msvc](https://visualstudio.microsoft.com) or [mingw](https://www.mingw-w64.org/downloads) or [clang](https://github.com/llvm/llvm-project) c compiler.
 
+Now clone lua-meson repository.
+
 ```bash
 $ git clone https://github.com/clitic/lua-meson --recursive --depth 1
-$ cd lua-meson
+```
+
+Now apply luajit patches for windows.
+
+```bash
+$ cd lua-meson/subprojects/luajit/LuaJIT
+$ git apply ../patches/lua-meson-updated-lua-search-path-on-windows.patch
+```
+
+Now change directory to project root and build project using meson.
+
+```
 $ meson setup build --prefix=d:/lua
 $ meson install -C build
 ```
@@ -45,11 +58,17 @@ $ apt install mingw-w64 wine64
 
 > Note: wine64 is only needed if you want to build luajit which is enabled by default. It can be disabled by using `-Dluajit=false` option.
 
-Now clone lua-meson repository and build.
+Now clone lua-meson repository and apply luajit patches.
 
 ```bash
 $ git clone https://github.com/clitic/lua-meson --recursive --depth 1
-$ cd lua-meson
+$ cd lua-meson/subprojects/luajit/LuaJIT
+$ git apply ../patches/lua-meson-updated-lua-search-path-on-windows.patch
+```
+
+Now change directory to project root and build project using meson.
+
+```
 $ meson setup build --cross-file=cross/x86_64-w64-mingw32.ini --prefix=lua-mingw 
 $ meson install -C build
 ```
