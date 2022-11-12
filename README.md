@@ -11,6 +11,10 @@
 
 `lua-meson` is set of meson build scripts to build [Lua](https://www.lua.org), [LuaJIT](https://luajit.org) and [luarocks](https://github.com/luarocks/luarocks) and install them in a single directory. These scripts are based on franko's [lua](https://github.com/franko/lua) and [luajit](https://github.com/franko/luajit) meson build scripts. This project is also similar to [hererocks](https://github.com/mpeterv/hererocks) expect it uses meson instead of make to build lua and luajit and has different install structure. Lua sources are kept untouched only luajit is patched to extend package search path on windows.
 
+## Prebuilt Packages
+
+- [Lua 5.4.4 + LuaJIT 2.0.5](https://github.com/clitic/lua-meson/releases/download/v0.1.0/lua-meson-v0.1.0-x86_64-pc-windows-msvc.zip) (Windows MSVC)
+
 ## Building
 
 Install [meson](https://mesonbuild.com/SimpleStart.html) build system. On windows download and install [msvc](https://visualstudio.microsoft.com) or [mingw](https://www.mingw-w64.org/downloads) or [clang](https://github.com/llvm/llvm-project) c compiler.
@@ -31,7 +35,7 @@ $ git apply ../patches/lua-meson-updated-lua-search-path-on-windows.patch
 Now change directory to project root and build project using meson.
 
 ```
-$ meson setup build --prefix=d:/lua
+$ meson setup build --prefix=c:/lua
 $ meson install -C build
 ```
 
