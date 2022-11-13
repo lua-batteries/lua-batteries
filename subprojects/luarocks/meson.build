@@ -12,13 +12,13 @@ cpu_family = host_machine.cpu_family()
 
 install_subdir(
   'luarocks/src/luarocks',
-  install_dir: 'share/lua/5.4'
+  install_dir: get_option('datadir') / 'lua/5.4'
 )
 
 if get_option('luajit')
   install_subdir(
     'luarocks/src/luarocks',
-    install_dir: 'share/lua/5.1'
+    install_dir: get_option('datadir') / 'lua/5.1'
   )
 endif
 
@@ -31,7 +31,7 @@ install_data(
     'luarocks.lua',
     'luarocks-admin.lua'
   ],
-  install_dir: 'share/lua/bin'
+  install_dir: get_option('datadir') / 'lua/bin'
 )
 
 if system == 'windows'
@@ -111,14 +111,14 @@ if luarocks_config != ''
   install_data(
     luarocks_config,
     rename: 'config-5.4.lua',
-    install_dir: 'share/lua'
+    install_dir: get_option('datadir') / 'lua'
   )
 
   if get_option('luajit')
     install_data(
       luarocks_config,
       rename: 'config-5.1.lua',
-      install_dir: 'share/lua'
+      install_dir: get_option('datadir') / 'lua'
     )
   endif
 endif

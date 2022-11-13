@@ -32,3 +32,10 @@ option(
   value: true,
   description: 'install luajit'
 )
+
+option(
+  'luasocket',
+  type: 'boolean',
+  value: false,
+  description: 'install luasocket'
+)

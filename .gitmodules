@@ -4,3 +4,6 @@
 [submodule "subprojects/luarocks/luarocks"]
 	path = subprojects/luarocks/luarocks
 	url = https://github.com/luarocks/luarocks
+[submodule "subprojects/lua/subprojects/luasocket"]
+	path = modules/luasocket/luasocket
+	url = https://github.com/lunarmodules/luasocket

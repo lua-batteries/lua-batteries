@@ -20,7 +20,7 @@ luajit_dependencies = [
   cc.find_library('dl', required: false)
 ]
 
-jitlib_install_dir = get_option('portable') ? (get_option('bindir') / 'lua' / 'jit') : ('share' / ( 'luajit-' + meson.project_version() ) / 'jit')
+jitlib_install_dir = get_option('portable') ? (get_option('bindir') / 'lua' / 'jit') : (get_option('datadir') / ( 'luajit-' + meson.project_version() ) / 'jit')
 
 minilua = executable(
   'minilua',
