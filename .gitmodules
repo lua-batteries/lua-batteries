@@ -19,3 +19,6 @@
 [submodule "subprojects/luv/luv"]
 	path = subprojects/luv/luv
 	url = https://github.com/luvit/luv
+[submodule "subprojects/luasql-sqlite3/luasql"]
+	path = subprojects/luasql-sqlite3/luasql
+	url = https://github.com/lunarmodules/luasql

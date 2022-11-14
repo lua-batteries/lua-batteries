@@ -3,7 +3,9 @@ extra/*
 lua/*
 subprojects/libuv.wrap
 subprojects/libffi.wrap
+subprojects/sqlite3.wrap
 subprojects/libffi/*
 subprojects/libuv-v1.44.2/*
 subprojects/openssl-3.0.2/*
 subprojects/packagecache/*
+subprojects/sqlite-amalgamation-3390400/*

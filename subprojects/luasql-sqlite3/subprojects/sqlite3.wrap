@@ -1,0 +1,12 @@
+[wrap-file]
+directory = sqlite-amalgamation-3390400
+source_url = https://sqlite.org/2022/sqlite-amalgamation-3390400.zip
+source_filename = sqlite-amalgamation-3390400.zip
+source_hash = 9c99955b21d2374f3a385d67a1f64cbacb1d4130947473d25c77ad609c03b4cd
+patch_filename = sqlite3_3.39.4-2_patch.zip
+patch_url = https://wrapdb.mesonbuild.com/v2/sqlite3_3.39.4-2/get_patch
+patch_hash = 1ac9436cefb6d402c980046423910b0818afe6a30f138b2321192ff923b84c2e
+wrapdb_version = 3.39.4-2
+
+[provide]
+sqlite3 = sqlite3_dep

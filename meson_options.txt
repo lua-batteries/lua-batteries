@@ -49,7 +49,8 @@ option(
     'lua-openssl',
     'luasec',
     'luasocket',
-    'luv',
+    'luasql-sqlite3',
+    'luv'
   ],
   value: ['all'],
   description: 'modules to install'
