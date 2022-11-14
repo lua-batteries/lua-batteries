@@ -88,7 +88,7 @@ else
     name_prefix: '',
     name_suffix: module_suffix,
     install: true,
-    install_dir: get_option('libdir') / 'lua/5.4/socket'
+    install_dir: get_option('libdir') / 'lua' / lua_ver / 'socket'
   )
 
   shared_module(
@@ -166,7 +166,7 @@ install_data(
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / '/luasocket/3.1.0-1'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'luasocket/3.1.0-1'
 
 install_data(
   'luasocket/rockspecs/luasocket-3.1.0-1.rockspec',

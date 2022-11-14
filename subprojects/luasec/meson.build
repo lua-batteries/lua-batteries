@@ -53,7 +53,7 @@ if system == 'windows'
   luasec_sources += 'luasec/src/luasocket/wsocket.c'
   project_deps += cc.find_library('ws2_32')
 else
-  luasec_defines += ['WITH_LUASOCKET', 'LUASOCKET_DEBUG']
+  luasec_defines += ['-DWITH_LUASOCKET', '-DLUASOCKET_DEBUG']
   luasec_sources += 'luasec/src/luasocket/usocket.c'
 endif
 

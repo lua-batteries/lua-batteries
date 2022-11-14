@@ -13,3 +13,6 @@
 [submodule "subprojects/luasec/luasec"]
 	path = subprojects/luasec/luasec
 	url = https://github.com/brunoos/luasec
+[submodule "subprojects/lua-openssl/lua-openssl"]
+	path = subprojects/lua-openssl/lua-openssl
+	url = https://github.com/zhaozg/lua-openssl

@@ -12,7 +12,7 @@ project(
 subproject('lua')
 config = {'lua': '5.4.4', 'apps': get_option('apps')}
 modules = get_option('modules')
-module_options = ['luajit-mod=' + get_option('luajit-mod')]
+module_options = ['luajit-mod=' + get_option('luajit-mod').to_string()]
 
 if get_option('luajit')
   subproject('luajit')
@@ -27,6 +27,11 @@ endif
 if 'all' in modules or 'cffi-lua' in modules
   subproject('cffi-lua', default_options: module_options)
   config += {'modules/cffi-lua': '0.2.2'}
+endif
+
+if 'all' in modules or 'lua-openssl' in modules
+  subproject('lua-openssl', default_options: module_options)
+  config += {'modules/lua-openssl': '0.8.2'}
 endif
 
 if 'all' in modules or 'luasec' in modules
