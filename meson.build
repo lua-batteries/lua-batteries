@@ -15,12 +15,12 @@ modules = get_option('modules')
 
 if 'all' in modules or 'cffi-lua' in modules
   subproject('cffi-lua')
-  config = {'modules/cffi-lua': '0.2.2'}
+  config += {'modules/cffi-lua': '0.2.2'}
 endif
 
 if 'all' in modules or 'luasocket' in modules
   subproject('luasocket')
-  config = {'modules/luasocket': '3.1.0'}
+  config += {'modules/luasocket': '3.1.0'}
 endif
 
 if get_option('luajit')

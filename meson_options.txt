@@ -40,7 +40,7 @@ option(
     'all', 'none',
     'cffi-lua',
     'luasocket'
-  ] 
+  ],
   value: ['all'],
   description: 'modules to install'
 )

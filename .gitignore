@@ -1,3 +1,5 @@
 build/*
+extra/*
+lua/*
 subprojects/libffi.wrap
 subprojects/libffi/*
