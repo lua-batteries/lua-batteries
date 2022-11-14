@@ -19,7 +19,8 @@ if system == 'windows'
   module_suffix = 'dll'
 endif
 
-lua_dep = subproject('lua').get_variable('lua_dep')
+lua_dep = get_option('luajit-mod') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
+lua_ver = get_option('luajit-mod') ? '5.1' : '5.4'
 project_deps = [lua_dep]
 
 # -------------------------------------------------
@@ -59,7 +60,7 @@ endif
 ssl_dep = dependency('ssl', required: false)
 crypto_dep = dependency('crypto', required: false)
 
-if not ssl_dep.found() or not crypto_dep.found()
+if get_option('standalone') or not ssl_dep.found() or not crypto_dep.found()
   openssl = subproject('openssl', default_options: ['default_library=static'])
   project_deps += openssl.get_variable('libssl_dep')
   project_deps += openssl.get_variable('libcrypto_dep')
@@ -77,7 +78,7 @@ shared_module(
   name_prefix: '',
   name_suffix: module_suffix,
   install: true,
-  install_dir: get_option('libdir') / 'lua/5.4'
+  install_dir: get_option('libdir') / 'lua' / lua_ver
 )
 
 # -------------------------------------------------
@@ -86,19 +87,19 @@ shared_module(
 
 install_data(
   'luasec/src/ssl.lua',
-  install_dir: get_option('datadir') / 'lua/5.4'
+  install_dir: get_option('datadir') / 'lua' / lua_ver
 )
 
 install_data(
   'luasec/src/https.lua',
-  install_dir: get_option('datadir') / 'lua/5.4/https'
+  install_dir: get_option('datadir') / 'lua' / lua_ver / 'https'
 )
 
 # -------------------------------------------------
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-5.4/luasec/1.2.0-1'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'luasec/1.2.0-1'
 
 install_data(
   'luasec/luasec-1.2.0-1.rockspec',

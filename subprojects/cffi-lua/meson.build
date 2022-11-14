@@ -25,7 +25,8 @@ if system == 'windows'
   module_suffix = 'dll'
 endif
 
-lua_dep = subproject('lua').get_variable('lua_dep')
+lua_dep = get_option('luajit-mod') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
+lua_ver = get_option('luajit-mod') ? '5.1' : '5.4'
 project_deps = [lua_dep]
 
 # -------------------------------------------------
@@ -52,7 +53,7 @@ endif
 
 ffi_dep = dependency('ffi', required: false)
 
-if not ffi_dep.found()
+if get_option('standalone') or not ffi_dep.found()
   libffi = subproject('libffi', default_options: ['default_library=static'])
   project_deps += libffi.get_variable('ffi_dep')
 else
@@ -80,14 +81,14 @@ shared_module(
   name_prefix: '',
   name_suffix: module_suffix,
   install: true,
-  install_dir: get_option('libdir') / 'lua/5.4'
+  install_dir: get_option('libdir') / 'lua' / lua_ver
 )
 
 # -------------------------------------------------
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-5.4/cffi/0.2.2-1'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'cffi/0.2.2-1'
 
 install_data(
   'cffi-lua/cffi-lua-0.2.2-1.rockspec',

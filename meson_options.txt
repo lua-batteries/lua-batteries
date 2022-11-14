@@ -34,6 +34,13 @@ option(
 )
 
 option(
+  'standalone',
+  type: 'boolean',
+  value: false,
+  description: 'build dependencies even if they are present'
+)
+
+option(
   'modules',
   type: 'array',
   choices: [
@@ -44,4 +51,11 @@ option(
   ],
   value: ['all'],
   description: 'modules to install'
+)
+
+option(
+  'luajit-mod',
+  type: 'boolean',
+  value: false,
+  description: 'build luajit modules'
 )

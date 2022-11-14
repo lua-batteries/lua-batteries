@@ -36,7 +36,7 @@ Now change directory to project root and build project using meson.
 
 ```
 $ meson setup build --prefix=c:/lua
-$ meson install -C build --skip-subprojects libffi
+$ meson install -C build --skip-subprojects libffi,openssl
 ```
 
 See more information about building from meson's quick [guide](https://mesonbuild.com/Quick-guide.html).
@@ -73,8 +73,8 @@ $ git apply ../patches/lua-meson-updated-lua-search-path-on-windows.patch
 Now change directory to project root and build project using meson.
 
 ```
-$ meson setup build --cross-file=cross/x86_64-w64-mingw32.ini --prefix=lua-mingw 
-$ meson install -C build --skip-subprojects libffi
+$ meson setup build -Dstandalone=true --cross-file=cross/x86_64-w64-mingw32.ini --prefix=lua-mingw 
+$ meson install -C build --skip-subprojects libffi,openssl
 ```
 
 Now pack generated lua-meson installation directory. 
@@ -83,6 +83,7 @@ Now pack generated lua-meson installation directory.
 $ cd lua-mingw
 $ zip -r ../lua-v5.4.4-x86_64-mingw.zip *
 ```
+
 <!-- 
 ```powershell
 meson setup build --prefix=d:/workdesk/public-projects/lua-meson/lua -Dluajit

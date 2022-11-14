@@ -1,0 +1,6 @@
+option(
+  'luajit-mod',
+  type: 'boolean',
+  value: false,
+  description: 'build luajit module',
+)

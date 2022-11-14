@@ -19,7 +19,8 @@ if system == 'windows'
   module_suffix = 'dll'
 endif
 
-lua_dep = subproject('lua').get_variable('lua_dep')
+lua_dep = get_option('luajit-mod') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
+lua_ver = get_option('luajit-mod') ? '5.1' : '5.4'
 project_deps = [lua_dep]
 
 # -------------------------------------------------
@@ -108,7 +109,7 @@ else
     name_prefix: '',
     name_suffix: module_suffix,
     install: true,
-    install_dir: get_option('libdir') / 'lua/5.4/socket'
+    install_dir: get_option('libdir') / 'lua' / lua_ver / 'socket'
   )
 endif
 
@@ -121,7 +122,7 @@ shared_module(
   name_prefix: '',
   name_suffix: module_suffix,
   install: true,
-  install_dir: get_option('libdir') / 'lua/5.4'
+  install_dir: get_option('libdir') / 'lua' / lua_ver
 )
 
 shared_module(
@@ -133,7 +134,7 @@ shared_module(
   name_prefix: '',
   name_suffix: module_suffix,
   install: true,
-  install_dir: get_option('libdir') / 'lua/5.4'
+  install_dir: get_option('libdir') / 'lua' / lua_ver
 )
 
 # -------------------------------------------------
@@ -146,7 +147,7 @@ install_data(
     'luasocket/src/mime.lua',
     'luasocket/src/socket.lua'
   ],
-  install_dir: get_option('datadir') / 'lua/5.4'
+  install_dir: get_option('datadir') / 'lua' / lua_ver
 )
 
 install_data(
@@ -158,14 +159,14 @@ install_data(
     'luasocket/src/tp.lua',
     'luasocket/src/url.lua'
   ],
-  install_dir: get_option('datadir') / 'lua/5.4/luasocket'
+  install_dir: get_option('datadir') / 'lua' / lua_ver / 'luasocket'
 )
 
 # -------------------------------------------------
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-5.4/luasocket/3.1.0-1'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / '/luasocket/3.1.0-1'
 
 install_data(
   'luasocket/rockspecs/luasocket-3.1.0-1.rockspec',
