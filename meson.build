@@ -1,6 +1,6 @@
 project(
   'lua-meson',
-  version: '0.1.0',
+  version: '0.2.0',
   license: 'MIT',
   default_options: [
     'buildtype=release',
@@ -16,6 +16,11 @@ modules = get_option('modules')
 if 'all' in modules or 'cffi-lua' in modules
   subproject('cffi-lua')
   config += {'modules/cffi-lua': '0.2.2'}
+endif
+
+if 'all' in modules or 'luasec' in modules
+  subproject('luasec')
+  config += {'modules/luasec': '1.2.0'}
 endif
 
 if 'all' in modules or 'luasocket' in modules

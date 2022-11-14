@@ -10,3 +10,6 @@
 [submodule "subprojects/cffi-lua/cffi-lua"]
 	path = subprojects/cffi-lua/cffi-lua
 	url = https://github.com/q66/cffi-lua
+[submodule "subprojects/luasec/luasec"]
+	path = subprojects/luasec/luasec
+	url = https://github.com/brunoos/luasec

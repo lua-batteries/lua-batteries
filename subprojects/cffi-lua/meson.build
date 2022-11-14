@@ -2,6 +2,7 @@ project(
   'cffi-lua',
   'cpp',
   version: '0.2.2',
+  license: 'MIT',
   default_options: [
     'b_ndebug=if-release',
     'cpp_std=c++14',

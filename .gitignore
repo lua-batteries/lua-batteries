@@ -3,3 +3,5 @@ extra/*
 lua/*
 subprojects/libffi.wrap
 subprojects/libffi/*
+subprojects/openssl-3.0.2/*
+subprojects/packagecache/*
