@@ -36,7 +36,7 @@ Now change directory to project root and build project using meson.
 
 ```
 $ meson setup build --prefix=c:/lua
-$ meson install -C build --skip-subprojects libffi,openssl
+$ meson install -C build --skip-subprojects libffi,libuv,openssl
 ```
 
 See more information about building from meson's quick [guide](https://mesonbuild.com/Quick-guide.html).
@@ -74,7 +74,7 @@ Now change directory to project root and build project using meson.
 
 ```
 $ meson setup build -Dstandalone=true --cross-file=cross/x86_64-w64-mingw32.ini --prefix=lua-mingw 
-$ meson install -C build --skip-subprojects libffi,openssl
+$ meson install -C build --skip-subprojects libffi,libuv,openssl
 ```
 
 Now pack generated lua-meson installation directory. 

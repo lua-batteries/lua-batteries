@@ -1,7 +1,9 @@
 build/*
 extra/*
 lua/*
+subprojects/libuv.wrap
 subprojects/libffi.wrap
 subprojects/libffi/*
+subprojects/libuv-v1.44.2/*
 subprojects/openssl-3.0.2/*
 subprojects/packagecache/*

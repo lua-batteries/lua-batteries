@@ -48,7 +48,8 @@ option(
     'cffi-lua',
     'lua-openssl',
     'luasec',
-    'luasocket'
+    'luasocket',
+    'luv',
   ],
   value: ['all'],
   description: 'modules to install'

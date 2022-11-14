@@ -16,3 +16,6 @@
 [submodule "subprojects/lua-openssl/lua-openssl"]
 	path = subprojects/lua-openssl/lua-openssl
 	url = https://github.com/zhaozg/lua-openssl
+[submodule "subprojects/luv/luv"]
+	path = subprojects/luv/luv
+	url = https://github.com/luvit/luv

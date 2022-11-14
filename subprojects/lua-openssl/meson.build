@@ -11,7 +11,6 @@ project(
 # -------------------------------------------------
 
 cc = meson.get_compiler('c')
-cc_id = cc.get_id()
 system = host_machine.system()
 module_suffix = 'so'
 

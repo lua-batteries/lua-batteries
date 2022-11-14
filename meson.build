@@ -44,6 +44,11 @@ if 'all' in modules or 'luasocket' in modules
   config += {'modules/luasocket': '3.1.0'}
 endif
 
+if 'all' in modules or 'luv' in modules
+  subproject('luv', default_options: module_options)
+  config += {'modules/luv': '1.44.2'}
+endif
+
 summary(
   config,
   bool_yn: true,
