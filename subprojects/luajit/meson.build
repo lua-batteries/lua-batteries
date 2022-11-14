@@ -3,9 +3,6 @@ project(
   'c',
   version: '2.0.5',
   license: 'MIT',
-  default_options: [
-    'default_library=both'
-  ],
   meson_version: '>=0.63.0'
 )
 

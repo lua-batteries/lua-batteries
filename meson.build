@@ -1,30 +1,26 @@
 project(
   'lua-meson',
-  'c',
   version: '0.1.0',
   license: 'MIT',
   default_options: [
-    'buildtype=release'
+    'buildtype=release',
+    'default_library=both'
   ],
   meson_version: '>=0.63.0'
 )
 
-cc = meson.get_compiler('c')
-cc_id = cc.get_id()
-system = host_machine.system()
-module_suffix = 'so'
+subproject('lua')
+config = {'lua': '5.4.4', 'apps': get_option('apps')}
+modules = get_option('modules')
 
-if system == 'windows'
-  module_suffix = 'dll'
+if 'all' in modules or 'cffi-lua' in modules
+  subproject('cffi-lua')
+  config = {'modules/cffi-lua': '0.2.2'}
 endif
 
-lua = subproject('lua')
-config = {'lua': '5.4.4', 'apps': get_option('apps')}
-
-lua_dep = lua.get_variable('lua_dep')
-
-if get_option('luasocket')
-  subdir('modules/luasocket')
+if 'all' in modules or 'luasocket' in modules
+  subproject('luasocket')
+  config = {'modules/luasocket': '3.1.0'}
 endif
 
 if get_option('luajit')

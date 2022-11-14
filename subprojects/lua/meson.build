@@ -3,10 +3,7 @@ project(
   'c',
   version: '5.4.4',
   license: 'MIT',
-  default_options: [
-    'c_std=gnu99',
-    'default_library=both'
-  ],
+  default_options: ['c_std=gnu99'],
   meson_version: '>=0.63.0'
 )
 

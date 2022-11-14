@@ -34,8 +34,13 @@ option(
 )
 
 option(
-  'luasocket',
-  type: 'boolean',
-  value: false,
-  description: 'install luasocket'
+  'modules',
+  type: 'array',
+  choices: [
+    'all', 'none',
+    'cffi-lua',
+    'luasocket'
+  ] 
+  value: ['all'],
+  description: 'modules to install'
 )

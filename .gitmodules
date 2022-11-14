@@ -7,3 +7,6 @@
 [submodule "subprojects/luasocket/luasocket"]
 	path = subprojects/luasocket/luasocket
 	url = https://github.com/lunarmodules/luasocket
+[submodule "subprojects/cffi-lua/cffi-lua"]
+	path = subprojects/cffi-lua/cffi-lua
+	url = https://github.com/q66/cffi-lua
