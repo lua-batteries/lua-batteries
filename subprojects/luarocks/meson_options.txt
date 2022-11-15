@@ -1,7 +1,7 @@
 option(
   'luajit',
   type: 'boolean',
-  value : false,
-  description: 'install luajit',
+  value: false,
+  description: 'luajit compatible luarocks install',
   yield: true
 )

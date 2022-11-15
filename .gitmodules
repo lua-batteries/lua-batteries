@@ -22,3 +22,6 @@
 [submodule "subprojects/luasql-sqlite3/luasql"]
 	path = subprojects/luasql-sqlite3/luasql
 	url = https://github.com/lunarmodules/luasql
+[submodule "subprojects/lua-cjson/lua-cjson"]
+	path = subprojects/lua-cjson/lua-cjson
+	url = https://github.com/openresty/lua-cjson

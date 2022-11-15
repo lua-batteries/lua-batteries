@@ -1,22 +1,22 @@
 project(
-  'lua-meson',
+  'lua-batteries',
   version: '0.2.0',
   license: 'MIT',
   default_options: [
     'buildtype=release',
     'default_library=both'
   ],
-  meson_version: '>=0.63.0'
+  meson_version: '>=0.64.0'
 )
 
-subproject('lua')
-config = {'lua': '5.4.4', 'apps': get_option('apps')}
 modules = get_option('modules')
-module_options = ['luajit-mod=' + get_option('luajit-mod').to_string()]
 
 if get_option('luajit')
   subproject('luajit')
   config += {'luajit': '2.0.5'}
+else
+  subproject('lua')
+  config = {'lua': '5.4.4', 'apps': get_option('apps')}
 endif
 
 if get_option('luarocks')
@@ -25,32 +25,37 @@ if get_option('luarocks')
 endif
 
 if 'all' in modules or 'cffi-lua' in modules
-  subproject('cffi-lua', default_options: module_options)
+  subproject('cffi-lua')
   config += {'modules/cffi-lua': '0.2.2'}
 endif
 
+if 'all' in modules or 'lua-cjson' in modules
+  subproject('lua-cjson')
+  config += {'modules/lua-cjson': '2.1.0.9'}
+endif
+
 if 'all' in modules or 'lua-openssl' in modules
-  subproject('lua-openssl', default_options: module_options)
+  subproject('lua-openssl')
   config += {'modules/lua-openssl': '0.8.2'}
 endif
 
 if 'all' in modules or 'luasec' in modules
-  subproject('luasec', default_options: module_options)
+  subproject('luasec')
   config += {'modules/luasec': '1.2.0'}
 endif
 
 if 'all' in modules or 'luasocket' in modules
-  subproject('luasocket', default_options: module_options)
+  subproject('luasocket')
   config += {'modules/luasocket': '3.1.0'}
 endif
 
 if 'all' in modules or 'luasql-sqlite3' in modules
-  subproject('luasql-sqlite3', default_options: module_options)
+  subproject('luasql-sqlite3')
   config += {'modules/luasql-sqlite3': '2.6.0'}
 endif
 
 if 'all' in modules or 'luv' in modules
-  subproject('luv', default_options: module_options)
+  subproject('luv')
   config += {'modules/luv': '1.44.2'}
 endif
 

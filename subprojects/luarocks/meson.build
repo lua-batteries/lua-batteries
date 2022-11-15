@@ -2,25 +2,19 @@ project(
   'luarocks',
   version: '3.9.1',
   license: 'MIT',
-  meson_version: '>=0.63.0'
+  meson_version: '>=0.64.0'
 )
 
 cc = meson.get_compiler('c')
 cc_id = cc.get_id()
 system = host_machine.system()
 cpu_family = host_machine.cpu_family()
+lua_ver = get_option('luajit') ? '5.1' : '5.4'
 
 install_subdir(
   'luarocks/src/luarocks',
-  install_dir: get_option('datadir') / 'lua/5.4'
+  install_dir: get_option('datadir') / 'lua' / lua_ver
 )
-
-if get_option('luajit')
-  install_subdir(
-    'luarocks/src/luarocks',
-    install_dir: get_option('datadir') / 'lua/5.1'
-  )
-endif
 
 install_data(
   [
@@ -108,26 +102,28 @@ elif cc_id == 'clang' or cc_id == 'clang-cl'
 endif
 
 if luarocks_config != ''
-  install_data(
-    luarocks_config,
-    rename: 'config-5.4.lua',
-    install_dir: get_option('datadir') / 'lua'
-  )
-
   if get_option('luajit')
     install_data(
       luarocks_config,
       rename: 'config-5.1.lua',
       install_dir: get_option('datadir') / 'lua'
     )
+  else
+    install_data(
+      luarocks_config,
+      rename: 'config-5.4.lua',
+      install_dir: get_option('datadir') / 'lua'
+    )
   endif
 endif
 
-# extras
+# -------------------------------------------------
+# EXTRA DATA
+# -------------------------------------------------
 
 install_data(
   'config/manifest',
-  install_dir: get_option('libdir') / 'luarocks/rocks-5.4'
+  install_dir: get_option('libdir') / 'luarocks/rocks-' + lua_ver
 )
 
 install_data(
@@ -142,27 +138,5 @@ install_data(
     'luarocks/win32/COPYING',
     'luarocks/README.md',
   ],
-  install_dir: get_option('libdir') / 'luarocks/rocks-5.4/luarocks/3.9.1-1/doc'
+  install_dir: get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'luarocks/3.9.1-1/doc'
 )
-
-if get_option('luajit')
-  install_data(
-    'config/manifest',
-    install_dir: get_option('libdir') / 'luarocks/rocks-5.1'
-  )
-
-  install_data(
-    ['luarocks/luarocks-3.9.1-1.rockspec', 'config/rock_manifest'],
-    install_dir: get_option('libdir') / 'luarocks/rocks-5.1/luarocks/3.9.1-1'
-  )
-
-  install_data(
-    [
-      'luarocks/CHANGELOG.md',
-      'luarocks/CODE_OF_CONDUCT.md',
-      'luarocks/win32/COPYING',
-      'luarocks/README.md',
-    ],
-    install_dir: get_option('libdir') / 'luarocks/rocks-5.1/luarocks/3.9.1-1/doc'
-  )
-endif

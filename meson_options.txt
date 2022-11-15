@@ -1,4 +1,42 @@
 option(
+  'modules',
+  type: 'array',
+  choices: [
+    'all', 'none',
+    'cffi-lua',
+    'lua-cjson',
+    'lua-openssl',
+    'luasec',
+    'luasocket',
+    'luasql-sqlite3',
+    'luv'
+  ],
+  value: ['all'],
+  description: 'lua modules to install'
+)
+
+option(
+  'standalone',
+  type: 'boolean',
+  value: false,
+  description: 'build external dependencies even if they are present'
+)
+
+option(
+  'luajit',
+  type: 'boolean',
+  value: false,
+  description: 'build everything using luajit instead of lua'
+)
+
+option(
+  'luarocks',
+  type: 'boolean',
+  value: true,
+  description: 'install luarocks'
+)
+
+option(
   'readline',
   type: 'boolean',
   value : false,
@@ -17,48 +55,4 @@ option(
   type: 'boolean',
   value : true,
   description: 'attach icons to apps on windows'
-)
-
-option(
-  'luarocks',
-  type: 'boolean',
-  value: true,
-  description: 'install luarocks'
-)
-
-option(
-  'luajit',
-  type: 'boolean',
-  value: true,
-  description: 'install luajit'
-)
-
-option(
-  'standalone',
-  type: 'boolean',
-  value: false,
-  description: 'build dependencies even if they are present'
-)
-
-option(
-  'modules',
-  type: 'array',
-  choices: [
-    'all', 'none',
-    'cffi-lua',
-    'lua-openssl',
-    'luasec',
-    'luasocket',
-    'luasql-sqlite3',
-    'luv'
-  ],
-  value: ['all'],
-  description: 'modules to install'
-)
-
-option(
-  'luajit-mod',
-  type: 'boolean',
-  value: false,
-  description: 'build luajit modules'
 )

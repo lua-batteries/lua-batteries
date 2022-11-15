@@ -3,7 +3,7 @@ project(
   'c',
   version: '2.0.5',
   license: 'MIT',
-  meson_version: '>=0.63.0'
+  meson_version: '>=0.64.0'
 )
 
 cc = meson.get_compiler('c')

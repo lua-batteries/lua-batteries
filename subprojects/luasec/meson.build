@@ -3,7 +3,7 @@ project(
   'c',
   version: '1.2.0',
   license: 'MIT',
-  meson_version: '>=0.63.0'
+  meson_version: '>=0.64.0'
 )
 
 # -------------------------------------------------
@@ -18,8 +18,8 @@ if system == 'windows'
   module_suffix = 'dll'
 endif
 
-lua_dep = get_option('luajit-mod') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
-lua_ver = get_option('luajit-mod') ? '5.1' : '5.4'
+lua_dep = get_option('luajit') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
+lua_ver = get_option('luajit') ? '5.1' : '5.4'
 project_deps = [lua_dep]
 
 # -------------------------------------------------
@@ -80,6 +80,17 @@ shared_module(
   install_dir: get_option('libdir') / 'lua' / lua_ver
 )
 
+static_library(
+  'ssl.core',
+  luasec_sources,
+  c_args: luasec_defines,
+  include_directories: luasec_include,
+  dependencies: project_deps,
+  pic: true,
+  install: true,
+  install_dir: get_option('libdir') / 'lua' / lua_ver + '-static'
+)
+
 # -------------------------------------------------
 # LUA SCRIPTS
 # -------------------------------------------------
@@ -107,5 +118,5 @@ install_data(
 
 install_subdir(
   'luasec/samples',
-  install_dir: data_dir / 'samples'
+  install_dir: data_dir
 )

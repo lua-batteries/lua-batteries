@@ -3,7 +3,7 @@ project(
   'c',
   version: '2.6.0',
   license: 'MIT',
-  meson_version: '>=0.63.0'
+  meson_version: '>=0.64.0'
 )
 
 # -------------------------------------------------
@@ -11,6 +11,7 @@ project(
 # -------------------------------------------------
 
 cc = meson.get_compiler('c')
+cc_id = cc.get_id()
 system = host_machine.system()
 module_suffix = 'so'
 
@@ -18,13 +19,20 @@ if system == 'windows'
   module_suffix = 'dll'
 endif
 
-lua_dep = get_option('luajit-mod') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
-lua_ver = get_option('luajit-mod') ? '5.1' : '5.4'
+lua_dep = get_option('luajit') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
+lua_ver = get_option('luajit') ? '5.1' : '5.4'
 project_deps = [lua_dep]
 
 # -------------------------------------------------
 # LUA MODULE
 # -------------------------------------------------
+
+luasql_sqlite3_link_args = []
+
+if system == 'windows' and cc_id in ['msvc', 'clang', 'clang-cl']
+  import('fs').copyfile('luasql/src/sqlite3.def', 'exports.def')
+  luasql_sqlite3_link_args += '-def:subprojects/luasql-sqlite3/exports.def'
+endif
 
 sqlite3_dep = dependency('sqlite3', required: false)
 
@@ -38,11 +46,22 @@ endif
 shared_module(
   'sqlite3',
   ['luasql/src/luasql.c', 'luasql/src/ls_sqlite3.c'],
+  link_args: luasql_sqlite3_link_args,
   dependencies: project_deps,
   name_prefix: '',
   name_suffix: module_suffix,
   install: true,
   install_dir: get_option('libdir') / 'lua' / lua_ver / 'luasql'
+)
+
+static_library(
+  'luasql.sqlite3',
+  ['luasql/src/luasql.c', 'luasql/src/ls_sqlite3.c'],
+  link_args: luasql_sqlite3_link_args,
+  dependencies: project_deps,
+  pic: true,
+  install: true,
+  install_dir: get_option('libdir') / 'lua' / lua_ver + '-static'
 )
 
 # -------------------------------------------------
@@ -57,6 +76,6 @@ install_data(
 )
 
 install_subdir(
-  'luasql/docs',
-  install_dir: data_dir / 'docs'
+  'luasql/doc',
+  install_dir: data_dir
 )

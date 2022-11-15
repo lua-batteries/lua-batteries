@@ -10,7 +10,7 @@ project(
     'cpp_rtti=false',
     'cpp_eh=none'
   ],
-  meson_version: '>=0.50'
+  meson_version: '>=0.64.0'
 )
 
 # -------------------------------------------------
@@ -25,33 +25,43 @@ if system == 'windows'
   module_suffix = 'dll'
 endif
 
-lua_dep = get_option('luajit-mod') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
-lua_ver = get_option('luajit-mod') ? '5.1' : '5.4'
+lua_dep = get_option('luajit') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
+lua_ver = get_option('luajit') ? '5.1' : '5.4'
 project_deps = [lua_dep]
 
 # -------------------------------------------------
 # LUA MODULE
 # -------------------------------------------------
 
-cffi_defines = []
-# cffi_defines += '-DHAVE_LIBFFI_DLLIMPORT'
+cffi_lua_sources = [
+  'cffi-lua/src/util.cc',
+  'cffi-lua/src/ffilib.cc',
+  'cffi-lua/src/parser.cc',
+  'cffi-lua/src/ast.cc',
+  'cffi-lua/src/lib.cc',
+  'cffi-lua/src/ffi.cc',
+  'cffi-lua/src/main.cc'
+]
+cffi_lua_defines = []
 
 if host_machine.endian() == 'big'
-  cffi_defines += '-DFFI_BIG_ENDIAN'
+  cffi_lua_defines += '-DFFI_BIG_ENDIAN'
 else
-  cffi_defines += '-DFFI_LITTLE_ENDIAN'
+  cffi_lua_defines += '-DFFI_LITTLE_ENDIAN'
 endif
 
 if get_option('buildtype') != 'plain'
   if cxx.has_argument('-Wshadow')
-    cffi_defines += '-Wshadow'
+    cffi_lua_defines += '-Wshadow'
   endif
   if cxx.has_argument('-Wold-style-cast')
-    cffi_defines += '-Wold-style-cast'
+    cffi_lua_defines += '-Wold-style-cast'
   endif
 endif
 
 ffi_dep = dependency('ffi', required: false)
+# TODO: If libffi found on windows and it is shared libraray then add defines
+# cffi_lua_defines += '-DHAVE_LIBFFI_DLLIMPORT'
 
 if get_option('standalone') or not ffi_dep.found()
   libffi = subproject('libffi', default_options: ['default_library=static'])
@@ -66,22 +76,25 @@ endif
 
 shared_module(
   'cffi',
-  [
-    'cffi-lua/src/util.cc',
-    'cffi-lua/src/ffilib.cc',
-    'cffi-lua/src/parser.cc',
-    'cffi-lua/src/ast.cc',
-    'cffi-lua/src/lib.cc',
-    'cffi-lua/src/ffi.cc',
-    'cffi-lua/src/main.cc'
-  ],
-  cpp_args: cffi_defines + ['-DCFFI_LUA_DLL'],
+  cffi_lua_sources,
+  cpp_args: cffi_lua_defines + ['-DCFFI_LUA_DLL'],
   include_directories: include_directories('cffi-lua/src'),
   dependencies: project_deps,
   name_prefix: '',
   name_suffix: module_suffix,
   install: true,
   install_dir: get_option('libdir') / 'lua' / lua_ver
+)
+
+static_library(
+  'cffi.core',
+  cffi_lua_sources,
+  cpp_args: cffi_lua_defines,
+  include_directories: include_directories('cffi-lua/src'),
+  dependencies: project_deps,
+  pic: true,
+  install: true,
+  install_dir: get_option('libdir') / 'lua' / lua_ver + '-static'
 )
 
 # -------------------------------------------------
@@ -97,5 +110,5 @@ install_data(
 
 install_subdir(
   'cffi-lua/docs',
-  install_dir: data_dir / 'docs'
+  install_dir: data_dir
 )

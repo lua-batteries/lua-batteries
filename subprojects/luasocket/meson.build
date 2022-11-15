@@ -3,7 +3,7 @@ project(
   'c',
   version: '3.1.0',
   license: 'MIT',
-  meson_version: '>=0.63.0'
+  meson_version: '>=0.64.0'
 )
 
 # -------------------------------------------------
@@ -19,8 +19,8 @@ if system == 'windows'
   module_suffix = 'dll'
 endif
 
-lua_dep = get_option('luajit-mod') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
-lua_ver = get_option('luajit-mod') ? '5.1' : '5.4'
+lua_dep = get_option('luajit') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
+lua_ver = get_option('luajit') ? '5.1' : '5.4'
 project_deps = [lua_dep]
 
 # -------------------------------------------------
@@ -68,20 +68,22 @@ else
     project_deps += cc.find_library('network')
   endif
 
+  unix_sources = [
+    'luasocket/src/buffer.c',
+    'luasocket/src/compat.c',
+    'luasocket/src/auxiliar.c',
+    'luasocket/src/options.c',
+    'luasocket/src/timeout.c',
+    'luasocket/src/io.c',
+    'luasocket/src/usocket.c',
+    'luasocket/src/unix.c',
+    'luasocket/src/unixdgram.c',
+    'luasocket/src/unixstream.c'
+  ]
+
   shared_module(
     'unix',
-    [
-      'luasocket/src/buffer.c',
-      'luasocket/src/compat.c',
-      'luasocket/src/auxiliar.c',
-      'luasocket/src/options.c',
-      'luasocket/src/timeout.c',
-      'luasocket/src/io.c',
-      'luasocket/src/usocket.c',
-      'luasocket/src/unix.c',
-      'luasocket/src/unixdgram.c',
-      'luasocket/src/unixstream.c'
-    ],
+    unix_sources,
     c_args: luasocket_defines,
     include_directories: luasocket_include,
     dependencies: project_deps,
@@ -91,18 +93,31 @@ else
     install_dir: get_option('libdir') / 'lua' / lua_ver / 'socket'
   )
 
+  static_library(
+    'socket.unix',
+    unix_sources,
+    c_args: luasocket_defines,
+    include_directories: luasocket_include,
+    dependencies: project_deps,
+    pic: true,
+    install: true,
+    install_dir: get_option('libdir') / 'lua' / lua_ver + '-static'
+  )
+
+  serial_sources = [
+    'luasocket/src/buffer.c',
+    'luasocket/src/compat.c',
+    'luasocket/src/auxiliar.c',
+    'luasocket/src/options.c',
+    'luasocket/src/timeout.c',
+    'luasocket/src/io.c',
+    'luasocket/src/usocket.c',
+    'luasocket/src/serial.c'
+  ]
+
   shared_module(
     'serial',
-    [
-      'luasocket/src/buffer.c',
-      'luasocket/src/compat.c',
-      'luasocket/src/auxiliar.c',
-      'luasocket/src/options.c',
-      'luasocket/src/timeout.c',
-      'luasocket/src/io.c',
-      'luasocket/src/usocket.c',
-      'luasocket/src/serial.c'
-    ],
+    serial_sources,
     c_args: luasocket_defines,
     include_directories: luasocket_include,
     dependencies: project_deps,
@@ -110,6 +125,17 @@ else
     name_suffix: module_suffix,
     install: true,
     install_dir: get_option('libdir') / 'lua' / lua_ver / 'socket'
+  )
+
+  static_library(
+    'socket.serial',
+    serial_sources,
+    c_args: luasocket_defines,
+    include_directories: luasocket_include,
+    dependencies: project_deps,
+    pic: true,
+    install: true,
+    install_dir: get_option('libdir') / 'lua' / lua_ver + '-static'
   )
 endif
 
@@ -125,6 +151,17 @@ shared_module(
   install_dir: get_option('libdir') / 'lua' / lua_ver
 )
 
+static_library(
+  'mime.core',
+  ['luasocket/src/mime.c', 'luasocket/src/compat.c'],
+  c_args: luasocket_defines,
+  include_directories: luasocket_include,
+  dependencies: project_deps,
+  pic: true,
+  install: true,
+  install_dir: get_option('libdir') / 'lua' / lua_ver + '-static'
+)
+
 shared_module(
   'socket',
   luasocket_socket_sources,
@@ -135,6 +172,17 @@ shared_module(
   name_suffix: module_suffix,
   install: true,
   install_dir: get_option('libdir') / 'lua' / lua_ver
+)
+
+static_library(
+  'socket.core',
+  luasocket_socket_sources,
+  c_args: luasocket_defines,
+  include_directories: luasocket_include,
+  dependencies: project_deps,
+  pic: true,
+  install: true,
+  install_dir: get_option('libdir') / 'lua' / lua_ver + '-static'
 )
 
 # -------------------------------------------------
@@ -175,20 +223,20 @@ install_data(
 
 install_subdir(
   'luasocket/docs',
-  install_dir: data_dir / 'docs'
+  install_dir: data_dir
 )
 
 install_subdir(
   'luasocket/samples',
-  install_dir: data_dir / 'samples'
+  install_dir: data_dir
 )
 
 install_subdir(
   'luasocket/etc',
-  install_dir: data_dir / 'etc'
+  install_dir: data_dir
 )
 
 install_subdir(
   'luasocket/test',
-  install_dir: data_dir / 'test'
+  install_dir: data_dir
 )
