@@ -10,13 +10,14 @@ project(
 )
 
 modules = get_option('modules')
+config = {'apps': get_option('apps')}
 
 if get_option('luajit')
   subproject('luajit')
   config += {'luajit': '2.0.5'}
 else
   subproject('lua')
-  config = {'lua': '5.4.4', 'apps': get_option('apps')}
+  config += {'lua': '5.4.4'}
 endif
 
 if get_option('luarocks')
@@ -39,6 +40,11 @@ if 'all' in modules or 'lua-openssl' in modules
   config += {'modules/lua-openssl': '0.8.2'}
 endif
 
+if 'all' in modules or 'luafilesystem' in modules
+  subproject('luafilesystem')
+  config += {'modules/luafilesystem': '1.8.0'}
+endif
+
 if 'all' in modules or 'luasec' in modules
   subproject('luasec')
   config += {'modules/luasec': '1.2.0'}
@@ -52,6 +58,11 @@ endif
 if 'all' in modules or 'luasql-sqlite3' in modules
   subproject('luasql-sqlite3')
   config += {'modules/luasql-sqlite3': '2.6.0'}
+endif
+
+if 'all' in modules or 'luautf8' in modules
+  subproject('luautf8')
+  config += {'modules/luautf8': '0.1.4'}
 endif
 
 if 'all' in modules or 'luv' in modules

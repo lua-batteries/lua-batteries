@@ -45,7 +45,7 @@ meson install -C build --skip-subprojects libffi,libuv,openssl,sqlite3
 
 ## Building (LuaJIT 2.0.5)
 
-Follow same steps as above but first apply some patches and run `meson setup` command with `-Dluajit=true` flag. You can use same prefix used for lua installation. Use `--wipe` flag if you have already built with lua.
+Follow same steps as above but first apply some patches and run `meson setup` command with `-Dluajit=true` flag. You can use same prefix used for lua installation. Use `meson configure` command if you have already built without luajit meson option.
 
 ```bash
 cd subprojects/luajit/LuaJIT
@@ -86,7 +86,7 @@ Now change directory to project root and build project using meson.
 ```bash
 $ meson setup build -Dstandalone=true --cross-file=cross/x86_64-w64-mingw32.ini --prefix=$HOME/lua-mingw 
 $ meson install -C build --skip-subprojects libffi,libuv,openssl,sqlite3
-$ meson setup build -Dstandalone=true -Dluajit=true --cross-file=cross/x86_64-w64-mingw32.ini --prefix=$HOME/lua-mingw --wipe
+$ meson configure build -Dstandalone=true -Dluajit=true --cross-file=cross/x86_64-w64-mingw32.ini --prefix=$HOME/lua-mingw
 $ meson install -C build --skip-subprojects libffi,libuv,openssl,sqlite3
 ```
 

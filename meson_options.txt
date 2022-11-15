@@ -6,9 +6,11 @@ option(
     'cffi-lua',
     'lua-cjson',
     'lua-openssl',
+    'luafilesystem',
     'luasec',
     'luasocket',
     'luasql-sqlite3',
+    'luautf8',
     'luv'
   ],
   value: ['all'],

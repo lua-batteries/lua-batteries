@@ -25,3 +25,9 @@
 [submodule "subprojects/lua-cjson/lua-cjson"]
 	path = subprojects/lua-cjson/lua-cjson
 	url = https://github.com/openresty/lua-cjson
+[submodule "subprojects/luafilesystem/luafilesystem"]
+	path = subprojects/luafilesystem/luafilesystem
+	url = https://github.com/lunarmodules/luafilesystem
+[submodule "subprojects/luautf8/luautf8"]
+	path = subprojects/luautf8/luautf8
+	url = https://github.com/starwing/luautf8
