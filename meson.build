@@ -31,6 +31,11 @@ if 'all' in modules or 'cffi-lua' in modules
   config += {'modules/cffi-lua': '0.2.2'}
 endif
 
+if 'all' in modules or 'lanes' in modules
+  subproject('lanes')
+  config += {'modules/lanes': '3.16.0'}
+endif
+
 if 'all' in modules or 'lua-cjson' in modules
   subproject('lua-cjson')
   config += {'modules/lua-cjson': '2.1.0.10'}

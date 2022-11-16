@@ -4,6 +4,7 @@ option(
   choices: [
     'all', 'none',
     'cffi-lua',
+    'lanes',
     'lua-cjson',
     'lua-openssl',
     'lua-zlib',

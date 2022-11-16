@@ -52,3 +52,6 @@
 [submodule "subprojects/lui/subprojects/libui/libui"]
 	path = subprojects/lui/subprojects/libui/libui
 	url = https://github.com/andlabs/libui
+[submodule "subprojects/lanes/lanes"]
+	path = subprojects/lanes/lanes
+	url = https://github.com/LuaLanes/lanes
