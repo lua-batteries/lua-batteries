@@ -32,7 +32,7 @@ endif
 
 if 'all' in modules or 'lua-cjson' in modules
   subproject('lua-cjson')
-  config += {'modules/lua-cjson': '2.1.0.9'}
+  config += {'modules/lua-cjson': '2.1.0.10'}
 endif
 
 if 'all' in modules or 'lua-openssl' in modules

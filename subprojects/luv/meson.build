@@ -97,6 +97,11 @@ install_data(
 )
 
 install_subdir(
+  'luv/docs.md',
+  install_dir: data_dir
+)
+
+install_subdir(
   'luv/examples',
   install_dir: data_dir
 )

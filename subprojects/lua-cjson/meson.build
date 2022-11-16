@@ -1,7 +1,7 @@
 project(
   'lua-cjson',
   'c',
-  version: '2.1.0.9',
+  version: '2.1.0.10',
   license: 'MIT',
   meson_version: '>=0.64.0'
 )
@@ -92,9 +92,9 @@ install_data(
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'lua-cjson/2.1.0.9-1'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'lua-cjson/2.1.0.10-1'
 
 install_data(
-  'lua-cjson/lua-cjson-2.1.0.9-1.rockspec',
+  'lua-cjson/lua-cjson-2.1.0.10-1.rockspec',
   install_dir: data_dir
 )
