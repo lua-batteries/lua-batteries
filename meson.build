@@ -10,6 +10,7 @@ project(
 )
 
 modules = get_option('modules')
+extra_modules = get_option('extra-modules')
 config = {'apps': get_option('apps')}
 
 if get_option('luajit')
@@ -78,6 +79,11 @@ endif
 if 'all' in modules or 'toml.lua' in modules
   subproject('toml.lua')
   config += {'modules/toml.lua': '0.1.1'}
+endif
+
+if 'all' in extra_modules or 'lui' in extra_modules
+  subproject('lui')
+  config += {'extra-modules/lui': 'git'}
 endif
 
 summary(

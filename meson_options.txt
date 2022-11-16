@@ -20,6 +20,17 @@ option(
 )
 
 option(
+  'extra-modules',
+  type: 'array',
+  choices: [
+    'all', 'none',
+    'lui'
+  ],
+  value: ['none'],
+  description: 'lua extra modules to install'
+)
+
+option(
   'standalone',
   type: 'boolean',
   value: false,

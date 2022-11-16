@@ -35,7 +35,7 @@ toml_lua_sources = [
   'toml.lua/src/DateAndTime/dateAndTime.cpp',
   'toml.lua/src/utilities/utilities.cpp'
 ]
-tom_lua_include = [
+toml_lua_include = [
   include_directories('toml.lua/src'),
   include_directories('tomlplusplus'),
   include_directories('sol2/include'),
@@ -58,7 +58,7 @@ shared_module(
   toml_lua_sources,
   c_args: toml_lua_defines,
   link_args: toml_lua_link_args,
-  include_directories: tom_lua_include,
+  include_directories: toml_lua_include,
   dependencies: project_deps,
   name_prefix: '',
   name_suffix: module_suffix,
@@ -71,7 +71,7 @@ static_library(
   toml_lua_sources,
   c_args: toml_lua_defines,
   link_args: toml_lua_link_args,
-  include_directories: tom_lua_include,
+  include_directories: toml_lua_include,
   dependencies: project_deps,
   pic: true,
   install: true,

@@ -1,0 +1,7 @@
+option(
+  'luajit',
+  type: 'boolean',
+  value: false,
+  description: 'build luajit compatible module',
+  yield: true
+)

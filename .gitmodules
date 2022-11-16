@@ -46,3 +46,9 @@
 [submodule "subprojects/toml.lua/tomlplusplus"]
 	path = subprojects/toml.lua/tomlplusplus
 	url = https://github.com/marzer/tomlplusplus.git
+[submodule "subprojects/lui/lui"]
+	path = subprojects/lui/lui
+	url = https://github.com/zhaozg/lui
+[submodule "subprojects/lui/subprojects/libui/libui"]
+	path = subprojects/lui/subprojects/libui/libui
+	url = https://github.com/andlabs/libui
