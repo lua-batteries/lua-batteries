@@ -8,7 +8,6 @@ project(
 cc = meson.get_compiler('c')
 cc_id = cc.get_id()
 system = host_machine.system()
-cpu_family = host_machine.cpu_family()
 lua_ver = get_option('luajit') ? '5.1' : '5.4'
 
 install_subdir(
@@ -37,31 +36,20 @@ if system == 'windows'
 
   install_data(scripts, install_dir: get_option('bindir'))
 
-  if cpu_family == 'x86_64'
-    install_data(
-      [
-        'tools/7za.exe',
-        'tools/coreutils.exe',
-        'tools/fd.exe'
-      ],
-      install_dir: get_option('bindir') / 'tools'
-    )
-  elif 
-    install_data(
-      [
-        'luarocks/win32/tools/7z.exe',
-        'luarocks/win32/tools/7z.dll',
-        'luarocks/win32/tools/cp.exe',
-        'luarocks/win32/tools/find.exe',
-        'luarocks/win32/tools/libiconv2.dll',
-        'luarocks/win32/tools/libintl3.dll',
-        'luarocks/win32/tools/ls.exe',
-        'luarocks/win32/tools/md5sum.exe',
-        'luarocks/win32/tools/wget.exe'
-      ],
-      install_dir: get_option('bindir') / 'tools'
-    )
-  endif
+  install_data(
+    [
+      'luarocks/win32/tools/7z.exe',
+      'luarocks/win32/tools/7z.dll',
+      'luarocks/win32/tools/cp.exe',
+      'luarocks/win32/tools/find.exe',
+      'luarocks/win32/tools/libiconv2.dll',
+      'luarocks/win32/tools/libintl3.dll',
+      'luarocks/win32/tools/ls.exe',
+      'luarocks/win32/tools/md5sum.exe',
+      'luarocks/win32/tools/wget.exe'
+    ],
+    install_dir: get_option('bindir') / 'tools'
+  )
 else
   scripts = ['scripts/luarocks.sh', 'scripts/luarocks-admin.sh']
   scripts_renamed = ['luarocks', 'luarocks-admin']
@@ -82,18 +70,10 @@ endif
 luarocks_config = ''
 
 if cc_id == 'msvc'
-  if cpu_family == 'x86_64'
-    luarocks_config = 'config/config-x86_64-pc-windows-msvc.lua'
-  elif
-    luarocks_config = 'config/config-i686-pc-windows-msvc.lua'
-  endif
+  luarocks_config = 'config/config-windows-msvc.lua'
 elif cc_id == 'clang' or cc_id == 'clang-cl'
   if system == 'windows'
-    if cpu_family == 'x86_64'
-      luarocks_config = 'config/config-x86_64-pc-windows-clang.lua'
-    elif
-      luarocks_config = 'config/config-i686-pc-windows-clang.lua'
-    endif
+    luarocks_config = 'config/config-windows-clang.lua'
   elif system == 'darwin'
     luarocks_config = 'config/config-darwin-clang.lua'
   else
