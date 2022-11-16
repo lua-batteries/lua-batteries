@@ -75,6 +75,11 @@ if 'all' in modules or 'luv' in modules
   config += {'modules/luv': '1.44.2'}
 endif
 
+if 'all' in modules or 'toml.lua' in modules
+  subproject('toml.lua')
+  config += {'modules/toml.lua': '0.1.1'}
+endif
+
 summary(
   config,
   bool_yn: true,

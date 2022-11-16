@@ -33,10 +33,10 @@ cd lua-batteries
 meson setup build --prefix=c:/lua
 ```
 
-4. Now install lua-batteries using meson. The skipped subprojects are not needed at runtime if still you want to keep then remove `--skip-subprojects` flag.
+4. Now install lua-batteries using meson. The skipped subprojects are not needed at runtime if you still want to keep them, then remove `--skip-subprojects` flag.
 
 ```bash
-meson install -C build --skip-subprojects libffi,libuv,openssl,sqlite3
+meson install -C build --skip-subprojects libffi,libuv,openssl,sqlite3,zlib
 ```
 
 5. Now lua-batteries should be installed in your prefix directory. Now add `PREFIX/bin` in your `PATH` environment variable. On linux you need need to set `LUA_PATH=PREFIX/../share/lua/5.4/?.lua` and `LUA_CPATH=PREFIX/../lib/lua/5.4/?.so` environment variable too.
@@ -87,7 +87,7 @@ Now change directory to project root and build project using meson.
 $ meson setup build -Dstandalone=true --cross-file=cross/x86_64-w64-mingw32.ini --prefix=$HOME/lua-mingw 
 $ meson install -C build --skip-subprojects libffi,libuv,openssl,sqlite3
 $ meson configure build -Dstandalone=true -Dluajit=true --cross-file=cross/x86_64-w64-mingw32.ini --prefix=$HOME/lua-mingw
-$ meson install -C build --skip-subprojects libffi,libuv,openssl,sqlite3
+$ meson install -C build --skip-subprojects libffi,libuv,openssl,sqlite3,zlib
 ```
 
 Now pack generated lua-batteries installation directory. 

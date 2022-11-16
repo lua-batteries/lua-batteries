@@ -12,7 +12,8 @@ option(
     'luasocket',
     'luasql-sqlite3',
     'luautf8',
-    'luv'
+    'luv',
+    'toml.lua'
   ],
   value: ['all'],
   description: 'lua modules to install'

@@ -34,3 +34,15 @@
 [submodule "subprojects/lua-zlib/lua-zlib"]
 	path = subprojects/lua-zlib/lua-zlib
 	url = https://github.com/brimworks/lua-zlib
+[submodule "subprojects/toml.lua/toml.lua"]
+	path = subprojects/toml.lua/toml.lua
+	url = https://github.com/LebJe/toml.lua
+[submodule "subprojects/toml.lua/sol2"]
+	path = subprojects/toml.lua/sol2
+	url = https://github.com/ThePhD/sol2.git
+[submodule "subprojects/toml.lua/magic_enum"]
+	path = subprojects/toml.lua/magic_enum
+	url = https://github.com/Neargye/magic_enum.git
+[submodule "subprojects/toml.lua/tomlplusplus"]
+	path = subprojects/toml.lua/tomlplusplus
+	url = https://github.com/marzer/tomlplusplus.git
