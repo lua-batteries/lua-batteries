@@ -3,7 +3,11 @@ option(
   type: 'array',
   choices: [
     'all', 'none',
+    'argparse',
+    'binser',
     'cffi-lua',
+    'date',
+    'inspect.lua',
     'lanes',
     'lua-cjson',
     'lua-openssl',
@@ -14,7 +18,8 @@ option(
     'luasql-sqlite3',
     'luautf8',
     'luv',
-    'toml.lua'
+    'toml.lua',
+    'xml2lua'
   ],
   value: ['all'],
   description: 'lua modules to install'

@@ -26,9 +26,29 @@ if get_option('luarocks')
   config += {'luarocks': '3.9.1'}
 endif
 
+if 'all' in modules or 'argparse' in modules
+  subproject('argparse')
+  config += {'modules/argparse': '0.7.1'}
+endif
+
+if 'all' in modules or 'binser' in modules
+  subproject('binser')
+  config += {'modules/binser': '0.0.8'}
+endif
+
 if 'all' in modules or 'cffi-lua' in modules
   subproject('cffi-lua')
   config += {'modules/cffi-lua': '0.2.2'}
+endif
+
+if 'all' in modules or 'date' in modules
+  subproject('date')
+  config += {'modules/date': '2.2'}
+endif
+
+if 'all' in modules or 'inspect.lua' in modules
+  subproject('inspect.lua')
+  config += {'modules/inspect.lua': '3.1.3'}
 endif
 
 if 'all' in modules or 'lanes' in modules
@@ -84,6 +104,11 @@ endif
 if 'all' in modules or 'toml.lua' in modules
   subproject('toml.lua')
   config += {'modules/toml.lua': '0.1.1'}
+endif
+
+if 'all' in modules or 'xml2lua' in modules
+  subproject('xml2lua')
+  config += {'modules/xml2lua': '1.5'}
 endif
 
 if 'all' in extra_modules or 'lui' in extra_modules

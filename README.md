@@ -39,7 +39,7 @@ meson setup build --prefix=c:/lua
 meson install -C build --skip-subprojects libffi,libuv,openssl,sqlite3,zlib
 ```
 
-5. Now lua-batteries should be installed in your prefix directory. Now add `PREFIX/bin` in your `PATH` environment variable. On linux you need need to set `LUA_PATH=PREFIX/../share/lua/5.4/?.lua` and `LUA_CPATH=PREFIX/../lib/lua/5.4/?.so` environment variable too.
+5. Now lua-batteries should be installed in your prefix directory. Now add `PREFIX/bin` in your `PATH` environment variable. On linux you need need to set `LUA_PATH=PREFIX/../share/lua/5.4/?.lua` and `LUA_CPATH=PREFIX/../lib/lua/5.4/?.so` environment variables too.
 
 6. You can further read more information about meson from meson's quick [guide](https://mesonbuild.com/Quick-guide.html). You can also see [meson_options.txt](https://github.com/clitic/lua-batteries/blob/main/meson_options.txt) for customizing your installation.
 

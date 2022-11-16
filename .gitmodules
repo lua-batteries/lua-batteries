@@ -55,3 +55,18 @@
 [submodule "subprojects/lanes/lanes"]
 	path = subprojects/lanes/lanes
 	url = https://github.com/LuaLanes/lanes
+[submodule "subprojects/inspect.lua/inspect.lua"]
+	path = subprojects/inspect.lua/inspect.lua
+	url = https://github.com/kikito/inspect.lua
+[submodule "subprojects/date/date"]
+	path = subprojects/date/date
+	url = https://github.com/Tieske/date
+[submodule "subprojects/argparse/argparse"]
+	path = subprojects/argparse/argparse
+	url = https://github.com/luarocks/argparse
+[submodule "subprojects/xml2lua/xml2lua"]
+	path = subprojects/xml2lua/xml2lua
+	url = https://github.com/manoelcampos/xml2lua
+[submodule "subprojects/binser/binser"]
+	path = subprojects/binser/binser
+	url = https://github.com/bakpakin/binser
