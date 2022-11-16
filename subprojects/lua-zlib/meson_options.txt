@@ -1,0 +1,15 @@
+option(
+  'standalone',
+  type: 'boolean',
+  value: false,
+  description: 'build external dependencies even if they are present',
+  yield: true
+)
+
+option(
+  'luajit',
+  type: 'boolean',
+  value: false,
+  description: 'build luajit compatible module',
+  yield: true
+)

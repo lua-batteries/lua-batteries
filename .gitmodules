@@ -31,3 +31,6 @@
 [submodule "subprojects/luautf8/luautf8"]
 	path = subprojects/luautf8/luautf8
 	url = https://github.com/starwing/luautf8
+[submodule "subprojects/lua-zlib/lua-zlib"]
+	path = subprojects/lua-zlib/lua-zlib
+	url = https://github.com/brimworks/lua-zlib

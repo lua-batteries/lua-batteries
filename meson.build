@@ -40,6 +40,11 @@ if 'all' in modules or 'lua-openssl' in modules
   config += {'modules/lua-openssl': '0.8.2'}
 endif
 
+if 'all' in modules or 'lua-zlib' in modules
+  subproject('lua-zlib')
+  config += {'modules/lua-zlib': '1.2'}
+endif
+
 if 'all' in modules or 'luafilesystem' in modules
   subproject('luafilesystem')
   config += {'modules/luafilesystem': '1.8.0'}

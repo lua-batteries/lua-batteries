@@ -6,6 +6,7 @@ option(
     'cffi-lua',
     'lua-cjson',
     'lua-openssl',
+    'lua-zlib',
     'luafilesystem',
     'luasec',
     'luasocket',
