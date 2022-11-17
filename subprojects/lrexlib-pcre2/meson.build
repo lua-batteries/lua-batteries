@@ -43,8 +43,8 @@ endif
 pcre2_8_dep = dependency('pcre2_8', required: false)
 
 if get_option('standalone') or not pcre2_8_dep.found()
-  openssl = subproject('pcre2', default_options: ['default_library=static'])
-  project_deps += openssl.get_variable('libpcre2_8')
+  pcre2 = subproject('pcre2', default_options: ['default_library=static'])
+  project_deps += pcre2.get_variable('libpcre2_8')
 else
   project_deps += pcre2_8_dep
 endif

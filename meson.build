@@ -126,6 +126,11 @@ if 'all' in modules or 'xml2lua' in modules
   config += {'modules/xml2lua': '1.5'}
 endif
 
+if 'all' in extra_modules or 'luasdl2' in extra_modules
+  subproject('luasdl2')
+  config += {'extra-modules/luasdl2': '2.0.5'}
+endif
+
 if 'all' in extra_modules or 'lui' in extra_modules
   subproject('lui')
   config += {'extra-modules/lui': 'git'}

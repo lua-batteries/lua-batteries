@@ -79,3 +79,6 @@
 [submodule "subprojects/lrexlib-pcre2/lrexlib"]
 	path = subprojects/lrexlib-pcre2/lrexlib
 	url = https://github.com/rrthomas/lrexlib
+[submodule "subprojects/luasdl2/luasdl2"]
+	path = subprojects/luasdl2/luasdl2
+	url = https://github.com/Tangent128/luasdl2

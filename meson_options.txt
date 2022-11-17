@@ -33,6 +33,7 @@ option(
   type: 'array',
   choices: [
     'all', 'none',
+    'luasdl2',
     'lui'
   ],
   value: ['none'],
