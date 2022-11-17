@@ -106,7 +106,7 @@ shared_module(
 )
 
 static_library(
-  'openssl.core',
+  'openssl',
   lua_openssl_sources,
   c_args: lua_openssl_defines,
   include_directories: lua_openssl_include,

@@ -76,3 +76,6 @@
 [submodule "subprojects/penlight/Penlight"]
 	path = subprojects/penlight/Penlight
 	url = https://github.com/lunarmodules/Penlight
+[submodule "subprojects/lrexlib-pcre2/lrexlib"]
+	path = subprojects/lrexlib-pcre2/lrexlib
+	url = https://github.com/rrthomas/lrexlib

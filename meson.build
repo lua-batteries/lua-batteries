@@ -56,6 +56,11 @@ if 'all' in modules or 'lanes' in modules
   config += {'modules/lanes': '3.16.0'}
 endif
 
+if 'all' in modules or 'lrexlib-pcre2' in modules
+  subproject('lrexlib-pcre2')
+  config += {'modules/lrexlib-pcre2': '2.9.1'}
+endif
+
 if 'all' in modules or 'lua-cjson' in modules
   subproject('lua-cjson')
   config += {'modules/lua-cjson': '2.1.0.10'}

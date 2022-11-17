@@ -75,7 +75,7 @@ shared_module(
 )
 
 static_library(
-  'luv.core',
+  'luv',
   'luv/src/luv.c',
   link_args: luv_link_args,
   include_directories: include_directories('luv/deps/lua-compat-5.3/c-api'),

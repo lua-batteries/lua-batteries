@@ -9,6 +9,7 @@ option(
     'date',
     'inspect.lua',
     'lanes',
+    'lrexlib-pcre2',
     'lua-cjson',
     'lua-openssl',
     'lua-zlib',

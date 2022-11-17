@@ -56,7 +56,7 @@ shared_module(
 )
 
 static_library(
-  'zlib.core',
+  'zlib',
   'lua-zlib/lua_zlib.c',
   c_args: ['-DLZLIB_COMPAT'],
   link_args: lua_zlib_link_args,

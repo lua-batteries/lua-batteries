@@ -67,7 +67,7 @@ shared_module(
 )
 
 static_library(
-  'toml.core',
+  'toml',
   toml_lua_sources,
   c_args: toml_lua_defines,
   link_args: toml_lua_link_args,

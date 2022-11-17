@@ -56,7 +56,7 @@ shared_module(
 )
 
 static_library(
-  'lui.core',
+  'lui',
   ['lui/src/lui.c', 'lui/deps/auxiliar/auxiliar.c'],
   c_args: lui_defines,
   link_args: lui_link_args,

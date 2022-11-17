@@ -46,7 +46,7 @@ shared_module(
 )
 
 static_library(
-  'lua-utf8.core',
+  'lua-utf8',
   'luautf8/lutf8lib.c',
   link_args: luautf8_link_args,
   dependencies: project_deps,

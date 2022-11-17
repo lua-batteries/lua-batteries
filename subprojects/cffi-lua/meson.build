@@ -87,7 +87,7 @@ shared_module(
 )
 
 static_library(
-  'cffi.core',
+  'cffi',
   cffi_lua_sources,
   cpp_args: cffi_lua_defines,
   include_directories: include_directories('cffi-lua/src'),

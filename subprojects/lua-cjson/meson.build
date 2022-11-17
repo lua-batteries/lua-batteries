@@ -59,7 +59,7 @@ shared_module(
 )
 
 static_library(
-  'cjson.core',
+  'cjson',
   lua_cjson_sources,
   c_args: lua_cjson_defines,
   link_args: lua_cjson_link_args,

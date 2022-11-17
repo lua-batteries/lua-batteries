@@ -1,7 +1,7 @@
 project(
-  'luafilesystem',
+  'lrexlib-pcre2',
   'c',
-  version: '1.8.0',
+  version: '2.9.1',
   license: 'MIT',
   meson_version: '>=0.64.0'
 )
@@ -27,17 +27,33 @@ project_deps = [lua_dep]
 # LUA MODULE
 # -------------------------------------------------
 
-luafilesystem_link_args = []
+lrexlib_pcre2_sources = [
+  'lrexlib/src/common.c',
+  'lrexlib/src/pcre2/lpcre2.c',
+  'lrexlib/src/pcre2/lpcre2_f.c',
+]
+lrexlib_pcre2_defines = ['-DVERSION="2.9.1"', '-DPCRE2_CODE_UNIT_WIDTH=8']
+lrexlib_pcre2_link_args = []
 
 if system == 'windows' and cc_id in ['msvc', 'clang', 'clang-cl']
-  import('fs').copyfile('luafilesystem/src/lfs.def', 'exports.def')
-  luafilesystem_link_args += '-def:subprojects/luafilesystem/exports.def'
+  import('fs').copyfile('exports.def', 'exports.def')
+  lrexlib_pcre2_link_args += '-def:subprojects/lrexlib-pcre2/exports.def'
+endif
+
+pcre2_8_dep = dependency('pcre2_8', required: false)
+
+if get_option('standalone') or not pcre2_8_dep.found()
+  openssl = subproject('pcre2', default_options: ['default_library=static'])
+  project_deps += openssl.get_variable('libpcre2_8')
+else
+  project_deps += pcre2_8_dep
 endif
 
 shared_module(
-  'lfs',
-  'luafilesystem/src/lfs.c',
-  link_args: luafilesystem_link_args,
+  'rex_pcre2',
+  lrexlib_pcre2_sources,
+  c_args: lrexlib_pcre2_defines,
+  link_args: lrexlib_pcre2_link_args,
   dependencies: project_deps,
   name_prefix: '',
   name_suffix: module_suffix,
@@ -46,9 +62,10 @@ shared_module(
 )
 
 static_library(
-  'lfs',
-  'luafilesystem/src/lfs.c',
-  link_args: luafilesystem_link_args,
+  'rex_pcre2',
+  lrexlib_pcre2_sources,
+  c_args: lrexlib_pcre2_defines,
+  link_args: lrexlib_pcre2_link_args,
   dependencies: project_deps,
   pic: true,
   install: true,
@@ -59,14 +76,15 @@ static_library(
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'luafilesystem/1.8.0-1'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'lrexlib-pcre2/2.9.1-1'
 
 install_data(
-  'luafilesystem/luafilesystem-scm-1.rockspec',
+  'lrexlib/rockspecs.lua',
+  rename: 'lrexlib-pcre2-2.9.1-1.rockspec',
   install_dir: data_dir
 )
 
 install_subdir(
-  'luafilesystem/doc',
+  'lrexlib/doc',
   install_dir: data_dir
 )
