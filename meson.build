@@ -101,9 +101,19 @@ if 'all' in modules or 'luv' in modules
   config += {'modules/luv': '1.44.2'}
 endif
 
+if 'all' in modules or 'penlight' in modules
+  subproject('penlight')
+  config += {'modules/penlight': '1.13.1'}
+endif
+
 if 'all' in modules or 'toml.lua' in modules
   subproject('toml.lua')
   config += {'modules/toml.lua': '0.1.1'}
+endif
+
+if 'all' in modules or 'uuid' in modules
+  subproject('uuid')
+  config += {'modules/uuid': '0.3'}
 endif
 
 if 'all' in modules or 'xml2lua' in modules

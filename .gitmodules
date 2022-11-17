@@ -70,3 +70,9 @@
 [submodule "subprojects/binser/binser"]
 	path = subprojects/binser/binser
 	url = https://github.com/bakpakin/binser
+[submodule "subprojects/uuid/uuid"]
+	path = subprojects/uuid/uuid
+	url = https://github.com/Tieske/uuid
+[submodule "subprojects/penlight/Penlight"]
+	path = subprojects/penlight/Penlight
+	url = https://github.com/lunarmodules/Penlight

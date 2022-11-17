@@ -18,7 +18,9 @@ option(
     'luasql-sqlite3',
     'luautf8',
     'luv',
+    'penlight',
     'toml.lua',
+    'uuid',
     'xml2lua'
   ],
   value: ['all'],
