@@ -4,11 +4,12 @@ project(
   license: 'MIT',
   default_options: [
     'buildtype=release',
-    'default_library=both'
+    'default_library=static'
   ],
   meson_version: '>=0.64.0'
 )
 
+system = host_machine.system()
 modules = get_option('modules')
 extra_modules = get_option('extra-modules')
 config = {'apps': get_option('apps')}
@@ -16,9 +17,27 @@ config = {'apps': get_option('apps')}
 if get_option('luajit')
   subproject('luajit')
   config += {'luajit': '2.0.5'}
+
+  if system != 'windows'
+    install_data(
+      'scripts/luajit51.sh',
+      rename: 'luajit51',
+      install_mode: 'rwxr-xr-x',
+      install_dir: get_option('bindir')
+    )
+  endif
 else
   subproject('lua')
   config += {'lua': '5.4.4'}
+
+  if system != 'windows'
+    install_data(
+      'scripts/lua54.sh',
+      rename: 'lua54',
+      install_mode: 'rwxr-xr-x',
+      install_dir: get_option('bindir')
+    )
+  endif
 endif
 
 if get_option('luarocks')

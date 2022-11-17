@@ -51,20 +51,21 @@ if system == 'windows'
     install_dir: get_option('bindir') / 'tools'
   )
 else
-  scripts = ['scripts/luarocks.sh', 'scripts/luarocks-admin.sh']
-  scripts_renamed = ['luarocks', 'luarocks-admin']
-
   if get_option('luajit')
-    scripts += ['scripts/luarocks-jit.sh', 'scripts/luarocks-admin-jit.sh']
-    scripts_renamed += ['luarocks-jit', 'luarocks-admin-jit']
+    install_data(
+      ['scripts/luarocks-jit.sh', 'scripts/luarocks-admin-jit.sh'],
+      rename: ['luarocks-jit', 'luarocks-admin-jit'],
+      install_mode: 'rwxr-xr-x',
+      install_dir: get_option('bindir')
+    )
+  elif
+    install_data(
+      ['scripts/luarocks.sh', 'scripts/luarocks-admin.sh'],
+      rename: ['luarocks', 'luarocks-admin'],
+      install_mode: 'rwxr-xr-x',
+      install_dir: get_option('bindir')
+    )
   endif
-
-  install_data(
-    scripts,
-    rename: scripts_renamed,
-    install_mode: 'rwxr-xr-x',
-    install_dir: get_option('bindir')
-  )
 endif
 
 luarocks_config = ''
