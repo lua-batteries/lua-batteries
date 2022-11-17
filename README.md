@@ -16,7 +16,7 @@ specifically it is set of meson build scripts to build [Lua](https://www.lua.org
 
 - [lua-batteries-v0.1.0-x86_64-pc-windows-msvc.zip](https://github.com/clitic/lua-batteries/releases/download/v0.1.0/lua-batteries-v0.1.0-x86_64-pc-windows-msvc.zip) (Lua 5.4.4 + LuaJIT 2.0.5)
 
-## Building (Lua 5.4.4)
+## Building (with Lua 5.4.4)
 
 1. Install [meson](https://mesonbuild.com/SimpleStart.html) build system. Then install any one of these c++ compiler: [msvc](https://visualstudio.microsoft.com), [gcc](https://gcc.gnu.org), [mingw](https://www.mingw-w64.org/downloads) or [clang](https://github.com/llvm/llvm-project).
 
@@ -27,7 +27,7 @@ git clone https://github.com/clitic/lua-batteries --recursive --depth 1
 cd lua-batteries
 ```
 
-3. Now setup lua-batteries using meson. Use `--prefix` flag to specify installation directory. When you are targeting linux machines then add `-Dlibdir=PREFIX` flag otherwise libs and modules will be installed in incorrect directories. Default value of libdir on linux is set to `/usr/local/lib/ARCH_TRIPLE`. On windows `--default-library` should be set to `both` or `shared` it can be set to `static` but then you will need to configure luarocks manually. You can also specify `-Dextra-modules=all` option to build some extra modules like `luasdl2`.
+3. Now setup lua-batteries using meson. Use `--prefix` flag to specify installation directory. When you are targeting linux machines then add `-Dlibdir=PREFIX` flag otherwise libs and modules will be installed in incorrect directories which is set to `/usr/local/lib/ARCH_TRIPLE` by default. On windows `--default-library` should be set to `both` or `shared` it can be set to `static` but then you will need to configure luarocks manually. You can also specify `-Dextra-modules=all` option to build some extra modules like `luasdl2`.
 
 ```bash
 meson setup build --default-library both --prefix c:/lua
@@ -39,13 +39,13 @@ meson setup build --default-library both --prefix c:/lua
 meson install -C build --skip-subprojects "freetype2,libffi,libjpeg-turbo,libpng,libtiff,libuv,ogg,openssl,pcre2,sqlite3,vorbis,zlib"
 ```
 
-5. Now lua-batteries should be installed in your prefix directory. Now add `PREFIX/bin` in your `PATH` environment variable. On linux you need need to set `LUA_PATH=PREFIX/../share/lua/5.4/?.lua` and `LUA_CPATH=PREFIX/../lib/lua/5.4/?.so` environment variables too.
+5. Now lua-batteries should be installed in your prefix directory. Now add `PREFIX/bin` in your `PATH` environment variable. On linux you need need to set `LUA_PATH` and `LUA_CPATH` environment variables or you can use `lua54` shell script.
 
 6. You can further read more information about meson from meson's quick [guide](https://mesonbuild.com/Quick-guide.html). You can also see [meson_options.txt](https://github.com/clitic/lua-batteries/blob/main/meson_options.txt) for customizing your installation.
 
-## Building (LuaJIT 2.0.5)
+## Building (with LuaJIT 2.0.5)
 
-Follow same steps as above but first apply some patches and run `meson setup` command with `-Dluajit=true` flag. You can use same prefix used for lua installation. Use `meson configure` command if you have already built without luajit meson option.
+Follow same steps as above but first apply some patches and run `meson setup` command with `-Dluajit=true` flag. You can use same prefix used for lua installation. Use `--wipe` flag if you have already built without luajit option.
 
 ```bash
 cd subprojects/luajit/LuaJIT
@@ -54,7 +54,7 @@ git apply ../patches/lua-batteries-updated-lua-search-path-on-windows.patch
 
 ## Using LuaRocks
 
-Once you have installed lua-batteries using `meson install` command then you need to add `PREFIX/bin` in your `PATH` environment variable. The you can use `luarocks` command to install rocks for lua installation and `luarocks-jit` command to install rocks for luajit installation. On windows rocks are installed in `PREFIX/share/lua` and `PREFIX/lib/lua` directories. On other operating systems you might need to manually configure luarocks for `home_tree` path.
+Once you have installed lua-batteries using `meson install` command then you need to add `PREFIX/bin` in your `PATH` environment variable. The you can use `luarocks` command to install rocks for lua installation and `luarocks-jit` command to install rocks for luajit installation. Rocks are installed in `PREFIX/share/lua` and `PREFIX/lib/lua` directories. This can be changed by updating luarocks scripts in bin directory.
 
 ```bash
 $ luarocks install luasocket
@@ -85,7 +85,7 @@ Now change directory to project root and build project using meson.
 
 ```bash
 $ meson setup build -Dstandalone=true --default-library both --cross-file cross/x86_64-w64-mingw32.ini --prefix $HOME/lua-mingw 
-$ meson install -C build --skip-subprojects libffi,libuv,openssl,sqlite3
+$ meson install -C build --skip-subprojects "freetype2,libffi,libjpeg-turbo,libpng,libtiff,libuv,ogg,openssl,pcre2,sqlite3,vorbis,zlib"
 $ meson setup build -Dstandalone=true -Dluajit=true --default-library both --cross-file cross/x86_64-w64-mingw32.ini --prefix $HOME/lua-mingw --wipe
 $ meson install -C build --skip-subprojects "freetype2,libffi,libjpeg-turbo,libpng,libtiff,libuv,ogg,openssl,pcre2,sqlite3,vorbis,zlib"
 ```
