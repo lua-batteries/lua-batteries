@@ -58,7 +58,7 @@ else
       install_mode: 'rwxr-xr-x',
       install_dir: get_option('bindir')
     )
-  elif
+  else
     install_data(
       ['scripts/luarocks.sh', 'scripts/luarocks-admin.sh'],
       rename: ['luarocks', 'luarocks-admin'],
