@@ -7,11 +7,11 @@ option(
     'binser',
     'cffi-lua',
     'date',
-    'inspect.lua',
+    'inspect',
     'lanes',
     'lrexlib-pcre2',
     'lua-cjson',
-    'lua-openssl',
+    'openssl',
     'lua-zlib',
     'luafilesystem',
     'luasec',
@@ -19,8 +19,9 @@ option(
     'luasql-sqlite3',
     'luautf8',
     'luv',
+    'lyaml',
     'penlight',
-    'toml.lua',
+    'toml',
     'uuid',
     'xml2lua'
   ],
@@ -33,7 +34,7 @@ option(
   type: 'array',
   choices: [
     'all', 'none',
-    'luasdl2',
+    'lua-sdl2',
     'ltui',
     'lui'
   ],

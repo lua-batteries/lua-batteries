@@ -85,3 +85,6 @@
 [submodule "subprojects/ltui/ltui"]
 	path = subprojects/ltui/ltui
 	url = https://github.com/tboox/ltui
+[submodule "subprojects/lyaml/lyaml"]
+	path = subprojects/lyaml/lyaml
+	url = https://github.com/gvvaughan/lyaml

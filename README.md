@@ -30,7 +30,7 @@ cd lua-batteries
 3. Now setup lua-batteries using meson. Use `--prefix` flag to specify installation directory. When you are targeting linux machines then add `-Dlibdir=PREFIX` flag otherwise libs and modules will be installed in incorrect directories which is set to `/usr/local/lib/ARCH_TRIPLE` by default. On windows `--default-library` should be set to `both` or `shared` it can be set to `static` but then you will need to configure luarocks manually. You can also specify `-Dextra-modules=all` option to build some extra modules like `luasdl2`.
 
 ```bash
-meson setup build --default-library both --prefix c:/lua
+meson setup build --prefix $HOME/lua-batteries
 ```
 
 4. Now install lua-batteries using meson. The skipped subprojects are not needed at runtime if you still want to keep them, then remove `--skip-subprojects` flag.

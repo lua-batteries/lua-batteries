@@ -30,8 +30,7 @@ project_deps = [lua_dep]
 luautf8_link_args = []
 
 if system == 'windows' and cc_id in ['msvc', 'clang', 'clang-cl']
-  import('fs').copyfile('exports.def', 'exports.def')
-  luautf8_link_args += '-def:subprojects/luautf8/exports.def'
+  luautf8_link_args += '-export:luaopen_utf8'
 endif
 
 shared_module(

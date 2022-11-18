@@ -27,27 +27,10 @@ project_deps = [lua_dep]
 # LUA MODULE
 # -------------------------------------------------
 
-# if system == 'windows'
-#   project_deps += cc.find_library('User32')
-#   project_deps += cc.find_library('psapi')
-#   project_deps += cc.find_library('iphlpapi')
-#   project_deps += cc.find_library('userenv')
-#   project_deps += cc.find_library('ws2_32')
-#   project_deps += cc.find_library('advapi32')
-# elif system == 'freebsd'
-#   project_deps += dependency('threads')
-#   project_deps += cc.find_library('kvm')
-# else
-#   project_deps += dependency('threads')
-#   project_deps += cc.find_library('rt')
-#   project_deps += cc.find_library('dl')
-# endif
-
 luv_link_args = []
 
 if system == 'windows' and cc_id in ['msvc', 'clang', 'clang-cl']
-  import('fs').copyfile('exports.def', 'exports.def')
-  luv_link_args += '-def:subprojects/luv/exports.def'
+  luv_link_args += '-export:luaopen_luv'
 endif
 
 libuv_dep = dependency('uv', required: false)

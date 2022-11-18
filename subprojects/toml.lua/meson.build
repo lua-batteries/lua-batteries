@@ -48,8 +48,7 @@ if system == 'windows'
   toml_lua_defines += ['-DMAGIC_ENUM_NO_CHECK_SUPPORT']
 
   if cxx_id in ['msvc', 'clang', 'clang-cl']
-    import('fs').copyfile('exports.def', 'exports.def')
-    toml_lua_link_args += '-def:subprojects/toml.lua/exports.def'
+    toml_lua_link_args += '-export:luaopen_toml'
   endif
 endif
 

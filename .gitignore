@@ -18,7 +18,7 @@ subprojects/SDL2_mixer-2.6.2/*
 subprojects/SDL2_net-2.2.0/*
 subprojects/SDL2_ttf-2.0.12/*
 subprojects/sqlite-amalgamation-3390400/*
-# subprojects/yaml-0.2.5/*
+subprojects/yaml-0.2.5/*
 subprojects/tiff-4.4.0/*
 subprojects/zlib-1.2.13/*
 
@@ -26,7 +26,7 @@ subprojects/freetype2.wrap
 subprojects/libuv.wrap
 subprojects/libffi.wrap
 subprojects/libjpeg-turbo.wrap
-# subprojects/libyaml.wrap
+subprojects/libyaml.wrap
 subprojects/libpng.wrap
 subprojects/libtiff.wrap
 subprojects/ogg.wrap

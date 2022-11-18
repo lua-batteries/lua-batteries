@@ -36,8 +36,7 @@ lrexlib_pcre2_defines = ['-DVERSION="2.9.1"', '-DPCRE2_CODE_UNIT_WIDTH=8']
 lrexlib_pcre2_link_args = []
 
 if system == 'windows' and cc_id in ['msvc', 'clang', 'clang-cl']
-  import('fs').copyfile('exports.def', 'exports.def')
-  lrexlib_pcre2_link_args += '-def:subprojects/lrexlib-pcre2/exports.def'
+  lrexlib_pcre2_link_args += '-export:luaopen_rex_pcre2'
 endif
 
 pcre2_8_dep = dependency('pcre2_8', required: false)

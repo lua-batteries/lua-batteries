@@ -35,8 +35,7 @@ lui_defines = []
 lui_link_args = []
 
 if system == 'windows' and cc_id in ['msvc', 'clang', 'clang-cl']
-  import('fs').copyfile('exports.def', 'exports.def')
-  lui_link_args += '-def:subprojects/lui/exports.def'
+  luautf8_link_args += '-export:luaopen_lui'
 endif
 
 project_deps += dependency('threads', required: false)

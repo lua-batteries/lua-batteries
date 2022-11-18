@@ -65,9 +65,9 @@ if 'all' in modules or 'date' in modules
   config += {'modules/date': '2.2'}
 endif
 
-if 'all' in modules or 'inspect.lua' in modules
+if 'all' in modules or 'inspect' in modules
   subproject('inspect.lua')
-  config += {'modules/inspect.lua': '3.1.3'}
+  config += {'modules/inspect': '3.1.3'}
 endif
 
 if 'all' in modules or 'lanes' in modules
@@ -85,9 +85,9 @@ if 'all' in modules or 'lua-cjson' in modules
   config += {'modules/lua-cjson': '2.1.0.10'}
 endif
 
-if 'all' in modules or 'lua-openssl' in modules
+if 'all' in modules or 'openssl' in modules
   subproject('lua-openssl')
-  config += {'modules/lua-openssl': '0.8.2'}
+  config += {'modules/openssl': '0.8.2'}
 endif
 
 if 'all' in modules or 'lua-zlib' in modules
@@ -125,14 +125,19 @@ if 'all' in modules or 'luv' in modules
   config += {'modules/luv': '1.44.2'}
 endif
 
+if 'all' in modules or 'lyaml' in modules
+  subproject('lyaml')
+  config += {'modules/lyaml': '6.2.8'}
+endif
+
 if 'all' in modules or 'penlight' in modules
   subproject('penlight')
   config += {'modules/penlight': '1.13.1'}
 endif
 
-if 'all' in modules or 'toml.lua' in modules
+if 'all' in modules or 'toml' in modules
   subproject('toml.lua')
-  config += {'modules/toml.lua': '0.1.1'}
+  config += {'modules/toml': '0.1.1'}
 endif
 
 if 'all' in modules or 'uuid' in modules
@@ -145,9 +150,9 @@ if 'all' in modules or 'xml2lua' in modules
   config += {'modules/xml2lua': '1.5'}
 endif
 
-if 'all' in extra_modules or 'luasdl2' in extra_modules
+if 'all' in extra_modules or 'lua-sdl2' in extra_modules
   subproject('luasdl2')
-  config += {'extra-modules/luasdl2': '2.0.5'}
+  config += {'extra-modules/lua-sdl2': '2.0.5'}
 endif
 
 if 'all' in extra_modules or 'ltui' in extra_modules
