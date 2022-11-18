@@ -120,9 +120,15 @@ static_library(
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'lua-openssl/0.8.2-1'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'openssl/0.8.2-1'
+install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'lua-openssl/openssl-scm-0.rockspec',
+  'luarocks/openssl-0.8.2-1.rockspec',
   install_dir: data_dir
+)
+
+install_data(
+  'lua-openssl/README.md',
+  install_dir: data_dir / 'docs'
 )

@@ -215,6 +215,7 @@ install_data(
 # -------------------------------------------------
 
 data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'luasocket/3.1.0-1'
+install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
   'luasocket/rockspecs/luasocket-3.1.0-1.rockspec',

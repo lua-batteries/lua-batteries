@@ -101,7 +101,8 @@ static_library(
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'cffi/0.2.2-1'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'cffi-lua/0.2.2-1'
+install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
   'cffi-lua/cffi-lua-0.2.2-1.rockspec',

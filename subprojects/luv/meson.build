@@ -90,15 +90,16 @@ static_library(
 # -------------------------------------------------
 
 data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'luv/1.44.2-1'
+install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'luv/rockspecs/luv-scm-0.rockspec',
+  'luarocks/luv-1.44.2-1.rockspec',
   install_dir: data_dir
 )
 
 install_subdir(
   'luv/docs.md',
-  install_dir: data_dir
+  install_dir: data_dir / 'docs'
 )
 
 install_subdir(

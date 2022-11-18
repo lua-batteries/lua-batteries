@@ -25,9 +25,10 @@ install_data(
 # -------------------------------------------------
 
 data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'argparse/0.7.1-2'
+install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'argparse/argparse-scm-2.rockspec',
+  'luarocks/argparse-0.7.1-2.rockspec',
   install_dir: data_dir
 )
 

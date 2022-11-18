@@ -150,6 +150,7 @@ install_subdir(
 # -------------------------------------------------
 
 data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'ltui/2.6-1'
+install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
   'ltui/rockspec/ltui-2.6-1.rockspec',

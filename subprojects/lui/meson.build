@@ -71,7 +71,13 @@ static_library(
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'lui/git-0'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'lui/scm-0'
+install_data('luarocks/rock_manifest', install_dir: data_dir)
+
+install_data(
+  'luarocks/lui-scm-0.rockspec',
+  install_dir: data_dir
+)
 
 install_subdir(
   'lui/examples',

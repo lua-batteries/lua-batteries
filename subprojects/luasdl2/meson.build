@@ -216,11 +216,11 @@ static_library(
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'lua-sdl2/2.0.5-3'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'lua-sdl2/2.0.5-6'
+install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'luasdl2/lua-sdl2-scm-3.rockspec',
-  rename: 'lua-sdl2-2.0.5-3.rockspec',
+  'luarocks/lua-sdl2-2.0.5-6.rockspec',
   install_dir: data_dir
 )
 

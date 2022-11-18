@@ -34,6 +34,7 @@ install_data(
 # -------------------------------------------------
 
 data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'xml2lua/1.5-2'
+install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
   'xml2lua/xml2lua-1.5-2.rockspec',
@@ -42,7 +43,7 @@ install_data(
 
 install_data(
   'xml2lua/README.adoc',
-  install_dir: data_dir
+  install_dir: data_dir / 'docs'
 )
 
 install_data(

@@ -60,9 +60,10 @@ static_library(
 # -------------------------------------------------
 
 data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'luafilesystem/1.8.0-1'
+install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'luafilesystem/luafilesystem-scm-1.rockspec',
+  'luarocks/luafilesystem-1.8.0-1.rockspec',
   install_dir: data_dir
 )
 

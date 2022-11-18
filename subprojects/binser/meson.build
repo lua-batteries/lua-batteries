@@ -25,6 +25,7 @@ install_data(
 # -------------------------------------------------
 
 data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'binser/0.0-8'
+install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
   'binser/rockspecs/binser-0.0-8.rockspec',

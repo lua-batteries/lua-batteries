@@ -24,10 +24,11 @@ install_data(
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'inspect.lua/3.1.3-1'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'inspect/3.1.3-0'
+install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'inspect.lua/rockspecs/inspect-3.1.2-0.rockspec',
+  'luarocks/inspect-3.1.3-0.rockspec',
   install_dir: data_dir
 )
 

@@ -71,8 +71,14 @@ static_library(
 # -------------------------------------------------
 
 data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'lua-zlib/1.2-2'
+install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
   'lua-zlib/rockspecs/lua-zlib-1.2-2.rockspec',
   install_dir: data_dir
+)
+
+install_data(
+  'lua-zlib/README',
+  install_dir: data_dir / 'docs'
 )

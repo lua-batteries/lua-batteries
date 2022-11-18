@@ -25,6 +25,7 @@ install_subdir(
 # -------------------------------------------------
 
 data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'penlight/1.13.1-1'
+install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
   'Penlight/rockspecs/penlight-1.13.1-1.rockspec',

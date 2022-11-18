@@ -93,6 +93,7 @@ install_data(
 # -------------------------------------------------
 
 data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'lua-cjson/2.1.0.10-1'
+install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
   'lua-cjson/lua-cjson-2.1.0.10-1.rockspec',

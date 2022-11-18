@@ -20,7 +20,7 @@ specifically it is set of meson build scripts to build [Lua](https://www.lua.org
 
 1. Install [meson](https://mesonbuild.com/SimpleStart.html) build system. Then install any one of these c++ compiler: [msvc](https://visualstudio.microsoft.com), [gcc](https://gcc.gnu.org), [mingw](https://www.mingw-w64.org/downloads) or [clang](https://github.com/llvm/llvm-project).
 
-2. Now recursively clone lua-batteries repository. lua-batteries has many submodules which have sub-submodules so it may take few seconds to clone full repository.
+2. Now recursively clone lua-batteries repository. lua-batteries has many submodules which have sub-submodules so it may take few minutes to clone full repository.
 
 ```bash
 git clone https://github.com/clitic/lua-batteries --recursive --depth 1
@@ -52,13 +52,27 @@ cd subprojects/luajit/LuaJIT
 git apply ../patches/lua-batteries-updated-lua-search-path-on-windows.patch
 ```
 
-## Using LuaRocks
+## Setting Up LuaRocks
 
-Once you have installed lua-batteries using `meson install` command then you need to add `PREFIX/bin` in your `PATH` environment variable. The you can use `luarocks` command to install rocks for lua installation and `luarocks-jit` command to install rocks for luajit installation. Rocks are installed in `PREFIX/share/lua` and `PREFIX/lib/lua` directories. This can be changed by updating luarocks scripts in bin directory.
+Once you have installed lua-batteries using `meson install` command then you need to add `PREFIX/bin` in your `PATH` environment variable. Now you need to update the manifest file so that luarocks can see the installed rocks.
+Use `luarocks-admin` and `luarocks-admin-jit` command to do so.
 
 ```bash
-$ luarocks install luasocket
-$ luarocks-jit install inspect
+luarocks-admin make-manifest --local-tree
+```
+
+Now you can use `luarocks` and `luarocks-jit` command to install rocks. Rocks are installed in `PREFIX/share/lua/LUA_VER` and `PREFIX/lib/lua/LUA_VER` directories. This can be changed by updating luarocks scripts in bin directory.
+
+- Install rocks for lua installation
+
+```bash
+luarocks install busted
+```
+
+- Install rocks for luajit installation
+
+```bash
+luarocks-jit install busted
 ```
 
 ## Cross Compilation

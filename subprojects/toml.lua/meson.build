@@ -83,10 +83,16 @@ static_library(
 # -------------------------------------------------
 
 data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'toml/0.1.1-0'
+install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
   'toml.lua/toml-0.1.1-0.rockspec',
   install_dir: data_dir
+)
+
+install_data(
+  'toml.lua/README.md',
+  install_dir: data_dir / 'docs'
 )
 
 install_subdir(

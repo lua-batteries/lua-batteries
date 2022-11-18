@@ -77,10 +77,10 @@ static_library(
 # -------------------------------------------------
 
 data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'lrexlib-pcre2/2.9.1-1'
+install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'lrexlib/rockspecs.lua',
-  rename: 'lrexlib-pcre2-2.9.1-1.rockspec',
+  'luarocks/lrexlib-pcre2-2.9.1-1.rockspec',
   install_dir: data_dir
 )
 

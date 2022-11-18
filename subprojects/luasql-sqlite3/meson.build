@@ -69,6 +69,7 @@ static_library(
 # -------------------------------------------------
 
 data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'luasql-sqlite3/2.6.0-1'
+install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
   'luasql/rockspec/luasql-sqlite3-2.6.0-1.rockspec',
