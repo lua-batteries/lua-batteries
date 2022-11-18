@@ -82,3 +82,6 @@
 [submodule "subprojects/luasdl2/luasdl2"]
 	path = subprojects/luasdl2/luasdl2
 	url = https://github.com/Tangent128/luasdl2
+[submodule "subprojects/ltui/ltui"]
+	path = subprojects/ltui/ltui
+	url = https://github.com/tboox/ltui

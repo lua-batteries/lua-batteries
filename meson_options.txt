@@ -34,6 +34,7 @@ option(
   choices: [
     'all', 'none',
     'luasdl2',
+    'ltui',
     'lui'
   ],
   value: ['none'],

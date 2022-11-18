@@ -150,6 +150,11 @@ if 'all' in extra_modules or 'luasdl2' in extra_modules
   config += {'extra-modules/luasdl2': '2.0.5'}
 endif
 
+if 'all' in modules or 'ltui' in extra_modules
+  subproject('ltui')
+  config += {'modules/ltui': '2.6'}
+endif
+
 if 'all' in extra_modules or 'lui' in extra_modules
   subproject('lui')
   config += {'extra-modules/lui': 'git'}

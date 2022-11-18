@@ -216,7 +216,7 @@ static_library(
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'luasdl2/2.0.5-3'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'lua-sdl2/2.0.5-3'
 
 install_data(
   'luasdl2/lua-sdl2-scm-3.rockspec',
