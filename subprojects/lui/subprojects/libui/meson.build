@@ -108,10 +108,10 @@ endif
 # TODO come up with a better way to do this, both for libui (the compiler define, used by winapi.hpp, and the manifest args) and for the binaries (the manifest args)
 # TODO (after the above TODO is resolved) move that below the part below that actually adds these arguments
 libui_manifest_args = []
-if libui_mode == 'static'
-	libui_project_compile_args += ['-D_UI_STATIC']
-	libui_manifest_args = ['-D_UI_STATIC']
-endif
+# if libui_mode == 'static'
+# 	libui_project_compile_args += ['-D_UI_STATIC']
+# 	libui_manifest_args = ['-D_UI_STATIC']
+# endif
 
 add_project_arguments(libui_project_compile_args,
 	language: ['c', 'cpp', 'objc'])
@@ -234,13 +234,13 @@ if libui_OS == 'windows'
   # For a DLL, we have to include this directly, so we do so.
   # Windows won't link resources in static libraries, so including this would have no effect.
   # In those cases, we just need them to include the manifest with the executable (or link it directly into the output executable themselves); they can also customize the manifest as they see fit (assuming nothing breaks in the process).
-  if libui_mode == 'shared'
+  # if libui_mode == 'shared'
     libui_sources += [
       windows.compile_resources('libui/windows/resources.rc',
-        args: libui_manifest_args,
+        # args: libui_manifest_args,
         depend_files: ['libui/windows/libui.manifest']),
     ]
-  endif
+  # endif
 
   # TODO prune this list
   foreach lib : ['user32', 'kernel32', 'gdi32', 'comctl32', 'uxtheme', 'msimg32', 'comdlg32', 'd2d1', 'dwrite', 'ole32', 'oleaut32', 'oleacc', 'uuid', 'windowscodecs']
@@ -254,7 +254,7 @@ if libui_OS == 'windows'
     error('Sorry, but libui for Windows can currently only be built as a static library with MinGW. You will need to either build as a static library or switch to MSVC.')
   endif
 
-	# install_headers('libui/ui_windows.h')
+	install_headers('libui/ui_windows.h')
 elif libui_OS == 'darwin'
 	# subdir('darwin')
 
@@ -323,7 +323,7 @@ elif libui_OS == 'darwin'
   # the / is required by some older versions of OS X
   libui_rpath = '@executable_path/'
 
-	# install_headers('libui/ui_darwin.h')
+	install_headers('libui/ui_darwin.h')
 else
 	# subdir('unix')
 
@@ -390,7 +390,7 @@ else
   libui_soversion = '0'
   libui_rpath = '$ORIGIN'
 
-	# install_headers('libui/ui_unix.h')
+	install_headers('libui/ui_unix.h')
 endif
 
 libui_libui = library('ui', libui_sources,
@@ -406,7 +406,7 @@ libui_libui = library('ui', libui_sources,
 	link_args: libui_libui_link_args,
 	soversion: libui_soversion,
 	darwin_versions: [])		# TODO
-# install_headers('libui/ui.h')
+install_headers('libui/ui.h')
 
 # TODO when the API is stable enough to be versioned, create a pkg-config file (https://mesonbuild.com/Pkgconfig-module.html) and a declare_dependency() section too
 

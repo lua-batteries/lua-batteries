@@ -26,6 +26,10 @@ project_deps = [lua_dep]
 # LUA MODULE
 # -------------------------------------------------
 
+lui_sources = [
+  'lui/src/lui.c',
+  'lui/deps/auxiliar/auxiliar.c'
+]
 lui_include = [
   include_directories('lui/deps/auxiliar'),
   include_directories('lui/deps/compat'),
@@ -34,16 +38,24 @@ lui_include = [
 lui_defines = []
 lui_link_args = []
 
-if system == 'windows' and cc_id in ['msvc', 'clang', 'clang-cl']
-  luautf8_link_args += '-export:luaopen_lui'
+if system == 'windows'
+  lui_sources += import('windows').compile_resources(
+    'patches/windows/resources.rc',
+    depend_files: ['patches/windows/libui.manifest']
+  )
+
+  if cc_id in ['msvc', 'clang', 'clang-cl']
+    lui_link_args += '-export:luaopen_lui'
+  endif
 endif
 
 project_deps += dependency('threads', required: false)
-project_deps += subproject('libui').get_variable('libui_dep')
+libui = subproject('libui', default_options: ['default_library=static'])
+project_deps += libui.get_variable('libui_dep')
 
 shared_module(
   'lui',
-  ['lui/src/lui.c', 'lui/deps/auxiliar/auxiliar.c'],
+  lui_sources,
   c_args: lui_defines,
   link_args: lui_link_args,
   include_directories: lui_include,
@@ -56,7 +68,7 @@ shared_module(
 
 static_library(
   'lui',
-  ['lui/src/lui.c', 'lui/deps/auxiliar/auxiliar.c'],
+  lui_sources,
   c_args: lui_defines,
   link_args: lui_link_args,
   include_directories: lui_include,

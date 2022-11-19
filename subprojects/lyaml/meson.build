@@ -2,7 +2,7 @@ project(
   'lyaml',
   'c',
   version: '6.2.8',
-  license: 'Apache-2.0',
+  license: 'MIT',
   meson_version: '>=0.64.0'
 )
 
@@ -43,8 +43,9 @@ endif
 libyaml_dep = dependency('yaml', required: false)
 
 if get_option('standalone') or not libyaml_dep.found()
-  libyaml = subproject('libyaml', default_options: ['default_library=shared'])
+  libyaml = subproject('libyaml', default_options: ['default_library=static'])
   project_deps += libyaml.get_variable('yaml_dep')
+  lyaml_defines += '-DYAML_DECLARE_STATIC'
 else
   project_deps += libyaml_dep
 endif

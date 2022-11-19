@@ -12,13 +12,13 @@
 `lua-batteries` is a batteries included lua installation more 
 specifically it is set of meson build scripts to build [Lua](https://www.lua.org), [LuaJIT](https://luajit.org), [luarocks](https://github.com/luarocks/luarocks) and many useful libraries and modules. These scripts were initially based on franko's [lua](https://github.com/franko/lua) and [luajit](https://github.com/franko/luajit) meson build scripts but now they are extended to next level.
 
-## Prebuilt Packages
+## Prebuilt Binaries
 
 - [lua-batteries-v0.1.0-x86_64-pc-windows-msvc.zip](https://github.com/clitic/lua-batteries/releases/download/v0.1.0/lua-batteries-v0.1.0-x86_64-pc-windows-msvc.zip) (Lua 5.4.4 + LuaJIT 2.0.5)
 
 ## Building (with Lua 5.4.4)
 
-1. Install [meson](https://mesonbuild.com/SimpleStart.html) build system. Then install any one of these c++ compiler: [msvc](https://visualstudio.microsoft.com), [gcc](https://gcc.gnu.org), [mingw](https://www.mingw-w64.org/downloads) or [clang](https://github.com/llvm/llvm-project).
+1. Install [meson](https://mesonbuild.com/SimpleStart.html) build system. Then install any one of these c++ compiler: [msvc](https://visualstudio.microsoft.com), [gcc](https://gcc.gnu.org)>=9, [mingw](https://www.mingw-w64.org/downloads) or [clang](https://github.com/llvm/llvm-project).
 
 2. Now recursively clone lua-batteries repository. lua-batteries has many submodules which have sub-submodules so it may take few minutes to clone full repository.
 
@@ -27,7 +27,7 @@ git clone https://github.com/clitic/lua-batteries --recursive --depth 1
 cd lua-batteries
 ```
 
-3. Now setup lua-batteries using meson. Use `--prefix` flag to specify installation directory. When you are targeting linux machines then add `-Dlibdir=PREFIX` flag otherwise libs and modules will be installed in incorrect directories which is set to `/usr/local/lib/ARCH_TRIPLE` by default. On windows `--default-library` should be set to `both` or `shared` it can be set to `static` but then you will need to configure luarocks manually. You can also specify `-Dextra-modules=all` option to build some extra modules like `luasdl2`.
+3. Now setup lua-batteries using meson. Use `--prefix` flag to specify installation directory. When you are targeting linux machines then add `-Dlibdir=PREFIX` flag otherwise libs and modules will be installed in incorrect directories which is set to `/usr/local/lib/ARCH_TRIPLE` by default. On windows `--default-library` should be set to `both` or `shared` it can be set to `static` but then you will need to configure luarocks manually. You can also specify `-Dextra-modules=all` option to build some extra modules like `lua-sdl2`.
 
 ```bash
 meson setup build --prefix $HOME/lua-batteries
@@ -36,12 +36,12 @@ meson setup build --prefix $HOME/lua-batteries
 4. Now install lua-batteries using meson. The skipped subprojects are not needed at runtime if you still want to keep them, then remove `--skip-subprojects` flag.
 
 ```bash
-meson install -C build --skip-subprojects "freetype2,libffi,libjpeg-turbo,libpng,libtiff,libuv,ogg,openssl,pcre2,sqlite3,vorbis,zlib"
+meson install -C build --skip-subprojects "freetype2,libffi,libjpeg-turbo,libpng,libtiff,libui,libuv,libyaml,ogg,openssl,pcre2,sqlite3,vorbis,zlib"
 ```
 
 5. Now lua-batteries should be installed in your prefix directory. Now add `PREFIX/bin` in your `PATH` environment variable. On linux you need need to set `LUA_PATH` and `LUA_CPATH` environment variables or you can use `lua54` shell script.
 
-6. You can further read more information about meson from meson's quick [guide](https://mesonbuild.com/Quick-guide.html). You can also see [meson_options.txt](https://github.com/clitic/lua-batteries/blob/main/meson_options.txt) for customizing your installation.
+6. You can further read more information about building through meson from meson's quick [guide](https://mesonbuild.com/Quick-guide.html). You can also see [meson_options.txt](https://github.com/clitic/lua-batteries/blob/main/meson_options.txt) for customizing your installation.
 
 ## Building (with LuaJIT 2.0.5)
 
@@ -98,15 +98,15 @@ $ git apply ../patches/lua-batteries-updated-lua-search-path-on-windows.patch
 Now change directory to project root and build project using meson.
 
 ```bash
-$ meson setup build -Dstandalone=true --default-library both --cross-file cross/x86_64-w64-mingw32.ini --prefix $HOME/lua-mingw 
-$ meson install -C build --skip-subprojects "freetype2,libffi,libjpeg-turbo,libpng,libtiff,libuv,ogg,openssl,pcre2,sqlite3,vorbis,zlib"
-$ meson setup build -Dstandalone=true -Dluajit=true --default-library both --cross-file cross/x86_64-w64-mingw32.ini --prefix $HOME/lua-mingw --wipe
-$ meson install -C build --skip-subprojects "freetype2,libffi,libjpeg-turbo,libpng,libtiff,libuv,ogg,openssl,pcre2,sqlite3,vorbis,zlib"
+$ meson setup build -Dstandalone=true --default-library both --cross-file cross/x86_64-w64-mingw32.ini --prefix $HOME/lua-batteries 
+$ meson install -C build --skip-subprojects "freetype2,libffi,libjpeg-turbo,libpng,libtiff,libui,libuv,libyaml,ogg,openssl,pcre2,sqlite3,vorbis,zlib"
+$ meson setup build -Dstandalone=true -Dluajit=true --default-library both --cross-file cross/x86_64-w64-mingw32.ini --prefix $HOME/lua-batteries --wipe
+$ meson install -C build --skip-subprojects "freetype2,libffi,libjpeg-turbo,libpng,libtiff,libui,libuv,libyaml,ogg,openssl,pcre2,sqlite3,vorbis,zlib"
 ```
 
 Now pack generated lua-batteries installation directory. 
 
 ```bash
-$ cd $HOME/lua-mingw
+$ cd $HOME/lua-batteries
 $ zip -r ../lua-batteries-v0.2.0-x86_64-pc-windows-gnu.zip *
 ```
