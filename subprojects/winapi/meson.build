@@ -1,0 +1,91 @@
+project(
+  'winapi',
+  'c',
+  version: '1.4.2',
+  license: 'MIT',
+  meson_version: '>=0.64.0'
+)
+
+# -------------------------------------------------
+# BASE SETUP
+# -------------------------------------------------
+
+cc = meson.get_compiler('c')
+cc_id = cc.get_id()
+system = host_machine.system()
+module_suffix = 'so'
+
+if system == 'windows'
+  module_suffix = 'dll'
+endif
+
+lua_dep = get_option('luajit') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
+lua_ver = get_option('luajit') ? '5.1' : '5.4'
+project_deps = [lua_dep]
+
+# -------------------------------------------------
+# LUA MODULE
+# -------------------------------------------------
+
+winapi_sources = [
+  'winapi/winapi.c',
+  'winapi/wutils.c'
+]
+winapi_defines = ['-DPSAPI_VERSION=1']
+winapi_link_args = []
+
+if system == 'windows'
+  project_deps += cc.find_library('kernel32')
+  project_deps += cc.find_library('user32')
+  project_deps += cc.find_library('psapi')
+  project_deps += cc.find_library('advapi32')
+  project_deps += cc.find_library('shell32')
+  project_deps += cc.find_library('Mpr')
+
+  if cc_id in ['msvc', 'clang', 'clang-cl']
+    winapi_link_args += '-export:luaopen_winapi'
+  # elif cc_id == 'gcc'
+  #   project_deps += cc.find_library('psapi')
+  #   project_deps += cc.find_library('Mpr')
+  endif
+endif
+
+shared_module(
+  'winapi',
+  winapi_sources,
+  c_args: winapi_defines,
+  link_args: winapi_link_args,
+  dependencies: project_deps,
+  name_prefix: '',
+  name_suffix: module_suffix,
+  install: true,
+  install_dir: get_option('libdir') / 'lua' / lua_ver
+)
+
+static_library(
+  'winapi',
+  winapi_sources,
+  c_args: winapi_defines,
+  link_args: winapi_link_args,
+  dependencies: project_deps,
+  pic: true,
+  install: true,
+  install_dir: get_option('libdir') / 'lua' / lua_ver + '-static'
+)
+
+# -------------------------------------------------
+# EXTRA DATA
+# -------------------------------------------------
+
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'winapi/1.4.2-1'
+install_data('luarocks/rock_manifest', install_dir: data_dir)
+
+install_data(
+  'luarocks/winapi-1.4.2-1.rockspec',
+  install_dir: data_dir
+)
+
+install_subdir(
+  'winapi/examples',
+  install_dir: data_dir
+)

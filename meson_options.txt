@@ -43,6 +43,13 @@ option(
 )
 
 option(
+  'os-modules',
+  type: 'boolean',
+  value: false,
+  description: 'install winapi on windows and luaposix on posix platforms'
+)
+
+option(
   'standalone',
   type: 'boolean',
   value: false,

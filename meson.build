@@ -165,6 +165,16 @@ if 'all' in extra_modules or 'lui' in extra_modules
   config += {'extra-modules/lui': 'git'}
 endif
 
+if get_option('os-modules')
+  if system == 'windows'
+    subproject('winapi')
+    config += {'os-modules/winapi': '1.4.2'}
+  else
+    subproject('luaposix')
+    config += {'os-modules/luaposix': '35.1'}
+  endif
+endif
+
 summary(
   config,
   bool_yn: true,

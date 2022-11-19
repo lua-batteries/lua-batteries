@@ -88,3 +88,9 @@
 [submodule "subprojects/lyaml/lyaml"]
 	path = subprojects/lyaml/lyaml
 	url = https://github.com/gvvaughan/lyaml
+[submodule "subprojects/winapi/winapi"]
+	path = subprojects/winapi/winapi
+	url = https://github.com/stevedonovan/winapi
+[submodule "subprojects/luaposix/luaposix"]
+	path = subprojects/luaposix/luaposix
+	url = https://github.com/luaposix/luaposix
