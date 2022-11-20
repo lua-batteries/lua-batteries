@@ -109,7 +109,7 @@ install_data(
 
 install_data(
   ['luarocks/luarocks-3.9.1-1.rockspec', 'config/rock_manifest'],
-  install_dir: get_option('libdir') / 'luarocks/rocks-5.4/luarocks/3.9.1-1'
+  install_dir: get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'luarocks/3.9.1-1'
 )
 
 install_data(
