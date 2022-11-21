@@ -1,7 +1,7 @@
 From 79ebf4ac30476b8988a88db670e772bb54f57be1 Mon Sep 17 00:00:00 2001
 From: clitic <clitic21@gmail.com>
 Date: Fri, 11 Nov 2022 10:00:57 +0530
-Subject: [PATCH] lua-meson: updated lua search path on windows
+Subject: [PATCH] lua-batteries: updated lua search path on windows
 
 ---
  src/luaconf.h | 14 +++++++++++---
