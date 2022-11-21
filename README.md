@@ -54,5 +54,6 @@ Visit [releases](https://github.com/clitic/lua-batteries/releases) for prebuilt 
 
 These prebuilt binaries includes **Lua 5.4.4** and **LuaJIT 2.0.5**
 
-- [Windows](https://github.com/clitic/lua-batteries/releases/download/v0.2.0/lua-batteries-v0.2.0-x86_64-pc-windows-msvc.zip) (64-bit)
-- [Linux](https://github.com/clitic/lua-batteries/releases/download/v0.2.0/lua-batteries-v0.2.0-x86_64-unknown-linux-gnu.zip) (64-bit)
+- Windows (64-bit) [7z self extracting archive](https://github.com/clitic/lua-batteries/releases/download/v0.2.0/lua-batteries-v0.2.0-x86_64-pc-windows-msvc.exe)
+- Windows (64-bit) [7z archive](https://github.com/clitic/lua-batteries/releases/download/v0.2.0/lua-batteries-v0.2.0-x86_64-pc-windows-msvc.7z)
+- Linux (64-bit) [tarball](https://github.com/clitic/lua-batteries/releases/download/v0.2.0/lua-batteries-v0.2.0-x86_64-unknown-linux-gnu.tar.gz)

@@ -1,9 +1,9 @@
 package = "Lua-SDL2"
-version = "scm-3"
+version = "2.0.5-6"
 source = {
-   url = "https://github.com/Tangent128/luasdl2/archive/v2.0.3-3.tar.gz",
+   url = "https://github.com/Tangent128/luasdl2/archive/v2.0.5-6.tar.gz",
    md5 = "",
-   dir = "luasdl2-2.0.3-3"
+   dir = "luasdl2-2.0.5-6"
 }
 source = {
    -- when making a release rockspec, update fields in the above source
