@@ -53,9 +53,9 @@ meson install -C build --skip-subprojects "freetype2,libffi,libjpeg-turbo,libpng
 mv $PREFIX/lib/lua/5.4/posix/_time.so $PREFIX/lib/lua/5.4/posix/time.so
 ```
 
-7. Now lua-batteries should be installed in your prefix directory. Now add `$PREFIX/bin` in your `PATH` environment variable. On linux you need need to set `LUA_PATH` and `LUA_CPATH` environment variables or you can use `lua54` shell script.
+6. Now lua-batteries should be installed in your prefix directory. Now add `$PREFIX/bin` in your `PATH` environment variable. On linux you need need to set `LUA_PATH` and `LUA_CPATH` environment variables or you can use `lua54` shell script.
 
-8. You can further read more information about building through meson from meson's quick [guide](https://mesonbuild.com/Quick-guide.html).
+7. You can further read more information about building through meson from meson's quick [guide](https://mesonbuild.com/Quick-guide.html).
 
 ## Building (with LuaJIT 2.0.5)
 
