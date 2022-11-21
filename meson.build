@@ -162,7 +162,7 @@ endif
 
 if 'all' in extra_modules or 'lui' in extra_modules
   subproject('lui')
-  config += {'extra-modules/lui': 'git'}
+  config += {'extra-modules/lui': 'scm'}
 endif
 
 if get_option('os-modules')
