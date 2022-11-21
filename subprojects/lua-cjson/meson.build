@@ -81,7 +81,7 @@ install_data(
   system == 'windows' ? [
     'scripts/json2lua.bat', 'scripts/lua2json.bat'
   ] : [
-    'scripts/json2lua.sh', 'scripts/lua2json.sh'
+    'scripts/json2lua', 'scripts/lua2json'
   ],
   install_mode: 'rwxr-xr-x',
   install_dir: get_option('bindir')
