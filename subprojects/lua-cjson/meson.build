@@ -91,7 +91,7 @@ if system == 'windows'
 else
   install_data(
     [scripts_path / 'json2lua.sh', scripts_path / 'lua2json.sh'],
-    rename: [scripts_path / 'json2lua', scripts_path / 'lua2json'],
+    rename: ['json2lua', 'lua2json'],
     install_mode: 'rwxr-xr-x',
     install_dir: get_option('bindir')
   )
