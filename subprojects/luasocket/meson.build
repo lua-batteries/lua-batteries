@@ -209,7 +209,7 @@ install_data(
     'luasocket/src/tp.lua',
     'luasocket/src/url.lua'
   ],
-  install_dir: get_option('datadir') / 'lua' / lua_ver / 'luasocket'
+  install_dir: get_option('datadir') / 'lua' / lua_ver / 'socket'
 )
 
 # -------------------------------------------------
