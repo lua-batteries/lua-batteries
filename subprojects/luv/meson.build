@@ -80,7 +80,7 @@ install_data(
   install_dir: data_dir
 )
 
-install_subdir(
+install_data(
   'luv/docs.md',
   install_dir: data_dir / 'docs'
 )

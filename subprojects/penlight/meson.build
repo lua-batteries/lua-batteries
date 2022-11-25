@@ -33,6 +33,6 @@ install_data(
 )
 
 install_subdir(
-  'penlight/docs',
+  'Penlight/docs',
   install_dir: data_dir
 )
