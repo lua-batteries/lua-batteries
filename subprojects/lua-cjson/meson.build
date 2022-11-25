@@ -88,7 +88,7 @@ if system == 'windows'
     [scripts_path / 'json2lua.bat', scripts_path / 'lua2json.bat'],
     install_dir: get_option('bindir')
   )
-elif
+else
   install_data(
     [scripts_path / 'json2lua.sh', scripts_path / 'lua2json.sh'],
     rename: [scripts_path / 'json2lua', scripts_path / 'lua2json'],
