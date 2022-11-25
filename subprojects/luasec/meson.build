@@ -69,7 +69,7 @@ else
 endif
 
 shared_module(
-  'ssl',
+  'core',
   luasec_sources,
   c_args: luasec_defines,
   include_directories: luasec_include,
@@ -77,7 +77,7 @@ shared_module(
   name_prefix: '',
   name_suffix: module_suffix,
   install: true,
-  install_dir: get_option('libdir') / 'lua' / lua_ver
+  install_dir: get_option('libdir') / 'lua' / lua_ver / 'ssl'
 )
 
 static_library(

@@ -1,6 +1,6 @@
 project(
   'lua-batteries',
-  version: '0.2.0',
+  version: '0.3.0',
   license: 'MIT',
   default_options: [
     'buildtype=release',
@@ -50,11 +50,6 @@ if 'all' in modules or 'argparse' in modules
   config += {'modules/argparse': '0.7.1'}
 endif
 
-if 'all' in modules or 'binser' in modules
-  subproject('binser')
-  config += {'modules/binser': '0.0.8'}
-endif
-
 if 'all' in modules or 'cffi-lua' in modules
   subproject('cffi-lua')
   config += {'modules/cffi-lua': '0.2.2'}
@@ -88,6 +83,11 @@ endif
 if 'all' in modules or 'luafilesystem' in modules
   subproject('luafilesystem')
   config += {'modules/luafilesystem': '1.8.0'}
+endif
+
+if 'all' in modules or 'lua-protobuf' in modules
+  subproject('lua-protobuf')
+  config += {'modules/lua-protobuf': '0.4.0'}
 endif
 
 if 'all' in modules or 'luasec' in modules

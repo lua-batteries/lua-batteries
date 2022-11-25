@@ -34,8 +34,8 @@ List of included libraries and modules provided by lua-batteries:
 - [penlight](https://github.com/lunarmodules/Penlight)
 - [uuid](https://github.com/Tieske/uuid)
 - data serialization:
-  - [binser](https://github.com/bakpakin/binser)
   - [lua-cjson](https://github.com/openresty/lua-cjson)
+  - [lua-protobuf](https://github.com/starwing/lua-protobuf)
   - [lyaml](https://github.com/gvvaughan/lyaml)
   - [toml](https://github.com/LebJe/toml.lua)
   - [xml2lua](https://github.com/manoelcampos/xml2lua)
@@ -56,5 +56,6 @@ Visit [releases](https://github.com/clitic/lua-batteries/releases) for prebuilt 
 
 These prebuilt binaries includes **Lua 5.4.4** and **LuaJIT 2.0.5**
 
-- Windows (64-bit) - [.7z (self extracting archive)](https://github.com/clitic/lua-batteries/releases/download/v0.2.0/lua-batteries-v0.2.0-x86_64-pc-windows-msvc.exe) | [.7z](https://github.com/clitic/lua-batteries/releases/download/v0.2.0/lua-batteries-v0.2.0-x86_64-pc-windows-msvc.7z)
-- Linux (64-bit) - [.tar.gz](https://github.com/clitic/lua-batteries/releases/download/v0.2.0/lua-batteries-v0.2.0-x86_64-unknown-linux-gnu.tar.gz)
+- Windows 64-bit ([MSVC](https://visualstudio.microsoft.com)) - [.7z (self extracting archive)](https://github.com/clitic/lua-batteries/releases/download/v0.3.0/lua-batteries-v0.3.0-x86_64-pc-windows-msvc.exe) | [.7z](https://github.com/clitic/lua-batteries/releases/download/v0.3.0/lua-batteries-v0.3.0-x86_64-pc-windows-msvc.7z)
+- Windows 64-bit ([MinGW-W64](https://github.com/brechtsanders/winlibs_mingw/releases/download/12.2.0-14.0.6-10.0.0-ucrt-r2/winlibs-x86_64-posix-seh-gcc-12.2.0-mingw-w64ucrt-10.0.0-r2.7z)) - [.7z (self extracting archive)](https://github.com/clitic/lua-batteries/releases/download/v0.3.0/lua-batteries-v0.3.0-x86_64-w64-mingw32.exe) | [.7z](https://github.com/clitic/lua-batteries/releases/download/v0.3.0/lua-batteries-v0.3.0-x86_64-w64-mingw32.7z)
+- Linux 64-bit - [.tar.gz](https://github.com/clitic/lua-batteries/releases/download/v0.3.0/lua-batteries-v0.3.0-x86_64-unknown-linux-gnu.tar.gz)

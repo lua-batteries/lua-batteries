@@ -30,8 +30,7 @@ project_deps = [lua_dep]
 luasql_sqlite3_link_args = []
 
 if system == 'windows' and cc_id in ['msvc', 'clang', 'clang-cl']
-  import('fs').copyfile('luasql/src/sqlite3.def', 'exports.def')
-  luasql_sqlite3_link_args += '-def:subprojects/luasql-sqlite3/exports.def'
+  luasql_sqlite3_link_args += '-export:luaopen_luasql_sqlite3'
 endif
 
 sqlite3_dep = dependency('sqlite3', required: false)

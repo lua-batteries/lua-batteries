@@ -77,15 +77,25 @@ install_data(
   install_dir: get_option('datadir') / 'lua' / lua_ver / 'cjson'
 )
 
-install_data(
-  system == 'windows' ? [
-    'scripts/json2lua.bat', 'scripts/lua2json.bat'
-  ] : [
-    'scripts/json2lua', 'scripts/lua2json'
-  ],
-  install_mode: 'rwxr-xr-x',
-  install_dir: get_option('bindir')
-)
+# -------------------------------------------------
+# LUA BIN SCRIPTS
+# -------------------------------------------------
+
+scripts_path = get_option('luajit') ? 'scripts/luajit' : 'scripts/lua'
+
+if system == 'windows'
+  install_data(
+    [scripts_path / 'json2lua.bat', scripts_path / 'lua2json.bat'],
+    install_dir: get_option('bindir')
+  )
+elif
+  install_data(
+    [scripts_path / 'json2lua.sh', scripts_path / 'lua2json.sh'],
+    rename: [scripts_path / 'json2lua', scripts_path / 'lua2json'],
+    install_mode: 'rwxr-xr-x',
+    install_dir: get_option('bindir')
+  )
+endif
 
 # -------------------------------------------------
 # EXTRA DATA

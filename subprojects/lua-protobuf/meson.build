@@ -1,7 +1,7 @@
 project(
-  'lanes',
+  'lua-protobuf',
   'c',
-  version: '3.16.0',
+  version: '0.4.0',
   license: 'MIT',
   meson_version: '>=0.64.0'
 )
@@ -27,36 +27,34 @@ project_deps = [lua_dep]
 # LUA MODULE
 # -------------------------------------------------
 
-lanes_sources = [
-  'lanes/src/cancel.c',
-  'lanes/src/compat.c',
-  'lanes/src/deep.c',
-  'lanes/src/keeper.c',
-  'lanes/src/lanes.c',
-  'lanes/src/linda.c',
-  'lanes/src/tools.c',
-  'lanes/src/state.c',
-  'lanes/src/threading.c',
-  'lanes/src/universe.c'
-]
-lanes_include = include_directories('lanes/src')
-project_deps += dependency('threads', required: false)
+lua_protobuf_link_args = []
+
+if system == 'windows' and cc_id in ['msvc', 'clang', 'clang-cl']
+  lua_protobuf_link_args += [
+    '-export:luaopen_pb_io',
+    '-export:luaopen_pb_conv',
+    '-export:luaopen_pb_buffer',
+    '-export:luaopen_pb_slice',
+    '-export:luaopen_pb',
+    '-export:luaopen_pb_unsafe',
+  ]
+endif
 
 shared_module(
-  'core',
-  lanes_sources,
-  include_directories: lanes_include,
+  'pb',
+  'lua-protobuf/pb.c',
+  link_args: lua_protobuf_link_args,
   dependencies: project_deps,
   name_prefix: '',
   name_suffix: module_suffix,
   install: true,
-  install_dir: get_option('libdir') / 'lua' / lua_ver / 'lanes'
+  install_dir: get_option('libdir') / 'lua' / lua_ver
 )
 
 static_library(
-  'lanes.core',
-  lanes_sources,
-  include_directories: lanes_include,
+  'pb',
+  'lua-protobuf/pb.c',
+  link_args: lua_protobuf_link_args,
   dependencies: project_deps,
   pic: true,
   install: true,
@@ -68,7 +66,7 @@ static_library(
 # -------------------------------------------------
 
 install_data(
-  'lanes/src/lanes.lua',
+  'lua-protobuf/protoc.lua',
   install_dir: get_option('datadir') / 'lua' / lua_ver
 )
 
@@ -76,15 +74,15 @@ install_data(
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'lanes/3.16.0-0'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'lua-protobuf/0.4.0-1'
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'lanes/lanes-3.16.0-0.rockspec',
+  'lua-protobuf/rockspecs/lua-protobuf-0.4.0-1.rockspec',
   install_dir: data_dir
 )
 
-install_subdir(
-  'lanes/docs',
-  install_dir: data_dir
+install_data(
+  ['lua-protobuf/README.md', 'lua-protobuf/README.zh.md'],
+  install_dir: data_dir / 'docs'
 )

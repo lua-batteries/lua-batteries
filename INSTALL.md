@@ -47,13 +47,14 @@ meson setup build --prefix $HOME/lua-batteries --libdir $HOME/lua-batteries/lib
 meson install -C build --skip-subprojects "freetype2,libffi,libjpeg-turbo,libpng,libtiff,libui,libuv,libyaml,ogg,openssl,pcre2,sqlite3,vorbis,zlib"
 ```
 
-5. On posix platforms also rename `_time.so` with `time.so`. This is not renamed by default because meson only accepts unique target names and time module is also available in `posix.sys.time`.
+5. Also remove `_` from `_` prefixed modules. This is not renamed by default because meson only accepts unique target names.
 
 ```bash
+mv $PREFIX/lib/lua/5.4/mime/_core.so $PREFIX/lib/lua/5.4/mime/core.so
 mv $PREFIX/lib/lua/5.4/posix/_time.so $PREFIX/lib/lua/5.4/posix/time.so
 ```
 
-6. Now lua-batteries should be installed in your prefix directory. Now add `$PREFIX/bin` in your `PATH` environment variable. On linux you need need to set `LUA_PATH` and `LUA_CPATH` environment variables or you can use `lua54` shell script.
+6. Now lua-batteries should be installed in your prefix directory. Now add `$PREFIX/bin` in your `PATH` environment variable. On linux you need need to set `LUA_PATH` and `LUA_CPATH` environment variables if `$PREFIX` is not `/usr/local` or you can use `lua54` shell script.
 
 7. You can further read more information about building through meson from meson's quick [guide](https://mesonbuild.com/Quick-guide.html).
 
@@ -122,5 +123,5 @@ Now pack generated lua-batteries installation directory.
 
 ```bash
 $ cd $HOME/lua-batteries
-$ zip -r ../lua-batteries-v0.2.0-x86_64-pc-windows-gnu.zip *
+$ zip -r ../lua-batteries-v0.3.0-x86_64-w64-mingw32.zip *
 ```

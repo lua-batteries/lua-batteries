@@ -4,5 +4,4 @@ variables = {
    CFLAGS = "-O3",
    LD = "clang",
    LIBFLAG = "-shared",
-   OBJ_EXTENSION = "obj",
 }

@@ -67,9 +67,6 @@
 [submodule "subprojects/xml2lua/xml2lua"]
 	path = subprojects/xml2lua/xml2lua
 	url = https://github.com/manoelcampos/xml2lua
-[submodule "subprojects/binser/binser"]
-	path = subprojects/binser/binser
-	url = https://github.com/bakpakin/binser
 [submodule "subprojects/uuid/uuid"]
 	path = subprojects/uuid/uuid
 	url = https://github.com/Tieske/uuid
@@ -94,3 +91,6 @@
 [submodule "subprojects/luaposix/luaposix"]
 	path = subprojects/luaposix/luaposix
 	url = https://github.com/luaposix/luaposix
+[submodule "subprojects/lua-protobuf/lua-protobuf"]
+	path = subprojects/lua-protobuf/lua-protobuf
+	url = https://github.com/starwing/lua-protobuf

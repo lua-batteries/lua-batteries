@@ -72,6 +72,8 @@ luarocks_config = ''
 
 if cc_id == 'msvc'
   luarocks_config = 'config/config-windows-msvc.lua'
+elif system == 'windows' and cc_id == 'gcc'
+  luarocks_config = 'config/config-windows-mingw.lua'
 elif cc_id == 'clang' or cc_id == 'clang-cl'
   if system == 'windows'
     luarocks_config = 'config/config-windows-clang.lua'

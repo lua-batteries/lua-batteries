@@ -139,8 +139,9 @@ else
   )
 endif
 
+# mime.core
 shared_module(
-  'mime',
+  '_core',
   ['luasocket/src/mime.c', 'luasocket/src/compat.c'],
   c_args: luasocket_defines,
   include_directories: luasocket_include,
@@ -148,7 +149,7 @@ shared_module(
   name_prefix: '',
   name_suffix: module_suffix,
   install: true,
-  install_dir: get_option('libdir') / 'lua' / lua_ver
+  install_dir: get_option('libdir') / 'lua' / lua_ver / 'mime'
 )
 
 static_library(
@@ -162,8 +163,9 @@ static_library(
   install_dir: get_option('libdir') / 'lua' / lua_ver + '-static'
 )
 
+# socket.core
 shared_module(
-  'socket',
+  'core',
   luasocket_socket_sources,
   c_args: luasocket_defines,
   include_directories: luasocket_include,
@@ -171,7 +173,7 @@ shared_module(
   name_prefix: '',
   name_suffix: module_suffix,
   install: true,
-  install_dir: get_option('libdir') / 'lua' / lua_ver
+  install_dir: get_option('libdir') / 'lua' / lua_ver / 'socket'
 )
 
 static_library(
