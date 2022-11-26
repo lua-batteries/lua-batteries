@@ -7,15 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.3.0] - 2022-11-25
+## [0.3.0] - 2022-11-26
 
 ### Added
 
-- Added [lua-protobuf](https://github.com/starwing/lua-protobuf) library.
+- [lua-protobuf](https://github.com/starwing/lua-protobuf) library.
+- Exported [lua-cjson](https://github.com/openresty/lua-cjson).safe module.
 
 ### Changed
 
 - Removed [binser](https://github.com/bakpakin/binser) module.
+
+## Fixed
+
+- [luasocket](https://github.com/lunarmodules/luasocket) `socket` module install path.
+- [luasec](https://github.com/brunoos/luasec) `ssl.https` module install path.
+- [luv](https://github.com/luvit/luv) MinGW-W64 builds.
 
 ## [0.2.0] - 2022-11-21
 

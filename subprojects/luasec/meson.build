@@ -69,7 +69,7 @@ else
 endif
 
 shared_module(
-  'core',
+  'ssl',
   luasec_sources,
   c_args: luasec_defines,
   include_directories: luasec_include,
@@ -77,11 +77,11 @@ shared_module(
   name_prefix: '',
   name_suffix: module_suffix,
   install: true,
-  install_dir: get_option('libdir') / 'lua' / lua_ver / 'ssl'
+  install_dir: get_option('libdir') / 'lua' / lua_ver
 )
 
 static_library(
-  'ssl.core',
+  'ssl',
   luasec_sources,
   c_args: luasec_defines,
   include_directories: luasec_include,
@@ -102,7 +102,7 @@ install_data(
 
 install_data(
   'luasec/src/https.lua',
-  install_dir: get_option('datadir') / 'lua' / lua_ver / 'https'
+  install_dir: get_option('datadir') / 'lua' / lua_ver / 'ssl'
 )
 
 # -------------------------------------------------

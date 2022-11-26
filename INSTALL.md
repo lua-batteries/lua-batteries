@@ -38,7 +38,7 @@ cd lua-batteries
 3. Now setup lua-batteries using meson. Use `--prefix` flag to specify installation directory. Also add `--libdir $PREFIX/lib` flag if you are targeting non windows platforms otherwise libs and modules will be installed in incorrect directories which is `$PREFIX/ARCH_TRIPLE/lib`. On windows `--default-library` should be set to `both` or `shared` it can be set to `static` but then you will need to configure luarocks manually. You can also specify `-Dextra-modules=all` option to build some extra modules like `lua-sdl2`. For more meson options see [meson_options.txt](https://github.com/clitic/lua-batteries/blob/main/meson_options.txt).
 
 ```bash
-meson setup build --prefix $HOME/lua-batteries --libdir $HOME/lua-batteries/lib
+meson setup build --warnlevel 0 --prefix $HOME/lua-batteries --libdir $HOME/lua-batteries/lib
 ```
 
 4. Now install lua-batteries using meson. The skipped subprojects are not needed at runtime if you still want to keep them, then remove `--skip-subprojects` flag.
@@ -113,9 +113,9 @@ $ git apply ../patches/lua-batteries-updated-lua-search-path-on-windows.patch
 Now change directory to project root and build project using meson.
 
 ```bash
-$ meson setup build -Dstandalone=true --default-library both --cross-file cross/x86_64-w64-mingw32.ini --prefix $HOME/lua-batteries 
+$ meson setup build --warnlevel 0 --default-library both --cross-file cross/x86_64-w64-mingw32.ini --prefix $HOME/lua-batteries -Dstandalone=true
 $ meson install -C build --skip-subprojects "freetype2,libffi,libjpeg-turbo,libpng,libtiff,libui,libuv,libyaml,ogg,openssl,pcre2,sqlite3,vorbis,zlib"
-$ meson setup build -Dstandalone=true -Dluajit=true --default-library both --cross-file cross/x86_64-w64-mingw32.ini --prefix $HOME/lua-batteries --wipe
+$ meson setup build --warnlevel 0 --default-library both --cross-file cross/x86_64-w64-mingw32.ini --prefix $HOME/lua-batteries -Dstandalone=true -Dluajit=true --wipe
 $ meson install -C build --skip-subprojects "freetype2,libffi,libjpeg-turbo,libpng,libtiff,libui,libuv,libyaml,ogg,openssl,pcre2,sqlite3,vorbis,zlib"
 ```
 

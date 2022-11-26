@@ -39,7 +39,10 @@ if system == 'windows'
   lua_cjson_defines += ['-DDISABLE_INVALID_NUMBERS', '-DUSE_INTERNAL_ISINF']
 
   if cc_id in ['msvc', 'clang', 'clang-cl']
-    lua_cjson_link_args += '-export:luaopen_cjson'
+    lua_cjson_link_args += [
+      '-export:luaopen_cjson',
+      '-export:luaopen_cjson_safe'
+    ]
   endif
 elif system == 'sunos'
   lua_cjson_defines += '-DUSE_INTERNAL_ISINF'
