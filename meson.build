@@ -157,7 +157,7 @@ endif
 
 if 'all' in extra_modules or 'ltui' in extra_modules
   subproject('ltui')
-  config += {'modules/ltui': '2.6'}
+  config += {'extra-modules/ltui': '2.6'}
 endif
 
 if 'all' in extra_modules or 'lui' in extra_modules
