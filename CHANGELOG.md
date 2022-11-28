@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Luarocks config file moved from `share/lua` to `lib/luarocks/rocks-$LUA_VER`
+
+## Fixed
+
+- [lua-cjson](https://github.com/openresty/lua-cjson) bin scripts.
+- [luaposix](https://github.com/luaposix/luaposix) build script.
+
 ## [0.3.0] - 2022-11-26
 
 ### Added

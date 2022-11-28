@@ -1,6 +1,6 @@
 project(
   'lua-batteries',
-  version: '0.3.0',
+  version: '0.3.2',
   license: 'MIT',
   default_options: [
     'buildtype=release',

@@ -9,6 +9,7 @@ cc = meson.get_compiler('c')
 cc_id = cc.get_id()
 system = host_machine.system()
 lua_ver = get_option('luajit') ? '5.1' : '5.4'
+luarocks_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'luarocks/3.9.1-1'
 
 install_subdir(
   'luarocks/src/luarocks',
@@ -24,7 +25,7 @@ install_data(
     'luarocks.lua',
     'luarocks-admin.lua'
   ],
-  install_dir: get_option('datadir') / 'lua/bin'
+  install_dir: luarocks_dir / 'bin'
 )
 
 if system == 'windows'
@@ -85,33 +86,25 @@ elif cc_id == 'clang' or cc_id == 'clang-cl'
 endif
 
 if luarocks_config != ''
-  if get_option('luajit')
-    install_data(
-      luarocks_config,
-      rename: 'config-5.1.lua',
-      install_dir: get_option('datadir') / 'lua'
-    )
-  else
-    install_data(
-      luarocks_config,
-      rename: 'config-5.4.lua',
-      install_dir: get_option('datadir') / 'lua'
-    )
-  endif
+  install_data(
+    luarocks_config,
+    rename: get_option('luajit') ? 'config-5.1.lua' : 'config-5.4.lua',
+    install_dir: get_option('libdir') / 'luarocks/rocks-' + lua_ver
+  )
 endif
-
-# -------------------------------------------------
-# EXTRA DATA
-# -------------------------------------------------
 
 install_data(
   'config/manifest',
   install_dir: get_option('libdir') / 'luarocks/rocks-' + lua_ver
 )
 
+# -------------------------------------------------
+# EXTRA DATA
+# -------------------------------------------------
+
 install_data(
   ['luarocks/luarocks-3.9.1-1.rockspec', 'config/rock_manifest'],
-  install_dir: get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'luarocks/3.9.1-1'
+  install_dir: luarocks_dir
 )
 
 install_data(
@@ -121,5 +114,5 @@ install_data(
     'luarocks/win32/COPYING',
     'luarocks/README.md',
   ],
-  install_dir: get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'luarocks/3.9.1-1/doc'
+  install_dir: luarocks_dir / 'doc'
 )

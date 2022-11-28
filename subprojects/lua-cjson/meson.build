@@ -81,8 +81,25 @@ install_data(
 )
 
 # -------------------------------------------------
+# EXTRA DATA
+# -------------------------------------------------
+
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'lua-cjson/2.1.0.10-1'
+install_data('luarocks/rock_manifest', install_dir: data_dir)
+
+install_data(
+  'lua-cjson/lua-cjson-2.1.0.10-1.rockspec',
+  install_dir: data_dir
+)
+
+# -------------------------------------------------
 # LUA BIN SCRIPTS
 # -------------------------------------------------
+
+install_data(
+  ['lua-cjson/lua/json2lua.lua', 'lua-cjson/lua/lua2json.lua'],
+  install_dir: data_dir / 'bin'
+)
 
 scripts_path = get_option('luajit') ? 'scripts/luajit' : 'scripts/lua'
 
@@ -99,15 +116,3 @@ else
     install_dir: get_option('bindir')
   )
 endif
-
-# -------------------------------------------------
-# EXTRA DATA
-# -------------------------------------------------
-
-data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'lua-cjson/2.1.0.10-1'
-install_data('luarocks/rock_manifest', install_dir: data_dir)
-
-install_data(
-  'lua-cjson/lua-cjson-2.1.0.10-1.rockspec',
-  install_dir: data_dir
-)

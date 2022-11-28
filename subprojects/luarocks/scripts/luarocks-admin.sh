@@ -1,6 +1,8 @@
 BASEDIR=$(dirname $0)
-export LUA_PATH="$BASEDIR/../share/lua/5.4/?.lua;$BASEDIR/../share/lua/5.4/?/init.lua;$LUA_PATH"
-export LUA_CPATH="$BASEDIR/../lib/lua/5.4/?.so;$BASEDIR/../lib/lua/5.4/loadall.so;$LUA_CPATH"
-export LUAROCKS_SYSCONFDIR="$BASEDIR/../share/lua"
-"$BASEDIR/lua" "$BASEDIR/../share/lua/bin/luarocks.lua" config --scope system home_tree "$BASEDIR/.." > /dev/null
-exec "$BASEDIR/lua" "$BASEDIR/../share/lua/bin/luarocks-admin.lua" "$@"
+LUA_VER="5.4"
+LUAROCKS_BIN_DIR="$BASEDIR/../lib/luarocks/rocks-$LUA_VER/luarocks/3.9.1-1/bin"
+export LUA_PATH="$BASEDIR/../share/lua/$LUA_VER/?.lua;$BASEDIR/../share/lua/$LUA_VER/?/init.lua;$LUA_PATH"
+export LUA_CPATH="$BASEDIR/../lib/lua/$LUA_VER/?.so;$BASEDIR/../lib/lua/$LUA_VER/loadall.so;$LUA_CPATH"
+export LUAROCKS_SYSCONFDIR="$BASEDIR/../lib/luarocks/rocks-$LUA_VER"
+"$BASEDIR/lua" "$LUAROCKS_BIN_DIR/luarocks.lua" config --scope system home_tree "$BASEDIR/.." > /dev/null
+exec "$BASEDIR/lua" "$LUAROCKS_BIN_DIR/luarocks-admin.lua" "$@"

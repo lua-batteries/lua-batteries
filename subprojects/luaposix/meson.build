@@ -27,7 +27,10 @@ project_deps = [lua_dep]
 # LUA MODULE
 # -------------------------------------------------
 
-luaposix_defines = ['-DVERSION="35.1"', '-DPACKAGE="luaposix"']
+luaposix_defines = [
+  '-DVERSION="@0@"'.format(meson.project_version()),
+  '-DPACKAGE="@0@"'.format(meson.project_name())
+]
 luaposix_includes = [
   include_directories('luaposix/ext/include')
 ]
@@ -35,36 +38,84 @@ luaposix_shared_dir = get_option('libdir') / 'lua' / lua_ver / 'posix'
 luaposix_shared_sys_dir = get_option('libdir') / 'lua' / lua_ver / 'posix/sys'
 luaposix_static_dir = get_option('libdir') / 'lua' / lua_ver + '-static'
 
-posix_fcntl_defines = [
-  '-DHAVE_POSIX_FADVISE=' + cc.has_function('posix_fadvise').to_int().to_string()
-]
-posix_sched_defines = [
-  '-DHAVE_SCHED_H=' + cc.has_header('sched.h').to_int().to_string(),
-  '-DHAVE_SCHED_GETSCHEDULER=' + cc.has_function('sched_getscheduler').to_int().to_string(),
-  '-DHAVE_SCHED_SETSCHEDULER=' + cc.has_function('sched_setscheduler').to_int().to_string()
-]
-posix_sys_msg_defines = [
-  '-DHAVE_SYS_MSG_H=' + cc.has_header('sys/msg.h').to_int().to_string(),
-  '-DHAVE_MSGRCV=' + cc.has_function('msgrcv').to_int().to_string(),
-  '-DHAVE_MSGSND=' + cc.has_function('msgsnd').to_int().to_string()
-]
-posix_sys_socket_defines = [
-  '-DHAVE_NET_IF_H=' + cc.has_header('net/if.h').to_int().to_string(),
-  '-DHAVE_LINUX_NETLINK_H=' + cc.has_header('linux/netlink.h').to_int().to_string(),
-  '-DHAVE_LINUX_IF_PACKET_H=' + cc.has_header('linux/if_packet.h').to_int().to_string()
-]
+posix_fcntl_defines = []
+
+if cc.has_function('posix_fadvise')
+  posix_fcntl_defines += '-DHAVE_POSIX_FADVISE'
+endif
+
+posix_sched_defines = []
+
+if cc.has_header('sched.h')
+  posix_sched_defines += '-DHAVE_SCHED_H'
+endif
+
+if cc.has_function('sched_getscheduler')
+  posix_sched_defines += '-DHAVE_SCHED_GETSCHEDULER'
+endif
+
+if cc.has_function('sched_setscheduler')
+  posix_sched_defines += '-DHAVE_SCHED_SETSCHEDULER'
+endif
+
+posix_sys_msg_defines = []
+
+if cc.has_header('sys/msg.h')
+  posix_sys_msg_defines += '-DHAVE_SYS_MSG_H'
+endif
+
+if cc.has_function('msgrcv')
+  posix_sys_msg_defines += '-DHAVE_MSGRCV'
+endif
+
+if cc.has_function('msgsnd')
+  posix_sys_msg_defines += '-DHAVE_MSGSND'
+endif
+
+posix_sys_socket_defines = []
+
+if cc.has_header('net/if.h')
+  posix_sys_socket_defines += '-DHAVE_NET_IF_H'
+endif
+
+if cc.has_header('linux/netlink.h')
+  posix_sys_socket_defines += '-DHAVE_LINUX_NETLINK_H'
+endif
+
+if cc.has_header('linux/if_packet.h')
+  posix_sys_socket_defines += '-DHAVE_LINUX_IF_PACKET_H'
+endif
+
 posix_sys_socket_dep = cc.find_library('socket', required: false)
-posix_sys_statvfs_defines = [
-  '-DHAVE_STATVFS=' + cc.has_function('statvfs').to_int().to_string()
-]
+posix_sys_statvfs_defines = []
+
+if cc.has_function('statvfs')
+  posix_sys_statvfs_defines += '-DHAVE_STATVFS'
+endif
+
 posix_time_dep = cc.has_header_symbol('unistd.h', '_POSIX_TIMERS') ? cc.find_library('rt') : []
-posix_unistd_defines = [
-  '-DHAVE_CRYPT=' + cc.has_function('crypt').to_int().to_string(),
-  '-DHAVE_CRYPT_H=' + cc.has_header('crypt.h').to_int().to_string(),
-  '-DHAVE_DECL_FDATASYNC=' + cc.has_function('fdatasync').to_int().to_string(),
-  '-DHAVE_FDATASYNC=' + cc.has_function('fdatasync').to_int().to_string(),
-  '-DHAVE_GETHOSTID=' + cc.has_function('gethostid').to_int().to_string()
-]
+posix_unistd_defines = []
+
+if cc.has_function('crypt')
+  posix_unistd_defines += '-DHAVE_CRYPT'
+endif
+
+if cc.has_header('crypt.h')
+  posix_unistd_defines += '-DHAVE_CRYPT_H'
+endif
+
+if cc.has_function('fdatasync')
+  posix_unistd_defines += '-DHAVE_DECL_FDATASYNC'
+endif
+
+if cc.has_function('fdatasync')
+  posix_unistd_defines += '-DHAVE_FDATASYNC'
+endif
+
+if cc.has_function('gethostid')
+  posix_unistd_defines += '-DHAVE_GETHOSTID'
+endif
+
 posix_unistd_dep = cc.find_library('crypt')
 
 shared_module(
