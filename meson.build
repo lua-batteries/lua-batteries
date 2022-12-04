@@ -1,6 +1,6 @@
 project(
   'lua-batteries',
-  version: '0.3.2',
+  version: '0.3.4',
   license: 'MIT',
   default_options: [
     'buildtype=release',
@@ -107,7 +107,7 @@ endif
 
 if 'all' in modules or 'luautf8' in modules
   subproject('luautf8')
-  config += {'modules/luautf8': '0.1.4'}
+  config += {'modules/luautf8': '0.1.5'}
 endif
 
 if 'all' in modules or 'lua-zlib' in modules
@@ -157,7 +157,7 @@ endif
 
 if 'all' in extra_modules or 'ltui' in extra_modules
   subproject('ltui')
-  config += {'extra-modules/ltui': '2.6'}
+  config += {'extra-modules/ltui': '2.7'}
 endif
 
 if 'all' in extra_modules or 'lui' in extra_modules

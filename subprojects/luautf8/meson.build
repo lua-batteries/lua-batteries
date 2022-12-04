@@ -1,7 +1,7 @@
 project(
   'luautf8',
   'c',
-  version: '0.1.4',
+  version: '0.1.5',
   license: 'MIT',
   meson_version: '>=0.64.0'
 )
@@ -58,10 +58,10 @@ static_library(
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'luautf8/0.1.4-1'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'luautf8/0.1.5-1'
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'luautf8/rockspecs/luautf8-0.1.4-1.rockspec',
+  'luautf8/rockspecs/luautf8-0.1.5-1.rockspec',
   install_dir: data_dir
 )

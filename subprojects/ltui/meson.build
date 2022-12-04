@@ -1,7 +1,7 @@
 project(
   'ltui',
   'c', 'cpp',
-  version: '2.6',
+  version: '2.7',
   license: 'APACHE-2.0',
   meson_version: '>=0.64.0'
 )
@@ -28,10 +28,10 @@ project_deps = [lua_dep]
 # -------------------------------------------------
 
 ltui_sources = [
-  'ltui/src/core/lcurses/lcurses.c'
+  'ltui/src/core/curses/curses.c'
 ]
 ltui_includes = [
-  include_directories('ltui/src/core/lcurses')
+  include_directories('ltui/src/core/curses')
 ]
 ltui_defines = []
 # ltui_defines = [
@@ -149,11 +149,11 @@ install_subdir(
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'ltui/2.6-1'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'ltui/2.7-1'
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'ltui/rockspec/ltui-2.6-1.rockspec',
+  'ltui/rockspec/ltui-2.7-1.rockspec',
   install_dir: data_dir
 )
 

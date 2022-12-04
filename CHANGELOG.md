@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- [luautf8](https://github.com/starwing/luautf8) v0.1.4 -> v0.1.5
+- [ltui](https://github.com/tboox/ltui) v2.6 -> v2.7
+
 ### Changed
 
 - Luarocks config file moved from `share/lua` to `lib/luarocks/rocks-$LUA_VER`
