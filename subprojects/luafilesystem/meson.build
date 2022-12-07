@@ -45,7 +45,7 @@ shared_module(
   install_dir: get_option('libdir') / 'lua' / lua_ver
 )
 
-static_library(
+lfs = static_library(
   'lfs',
   'luafilesystem/src/lfs.c',
   link_args: luafilesystem_link_args,
@@ -70,4 +70,17 @@ install_data(
 install_subdir(
   'luafilesystem/doc',
   install_dir: data_dir
+)
+
+# -------------------------------------------------
+# PKG CONFIG
+# -------------------------------------------------
+
+import('pkgconfig').generate(
+  description: 'File System Library for the Lua Programming Language',
+  install_dir: get_option('libdir') / 'lua' / lua_ver + '-static/pkgconfig',
+  filebase: meson.project_name(),
+  libraries: lfs,
+  name: meson.project_name(),
+  url: 'https://github.com/lunarmodules/luafilesystem',
 )

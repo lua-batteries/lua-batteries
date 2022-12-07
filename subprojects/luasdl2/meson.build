@@ -27,6 +27,7 @@ project_deps = [lua_dep]
 # LUA MODULE
 # -------------------------------------------------
 
+pkg_config_libs = []
 luasdl2_comman_sources = [
   'luasdl2/common/array.c',
   'luasdl2/common/common.c',
@@ -118,7 +119,7 @@ shared_module(
   install_dir: get_option('libdir') / 'lua' / lua_ver
 )
 
-static_library(
+pkg_config_libs += static_library(
   'SDL',
   luasdl2_sdl2_sources,
   include_directories: luasdl2_include,
@@ -139,7 +140,7 @@ shared_module(
   install_dir: get_option('libdir') / 'lua' / lua_ver / 'SDL'
 )
 
-static_library(
+pkg_config_libs += static_library(
   'SDL.image',
   luasdl2_sdl2_image_sources,
   include_directories: luasdl2_include,
@@ -160,7 +161,7 @@ shared_module(
   install_dir: get_option('libdir') / 'lua' / lua_ver / 'SDL'
 )
 
-static_library(
+pkg_config_libs += static_library(
   'SDL.mixer',
   luasdl2_sdl2_mixer_sources,
   include_directories: luasdl2_include,
@@ -181,7 +182,7 @@ shared_module(
   install_dir: get_option('libdir') / 'lua' / lua_ver / 'SDL'
 )
 
-static_library(
+pkg_config_libs += static_library(
   'SDL.net',
   luasdl2_sdl2_net_sources,
   include_directories: luasdl2_include,
@@ -202,7 +203,7 @@ shared_module(
   install_dir: get_option('libdir') / 'lua' / lua_ver / 'SDL'
 )
 
-static_library(
+pkg_config_libs += static_library(
   'SDL.ttf',
   luasdl2_sdl2_ttf_sources,
   include_directories: luasdl2_include,
@@ -232,4 +233,17 @@ install_subdir(
 install_subdir(
   'luasdl2/tutorials',
   install_dir: data_dir
+)
+
+# -------------------------------------------------
+# PKG CONFIG
+# -------------------------------------------------
+
+import('pkgconfig').generate(
+  description: 'Lua-SDL2 is a pure C binding of SDL 2.0 for Lua 5.1, JIT, 5.2, and 5.3',
+  install_dir: get_option('libdir') / 'lua' / lua_ver + '-static/pkgconfig',
+  filebase: 'lua-sdl2',
+  libraries: pkg_config_libs,
+  name: 'lua-sdl2',
+  url: 'https://github.com/Tangent128/luasdl2',
 )

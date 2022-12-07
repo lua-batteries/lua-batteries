@@ -57,7 +57,7 @@ shared_module(
   install_dir: get_option('libdir') / 'lua' / lua_ver
 )
 
-static_library(
+luv = static_library(
   'luv',
   'luv/src/luv.c',
   link_args: luv_link_args,
@@ -88,4 +88,17 @@ install_data(
 install_subdir(
   'luv/examples',
   install_dir: data_dir
+)
+
+# -------------------------------------------------
+# PKG CONFIG
+# -------------------------------------------------
+
+import('pkgconfig').generate(
+  description: 'Bare libuv bindings for lua',
+  install_dir: get_option('libdir') / 'lua' / lua_ver + '-static/pkgconfig',
+  filebase: meson.project_name(),
+  libraries: luv,
+  name: meson.project_name(),
+  url: 'https://github.com/luvit/luv',
 )

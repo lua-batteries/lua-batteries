@@ -63,7 +63,7 @@ shared_module(
   install_dir: get_option('libdir') / 'lua' / lua_ver
 )
 
-static_library(
+yaml = static_library(
   'yaml',
   lyaml_sources,
   c_args: lyaml_defines,
@@ -99,4 +99,17 @@ install_data(
 install_subdir(
   'lyaml/doc',
   install_dir: data_dir
+)
+
+# -------------------------------------------------
+# PKG CONFIG
+# -------------------------------------------------
+
+import('pkgconfig').generate(
+  description: 'libYAML binding for Lua',
+  install_dir: get_option('libdir') / 'lua' / lua_ver + '-static/pkgconfig',
+  filebase: meson.project_name(),
+  libraries: yaml,
+  name: meson.project_name(),
+  url: 'https://github.com/gvvaughan/lyaml',
 )

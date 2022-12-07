@@ -53,7 +53,7 @@ shared_module(
   install_dir: get_option('libdir') / 'lua' / lua_ver / 'lanes'
 )
 
-static_library(
+lanes = static_library(
   'lanes.core',
   lanes_sources,
   include_directories: lanes_include,
@@ -87,4 +87,17 @@ install_data(
 install_subdir(
   'lanes/docs',
   install_dir: data_dir
+)
+
+# -------------------------------------------------
+# PKG CONFIG
+# -------------------------------------------------
+
+import('pkgconfig').generate(
+  description: 'Multithreading support for Lua',
+  install_dir: get_option('libdir') / 'lua' / lua_ver + '-static/pkgconfig',
+  filebase: meson.project_name(),
+  libraries: lanes,
+  name: meson.project_name(),
+  url: 'https://github.com/LuaLanes/lanes',
 )

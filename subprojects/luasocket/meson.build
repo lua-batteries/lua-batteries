@@ -27,6 +27,7 @@ project_deps = [lua_dep]
 # LUA MODULE
 # -------------------------------------------------
 
+pkg_config_libs = []
 luasocket_socket_sources = [
   'luasocket/src/luasocket.c',
   'luasocket/src/timeout.c',
@@ -93,7 +94,7 @@ else
     install_dir: get_option('libdir') / 'lua' / lua_ver / 'socket'
   )
 
-  static_library(
+  pkg_config_libs += static_library(
     'socket.unix',
     unix_sources,
     c_args: luasocket_defines,
@@ -127,7 +128,7 @@ else
     install_dir: get_option('libdir') / 'lua' / lua_ver / 'socket'
   )
 
-  static_library(
+  pkg_config_libs += static_library(
     'socket.serial',
     serial_sources,
     c_args: luasocket_defines,
@@ -152,7 +153,7 @@ shared_module(
   install_dir: get_option('libdir') / 'lua' / lua_ver / 'mime'
 )
 
-static_library(
+pkg_config_libs += static_library(
   'mime.core',
   ['luasocket/src/mime.c', 'luasocket/src/compat.c'],
   c_args: luasocket_defines,
@@ -176,7 +177,7 @@ shared_module(
   install_dir: get_option('libdir') / 'lua' / lua_ver / 'socket'
 )
 
-static_library(
+pkg_config_libs += static_library(
   'socket.core',
   luasocket_socket_sources,
   c_args: luasocket_defines,
@@ -242,4 +243,17 @@ install_subdir(
 install_subdir(
   'luasocket/test',
   install_dir: data_dir
+)
+
+# -------------------------------------------------
+# PKG CONFIG
+# -------------------------------------------------
+
+import('pkgconfig').generate(
+  description: 'Network support for the Lua language',
+  install_dir: get_option('libdir') / 'lua' / lua_ver + '-static/pkgconfig',
+  filebase: meson.project_name(),
+  libraries: pkg_config_libs,
+  name: meson.project_name(),
+  url: 'https://github.com/lunarmodules/luasocket',
 )

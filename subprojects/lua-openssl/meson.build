@@ -105,7 +105,7 @@ shared_module(
   install_dir: get_option('libdir') / 'lua' / lua_ver
 )
 
-static_library(
+openssl = static_library(
   'openssl',
   lua_openssl_sources,
   c_args: lua_openssl_defines,
@@ -131,4 +131,17 @@ install_data(
 install_data(
   'lua-openssl/README.md',
   install_dir: data_dir / 'docs'
+)
+
+# -------------------------------------------------
+# PKG CONFIG
+# -------------------------------------------------
+
+import('pkgconfig').generate(
+  description: 'Openssl binding for Lua',
+  install_dir: get_option('libdir') / 'lua' / lua_ver + '-static/pkgconfig',
+  filebase: meson.project_name(),
+  libraries: openssl,
+  name: meson.project_name(),
+  url: 'https://github.com/zhaozg/lua-openssl',
 )

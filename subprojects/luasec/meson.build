@@ -80,7 +80,7 @@ shared_module(
   install_dir: get_option('libdir') / 'lua' / lua_ver
 )
 
-static_library(
+ssl = static_library(
   'ssl',
   luasec_sources,
   c_args: luasec_defines,
@@ -120,4 +120,17 @@ install_data(
 install_subdir(
   'luasec/samples',
   install_dir: data_dir
+)
+
+# -------------------------------------------------
+# PKG CONFIG
+# -------------------------------------------------
+
+import('pkgconfig').generate(
+  description: 'A binding for OpenSSL library to provide TLS/SSL communication over LuaSocket',
+  install_dir: get_option('libdir') / 'lua' / lua_ver + '-static/pkgconfig',
+  filebase: meson.project_name(),
+  libraries: ssl,
+  name: meson.project_name(),
+  url: 'https://github.com/brunoos/luasec',
 )

@@ -27,6 +27,7 @@ project_deps = [lua_dep]
 # LUA MODULE
 # -------------------------------------------------
 
+pkg_config_libs = []
 luaposix_defines = [
   '-DVERSION="@0@"'.format(meson.project_version()),
   '-DPACKAGE="@0@"'.format(meson.project_name())
@@ -130,7 +131,7 @@ shared_module(
   install_dir: luaposix_shared_dir
 )
 
-static_library(
+pkg_config_libs += static_library(
   'posix.ctype',
   'luaposix/ext/posix/ctype.c',
   c_args: luaposix_defines,
@@ -153,7 +154,7 @@ shared_module(
   install_dir: luaposix_shared_dir
 )
 
-static_library(
+pkg_config_libs += static_library(
   'posix.dirent',
   'luaposix/ext/posix/dirent.c',
   c_args: luaposix_defines,
@@ -176,7 +177,7 @@ shared_module(
   install_dir: luaposix_shared_dir
 )
 
-static_library(
+pkg_config_libs += static_library(
   'posix.errno',
   'luaposix/ext/posix/errno.c',
   c_args: luaposix_defines,
@@ -199,7 +200,7 @@ shared_module(
   install_dir: luaposix_shared_dir
 )
 
-static_library(
+pkg_config_libs += static_library(
   'posix.fcntl',
   'luaposix/ext/posix/fcntl.c',
   c_args: luaposix_defines + posix_fcntl_defines,
@@ -222,7 +223,7 @@ shared_module(
   install_dir: luaposix_shared_dir
 )
 
-static_library(
+pkg_config_libs += static_library(
   'posix.fnmatch',
   'luaposix/ext/posix/fnmatch.c',
   c_args: luaposix_defines,
@@ -245,7 +246,7 @@ shared_module(
   install_dir: luaposix_shared_dir
 )
 
-static_library(
+pkg_config_libs += static_library(
   'posix.glob',
   'luaposix/ext/posix/glob.c',
   c_args: luaposix_defines,
@@ -268,7 +269,7 @@ shared_module(
   install_dir: luaposix_shared_dir
 )
 
-static_library(
+pkg_config_libs += static_library(
   'posix.grp',
   'luaposix/ext/posix/grp.c',
   c_args: luaposix_defines,
@@ -291,7 +292,7 @@ shared_module(
   install_dir: luaposix_shared_dir
 )
 
-static_library(
+pkg_config_libs += static_library(
   'posix.libgen',
   'luaposix/ext/posix/libgen.c',
   c_args: luaposix_defines,
@@ -314,7 +315,7 @@ shared_module(
   install_dir: luaposix_shared_dir
 )
 
-static_library(
+pkg_config_libs += static_library(
   'posix.poll',
   'luaposix/ext/posix/poll.c',
   c_args: luaposix_defines,
@@ -337,7 +338,7 @@ shared_module(
   install_dir: luaposix_shared_dir
 )
 
-static_library(
+pkg_config_libs += static_library(
   'posix.pwd',
   'luaposix/ext/posix/pwd.c',
   c_args: luaposix_defines,
@@ -360,7 +361,7 @@ shared_module(
   install_dir: luaposix_shared_dir
 )
 
-static_library(
+pkg_config_libs += static_library(
   'posix.sched',
   'luaposix/ext/posix/sched.c',
   c_args: luaposix_defines + posix_sched_defines,
@@ -383,7 +384,7 @@ shared_module(
   install_dir: luaposix_shared_dir
 )
 
-static_library(
+pkg_config_libs += static_library(
   'posix.signal',
   'luaposix/ext/posix/signal.c',
   c_args: luaposix_defines,
@@ -406,7 +407,7 @@ shared_module(
   install_dir: luaposix_shared_dir
 )
 
-static_library(
+pkg_config_libs += static_library(
   'posix.stdio',
   'luaposix/ext/posix/stdio.c',
   c_args: luaposix_defines,
@@ -429,7 +430,7 @@ shared_module(
   install_dir: luaposix_shared_dir
 )
 
-static_library(
+pkg_config_libs += static_library(
   'posix.stdlib',
   'luaposix/ext/posix/stdlib.c',
   c_args: luaposix_defines,
@@ -452,7 +453,7 @@ shared_module(
   install_dir: luaposix_shared_sys_dir
 )
 
-static_library(
+pkg_config_libs += static_library(
   'posix.sys.msg',
   'luaposix/ext/posix/sys/msg.c',
   c_args: luaposix_defines,
@@ -475,7 +476,7 @@ shared_module(
   install_dir: luaposix_shared_sys_dir
 )
 
-static_library(
+pkg_config_libs += static_library(
   'posix.sys.resource',
   'luaposix/ext/posix/sys/resource.c',
   c_args: luaposix_defines,
@@ -498,7 +499,7 @@ shared_module(
   install_dir: luaposix_shared_sys_dir
 )
 
-static_library(
+pkg_config_libs += static_library(
   'posix.sys.socket',
   'luaposix/ext/posix/sys/socket.c',
   c_args: luaposix_defines + posix_sys_socket_defines,
@@ -521,7 +522,7 @@ shared_module(
   install_dir: luaposix_shared_sys_dir
 )
 
-static_library(
+pkg_config_libs += static_library(
   'posix.sys.stat',
   'luaposix/ext/posix/sys/stat.c',
   c_args: luaposix_defines,
@@ -544,7 +545,7 @@ shared_module(
   install_dir: luaposix_shared_sys_dir
 )
 
-static_library(
+pkg_config_libs += static_library(
   'posix.sys.statvfs',
   'luaposix/ext/posix/sys/statvfs.c',
   c_args: luaposix_defines + posix_sys_statvfs_defines,
@@ -567,7 +568,7 @@ shared_module(
   install_dir: luaposix_shared_sys_dir
 )
 
-static_library(
+pkg_config_libs += static_library(
   'posix.sys.time',
   'luaposix/ext/posix/sys/time.c',
   c_args: luaposix_defines,
@@ -590,7 +591,7 @@ shared_module(
   install_dir: luaposix_shared_sys_dir
 )
 
-static_library(
+pkg_config_libs += static_library(
   'posix.sys.times',
   'luaposix/ext/posix/sys/times.c',
   c_args: luaposix_defines,
@@ -613,7 +614,7 @@ shared_module(
   install_dir: luaposix_shared_sys_dir
 )
 
-static_library(
+pkg_config_libs += static_library(
   'posix.sys.utsname',
   'luaposix/ext/posix/sys/utsname.c',
   c_args: luaposix_defines,
@@ -636,7 +637,7 @@ shared_module(
   install_dir: luaposix_shared_sys_dir
 )
 
-static_library(
+pkg_config_libs += static_library(
   'posix.sys.wait',
   'luaposix/ext/posix/sys/wait.c',
   c_args: luaposix_defines,
@@ -659,7 +660,7 @@ shared_module(
   install_dir: luaposix_shared_dir
 )
 
-static_library(
+pkg_config_libs += static_library(
   'posix.syslog',
   'luaposix/ext/posix/syslog.c',
   c_args: luaposix_defines,
@@ -682,7 +683,7 @@ shared_module(
   install_dir: luaposix_shared_dir
 )
 
-static_library(
+pkg_config_libs += static_library(
   'posix.termio',
   'luaposix/ext/posix/termio.c',
   c_args: luaposix_defines,
@@ -706,7 +707,7 @@ shared_module(
   install_dir: luaposix_shared_dir
 )
 
-static_library(
+pkg_config_libs += static_library(
   'posix.time',
   'luaposix/ext/posix/time.c',
   c_args: luaposix_defines,
@@ -729,7 +730,7 @@ shared_module(
   install_dir: luaposix_shared_dir
 )
 
-static_library(
+pkg_config_libs += static_library(
   'posix.unistd',
   'luaposix/ext/posix/unistd.c',
   c_args: luaposix_defines + posix_unistd_defines,
@@ -752,7 +753,7 @@ shared_module(
   install_dir: luaposix_shared_dir
 )
 
-static_library(
+pkg_config_libs += static_library(
   'posix.utime',
   'luaposix/ext/posix/utime.c',
   c_args: luaposix_defines,
@@ -787,4 +788,17 @@ install_data(
 install_subdir(
   'luaposix/doc',
   install_dir: data_dir
+)
+
+# -------------------------------------------------
+# PKG CONFIG
+# -------------------------------------------------
+
+import('pkgconfig').generate(
+  description: 'Lua bindings for POSIX',
+  install_dir: get_option('libdir') / 'lua' / lua_ver + '-static/pkgconfig',
+  filebase: meson.project_name(),
+  libraries: pkg_config_libs,
+  name: meson.project_name(),
+  url: 'https://github.com/luaposix/luaposix',
 )

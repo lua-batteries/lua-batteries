@@ -66,7 +66,7 @@ shared_module(
   install_dir: get_option('libdir') / 'lua' / lua_ver
 )
 
-static_library(
+lui = static_library(
   'lui',
   lui_sources,
   c_args: lui_defines,
@@ -93,4 +93,17 @@ install_data(
 install_subdir(
   'lui/examples',
   install_dir: data_dir
+)
+
+# -------------------------------------------------
+# PKG CONFIG
+# -------------------------------------------------
+
+import('pkgconfig').generate(
+  description: 'Lua binding for libui',
+  install_dir: get_option('libdir') / 'lua' / lua_ver + '-static/pkgconfig',
+  filebase: meson.project_name(),
+  libraries: lui,
+  name: meson.project_name(),
+  url: 'https://github.com/zhaozg/lui',
 )

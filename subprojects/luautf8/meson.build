@@ -44,7 +44,7 @@ shared_module(
   install_dir: get_option('libdir') / 'lua' / lua_ver
 )
 
-static_library(
+lua_utf8 = static_library(
   'lua-utf8',
   'luautf8/lutf8lib.c',
   link_args: luautf8_link_args,
@@ -64,4 +64,17 @@ install_data('luarocks/rock_manifest', install_dir: data_dir)
 install_data(
   'luautf8/rockspecs/luautf8-0.1.5-1.rockspec',
   install_dir: data_dir
+)
+
+# -------------------------------------------------
+# PKG CONFIG
+# -------------------------------------------------
+
+import('pkgconfig').generate(
+  description: 'A UTF-8 support module for Lua',
+  install_dir: get_option('libdir') / 'lua' / lua_ver + '-static/pkgconfig',
+  filebase: meson.project_name(),
+  libraries: lua_utf8,
+  name: meson.project_name(),
+  url: 'https://github.com/starwing/luautf8',
 )
