@@ -60,8 +60,8 @@ shared_module(
   install_dir: get_option('libdir') / 'lua' / lua_ver
 )
 
-cjson = static_library(
-  'cjson',
+lua_cjson = static_library(
+  'lua.cjson',
   lua_cjson_sources,
   c_args: lua_cjson_defines,
   link_args: lua_cjson_link_args,
@@ -125,7 +125,7 @@ import('pkgconfig').generate(
   description: 'A fast JSON encoding/parsing module',
   install_dir: get_option('libdir') / 'lua' / lua_ver + '-static/pkgconfig',
   filebase: meson.project_name(),
-  libraries: cjson,
+  libraries: lua_cjson,
   name: meson.project_name(),
   url: 'https://github.com/openresty/lua-cjson',
 )

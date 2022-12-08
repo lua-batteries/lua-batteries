@@ -120,7 +120,7 @@ shared_module(
 )
 
 pkg_config_libs += static_library(
-  'SDL',
+  'lua.SDL',
   luasdl2_sdl2_sources,
   include_directories: luasdl2_include,
   dependencies: project_deps,
@@ -141,7 +141,7 @@ shared_module(
 )
 
 pkg_config_libs += static_library(
-  'SDL.image',
+  'lua.SDL.image',
   luasdl2_sdl2_image_sources,
   include_directories: luasdl2_include,
   dependencies: project_deps + sdl2_image_dep,
@@ -162,7 +162,7 @@ shared_module(
 )
 
 pkg_config_libs += static_library(
-  'SDL.mixer',
+  'lua.SDL.mixer',
   luasdl2_sdl2_mixer_sources,
   include_directories: luasdl2_include,
   dependencies: project_deps + sdl2_mixer_dep,
@@ -183,7 +183,7 @@ shared_module(
 )
 
 pkg_config_libs += static_library(
-  'SDL.net',
+  'lua.SDL.net',
   luasdl2_sdl2_net_sources,
   include_directories: luasdl2_include,
   dependencies: project_deps + sdl2_net_dep,
@@ -204,7 +204,7 @@ shared_module(
 )
 
 pkg_config_libs += static_library(
-  'SDL.ttf',
+  'lua.SDL.ttf',
   luasdl2_sdl2_ttf_sources,
   include_directories: luasdl2_include,
   dependencies: project_deps + sdl2_ttf_dep,

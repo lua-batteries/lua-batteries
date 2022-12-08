@@ -53,8 +53,8 @@ shared_module(
   install_dir: get_option('libdir') / 'lua' / lua_ver / 'luasql'
 )
 
-luasql_sqlite3 = static_library(
-  'luasql.sqlite3',
+lua_luasql_sqlite3 = static_library(
+  'lua.luasql.sqlite3',
   ['luasql/src/luasql.c', 'luasql/src/ls_sqlite3.c'],
   link_args: luasql_sqlite3_link_args,
   dependencies: project_deps,
@@ -88,7 +88,7 @@ import('pkgconfig').generate(
   description: 'Database connectivity for Lua (SQLite3 driver)',
   install_dir: get_option('libdir') / 'lua' / lua_ver + '-static/pkgconfig',
   filebase: meson.project_name(),
-  libraries: luasql_sqlite3,
+  libraries: lua_luasql_sqlite3,
   name: meson.project_name(),
   url: 'https://github.com/lunarmodules/luasql',
 )

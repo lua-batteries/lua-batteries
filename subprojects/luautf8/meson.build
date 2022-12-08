@@ -44,8 +44,8 @@ shared_module(
   install_dir: get_option('libdir') / 'lua' / lua_ver
 )
 
-lua_utf8 = static_library(
-  'lua-utf8',
+lua_lua_utf8 = static_library(
+  'lua.lua-utf8',
   'luautf8/lutf8lib.c',
   link_args: luautf8_link_args,
   dependencies: project_deps,
@@ -74,7 +74,7 @@ import('pkgconfig').generate(
   description: 'A UTF-8 support module for Lua',
   install_dir: get_option('libdir') / 'lua' / lua_ver + '-static/pkgconfig',
   filebase: meson.project_name(),
-  libraries: lua_utf8,
+  libraries: lua_lua_utf8,
   name: meson.project_name(),
   url: 'https://github.com/starwing/luautf8',
 )

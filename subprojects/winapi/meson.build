@@ -62,8 +62,8 @@ shared_module(
   install_dir: get_option('libdir') / 'lua' / lua_ver
 )
 
-winapi = static_library(
-  'winapi',
+lua_winapi = static_library(
+  'lua.winapi',
   winapi_sources,
   c_args: winapi_defines,
   link_args: winapi_link_args,
@@ -98,7 +98,7 @@ import('pkgconfig').generate(
   description: 'Minimal but useful bindings to Windows API',
   install_dir: get_option('libdir') / 'lua' / lua_ver + '-static/pkgconfig',
   filebase: meson.project_name(),
-  libraries: winapi,
+  libraries: lua_winapi,
   name: meson.project_name(),
   url: 'https://github.com/stevedonovan/winapi',
 )

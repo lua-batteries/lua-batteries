@@ -55,8 +55,8 @@ shared_module(
   install_dir: get_option('libdir') / 'lua' / lua_ver
 )
 
-zlib = static_library(
-  'zlib',
+lua_zlib = static_library(
+  'lua.zlib',
   'lua-zlib/lua_zlib.c',
   c_args: ['-DLZLIB_COMPAT'],
   link_args: lua_zlib_link_args,
@@ -91,7 +91,7 @@ import('pkgconfig').generate(
   description: 'Simple streaming interface to zlib for Lua',
   install_dir: get_option('libdir') / 'lua' / lua_ver + '-static/pkgconfig',
   filebase: meson.project_name(),
-  libraries: zlib,
+  libraries: lua_zlib,
   name: meson.project_name(),
   url: 'https://github.com/brimworks/lua-zlib',
 )

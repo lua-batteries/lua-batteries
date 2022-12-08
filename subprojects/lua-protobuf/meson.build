@@ -51,8 +51,8 @@ shared_module(
   install_dir: get_option('libdir') / 'lua' / lua_ver
 )
 
-pb = static_library(
-  'pb',
+lua_pb = static_library(
+  'lua.pb',
   'lua-protobuf/pb.c',
   link_args: lua_protobuf_link_args,
   dependencies: project_deps,
@@ -95,7 +95,7 @@ import('pkgconfig').generate(
   description: 'protobuf data support for Lua',
   install_dir: get_option('libdir') / 'lua' / lua_ver + '-static/pkgconfig',
   filebase: meson.project_name(),
-  libraries: pb,
+  libraries: lua_pb,
   name: meson.project_name(),
   url: 'https://github.com/starwing/lua-protobuf',
 )

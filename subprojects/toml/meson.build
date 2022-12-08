@@ -65,8 +65,8 @@ shared_module(
   install_dir: get_option('libdir') / 'lua' / lua_ver
 )
 
-toml = static_library(
-  'toml',
+lua_toml = static_library(
+  'lua.toml',
   toml_lua_sources,
   c_args: toml_lua_defines,
   link_args: toml_lua_link_args,
@@ -107,7 +107,7 @@ import('pkgconfig').generate(
   description: 'TOML v1.0.0 parser and serializer for Lua. Powered by toml++.',
   install_dir: get_option('libdir') / 'lua' / lua_ver + '-static/pkgconfig',
   filebase: meson.project_name(),
-  libraries: toml,
+  libraries: lua_toml,
   name: meson.project_name(),
   url: 'https://github.com/LebJe/toml.lua',
 )

@@ -61,8 +61,20 @@ crypto_dep = dependency('crypto', required: false)
 
 if get_option('standalone') or not ssl_dep.found() or not crypto_dep.found()
   openssl = subproject('openssl', default_options: ['default_library=static'])
-  project_deps += openssl.get_variable('libssl_dep')
-  project_deps += openssl.get_variable('libcrypto_dep')
+  ssl_dep = openssl.get_variable('libssl_dep')
+  crypto_dep = openssl.get_variable('libcrypto_dep')
+
+  import('pkgconfig').generate(
+    description: 'TLS/SSL and crypto library',
+    filebase: 'openssl',
+    libraries: [ssl_dep, crypto_dep],
+    name: 'openssl',
+    version: '3.0.7',
+    url: 'https://github.com/openssl/openssl',
+  )
+
+  project_deps += ssl_dep
+  project_deps += crypto_dep
 else
   project_deps += ssl_dep
   project_deps += crypto_dep
@@ -80,8 +92,8 @@ shared_module(
   install_dir: get_option('libdir') / 'lua' / lua_ver
 )
 
-ssl = static_library(
-  'ssl',
+lua_ssl = static_library(
+  'lua.ssl',
   luasec_sources,
   c_args: luasec_defines,
   include_directories: luasec_include,
@@ -130,7 +142,7 @@ import('pkgconfig').generate(
   description: 'A binding for OpenSSL library to provide TLS/SSL communication over LuaSocket',
   install_dir: get_option('libdir') / 'lua' / lua_ver + '-static/pkgconfig',
   filebase: meson.project_name(),
-  libraries: ssl,
+  libraries: lua_ssl,
   name: meson.project_name(),
   url: 'https://github.com/brunoos/luasec',
 )

@@ -421,3 +421,11 @@ libui_dep = declare_dependency(
   include_directories: include_directories('libui'),
   link_with: libui_libui
 )
+
+import('pkgconfig').generate(
+  libui_libui,
+  description: 'Simple and portable (but not inflexible) GUI library in C that uses the native GUI technologies of each platform it supports.',
+  filebase: meson.project_name(),
+  name: meson.project_name(),
+  url: 'https://github.com/andlabs/libui',
+)

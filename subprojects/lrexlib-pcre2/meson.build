@@ -60,8 +60,8 @@ shared_module(
   install_dir: get_option('libdir') / 'lua' / lua_ver
 )
 
-rex_pcre2 = static_library(
-  'rex_pcre2',
+lua_rex_pcre2 = static_library(
+  'lua.rex_pcre2',
   lrexlib_pcre2_sources,
   c_args: lrexlib_pcre2_defines,
   link_args: lrexlib_pcre2_link_args,
@@ -96,7 +96,7 @@ import('pkgconfig').generate(
   description: 'Regular expression library binding (PCRE2 flavour)',
   install_dir: get_option('libdir') / 'lua' / lua_ver + '-static/pkgconfig',
   filebase: meson.project_name(),
-  libraries: rex_pcre2,
+  libraries: lua_rex_pcre2,
   name: meson.project_name(),
   url: 'https://github.com/rrthomas/lrexlib',
 )

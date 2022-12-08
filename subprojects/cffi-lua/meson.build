@@ -86,8 +86,8 @@ shared_module(
   install_dir: get_option('libdir') / 'lua' / lua_ver
 )
 
-cffi = static_library(
-  'cffi',
+lua_cffi = static_library(
+  'lua.cffi',
   cffi_lua_sources,
   cpp_args: cffi_lua_defines,
   include_directories: include_directories('cffi-lua/src'),
@@ -122,7 +122,7 @@ import('pkgconfig').generate(
   description: 'A portable C FFI for Lua 5.1+',
   install_dir: get_option('libdir') / 'lua' / lua_ver + '-static/pkgconfig',
   filebase: meson.project_name(),
-  libraries: cffi,
+  libraries: lua_cffi,
   name: meson.project_name(),
   url: 'https://github.com/q66/cffi-lua',
 )

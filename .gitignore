@@ -10,7 +10,7 @@ subprojects/libogg-1.3.5/*
 subprojects/libpng-1.6.37/*
 subprojects/libuv-v1.44.2/*
 subprojects/libvorbis-1.3.7/*
-subprojects/openssl-3.0.2/*
+subprojects/openssl-3.0.7/*
 subprojects/pcre2-10.40/*
 subprojects/SDL2-2.24.2/*
 subprojects/SDL2_image-2.6.2/*

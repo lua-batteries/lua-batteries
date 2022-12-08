@@ -120,8 +120,8 @@ shared_module(
   install_dir: get_option('libdir') / 'lua' / lua_ver
 )
 
-ltui = static_library(
-  'ltui',
+lua_ltui = static_library(
+  'lua.ltui',
   ltui_sources,
   c_args: ltui_defines,
   include_directories: ltui_includes,
@@ -170,7 +170,7 @@ import('pkgconfig').generate(
   description: 'A cross-platform terminal ui library based on Lua',
   install_dir: get_option('libdir') / 'lua' / lua_ver + '-static/pkgconfig',
   filebase: meson.project_name(),
-  libraries: ltui,
+  libraries: lua_ltui,
   name: meson.project_name(),
   url: 'https://github.com/tboox/ltui',
 )

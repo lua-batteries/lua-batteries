@@ -95,7 +95,7 @@ else
   )
 
   pkg_config_libs += static_library(
-    'socket.unix',
+    'lua.socket.unix',
     unix_sources,
     c_args: luasocket_defines,
     include_directories: luasocket_include,
@@ -129,7 +129,7 @@ else
   )
 
   pkg_config_libs += static_library(
-    'socket.serial',
+    'lua.socket.serial',
     serial_sources,
     c_args: luasocket_defines,
     include_directories: luasocket_include,
@@ -154,7 +154,7 @@ shared_module(
 )
 
 pkg_config_libs += static_library(
-  'mime.core',
+  'lua.mime.core',
   ['luasocket/src/mime.c', 'luasocket/src/compat.c'],
   c_args: luasocket_defines,
   include_directories: luasocket_include,
@@ -178,7 +178,7 @@ shared_module(
 )
 
 pkg_config_libs += static_library(
-  'socket.core',
+  'lua.socket.core',
   luasocket_socket_sources,
   c_args: luasocket_defines,
   include_directories: luasocket_include,
