@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - pkgconfig files for static lua modules.
+- [luarocks](https://github.com/luarocks/luarocks) v3.9.1 -> v3.9.2
 - [luautf8](https://github.com/starwing/luautf8) v0.1.4 -> v0.1.5
 - [ltui](https://github.com/tboox/ltui) v2.6 -> v2.7
 

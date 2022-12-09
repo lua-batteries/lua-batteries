@@ -1,6 +1,6 @@
 project(
   'luarocks',
-  version: '3.9.1',
+  version: '3.9.2',
   license: 'MIT',
   meson_version: '>=0.64.0'
 )
@@ -9,7 +9,7 @@ cc = meson.get_compiler('c')
 cc_id = cc.get_id()
 system = host_machine.system()
 lua_ver = get_option('luajit') ? '5.1' : '5.4'
-luarocks_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'luarocks/3.9.1-1'
+luarocks_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'luarocks/3.9.2-1'
 
 install_subdir(
   'luarocks/src/luarocks',
@@ -28,15 +28,33 @@ install_data(
   install_dir: luarocks_dir / 'bin'
 )
 
+scripts_conf = configuration_data({
+  'BIN': get_option('luajit') ? 'luajit' : 'lua',
+  'LUA_VER': lua_ver,
+  'LUAROCKS_VER': meson.project_version()
+})
+
+install_data(
+  configure_file(
+    input: 'scripts/luarocks' + (system == 'windows' ? '.bat' : '.sh'),
+    output: (get_option('luajit') ? 'luarocks-jit' : 'luarocks') + (system == 'windows' ? '.bat' : ''),
+    configuration: scripts_conf
+  ),
+  install_mode: 'rwxr-xr-x',
+  install_dir: get_option('bindir')
+)
+
+install_data(
+  configure_file(
+    input: 'scripts/luarocks-admin' + (system == 'windows' ? '.bat' : '.sh'),
+    output: (get_option('luajit') ? 'luarocks-admin-jit' : 'luarocks-admin') + (system == 'windows' ? '.bat' : ''),
+    configuration: scripts_conf
+  ),
+  install_mode: 'rwxr-xr-x',
+  install_dir: get_option('bindir')
+)
+
 if system == 'windows'
-  scripts = ['scripts/luarocks.bat', 'scripts/luarocks-admin.bat']
-
-  if get_option('luajit')
-    scripts += ['scripts/luarocks-jit.bat', 'scripts/luarocks-admin-jit.bat']
-  endif
-
-  install_data(scripts, install_dir: get_option('bindir'))
-
   install_data(
     [
       'luarocks/win32/tools/7z.exe',
@@ -51,22 +69,6 @@ if system == 'windows'
     ],
     install_dir: get_option('bindir') / 'tools'
   )
-else
-  if get_option('luajit')
-    install_data(
-      ['scripts/luarocks-jit.sh', 'scripts/luarocks-admin-jit.sh'],
-      rename: ['luarocks-jit', 'luarocks-admin-jit'],
-      install_mode: 'rwxr-xr-x',
-      install_dir: get_option('bindir')
-    )
-  else
-    install_data(
-      ['scripts/luarocks.sh', 'scripts/luarocks-admin.sh'],
-      rename: ['luarocks', 'luarocks-admin'],
-      install_mode: 'rwxr-xr-x',
-      install_dir: get_option('bindir')
-    )
-  endif
 endif
 
 luarocks_config = ''
@@ -103,7 +105,7 @@ install_data(
 # -------------------------------------------------
 
 install_data(
-  ['luarocks/luarocks-3.9.1-1.rockspec', 'config/rock_manifest'],
+  ['luarocks/luarocks-3.9.2-1.rockspec', 'config/rock_manifest'],
   install_dir: luarocks_dir
 )
 
@@ -113,6 +115,7 @@ install_data(
     'luarocks/CODE_OF_CONDUCT.md',
     'luarocks/win32/COPYING',
     'luarocks/README.md',
+    'luarocks/SECURITY.md',
   ],
   install_dir: luarocks_dir / 'doc'
 )

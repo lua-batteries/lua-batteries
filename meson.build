@@ -17,32 +17,29 @@ config = {'apps': get_option('apps')}
 if get_option('luajit')
   subproject('luajit')
   config += {'luajit': '2.0.5'}
-
-  if system != 'windows'
-    install_data(
-      'scripts/luajit51.sh',
-      rename: 'luajit51',
-      install_mode: 'rwxr-xr-x',
-      install_dir: get_option('bindir')
-    )
-  endif
 else
   subproject('lua')
   config += {'lua': '5.4.4'}
+endif
 
-  if system != 'windows'
-    install_data(
-      'scripts/lua54.sh',
-      rename: 'lua54',
-      install_mode: 'rwxr-xr-x',
-      install_dir: get_option('bindir')
-    )
-  endif
+if system != 'windows'
+  install_data(
+    configure_file(
+      input: 'lua.sh',
+      output: get_option('luajit') ? 'luajit51' : 'lua54',
+      configuration: {
+        'BIN': get_option('luajit') ? 'luajit' : 'lua',
+        'LUA_VER': get_option('luajit') ? '5.1' : '5.4'
+      }
+    ),
+    install_mode: 'rwxr-xr-x',
+    install_dir: get_option('bindir')
+  )
 endif
 
 if get_option('luarocks')
   subproject('luarocks')
-  config += {'luarocks': '3.9.1'}
+  config += {'luarocks': '3.9.2'}
 endif
 
 if 'all' in modules or 'argparse' in modules

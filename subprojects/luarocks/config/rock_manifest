@@ -1,9 +1,10 @@
 rock_manifest = {
    doc = {
-      ["CHANGELOG.md"] = "1578aee482aa30eaac386b2d4dd8eb71",
+      ["CHANGELOG.md"] = "efa6b3e1d0bb6d632074523556e8cc19",
       ["CODE_OF_CONDUCT.md"] = "7432ee3f8eabf6fe6c7cab450014e10d",
-      COPYING = "5a26c606953a58c545aa194713fcdfc8",
-      ["README.md"] = "00fc31573c1d91909fe0b775241d0232"
+      COPYING = "c5f3b16961f66b83cf7ce9b7ffdd1d88",
+      ["README.md"] = "fc313399e730b4e549dc351e4376e11c",
+      ["SECURITY.md"] = "838507b6d663fcef9aea26c3528d0d0e"
    },
    lua = {
       luarocks = {
@@ -19,7 +20,7 @@ rock_manifest = {
          },
          ["argparse.lua"] = "6a55daa6cf6d683d62a2241cc553d569",
          build = {
-            ["builtin.lua"] = "8c4902742553063f0332d57bda31d970",
+            ["builtin.lua"] = "ca927b164f90ec92e5a34bcd69731e34",
             ["cmake.lua"] = "6b1781986b91e689aca0619a70b54804",
             ["command.lua"] = "4edbd2360a65c73a8867b74a3228aa36",
             ["make.lua"] = "87ed98f9fe15cd4b222b821a3eb379a8"
@@ -48,12 +49,12 @@ rock_manifest = {
             ["which.lua"] = "a2ddf3867de2878ec8fb54332c3032d0",
             ["write_rockspec.lua"] = "a043c2dc034567efd9748853e3d1044e"
          },
-         ["cmd.lua"] = "0561febc56c05e8791d605f912223a9e",
+         ["cmd.lua"] = "75d3093049ec66b8ee061a953c50b170",
          core = {
-            ["cfg.lua"] = "7c3e2be730560e76b0125903ccb6d4c2",
+            ["cfg.lua"] = "ef3d25514df8f747dba5fb85d955b324",
             ["dir.lua"] = "af9a257c9d7b55292198a68d386efada",
             ["manif.lua"] = "bf914fc6c602ada98ac2299365dcead6",
-            ["path.lua"] = "829ad1e0d3c9a4e3336da1bf971dac9b",
+            ["path.lua"] = "f57ae8d77d10442c1741a2485d98d978",
             ["persist.lua"] = "b764eee65ba3483cbb6b8a7aea41dfa3",
             ["sysdetect.lua"] = "d122f3b0f55f70917a5a3c63bc5bdcb1",
             ["util.lua"] = "e66985338ca0861553029a33fc7c8738",
@@ -101,7 +102,7 @@ rock_manifest = {
          ["manif.lua"] = "c723002511c3c130ba59fbb56485bb9e",
          ["pack.lua"] = "bfc1978e5104418c538e97e2b03b7f8f",
          ["path.lua"] = "ea3bfd6c942f902cc7888c4b41b67802",
-         ["persist.lua"] = "5ba08d8ed0e87fdda459c3d2be6e0f5b",
+         ["persist.lua"] = "c58dee94318c684519641324656cf1c4",
          ["queries.lua"] = "5fe581817df0e555853ac1c92e3e9a86",
          ["remove.lua"] = "85833bc5b54a8770b1feda8020098523",
          ["repos.lua"] = "ceeaebe75dc4bc792f98db62e2473dd9",
@@ -114,7 +115,7 @@ rock_manifest = {
             ["busted.lua"] = "0e03671aedcf2c79d7580b72c696bfcd",
             ["command.lua"] = "e35d10cf9241d043253724330818fa91"
          },
-         ["test.lua"] = "992257b3fca2a19f86992cbe277435a2",
+         ["test.lua"] = "e8778fed917e4c8fd36810386227316d",
          tools = {
             ["patch.lua"] = "9d66b1fff6670edfa8be02deb3018520",
             ["tar.lua"] = "d0c7a0b29a65473b5f32d025d430b82c",
@@ -132,5 +133,5 @@ rock_manifest = {
          ["util.lua"] = "6004bf0293ba8e5866c9edc12655c1e1"
       }
    },
-   ["luarocks-3.9.1-1.rockspec"] = "ff06895e5cdcfb964bf131e7fe06c143"
+   ["luarocks-3.9.2-1.rockspec"] = "643c587601126fcddbf5b418ee69fd68"
 }

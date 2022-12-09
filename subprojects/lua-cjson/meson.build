@@ -101,21 +101,31 @@ install_data(
   install_dir: data_dir / 'bin'
 )
 
-scripts_path = get_option('luajit') ? 'scripts/luajit' : 'scripts/lua'
+scripts_conf = configuration_data({
+  'BIN': get_option('luajit') ? 'luajit' : 'lua',
+  'LUA_VER': lua_ver,
+  'ROCKSPEC_VER': '2.1.0.10-1'
+})
 
-if system == 'windows'
-  install_data(
-    [scripts_path / 'json2lua.bat', scripts_path / 'lua2json.bat'],
-    install_dir: get_option('bindir')
-  )
-else
-  install_data(
-    [scripts_path / 'json2lua.sh', scripts_path / 'lua2json.sh'],
-    rename: ['json2lua', 'lua2json'],
-    install_mode: 'rwxr-xr-x',
-    install_dir: get_option('bindir')
-  )
-endif
+install_data(
+  configure_file(
+    input: 'scripts/json2lua' + (system == 'windows' ? '.bat' : '.sh'),
+    output: 'json2lua' + (system == 'windows' ? '.bat' : ''),
+    configuration: scripts_conf
+  ),
+  install_mode: 'rwxr-xr-x',
+  install_dir: get_option('bindir')
+)
+
+install_data(
+  configure_file(
+    input: 'scripts/lua2json' + (system == 'windows' ? '.bat' : '.sh'),
+    output: 'lua2json' + (system == 'windows' ? '.bat' : ''),
+    configuration: scripts_conf
+  ),
+  install_mode: 'rwxr-xr-x',
+  install_dir: get_option('bindir')
+)
 
 # -------------------------------------------------
 # PKG CONFIG

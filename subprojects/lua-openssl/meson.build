@@ -81,16 +81,13 @@ else
   lua_openssl_defines += ['-DPTHREADS']
 endif
 
-ssl_dep = dependency('ssl', required: false)
-crypto_dep = dependency('crypto', required: false)
+openssl_dep = dependency('openssl', required: false)
 
-if get_option('standalone') or not ssl_dep.found() or not crypto_dep.found()
+if get_option('standalone') or not openssl_dep.found()
   openssl = subproject('openssl', default_options: ['default_library=static'])
-  project_deps += openssl.get_variable('libssl_dep')
-  project_deps += openssl.get_variable('libcrypto_dep')
+  project_deps += openssl.get_variable('openssl_dep')
 else
-  project_deps += ssl_dep
-  project_deps += crypto_dep
+  project_deps += openssl_dep
 endif
 
 shared_module(

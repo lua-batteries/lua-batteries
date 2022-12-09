@@ -56,28 +56,13 @@ else
   luasec_sources += 'luasec/src/luasocket/usocket.c'
 endif
 
-ssl_dep = dependency('ssl', required: false)
-crypto_dep = dependency('crypto', required: false)
+openssl_dep = dependency('openssl', required: false)
 
-if get_option('standalone') or not ssl_dep.found() or not crypto_dep.found()
+if get_option('standalone') or not openssl_dep.found()
   openssl = subproject('openssl', default_options: ['default_library=static'])
-  ssl_dep = openssl.get_variable('libssl_dep')
-  crypto_dep = openssl.get_variable('libcrypto_dep')
-
-  import('pkgconfig').generate(
-    description: 'TLS/SSL and crypto library',
-    filebase: 'openssl',
-    libraries: [ssl_dep, crypto_dep],
-    name: 'openssl',
-    version: '3.0.7',
-    url: 'https://github.com/openssl/openssl',
-  )
-
-  project_deps += ssl_dep
-  project_deps += crypto_dep
+  project_deps += openssl.get_variable('openssl_dep')
 else
-  project_deps += ssl_dep
-  project_deps += crypto_dep
+  project_deps += openssl_dep
 endif
 
 shared_module(

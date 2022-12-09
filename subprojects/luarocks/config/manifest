@@ -1,299 +1,299 @@
 commands = {}
 dependencies = {
    luarocks = {
-      ["3.9.1-1"] = {}
+      ["3.9.2-1"] = {}
    }
 }
 modules = {
    ["luarocks.admin.cache"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.admin.cmd.add"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.admin.cmd.make_manifest"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.admin.cmd.refresh_cache"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.admin.cmd.remove"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.admin.index"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.argparse"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.build"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.build.builtin"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.build.cmake"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.build.command"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.build.make"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.cmd"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.cmd.build"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.cmd.config"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.cmd.doc"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.cmd.download"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.cmd.init"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.cmd.install"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.cmd.lint"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.cmd.list"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.cmd.make"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.cmd.new_version"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.cmd.pack"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.cmd.path"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.cmd.purge"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.cmd.remove"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.cmd.search"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.cmd.show"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.cmd.test"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.cmd.unpack"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.cmd.upload"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.cmd.which"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.cmd.write_rockspec"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.core.cfg"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.core.dir"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.core.manif"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.core.path"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.core.persist"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.core.sysdetect"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.core.util"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.core.vers"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.deplocks"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.deps"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.dir"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.download"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.fetch"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.fetch.cvs"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.fetch.git"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.fetch.git_file"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.fetch.git_http"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.fetch.git_https"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.fetch.git_ssh"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.fetch.hg"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.fetch.hg_http"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.fetch.hg_https"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.fetch.hg_ssh"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.fetch.sscm"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.fetch.svn"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.fs"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.fs.linux"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.fs.lua"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.fs.macosx"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.fs.tools"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.fs.unix"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.fs.unix.tools"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.fs.win32"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.fs.win32.tools"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.fun"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.loader"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.manif"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.manif.writer"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.pack"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.path"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.persist"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.queries"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.remove"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.repos"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.require"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.results"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.rockspecs"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.search"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.signing"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.test"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.test.busted"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.test.command"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.tools.patch"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.tools.tar"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.tools.zip"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.type.manifest"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.type.rockspec"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.type_check"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.upload.api"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.upload.multipart"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    },
    ["luarocks.util"] = {
-      "luarocks/3.9.1-1"
+      "luarocks/3.9.2-1"
    }
 }
 repository = {
    luarocks = {
-      ["3.9.1-1"] = {
+      ["3.9.2-1"] = {
          {
             arch = "installed",
             commands = {},
