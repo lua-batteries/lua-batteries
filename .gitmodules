@@ -94,3 +94,6 @@
 [submodule "subprojects/lua-protobuf/lua-protobuf"]
 	path = subprojects/lua-protobuf/lua-protobuf
 	url = https://github.com/starwing/lua-protobuf
+[submodule "subprojects/luastatic/luastatic"]
+	path = subprojects/luastatic/luastatic
+	url = https://github.com/clitic/luastatic

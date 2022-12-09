@@ -102,6 +102,11 @@ if 'all' in modules or 'luasql-sqlite3' in modules
   config += {'modules/luasql-sqlite3': '2.6.0'}
 endif
 
+if 'all' in modules or 'luastatic' in modules
+  subproject('luastatic')
+  config += {'modules/luastatic': 'scm'}
+endif
+
 if 'all' in modules or 'luautf8' in modules
   subproject('luautf8')
   config += {'modules/luautf8': '0.1.5'}

@@ -28,6 +28,7 @@ List of included libraries and modules provided by lua-batteries:
 - [luafilesystem](https://github.com/lunarmodules/luafilesystem)
 - [lua-openssl](https://github.com/zhaozg/lua-openssl)
 - [luasql-sqlite3](https://github.com/lunarmodules/luasql)
+- [clitic/luastatic](https://github.com/clitic/luastatic)
 - [luautf8](https://github.com/starwing/luautf8)
 - [lua-zlib](https://github.com/brimworks/lua-zlib)
 - [luv](https://github.com/luvit/luv)
