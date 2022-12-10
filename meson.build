@@ -29,6 +29,7 @@ if system != 'windows'
       output: get_option('luajit') ? 'luajit51' : 'lua54',
       configuration: {
         'BIN': get_option('luajit') ? 'luajit' : 'lua',
+        'JIT': get_option('luajit') ? '$BASEDIR/../share/luajit-2.0.5/?.lua;' : '',
         'LUA_VER': get_option('luajit') ? '5.1' : '5.4'
       }
     ),
@@ -58,7 +59,7 @@ if 'all' in modules or 'date' in modules
 endif
 
 if 'all' in modules or 'inspect' in modules
-  subproject('inspect.lua')
+  subproject('inspect')
   config += {'modules/inspect': '3.1.3'}
 endif
 
@@ -153,7 +154,7 @@ if 'all' in modules or 'xml2lua' in modules
 endif
 
 if 'all' in extra_modules or 'lua-sdl2' in extra_modules
-  subproject('luasdl2')
+  subproject('lua-sdl2')
   config += {'extra-modules/lua-sdl2': '2.0.5'}
 endif
 
