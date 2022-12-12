@@ -1,14 +1,14 @@
 <h1 align="center">lua-batteries</h1>
 
 <p align="center">
-  <a href="https://github.com/clitic/lua-batteries">
-    <img src="https://img.shields.io/github/downloads/clitic/lua-batteries/total?style=flat-square">
+  <a href="https://github.com/lua-batteries/lua-batteries">
+    <img src="https://img.shields.io/github/downloads/lua-batteries/lua-batteries/total?style=flat-square">
   </a>
-  <a href="https://github.com/clitic/lua-batteries/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/clitic/lua-batteries?style=flat-square">
+  <a href="https://github.com/lua-batteries/lua-batteries/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/lua-batteries/lua-batteries?style=flat-square">
   </a>
-  <a href="https://github.com/clitic/lua-batteries">
-    <img src="https://img.shields.io/github/repo-size/clitic/lua-batteries?logo=github&style=flat-square">
+  <a href="https://github.com/lua-batteries/lua-batteries">
+    <img src="https://img.shields.io/github/repo-size/lua-batteries/lua-batteries?logo=github&style=flat-square">
   </a>
 </p>
 
@@ -28,7 +28,7 @@ List of included libraries and modules provided by lua-batteries:
 - [luafilesystem](https://github.com/lunarmodules/luafilesystem)
 - [lua-openssl](https://github.com/zhaozg/lua-openssl)
 - [luasql-sqlite3](https://github.com/lunarmodules/luasql)
-- [clitic/luastatic](https://github.com/clitic/luastatic)
+- [lua-batteries/luastatic](https://github.com/lua-batteries/luastatic)
 - [luautf8](https://github.com/starwing/luautf8)
 - [lua-zip](https://github.com/brimworks/lua-zip)
 - [lua-zlib](https://github.com/brimworks/lua-zlib)
@@ -54,12 +54,12 @@ List of included libraries and modules provided by lua-batteries:
 
 ## Installation
 
-Visit [releases](https://github.com/clitic/lua-batteries/releases) for prebuilt binaries. You just need to extract archive and add `bin` directory in your `PATH` environment variable. Also, see [INSTALL.md](https://github.com/clitic/lua-batteries/blob/main/INSTALL.md) for installation instructions through meson. 
+Visit [releases](https://github.com/lua-batteries/lua-batteries/releases) for prebuilt binaries. You just need to extract archive and add `bin` directory in your `PATH` environment variable. Also, see [INSTALL.md](https://github.com/lua-batteries/lua-batteries/blob/main/INSTALL.md) for installation instructions through meson. 
 
 These prebuilt binaries includes **Lua 5.4.4** and **LuaJIT 2.0.5**
 
 | Host    | Architecture | Compiler                                                                                                                                                                  | Download                                                                                                                         |
 |---------|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| Linux   | x86_64       | [GCC](https://gcc.gnu.org)                                                                                                                                                | [.tar.gz](https://github.com/clitic/lua-batteries/releases/download/v0.3.0/lua-batteries-v0.3.0-x86_64-unknown-linux-gnu.tar.gz) |
-| Windows | x86_64       | [MinGW-W64](https://github.com/brechtsanders/winlibs_mingw/releases/download/12.2.0-14.0.6-10.0.0-ucrt-r2/winlibs-x86_64-posix-seh-gcc-12.2.0-mingw-w64ucrt-10.0.0-r2.7z) | [.7z](https://github.com/clitic/lua-batteries/releases/download/v0.3.0/lua-batteries-v0.3.0-x86_64-w64-mingw32.7z)               |
-| Windows | x86_64       | [MSVC](https://visualstudio.microsoft.com)                                                                                                                                | [.7z](https://github.com/clitic/lua-batteries/releases/download/v0.3.0/lua-batteries-v0.3.0-x86_64-pc-windows-msvc.7z)           |
+| Linux   | x86_64       | [GCC](https://gcc.gnu.org)                                                                                                                                                | [.tar.gz](https://github.com/lua-batteries/lua-batteries/releases/download/v0.3.0/lua-batteries-v0.3.0-x86_64-unknown-linux-gnu.tar.gz) |
+| Windows | x86_64       | [MinGW-W64](https://github.com/brechtsanders/winlibs_mingw/releases/download/12.2.0-14.0.6-10.0.0-ucrt-r2/winlibs-x86_64-posix-seh-gcc-12.2.0-mingw-w64ucrt-10.0.0-r2.7z) | [.7z](https://github.com/lua-batteries/lua-batteries/releases/download/v0.3.0/lua-batteries-v0.3.0-x86_64-w64-mingw32.7z)               |
+| Windows | x86_64       | [MSVC](https://visualstudio.microsoft.com)                                                                                                                                | [.7z](https://github.com/lua-batteries/lua-batteries/releases/download/v0.3.0/lua-batteries-v0.3.0-x86_64-pc-windows-msvc.7z)           |

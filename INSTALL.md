@@ -4,9 +4,9 @@
 
 Since lua-batteries is a batteries included installation it is better to understand about how libraries and modules are built and how their dependencies are resolved. Dependencies are first searched in your system if they are found they are linked dynamically to lua module else dependency is built and linked statically to lua module. If you want to force static linking without depending on system libs to be present, then use `-Dstandalone=true` meson option. Libraries and modules are further classified in three different categories:
 
-1. [modules](https://github.com/clitic/lua-batteries/blob/main/meson_options.txt#L1-L30): The libraries and modules whose dependencies can be built from their sources and they can link statically to main module. By default all available modules are built.
+1. [modules](https://github.com/lua-batteries/lua-batteries/blob/main/meson_options.txt#L1-L30): The libraries and modules whose dependencies can be built from their sources and they can link statically to main module. By default all available modules are built.
 
-2. [extra-modules](https://github.com/clitic/lua-batteries/blob/main/meson_options.txt#L32-L43): The libraries and modules whose dependencies can or cannot built from their sources and they might link dynamically to main module. By default no modules are built. On windows these modules can be built from there sources there is no need to resolve their dependencies. On ubuntu modules dependencies can be resolved by installing these packages:
+2. [extra-modules](https://github.com/lua-batteries/lua-batteries/blob/main/meson_options.txt#L32-L43): The libraries and modules whose dependencies can or cannot built from their sources and they might link dynamically to main module. By default no modules are built. On windows these modules can be built from there sources there is no need to resolve their dependencies. On ubuntu modules dependencies can be resolved by installing these packages:
 
 ```bash
 # lua-sdl2
@@ -22,7 +22,7 @@ sudo apt install libncurses5 libncurses5-dev
 sudo apt install libgtk-3-0 libgtk-3-dev
 ```
 
-3. [os-modules](https://github.com/clitic/lua-batteries/blob/main/meson_options.txt#L45-L50): The libraries which are specific to operating system and platform. It is [winapi](https://github.com/stevedonovan/winapi) on windows and [luaposix](https://github.com/luaposix/luaposix) on posix platforms. This option is turned on by default.
+3. [os-modules](https://github.com/lua-batteries/lua-batteries/blob/main/meson_options.txt#L45-L50): The libraries which are specific to operating system and platform. It is [winapi](https://github.com/stevedonovan/winapi) on windows and [luaposix](https://github.com/luaposix/luaposix) on posix platforms. This option is turned on by default.
 
 ## Building (with Lua 5.4.4)
 
@@ -31,11 +31,11 @@ sudo apt install libgtk-3-0 libgtk-3-dev
 2. Now recursively clone lua-batteries repository. lua-batteries has many submodules which have sub-submodules so it may take few minutes to clone full repository. You can also download released tarball.
 
 ```bash
-git clone https://github.com/clitic/lua-batteries --recursive --depth 1
+git clone https://github.com/lua-batteries/lua-batteries --recursive --depth 1
 cd lua-batteries
 ```
 
-3. Now setup lua-batteries using meson. Use `--prefix` flag to specify installation directory. Also add `--libdir $PREFIX/lib` flag if you are targeting non windows platforms otherwise libs and modules will be installed in incorrect directories which is `$PREFIX/ARCH_TRIPLE/lib`. On windows `--default-library` should be set to `both` or `shared` it can be set to `static` but then you will need to configure luarocks manually. You can also specify `-Dextra-modules=all` option to build some extra modules like `lua-sdl2`. For more meson options see [meson_options.txt](https://github.com/clitic/lua-batteries/blob/main/meson_options.txt).
+3. Now setup lua-batteries using meson. Use `--prefix` flag to specify installation directory. Also add `--libdir $PREFIX/lib` flag if you are targeting non windows platforms otherwise libs and modules will be installed in incorrect directories which is `$PREFIX/ARCH_TRIPLE/lib`. On windows `--default-library` should be set to `both` or `shared` it can be set to `static` but then you will need to configure luarocks manually. You can also specify `-Dextra-modules=all` option to build some extra modules like `lua-sdl2`. For more meson options see [meson_options.txt](https://github.com/lua-batteries/lua-batteries/blob/main/meson_options.txt).
 
 ```bash
 meson setup build --warnlevel 0 --prefix $HOME/lua-batteries --libdir $HOME/lua-batteries/lib
@@ -105,7 +105,7 @@ apt install mingw-w64 wine64
 Now clone lua-batteries repository and apply luajit patches.
 
 ```bash
-$ git clone https://github.com/clitic/lua-batteries --recursive --depth 1
+$ git clone https://github.com/lua-batteries/lua-batteries --recursive --depth 1
 $ cd lua-batteries/subprojects/luajit/LuaJIT
 $ git apply ../patches/lua-batteries-updated-lua-search-path-on-windows.patch
 ```

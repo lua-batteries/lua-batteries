@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - pkgconfig files for static lua modules.
-- New [clitic/luastatic](https://github.com/clitic/luastatic) script.
+- New [lua-batteries/luastatic](https://github.com/lua-batteries/luastatic) script.
 - New [lua-zip](https://github.com/brimworks/lua-zip) module.
 - [luarocks](https://github.com/luarocks/luarocks) v3.9.1 -> v3.9.2
 - [luautf8](https://github.com/starwing/luautf8) v0.1.4 -> v0.1.5
@@ -50,7 +50,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.0] - 2022-11-12
 
-[Unreleased]: https://github.com/clitic/lua-batteries/compare/v0.3.0...HEAD
-[0.3.0]: https://github.com/clitic/lua-batteries/compare/v0.2.0...v0.3.0
-[0.2.0]: https://github.com/clitic/lua-batteries/compare/v0.1.0...v0.2.0
-[0.1.0]: https://github.com/clitic/lua-batteries/compare/302985a...v0.1.0
+[Unreleased]: https://github.com/lua-batteries/lua-batteries/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/lua-batteries/lua-batteries/compare/v0.2.0...v0.3.0
+[0.2.0]: https://github.com/lua-batteries/lua-batteries/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/lua-batteries/lua-batteries/compare/302985a...v0.1.0

@@ -2,7 +2,7 @@ package = "luastatic"
 version = "scm-1"
 source =
 {
-  url = "git://github.com/clitic/luastatic.git",
+  url = "git://github.com/lua-batteries/luastatic.git",
   branch = "master"
 }
 description =
@@ -11,7 +11,7 @@ description =
   detailed = [[
     See http://lua.space/tools/build-a-standalone-executable for more information.
   ]],
-  homepage = "https://github.com/clitic/luastatic",
+  homepage = "https://github.com/lua-batteries/luastatic",
   license = "CC0",
   maintainer = "clitic <clitic21@gmail.com>"
 }
