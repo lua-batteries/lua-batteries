@@ -44,7 +44,7 @@ meson setup build --warnlevel 0 --prefix $HOME/lua-batteries --libdir $HOME/lua-
 4. Now install lua-batteries using meson. The skipped subprojects are not needed at runtime if you still want to keep them, then remove `--skip-subprojects` flag.
 
 ```bash
-meson install -C build --skip-subprojects "freetype2,libffi,libjpeg-turbo,libpng,libtiff,libui,libuv,libyaml,ogg,openssl,pcre2,sqlite3,vorbis,zlib"
+meson install -C build --skip-subprojects "freetype2,libffi,libjpeg-turbo,libpng,libtiff,libui,libuv,libyaml,libzip,ogg,openssl,pcre2,sqlite3,vorbis,zlib"
 ```
 
 5. Also remove `_` from `_` prefixed modules. This is not renamed by default because meson only accepts unique target names.
@@ -114,9 +114,9 @@ Now change directory to project root and build project using meson.
 
 ```bash
 $ meson setup build --warnlevel 0 --default-library both --cross-file cross/x86_64-w64-mingw32.ini --prefix $HOME/lua-batteries -Dstandalone=true
-$ meson install -C build --skip-subprojects "freetype2,libffi,libjpeg-turbo,libpng,libtiff,libui,libuv,libyaml,ogg,openssl,pcre2,sqlite3,vorbis,zlib"
+$ meson install -C build --skip-subprojects "freetype2,libffi,libjpeg-turbo,libpng,libtiff,libui,libuv,libyaml,libzip,ogg,openssl,pcre2,sqlite3,vorbis,zlib"
 $ meson setup build --warnlevel 0 --default-library both --cross-file cross/x86_64-w64-mingw32.ini --prefix $HOME/lua-batteries -Dstandalone=true -Dluajit=true --wipe
-$ meson install -C build --skip-subprojects "freetype2,libffi,libjpeg-turbo,libpng,libtiff,libui,libuv,libyaml,ogg,openssl,pcre2,sqlite3,vorbis,zlib"
+$ meson install -C build --skip-subprojects "freetype2,libffi,libjpeg-turbo,libpng,libtiff,libui,libuv,libyaml,libzip,ogg,openssl,pcre2,sqlite3,vorbis,zlib"
 ```
 
 Now pack generated lua-batteries installation directory. 
