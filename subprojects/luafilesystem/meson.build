@@ -30,8 +30,7 @@ project_deps = [lua_dep]
 luafilesystem_link_args = []
 
 if system == 'windows' and cc_id in ['msvc', 'clang', 'clang-cl']
-  import('fs').copyfile('luafilesystem/src/lfs.def', 'exports.def')
-  luafilesystem_link_args += '-def:subprojects/luafilesystem/exports.def'
+  luafilesystem_link_args += '-export:luaopen_lfs'
 endif
 
 shared_module(

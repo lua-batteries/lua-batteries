@@ -38,4 +38,3 @@ subprojects/sdl2_net.wrap
 subprojects/sdl2_ttf.wrap
 subprojects/sqlite3.wrap
 subprojects/vorbis.wrap
-subprojects/zlib.wrap

@@ -97,3 +97,9 @@
 [submodule "subprojects/luastatic/luastatic"]
 	path = subprojects/luastatic/luastatic
 	url = https://github.com/clitic/luastatic
+[submodule "subprojects/lua-zip/subprojects/libzip/libzip"]
+	path = subprojects/lua-zip/subprojects/libzip/libzip
+	url = https://github.com/nih-at/libzip
+[submodule "subprojects/lua-zip/lua-zip"]
+	path = subprojects/lua-zip/lua-zip
+	url = https://github.com/brimworks/lua-zip

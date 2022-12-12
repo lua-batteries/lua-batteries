@@ -1,7 +1,7 @@
 project(
-  'lua-zlib',
+  'lua-zip',
   'c',
-  version: '1.2',
+  version: '0.2',
   license: 'MIT',
   meson_version: '>=0.64.0'
 )
@@ -27,38 +27,30 @@ project_deps = [lua_dep]
 # LUA MODULE
 # -------------------------------------------------
 
-lua_zlib_link_args = []
+lua_zip_link_args = []
 
 if system == 'windows' and cc_id in ['msvc', 'clang', 'clang-cl']
-  lua_zlib_link_args += '-export:luaopen_zlib'
+  lua_zip_link_args += '-export:luaopen_brimworks_zip'
 endif
 
-zlib_dep = dependency('z', required: false)
-
-if get_option('standalone') or not zlib_dep.found()
-  zlib = subproject('zlib', default_options: ['default_library=static'])
-  project_deps += zlib.get_variable('zlib_dep')
-else
-  project_deps += zlib_dep
-endif
+libzip = subproject('libzip', default_options: ['default_library=static'])
+project_deps += libzip.get_variable('libzip_dep')
 
 shared_module(
-  'zlib',
-  'lua-zlib/lua_zlib.c',
-  c_args: ['-DLZLIB_COMPAT'],
-  link_args: lua_zlib_link_args,
+  'zip',
+  'lua-zip/lua_zip.c',
+  link_args: lua_zip_link_args,
   dependencies: project_deps,
   name_prefix: '',
   name_suffix: module_suffix,
   install: true,
-  install_dir: get_option('libdir') / 'lua' / lua_ver
+  install_dir: get_option('libdir') / 'lua' / lua_ver / 'brimworks'
 )
 
-lua_zlib = static_library(
-  'lua.zlib',
-  'lua-zlib/lua_zlib.c',
-  c_args: ['-DLZLIB_COMPAT'],
-  link_args: lua_zlib_link_args,
+lua_zip = static_library(
+  'lua.brimworks.zip',
+  'lua-zip/lua_zip.c',
+  link_args: lua_zip_link_args,
   dependencies: project_deps,
   pic: true,
   install: true,
@@ -69,16 +61,16 @@ lua_zlib = static_library(
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'lua-zlib/1.2-2'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'lua-zip/0.2-0'
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'lua-zlib/rockspecs/lua-zlib-1.2-2.rockspec',
+  'lua-zip/rockspecs/lua-zip-0.2-0.rockspec',
   install_dir: data_dir
 )
 
 install_data(
-  'lua-zlib/README',
+  'lua-zip/README.txt',
   install_dir: data_dir / 'docs'
 )
 
@@ -87,10 +79,10 @@ install_data(
 # -------------------------------------------------
 
 import('pkgconfig').generate(
-  description: 'Simple streaming interface to zlib for Lua',
+  description: 'Lua binding to libzip',
   install_dir: get_option('libdir') / 'lua' / lua_ver + '-static/pkgconfig',
   filebase: meson.project_name(),
-  libraries: lua_zlib,
+  libraries: lua_zip,
   name: meson.project_name(),
-  url: 'https://github.com/brimworks/lua-zlib',
+  url: 'https://github.com/brimworks/lua-zip',
 )

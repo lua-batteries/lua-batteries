@@ -113,6 +113,11 @@ if 'all' in modules or 'luautf8' in modules
   config += {'modules/luautf8': '0.1.5'}
 endif
 
+if 'all' in modules or 'lua-zip' in modules
+  subproject('lua-zip')
+  config += {'modules/lua-zip': '0.2'}
+endif
+
 if 'all' in modules or 'lua-zlib' in modules
   subproject('lua-zlib')
   config += {'modules/lua-zlib': '1.2'}

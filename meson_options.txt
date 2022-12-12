@@ -18,6 +18,7 @@ option(
     'luasql-sqlite3',
     'luastatic',
     'luautf8',
+    'lua-zip',
     'lua-zlib',
     'luv',
     'lyaml',

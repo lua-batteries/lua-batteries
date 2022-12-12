@@ -30,6 +30,7 @@ List of included libraries and modules provided by lua-batteries:
 - [luasql-sqlite3](https://github.com/lunarmodules/luasql)
 - [clitic/luastatic](https://github.com/clitic/luastatic)
 - [luautf8](https://github.com/starwing/luautf8)
+- [lua-zip](https://github.com/brimworks/lua-zip)
 - [lua-zlib](https://github.com/brimworks/lua-zlib)
 - [luv](https://github.com/luvit/luv)
 - [penlight](https://github.com/lunarmodules/Penlight)
