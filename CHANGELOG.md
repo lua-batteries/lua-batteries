@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2022-12-30
+
 ### Added
 
 - pkgconfig files for static lua modules.
@@ -20,7 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Luarocks config file moved from `share/lua` to `lib/luarocks/rocks-$LUA_VER`
 
-## Fixed
+### Fixed
 
 - [lua-cjson](https://github.com/openresty/lua-cjson) bin scripts.
 - [luaposix](https://github.com/luaposix/luaposix) build script.
@@ -36,7 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Removed [binser](https://github.com/bakpakin/binser) module.
 
-## Fixed
+### Fixed
 
 - [luasocket](https://github.com/lunarmodules/luasocket) `socket` module install path.
 - [luasec](https://github.com/brunoos/luasec) `ssl.https` module install path.
@@ -50,7 +52,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.0] - 2022-11-12
 
-[Unreleased]: https://github.com/lua-batteries/lua-batteries/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/lua-batteries/lua-batteries/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/lua-batteries/lua-batteries/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/lua-batteries/lua-batteries/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/lua-batteries/lua-batteries/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/lua-batteries/lua-batteries/compare/302985a...v0.1.0
