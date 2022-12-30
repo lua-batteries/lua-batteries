@@ -380,7 +380,7 @@ if system == 'windows'
   #   'libzip/lib/zip_source_winzip_aes_encode.c'
   # ]
 else
-  project_deps += [
+  libzip_sources += [
     'libzip/lib/zip_source_file_stdio_named.c',
     'libzip/lib/zip_random_unix.c'
   ]
