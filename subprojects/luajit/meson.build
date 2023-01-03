@@ -165,6 +165,8 @@ if target_ljarch == 'x64'
   if cc.compiles(lj_arch_test.format('LJ_FR2 == 1'), include_directories: luajit_source_dir)
     dasm_arch = 'x86'
   endif
+
+  dasm_arch = 'x86' # on windows
 elif target_ljarch.startswith('arm') and host_machine.system() == 'darwin'
   dasm_arch = ['-D', 'IOS']
 elif target_ljarch == 'ppc'
