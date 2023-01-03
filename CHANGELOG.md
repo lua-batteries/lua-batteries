@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- [luajit](https://luajit.org) v2.0.5 -> v2.1.0-beta3
+
 ## [0.4.0] - 2022-12-30
 
 ### Added

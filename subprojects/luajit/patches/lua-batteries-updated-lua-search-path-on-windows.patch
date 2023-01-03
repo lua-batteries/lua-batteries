@@ -20,7 +20,7 @@ index b33e91b7..546949e3 100644
 +#define LUA_SHRDIR	"!\\..\\share\\lua\\5.1\\"
 +
 +#define LUA_PATH_DEFAULT  \
-+  "!\\..\\share\\luajit-2.0.5\\?.lua;" \
++  "!\\..\\share\\2.1.0-beta3\\?.lua;" \
 +  LUA_LDIR"?.lua;"  LUA_LDIR"?\\init.lua;" \
 +  LUA_CDIR"?.lua;"  LUA_CDIR"?\\init.lua;" \
 +  LUA_SHRDIR"?.lua;" LUA_SHRDIR"?\\init.lua;" \

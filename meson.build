@@ -1,6 +1,6 @@
 project(
   'lua-batteries',
-  version: '0.4.0',
+  version: '0.5.0',
   license: 'MIT',
   default_options: [
     'buildtype=release',
@@ -16,7 +16,7 @@ config = {'apps': get_option('apps')}
 
 if get_option('luajit')
   subproject('luajit')
-  config += {'luajit': '2.0.5'}
+  config += {'luajit': '2.1.0-beta3'}
 else
   subproject('lua')
   config += {'lua': '5.4.4'}
