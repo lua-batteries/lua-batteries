@@ -60,7 +60,7 @@ mv $PREFIX/lib/lua/5.4/posix/_time.so $PREFIX/lib/lua/5.4/posix/time.so
 
 ## Building (with LuaJIT 2.0.5)
 
-Follow same steps as above but first apply some patches and run `meson setup` command with `-Dluajit=true` flag. You can use same prefix used for lua installation. Use `--wipe` flag if you have already built without luajit option.
+Follow same steps as above but first apply some patches and run `meson setup` command with `-Dluajit=true` flag. You can use same prefix used for lua installation. Delete build directory if you have already built without luajit option.
 
 ```bash
 cd subprojects/luajit/LuaJIT
@@ -94,13 +94,9 @@ luarocks-jit install busted
 
 See meson [cross compilation](https://mesonbuild.com/Cross-compilation.html) documentation. This example shows how to cross compile from ubuntu to windows using mingw.
 
-First install mingw toolchain and wine64.
-
 ```bash
-apt install mingw-w64 wine64
+apt install mingw-w64
 ```
-
-> Note: wine64 is only needed if you want to build luajit which is disabled by default.
 
 Now clone lua-batteries repository and apply luajit patches.
 
@@ -115,7 +111,8 @@ Now change directory to project root and build project using meson.
 ```bash
 $ meson setup build --warnlevel 0 --default-library both --cross-file cross/x86_64-w64-mingw32.ini --prefix $HOME/lua-batteries -Dstandalone=true
 $ meson install -C build --skip-subprojects "freetype2,libffi,libjpeg-turbo,libpng,libtiff,libui,libuv,libyaml,libzip,ogg,openssl,pcre2,sqlite3,vorbis,zlib"
-$ meson setup build --warnlevel 0 --default-library both --cross-file cross/x86_64-w64-mingw32.ini --prefix $HOME/lua-batteries -Dstandalone=true -Dluajit=true --wipe
+$ rm -rf build
+$ meson setup build --warnlevel 0 --default-library both --cross-file cross/x86_64-w64-mingw32.ini --prefix $HOME/lua-batteries -Dstandalone=true -Dluajit=true
 $ meson install -C build --skip-subprojects "freetype2,libffi,libjpeg-turbo,libpng,libtiff,libui,libuv,libyaml,libzip,ogg,openssl,pcre2,sqlite3,vorbis,zlib"
 ```
 
@@ -123,5 +120,5 @@ Now pack generated lua-batteries installation directory.
 
 ```bash
 $ cd $HOME/lua-batteries
-$ zip -r ../lua-batteries-v0.3.0-x86_64-w64-mingw32.zip *
+$ zip -r ../lua-batteries-v0.5.0-x86_64-w64-mingw32.zip *
 ```

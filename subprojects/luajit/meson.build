@@ -6,19 +6,32 @@ project(
   meson_version: '>=0.64.0'
 )
 
-# -fomit-frame-pointer
 cc = meson.get_compiler('c')
 cc_id = cc.get_id()
 system = host_machine.system()
+system_ps3 = false
+system_ios = get_option('ios')
 
 luajit_source_dir = include_directories('LuaJIT/src')
-libm = cc.find_library('m', required: false)
+libm = cc.find_library('m', required: false) # required on linux and darwin
 luajit_dependencies = [
   libm,
-  cc.find_library('dl', required: false)
+  cc.find_library('dl', required: false) # required on linux
 ]
 
-jitlib_install_dir = get_option('portable') ? (get_option('bindir') / 'lua' / 'jit') : (get_option('datadir') / ( 'luajit-' + meson.project_version() ) / 'jit')
+jitlib_install_dir = get_option('datadir') / 'luajit-' + meson.project_version() / 'jit'
+
+lj_defines = [
+  '-D_FILE_OFFSET_BITS=64',
+  '-D_LARGEFILE_SOURCE',
+  '-U_FORTIFY_SOURCE',
+  '-DLUA_MULTILIB="lib"',
+  '-DLUA_ROOT="' + get_option('prefix') + '"'
+]
+
+if system == 'darwin' and not system_ios
+  lj_defines += '-mmacosx-version-min=10.11'
+endif
 
 minilua = executable(
   'minilua',
@@ -26,7 +39,6 @@ minilua = executable(
   dependencies: libm,
   native: true
 )
-
 
 target_ljarch = ''
 buildvm_defines = []
@@ -47,7 +59,7 @@ elif cc.compiles(lj_arch_test.format('defined(LJ_TARGET_X86)'), include_director
 elif cc.compiles(lj_arch_test.format('defined(LJ_TARGET_ARM)'), include_directories: luajit_source_dir)
   target_ljarch = 'arm'
 elif cc.compiles(lj_arch_test.format('defined(LJ_TARGET_ARM64)'), include_directories: luajit_source_dir)
-  if cc.get_define('__AARCH64EB__') != ''
+  if cc.compiles(lj_arch_test.format('defined(__AARCH64EB__)'), include_directories: luajit_source_dir)
     buildvm_defines += '-D__AARCH64EB__=1'
   endif
 
@@ -61,7 +73,7 @@ elif cc.compiles(lj_arch_test.format('defined(LJ_TARGET_PPC)'), include_director
   
   target_ljarch = 'ppc'
 elif cc.compiles(lj_arch_test.format('defined(LJ_TARGET_MIPS)'), include_directories: luajit_source_dir)
-  if cc.get_define('__MIPSEL__') != ''
+  if cc.compiles(lj_arch_test.format('defined(__MIPSEL__)'), include_directories: luajit_source_dir)
     buildvm_defines += '-D__MIPSEL__=1'
   endif
 
@@ -74,12 +86,12 @@ else
   error('Unsupported target architecture')
 endif
 
-# ifneq (,$(findstring LJ_TARGET_PS3 1,$(TARGET_TESTARCH)))
-#   TARGET_SYS= PS3
-#   TARGET_ARCH+= -D__CELLOS_LV2__
-#   TARGET_XCFLAGS+= -DLUAJIT_USE_SYSMALLOC
-#   TARGET_XLIBS+= -lpthread
-# endif
+if cc.compiles(lj_arch_test.format('LJ_TARGET_PS3 == 1'), include_directories: luajit_source_dir)
+  system_ps3 = true
+  buildvm_defines += '-D__CELLOS_LV2__'
+  lj_defines += '-DLUAJIT_USE_SYSMALLOC'
+  luajit_dependencies += depedency('threads')
+endif
 
 buildvm_defines += '-DLUAJIT_TARGET=LUAJIT_ARCH_@0@'.format(target_ljarch)
 
@@ -87,7 +99,7 @@ if cc.compiles(lj_arch_test.format('LUAJIT_OS == LUAJIT_OS_WINDOWS'), include_di
   buildvm_defines += '-DLUAJIT_OS=LUAJIT_OS_WINDOWS'
 elif cc.compiles(lj_arch_test.format('LUAJIT_OS == LUAJIT_OS_LINUX'), include_directories: luajit_source_dir)
   buildvm_defines += '-DLUAJIT_OS=LUAJIT_OS_LINUX'
-elif cc.compiles(lj_arch_test.format('LUAJIT_OS == LUAJIT_OS_OSX'), include_directories: luajit_source_dir) or host_machine.system() == 'darwin'
+elif cc.compiles(lj_arch_test.format('LUAJIT_OS == LUAJIT_OS_OSX'), include_directories: luajit_source_dir) or system == 'darwin'
   buildvm_defines += '-DLUAJIT_OS=LUAJIT_OS_OSX'
 else
   buildvm_defines += '-DLUAJIT_OS=LUAJIT_OS_OTHER'
@@ -131,7 +143,7 @@ if cc.compiles(lj_arch_test.format('LJ_NO_UNWIND == 1'), include_directories: lu
   buildvm_defines += '-DLUAJIT_NO_UNWIND'
 endif
 
-if cc.compiles(lj_arch_test.format('defined(LJ_ARCH_VERSION)'), include_directories: luajit_source_dir) or host_machine.system() == 'darwin'
+if cc.compiles(lj_arch_test.format('defined(LJ_ARCH_VERSION)'), include_directories: luajit_source_dir)
   if cc.compiles(lj_arch_test.format('LJ_ARCH_VERSION == 80'), include_directories: luajit_source_dir)
     dasm_flags += ['-D', 'VER=80']
   elif cc.compiles(lj_arch_test.format('LJ_ARCH_VERSION == 70'), include_directories: luajit_source_dir)
@@ -157,17 +169,18 @@ else
   dasm_flags += ['-D', 'VER=']
 endif
 
-if cc.compiles(lj_arch_test.format('defined(_WIN32)'), include_directories: luajit_source_dir)
+if system == 'windows'
   dasm_flags += ['-D', 'WIN']
 endif
 
 if target_ljarch == 'x64'
   if cc.compiles(lj_arch_test.format('LJ_FR2 == 1'), include_directories: luajit_source_dir)
     dasm_arch = 'x86'
+  else
+    buildvm_defines += '-DLUAJIT_ENABLE_GC64'
+    lj_defines += '-DLUAJIT_ENABLE_GC64'
   endif
-
-  dasm_arch = 'x86' # on windows
-elif target_ljarch.startswith('arm') and host_machine.system() == 'darwin'
+elif system_ios
   dasm_arch = ['-D', 'IOS']
 elif target_ljarch == 'ppc'
   if cc.compiles(lj_arch_test.format('LJ_ARCH_SQRT == 1'), include_directories: luajit_source_dir)
@@ -182,17 +195,18 @@ elif target_ljarch == 'ppc'
     dasm_flags += ['-D', 'GPR64']
   endif
 
-  # ifeq (PS3,$(TARGET_SYS))
-  #   DASM_AFLAGS+= -D PPE -D TOC
-  # endif
+  if system_ps3
+    dasm_flags += ['-D', 'PPE', '-D', 'TOC']
+  endif
 
   if cc.compiles(lj_arch_test.format('defined(LJ_ARCH_PPC64)'), include_directories: luajit_source_dir)
-    dasm_arch = 'ppc64'
+    # dasm_arch = 'ppc64'
+    warning('Using 32-bit mode on 64-bit PowerPC')
   endif
 endif
 
 message('Target luajit arch: ' + target_ljarch)
-message('Target dasm arch: ' + dasm_arch)
+message('Target dasm arch: vm_' + dasm_arch + '.dasc')
 message('Creating "buildvm_arch.h" with "@0@"'.format(' '.join(dasm_flags)))
 
 buildvm_arch_h = custom_target(
@@ -295,31 +309,6 @@ ljcore_sources = [
   'LuaJIT/src/lj_vmmath.c'
 ]
 
-
-buildvm_commands = [
-  {'mode': 'bcdef',   'input': ljlib_sources,              'output': 'lj_bcdef.h'},
-  {'mode': 'ffdef',   'input': ljlib_sources,              'output': 'lj_ffdef.h'},
-  {'mode': 'folddef', 'input': 'LuaJIT/src/lj_opt_fold.c', 'output': 'lj_folddef.h'},
-  {'mode': 'libdef',  'input': ljlib_sources,              'output': 'lj_libdef.h'},
-  {'mode': 'recdef',  'input': ljlib_sources,              'output': 'lj_recdef.h'}
-]
-
-lj_defines = [
-  '-D_FILE_OFFSET_BITS=64',
-  '-D_LARGEFILE_SOURCE',
-  '-U_FORTIFY_SOURCE',
-  '-DLUA_MULTILIB="lib"',
-  '-DLUA_ROOT="' + get_option('prefix') + '"'
-]
-
-if system == 'darwin'
-  lj_defines += '-mmacosx-version-min=10.11'
-endif
-
-if get_option('portable')
-  lj_defines += '-DLUAJIT_PORTABLE_INSTALL'
-endif
-
 lj_linkargs = []
 
 if system == 'windows'
@@ -340,7 +329,10 @@ elif system == 'darwin'
     output : 'lj_vm.s',
     command : [buildvm, '-m', 'machasm', '-o', '@OUTPUT@']
   )
-  lj_linkargs += ['-pagezero_size', '10000', '-image_base', '100000000']
+
+  if target_ljarch == 'x64' and not system_ios
+    lj_linkargs += ['-pagezero_size', '10000', '-image_base', '100000000']
+  endif
 else
   ljcore_sources += custom_target(
     'lj_vm.s',
@@ -352,7 +344,13 @@ endif
 
 buildvm_headers = []
 
-foreach target: buildvm_commands
+foreach target: [
+    {'mode': 'bcdef',   'input': ljlib_sources,              'output': 'lj_bcdef.h'},
+    {'mode': 'ffdef',   'input': ljlib_sources,              'output': 'lj_ffdef.h'},
+    {'mode': 'folddef', 'input': 'LuaJIT/src/lj_opt_fold.c', 'output': 'lj_folddef.h'},
+    {'mode': 'libdef',  'input': ljlib_sources,              'output': 'lj_libdef.h'},
+    {'mode': 'recdef',  'input': ljlib_sources,              'output': 'lj_recdef.h'}
+  ]
   buildvm_headers += custom_target(
     target['output'],
     input: target['input'],
@@ -365,7 +363,7 @@ vmdef = custom_target(
   'vmdef.lua',
   input: ljlib_sources,
   output: 'vmdef.lua',
-  build_by_default : true,
+  build_by_default: true,
   install: true,
   install_dir: jitlib_install_dir,
   command: [buildvm, '-m', 'vmdef', '-o', '@OUTPUT@', '@INPUT@']
@@ -391,6 +389,7 @@ if get_option('apps')
     )
   endif
 
+  # install_rpath
   luajit = executable(
     'luajit',
     ['LuaJIT/src/luajit.c'] + res,

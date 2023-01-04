@@ -12,8 +12,7 @@
   </a>
 </p>
 
-`lua-batteries` is a batteries included lua installation more 
-specifically it is set of meson build scripts to build [Lua](https://www.lua.org), [LuaJIT](https://luajit.org), [luarocks](https://github.com/luarocks/luarocks) and many useful libraries and modules. These scripts were initially based on franko's [lua](https://github.com/franko/lua) and [luajit](https://github.com/franko/luajit) meson build scripts but now they are extended to next level.
+`lua-batteries` is a batteries included lua installation more specifically it is set of meson build scripts to build [Lua](https://www.lua.org), [LuaJIT](https://luajit.org), [luarocks](https://github.com/luarocks/luarocks) and many useful libraries and modules. These scripts were initially based on franko's [lua](https://github.com/franko/lua) and [luajit](https://github.com/franko/luajit) meson build scripts but now they are extended to next level.
 
 ## Libraries And Modules
 
@@ -56,10 +55,10 @@ List of included libraries and modules provided by lua-batteries:
 
 Visit [releases](https://github.com/lua-batteries/lua-batteries/releases) for prebuilt binaries. You just need to extract archive and add `bin` directory in your `PATH` environment variable. Also, see [INSTALL.md](https://github.com/lua-batteries/lua-batteries/blob/main/INSTALL.md) for installation instructions through meson. 
 
-These prebuilt binaries includes **Lua 5.4.4** and **LuaJIT 2.0.5**
+These prebuilt binaries includes **Lua 5.4.4** and **LuaJIT 2.1.0-beta3**
 
 | Host    | Architecture | Compiler                                                                                                                                                                  | Download                                                                                                                         |
 |---------|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| Linux   | x86_64       | [GCC](https://gcc.gnu.org)                                                                                                                                                | [.tar.gz](https://github.com/lua-batteries/lua-batteries/releases/download/v0.4.0/lua-batteries-v0.4.0-x86_64-unknown-linux-gnu.tar.gz) |
-| Windows | x86_64       | [MinGW-W64](https://github.com/brechtsanders/winlibs_mingw/releases/download/12.2.0-14.0.6-10.0.0-ucrt-r2/winlibs-x86_64-posix-seh-gcc-12.2.0-mingw-w64ucrt-10.0.0-r2.7z) | [.7z](https://github.com/lua-batteries/lua-batteries/releases/download/v0.4.0/lua-batteries-v0.4.0-x86_64-w64-mingw32.7z)               |
-| Windows | x86_64       | [MSVC](https://visualstudio.microsoft.com)                                                                                                                                | [.7z](https://github.com/lua-batteries/lua-batteries/releases/download/v0.4.0/lua-batteries-v0.4.0-x86_64-pc-windows-msvc.7z)           |
+| Linux   | x86_64       | [GCC](https://gcc.gnu.org)                                                                                                                                                | [.tar.gz](https://github.com/lua-batteries/lua-batteries/releases/download/v0.5.0/lua-batteries-v0.5.0-x86_64-unknown-linux-gnu.tar.gz) |
+| Windows | x86_64       | [MinGW-W64](https://github.com/brechtsanders/winlibs_mingw/releases/download/12.2.0-14.0.6-10.0.0-ucrt-r2/winlibs-x86_64-posix-seh-gcc-12.2.0-mingw-w64ucrt-10.0.0-r2.7z) | [.7z](https://github.com/lua-batteries/lua-batteries/releases/download/v0.5.0/lua-batteries-v0.5.0-x86_64-w64-mingw32.7z)               |
+| Windows | x86_64       | [MSVC](https://visualstudio.microsoft.com)                                                                                                                                | [.7z](https://github.com/lua-batteries/lua-batteries/releases/download/v0.5.0/lua-batteries-v0.5.0-x86_64-pc-windows-msvc.7z)           |

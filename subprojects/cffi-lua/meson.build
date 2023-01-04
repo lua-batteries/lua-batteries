@@ -64,7 +64,7 @@ ffi_dep = dependency('ffi', required: false)
 # cffi_lua_defines += '-DHAVE_LIBFFI_DLLIMPORT'
 
 if get_option('standalone') or not ffi_dep.found()
-  libffi = subproject('libffi', default_options: ['default_library=static'])
+  libffi = subproject('libffi', default_options: ['default_library=static', 'tests=false'])
   project_deps += libffi.get_variable('ffi_dep')
 else
   project_deps += ffi_dep
