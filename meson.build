@@ -85,7 +85,7 @@ endif
 
 if 'all' in modules or 'lua-protobuf' in modules
   subproject('lua-protobuf')
-  config += {'modules/lua-protobuf': '0.4.0'}
+  config += {'modules/lua-protobuf': '0.4.1'}
 endif
 
 if 'all' in modules or 'luasec' in modules

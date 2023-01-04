@@ -1,7 +1,7 @@
 project(
   'lua-protobuf',
   'c',
-  version: '0.4.0',
+  version: '0.4.1',
   license: 'MIT',
   meson_version: '>=0.64.0'
 )
@@ -74,11 +74,11 @@ install_data(
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'lua-protobuf/0.4.0-1'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'lua-protobuf/0.4.1-1'
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'lua-protobuf/rockspecs/lua-protobuf-0.4.0-1.rockspec',
+  'luarocks/lua-protobuf-0.4.1-1.rockspec',
   install_dir: data_dir
 )
 

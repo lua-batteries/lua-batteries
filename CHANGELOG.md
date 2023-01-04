@@ -7,9 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2023-01-04
+
 ### Added
 
 - [luajit](https://luajit.org) v2.0.5 -> v2.1.0-beta3
+- [lua-protobuf](https://github.com/starwing/lua-protobuf) v0.4.0 -> v0.4.1
 
 ## [0.4.0] - 2022-12-30
 
