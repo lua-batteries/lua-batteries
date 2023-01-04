@@ -29,7 +29,7 @@ if system != 'windows'
       output: get_option('luajit') ? 'luajit51' : 'lua54',
       configuration: {
         'BIN': get_option('luajit') ? 'luajit' : 'lua',
-        'JIT': get_option('luajit') ? '$BASEDIR/../share/luajit-2.0.5/?.lua;' : '',
+        'JIT': get_option('luajit') ? '$BASEDIR/../share/luajit-2.1.0-beta3/?.lua;' : '',
         'LUA_VER': get_option('luajit') ? '5.1' : '5.4'
       }
     ),
