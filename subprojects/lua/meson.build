@@ -83,6 +83,7 @@ lua_lib = library(
   ],
   c_args: lua_cflags + (get_option('default_library') == 'static' ? [] : lua_cflags_shared),
   dependencies: lua_deps,
+  pic: true,
   install: true
 )
 

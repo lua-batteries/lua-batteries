@@ -59,6 +59,17 @@ These prebuilt binaries includes **Lua 5.4.4** and **LuaJIT 2.1.0-beta3**
 
 | Host    | Architecture | Compiler                                                                                                                                                                  | Download                                                                                                                         |
 |---------|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| Linux   | x86_64       | [GCC](https://gcc.gnu.org)                                                                                                                                                | [.tar.gz](https://github.com/lua-batteries/lua-batteries/releases/download/v0.5.0/lua-batteries-v0.5.0-x86_64-unknown-linux-gnu.tar.gz) |
+| Linux   | x86_64       | [GCC](https://gcc.gnu.org)                                                                                                                                                | [.tar.gz](https://github.com/lua-batteries/lua-batteries/releases/download/v0.5.1/lua-batteries-v0.5.1-x86_64-unknown-linux-gnu.tar.gz) |
 | Windows | x86_64       | [MinGW-W64](https://github.com/brechtsanders/winlibs_mingw/releases/download/12.2.0-14.0.6-10.0.0-ucrt-r2/winlibs-x86_64-posix-seh-gcc-12.2.0-mingw-w64ucrt-10.0.0-r2.7z) | [.7z](https://github.com/lua-batteries/lua-batteries/releases/download/v0.5.0/lua-batteries-v0.5.0-x86_64-w64-mingw32.7z)               |
 | Windows | x86_64       | [MSVC](https://visualstudio.microsoft.com)                                                                                                                                | [.7z](https://github.com/lua-batteries/lua-batteries/releases/download/v0.5.0/lua-batteries-v0.5.0-x86_64-pc-windows-msvc.7z)           |
+
+### On Linux (x86_64)
+
+```
+$ rm -rf /usr/local/lua-batteries
+$ mkdir /usr/local/lua-batteries
+$ curl -L https://github.com/clitic/lua-batteries/releases/download/v0.5.1/lua-batteries-v0.5.1-x86_64-unknown-linux-gnu.tar.gz | tar xzC /usr/local/lua-batteries
+$ printf "\nexport PATH=\"\$PATH:/usr/local/lua-batteries/bin\"\n" >> $HOME/.profile
+$ source $HOME/.profile
+$ lua -v
+```
