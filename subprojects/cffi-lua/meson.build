@@ -1,7 +1,7 @@
 project(
   'cffi-lua',
   'cpp',
-  version: '0.2.2',
+  version: '0.2.3',
   license: 'MIT',
   default_options: [
     'b_ndebug=if-release',
@@ -101,11 +101,11 @@ lua_cffi = static_library(
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'cffi-lua/0.2.2-1'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'cffi-lua/0.2.3-1'
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'cffi-lua/cffi-lua-0.2.2-1.rockspec',
+  'cffi-lua/cffi-lua-0.2.3-1.rockspec',
   install_dir: data_dir
 )
 
