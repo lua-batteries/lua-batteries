@@ -1,7 +1,7 @@
 project(
   'luaposix',
   'c',
-  version: '35.1',
+  version: '36.1',
   license: 'MIT',
   meson_version: '>=0.64.0'
 )
@@ -29,9 +29,29 @@ project_deps = [lua_dep]
 
 pkg_config_libs = []
 luaposix_defines = [
+  '-DPACKAGE="@0@"'.format(meson.project_name()),
   '-DVERSION="@0@"'.format(meson.project_version()),
-  '-DPACKAGE="@0@"'.format(meson.project_name())
+  '-DNDEBUG',
 ]
+
+if system == 'aix'
+  luaposix_defines += '-D_ALL_SOURCE'
+elif system == 'netbsd' or system == 'openbsd'
+  luaposix_defines += '-D_BSD_SOURCE'
+elif system == 'freebsd'
+  luaposix_defines += '-D__BSD_VISIBLE'
+elif system == 'linux' or system == 'android'
+  luaposix_defines += ['-D_BSD_SOURCE', '-D_DEFAULT_SOURCE']
+elif system == 'darwin'
+  luaposix_defines += '-D_DARWIN_C_SOURCE'
+elif system == 'qnx'
+  luaposix_defines += '-D_POSIX_C_SOURCE'
+elif system == 'unix'
+  luaposix_defines += ['-D_POSIX_C_SOURCE=200809L', '-D_XOPEN_SOURCE=700']
+else
+  luaposix_defines += '-D_POSIX_C_SOURCE=200809L'
+endif
+
 luaposix_includes = [
   include_directories('luaposix/ext/include')
 ]
@@ -87,14 +107,29 @@ if cc.has_header('linux/if_packet.h')
   posix_sys_socket_defines += '-DHAVE_LINUX_IF_PACKET_H'
 endif
 
-posix_sys_socket_dep = cc.find_library('socket', required: false)
+posix_sys_socket_dep = cc.find_library('socket', required: false) # checksymbol='socket'
 posix_sys_statvfs_defines = []
 
 if cc.has_function('statvfs')
   posix_sys_statvfs_defines += '-DHAVE_STATVFS'
 endif
 
-posix_time_dep = cc.has_header_symbol('unistd.h', '_POSIX_TIMERS') ? cc.find_library('rt') : []
+posix_time_defines = []
+
+if cc.has_member('struct tm', 'tm_gmtoff', prefix: '#include <time.h>')
+  posix_time_defines += '-DHAVE_TM_GMTOFF'
+endif
+
+if cc.has_member('struct tm', 'tm_zone', prefix: '#include <time.h>')
+  posix_time_defines += '-DHAVE_TM_ZONE'
+endif
+
+posix_time_dep = []
+
+if cc.has_header_symbol('unistd.h', '_POSIX_TIMERS') and cc.has_header_symbol('unistd.h', 'clock_gettime')
+  posix_time_dep += cc.find_library('rt', required: false)
+endif
+
 posix_unistd_defines = []
 
 if cc.has_function('crypt')
@@ -117,7 +152,7 @@ if cc.has_function('gethostid')
   posix_unistd_defines += '-DHAVE_GETHOSTID'
 endif
 
-posix_unistd_dep = cc.find_library('crypt')
+posix_unistd_dep = cc.find_library('crypt', required: false) # checksymbol='crypt'
 
 shared_module(
   'ctype',
@@ -698,7 +733,7 @@ pkg_config_libs += static_library(
 shared_module(
   '_time',
   'luaposix/ext/posix/time.c',
-  c_args: luaposix_defines,
+  c_args: luaposix_defines + posix_time_defines,
   include_directories: luaposix_includes,
   dependencies: project_deps + posix_time_dep,
   name_prefix: '',
@@ -710,7 +745,7 @@ shared_module(
 pkg_config_libs += static_library(
   'lua.posix.time',
   'luaposix/ext/posix/time.c',
-  c_args: luaposix_defines,
+  c_args: luaposix_defines + posix_time_defines,
   include_directories: luaposix_includes,
   dependencies: project_deps + posix_time_dep,
   pic: true,
@@ -777,11 +812,11 @@ install_subdir(
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'luaposix/35.1-1'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'luaposix/36.1-1'
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'luaposix/luaposix-35.1-1.rockspec',
+  'luarocks/luaposix-36.1-1.rockspec',
   install_dir: data_dir
 )
 

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- [luaposix](https://github.com/luaposix/luaposix) v35.1 -> v36.1
+
 ## [0.5.1] - 2023-01-10
 
 ### Added

@@ -1,6 +1,6 @@
 project(
   'lua-batteries',
-  version: '0.5.1',
+  version: '0.5.2',
   license: 'MIT',
   default_options: [
     'buildtype=release',
@@ -179,7 +179,7 @@ if get_option('os-modules')
     config += {'os-modules/winapi': '1.4.2'}
   else
     subproject('luaposix')
-    config += {'os-modules/luaposix': '35.1'}
+    config += {'os-modules/luaposix': '36.1'}
   endif
 endif
 
