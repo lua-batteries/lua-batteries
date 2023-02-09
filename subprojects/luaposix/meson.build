@@ -31,7 +31,7 @@ pkg_config_libs = []
 luaposix_defines = [
   '-DPACKAGE="@0@"'.format(meson.project_name()),
   '-DVERSION="@0@"'.format(meson.project_version()),
-  '-DNDEBUG',
+  '-DNDEBUG'
 ]
 
 if system == 'aix'
@@ -46,7 +46,9 @@ elif system == 'darwin'
   luaposix_defines += '-D_DARWIN_C_SOURCE'
 elif system == 'qnx'
   luaposix_defines += '-D_POSIX_C_SOURCE'
-elif system == 'unix'
+endif
+
+if system not in ['cygwin', 'haiku', 'windows']
   luaposix_defines += ['-D_POSIX_C_SOURCE=200809L', '-D_XOPEN_SOURCE=700']
 else
   luaposix_defines += '-D_POSIX_C_SOURCE=200809L'
@@ -126,7 +128,7 @@ endif
 
 posix_time_dep = []
 
-if cc.has_header_symbol('unistd.h', '_POSIX_TIMERS') and cc.has_header_symbol('unistd.h', 'clock_gettime')
+if cc.has_header_symbol('unistd.h', '_POSIX_TIMERS') and (cc.has_function('clock_gettime', prefix: '#include <time.h>') or cc.has_header_symbol('time.h', 'clock_gettime'))
   posix_time_dep += cc.find_library('rt', required: false)
 endif
 
@@ -138,13 +140,14 @@ endif
 
 if cc.has_header('crypt.h')
   posix_unistd_defines += '-DHAVE_CRYPT_H'
+
+  if (cc.has_function('crypt', prefix: '#include <crypt.h>') or cc.has_header_symbol('crypt.h', 'crypt')) and '-DHAVE_CRYPT' not in posix_unistd_defines
+    posix_unistd_defines += '-DHAVE_CRYPT'
+  endif
 endif
 
-if cc.has_function('fdatasync')
+if cc.has_function('fdatasync', prefix: '#include <unistd.h>') or cc.has_header_symbol('unistd.h', 'fdatasync')
   posix_unistd_defines += '-DHAVE_DECL_FDATASYNC'
-endif
-
-if cc.has_function('fdatasync')
   posix_unistd_defines += '-DHAVE_FDATASYNC'
 endif
 
