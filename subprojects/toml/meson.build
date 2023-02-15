@@ -33,7 +33,7 @@ toml_lua_sources = [
   'toml.lua/src/decoding/decoding.cpp',
   'toml.lua/src/encoding/encoding.cpp',
   'toml.lua/src/DataTypes/DateAndTime/dateAndTime.cpp',
-	'toml.lua/src/DataTypes/TOMLInt/TOMLInt.cpp',
+  'toml.lua/src/DataTypes/TOMLInt/TOMLInt.cpp',
   'toml.lua/src/utilities/utilities.cpp'
 ]
 toml_lua_include = [
