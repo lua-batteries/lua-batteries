@@ -2,7 +2,7 @@ project(
   'xml2lua',
   version: '1.5',
   license: 'MIT',
-  meson_version: '>=0.64.0'
+  meson_version: '>=1.0.0'
 )
 
 # -------------------------------------------------

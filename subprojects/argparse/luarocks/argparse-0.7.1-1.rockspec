@@ -1,7 +1,9 @@
 package = "argparse"
-version = "0.7.1-2"
+version = "0.7.1-1"
 source = {
-   url = "git+https://github.com/luarocks/argparse.git"
+   url = "https://github.com/luarocks/argparse/archive/0.7.1.zip",
+   md5 = "3393e3336b47dade24e0f273c6ae4ddb",
+   dir = "argparse-0.7.1"
 }
 description = {
    summary = "A feature-rich command-line argument parser",

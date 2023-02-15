@@ -2,7 +2,7 @@ project(
   'uuid',
   version: '0.3',
   license: 'APACHE-2.0',
-  meson_version: '>=0.64.0'
+  meson_version: '>=1.0.0'
 )
 
 # -------------------------------------------------

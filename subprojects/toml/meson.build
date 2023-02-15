@@ -1,10 +1,10 @@
 project(
   'toml',
   'cpp',
-  version: '0.1.1',
+  version: '0.2.2',
   license: 'MIT',
   default_options: ['cpp_std=c++17'],
-  meson_version: '>=0.64.0'
+  meson_version: '>=1.0.0'
 )
 
 # -------------------------------------------------
@@ -32,7 +32,8 @@ toml_lua_sources = [
   'toml.lua/src/toml.cpp',
   'toml.lua/src/decoding/decoding.cpp',
   'toml.lua/src/encoding/encoding.cpp',
-  'toml.lua/src/DateAndTime/dateAndTime.cpp',
+  'toml.lua/src/DataTypes/DateAndTime/dateAndTime.cpp',
+	'toml.lua/src/DataTypes/TOMLInt/TOMLInt.cpp',
   'toml.lua/src/utilities/utilities.cpp'
 ]
 toml_lua_include = [
@@ -81,11 +82,11 @@ lua_toml = static_library(
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'toml/0.1.1-0'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'toml/0.2.0-0'
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'toml.lua/toml-0.1.1-0.rockspec',
+  'toml.lua/toml-0.2.0-0.rockspec',
   install_dir: data_dir
 )
 

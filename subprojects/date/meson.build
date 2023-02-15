@@ -2,7 +2,7 @@ project(
   'date',
   version: '2.2',
   license: 'MIT',
-  meson_version: '>=0.64.0'
+  meson_version: '>=1.0.0'
 )
 
 # -------------------------------------------------
@@ -24,11 +24,11 @@ install_data(
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'date/2.2-1'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'date/2.2-2'
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'date/date-2.2-1.rockspec',
+  'date/date-2.2-2.rockspec',
   install_dir: data_dir
 )
 

@@ -7,9 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.3] - 2023-02-15
+
 ### Added
 
 - [luaposix](https://github.com/luaposix/luaposix) v35.1 -> v36.1
+- [toml](https://github.com/LebJe/toml.lua) v0.1.1 -> v0.2.0
 
 ## [0.5.1] - 2023-01-10
 

@@ -1,7 +1,7 @@
 project(
   'luastatic',
   license: 'CC0',
-  meson_version: '>=0.64.0'
+  meson_version: '>=1.0.0'
 )
 
 # -------------------------------------------------

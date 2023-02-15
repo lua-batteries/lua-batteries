@@ -2,7 +2,7 @@ project(
   'inspect',
   version: '3.1.3',
   license: 'MIT',
-  meson_version: '>=0.64.0'
+  meson_version: '>=1.0.0'
 )
 
 # -------------------------------------------------

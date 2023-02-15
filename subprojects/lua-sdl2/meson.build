@@ -3,7 +3,7 @@ project(
   'c',
   version: '2.0.5',
   license: 'ISC',
-  meson_version: '>=0.64.0'
+  meson_version: '>=1.0.0'
 )
 
 # -------------------------------------------------

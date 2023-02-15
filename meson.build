@@ -1,12 +1,12 @@
 project(
   'lua-batteries',
-  version: '0.5.2',
+  version: '0.5.3',
   license: 'MIT',
   default_options: [
     'buildtype=release',
     'default_library=static'
   ],
-  meson_version: '>=0.64.0'
+  meson_version: '>=1.0.0'
 )
 
 system = host_machine.system()
@@ -145,7 +145,7 @@ endif
 
 if 'all' in modules or 'toml' in modules
   subproject('toml')
-  config += {'modules/toml': '0.1.1'}
+  config += {'modules/toml': '0.2.2'}
 endif
 
 if 'all' in modules or 'uuid' in modules

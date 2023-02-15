@@ -10,7 +10,7 @@ project(
     'cpp_rtti=false',
     'cpp_eh=none'
   ],
-  meson_version: '>=0.64.0'
+  meson_version: '>=1.0.0'
 )
 
 # -------------------------------------------------

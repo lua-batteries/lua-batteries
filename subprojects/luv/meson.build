@@ -3,7 +3,7 @@ project(
   'c',
   version: '1.44.2',
   license: 'Apache-2.0',
-  meson_version: '>=0.64.0'
+  meson_version: '>=1.0.0'
 )
 
 # -------------------------------------------------
