@@ -1,6 +1,6 @@
 project(
   'lua-batteries',
-  version: '0.5.3',
+  version: '0.5.4',
   license: 'MIT',
   default_options: [
     'buildtype=release',
@@ -145,7 +145,7 @@ endif
 
 if 'all' in modules or 'toml' in modules
   subproject('toml')
-  config += {'modules/toml': '0.2.2'}
+  config += {'modules/toml': '0.3.0'}
 endif
 
 if 'all' in modules or 'uuid' in modules

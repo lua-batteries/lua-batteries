@@ -1,7 +1,7 @@
 project(
   'toml',
   'cpp',
-  version: '0.2.2',
+  version: '0.3.0',
   license: 'MIT',
   default_options: ['cpp_std=c++17'],
   meson_version: '>=1.0.0'
@@ -82,11 +82,11 @@ lua_toml = static_library(
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'toml/0.2.0-0'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'toml/0.3.0-0'
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'toml.lua/toml-0.2.0-0.rockspec',
+  'toml.lua/toml-0.3.0-0.rockspec',
   install_dir: data_dir
 )
 

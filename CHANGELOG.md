@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+## [0.5.4] - 2023-02-21
+
+- [toml](https://github.com/LebJe/toml.lua) v0.2.0 -> v0.3.0
+
 ## [0.5.3] - 2023-02-15
 
 ### Added
@@ -72,7 +78,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.0] - 2022-11-12
 
-[Unreleased]: https://github.com/lua-batteries/lua-batteries/compare/v0.5.3...HEAD
+[Unreleased]: https://github.com/lua-batteries/lua-batteries/compare/v0.5.4...HEAD
+[0.5.4]: https://github.com/lua-batteries/lua-batteries/compare/v0.5.3...v0.5.4
 [0.5.3]: https://github.com/lua-batteries/lua-batteries/compare/v0.5.1...v0.5.3
 [0.5.1]: https://github.com/lua-batteries/lua-batteries/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/lua-batteries/lua-batteries/compare/v0.4.0...v0.5.0
