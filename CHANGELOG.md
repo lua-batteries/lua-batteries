@@ -7,9 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
-
 ## [0.5.4] - 2023-02-21
+
+### Added
 
 - [toml](https://github.com/LebJe/toml.lua) v0.2.0 -> v0.3.0
 
