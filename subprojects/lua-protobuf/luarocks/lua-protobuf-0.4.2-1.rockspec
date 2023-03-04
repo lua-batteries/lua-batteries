@@ -1,8 +1,8 @@
 package = "lua-protobuf"
-version = "0.4.1-1"
+version = "0.4.2-1"
 source = {
    url = "git+https://github.com/starwing/lua-protobuf.git",
-   tag = "0.4.1"
+   tag = "0.4.2"
 }
 description = {
    summary = "protobuf data support for Lua",

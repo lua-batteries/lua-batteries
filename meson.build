@@ -1,6 +1,6 @@
 project(
   'lua-batteries',
-  version: '0.5.4',
+  version: '0.5.5',
   license: 'MIT',
   default_options: [
     'buildtype=release',
@@ -85,7 +85,7 @@ endif
 
 if 'all' in modules or 'lua-protobuf' in modules
   subproject('lua-protobuf')
-  config += {'modules/lua-protobuf': '0.4.1'}
+  config += {'modules/lua-protobuf': '0.4.2'}
 endif
 
 if 'all' in modules or 'luasec' in modules
