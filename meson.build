@@ -1,6 +1,6 @@
 project(
   'lua-batteries',
-  version: '0.5.7',
+  version: '0.5.8',
   license: 'MIT',
   default_options: [
     'buildtype=release',
@@ -81,6 +81,11 @@ endif
 if 'all' in modules or 'luafilesystem' in modules
   subproject('luafilesystem')
   config += {'modules/luafilesystem': '1.8.0'}
+endif
+
+if 'all' in modules or 'luaossl' in modules
+  subproject('luaossl')
+  config += {'modules/luaossl': '20220711'}
 endif
 
 if 'all' in modules or 'lua-protobuf' in modules

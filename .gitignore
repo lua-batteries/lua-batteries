@@ -1,6 +1,7 @@
 build/*
 extra/*
 lua/*
+subprojects/luaossl/*
 subprojects/packagecache/*
 
 subprojects/freetype-2.12.1/*

@@ -12,6 +12,7 @@ option(
     'lrexlib-pcre2',
     'lua-cjson',
     'luafilesystem',
+    'luaossl',
     'lua-protobuf',
     'luasec',
     'luasocket',
