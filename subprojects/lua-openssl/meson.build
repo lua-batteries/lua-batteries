@@ -1,7 +1,7 @@
 project(
   'lua-openssl',
   'c',
-  version: '0.8.2',
+  version: '0.8.3',
   license: 'MIT',
   meson_version: '>=1.0.0'
 )
@@ -77,8 +77,6 @@ if system == 'windows'
   project_deps += cc.find_library('user32')
   project_deps += cc.find_library('gdi32')
   project_deps += cc.find_library('advapi32')
-else
-  lua_openssl_defines += ['-DPTHREADS']
 endif
 
 openssl_dep = dependency('openssl', required: false)
@@ -117,11 +115,11 @@ lua_openssl = static_library(
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'openssl/0.8.2-1'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'openssl/0.8.3-2'
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'luarocks/openssl-0.8.2-1.rockspec',
+  'luarocks/openssl-0.8.3-2.rockspec',
   install_dir: data_dir
 )
 

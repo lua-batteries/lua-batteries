@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- [luasec](https://github.com/brunoos/luasec) v1.2.0 -> v1.3.0
+- [openssl](https://github.com/zhaozg/lua-openssl) v0.8.2 -> v0.8.3
 - [lua-protobuf](https://github.com/starwing/lua-protobuf) v0.5.1 -> v0.5.2
 
 ## [0.5.4] - 2023-02-21

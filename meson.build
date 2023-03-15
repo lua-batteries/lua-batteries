@@ -1,6 +1,6 @@
 project(
   'lua-batteries',
-  version: '0.5.5',
+  version: '0.5.7',
   license: 'MIT',
   default_options: [
     'buildtype=release',
@@ -90,7 +90,7 @@ endif
 
 if 'all' in modules or 'luasec' in modules
   subproject('luasec')
-  config += {'modules/luasec': '1.2.0'}
+  config += {'modules/luasec': '1.3.0'}
 endif
 
 if 'all' in modules or 'luasocket' in modules
@@ -135,7 +135,7 @@ endif
 
 if 'all' in modules or 'openssl' in modules
   subproject('lua-openssl')
-  config += {'modules/openssl': '0.8.2'}
+  config += {'modules/openssl': '0.8.3'}
 endif
 
 if 'all' in modules or 'penlight' in modules

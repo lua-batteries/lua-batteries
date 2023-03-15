@@ -1,8 +1,9 @@
 package = "openssl"
-version = "0.8.2-1"
+version = "0.8.3-2"
+rockspec_format = "3.0"
 
 source = {
-  url = "https://github.com/zhaozg/lua-openssl/releases/download/0.8.2-1/openssl-0.8.2-1.tar.gz"
+  url = "https://github.com/zhaozg/lua-openssl/releases/download/0.8.3-2/openssl-0.8.3-2.tar.gz"
 }
 
 description = {
@@ -71,7 +72,7 @@ build = {
         "src/xstore.c"
       },
       incdirs = {"$(OPENSSL_DIR)/include", "deps/auxiliar", "deps/lua-compat/c-api"},
-      defines = {"PTHREADS"},
+      defines = {},
       libraries = {"ssl", "crypto"},
     }
   },
@@ -104,4 +105,9 @@ build = {
       }
     }
   },
+}
+
+test = {
+  type = "command",
+  command = "LUA=`luarocks config deploy_bin_dir`/`luarocks config lua_interpreter` && cd test && $LUA test.lua"
 }

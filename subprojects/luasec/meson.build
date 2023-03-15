@@ -1,7 +1,7 @@
 project(
   'luasec',
   'c',
-  version: '1.2.0',
+  version: '1.3.0',
   license: 'MIT',
   meson_version: '>=1.0.0'
 )
@@ -106,11 +106,11 @@ install_data(
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'luasec/1.2.0-1'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'luasec/1.3.0-1'
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'luasec/luasec-1.2.0-1.rockspec',
+  'luasec/luasec-1.3.0-1.rockspec',
   install_dir: data_dir
 )
 
