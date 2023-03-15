@@ -1,9 +1,8 @@
 [wrap-file]
-directory = luaossl
+directory = luaossl-rel-20220711
 
 source_url = https://github.com/wahern/luaossl/archive/refs/tags/rel-20220711.tar.gz
 source_filename = luaossl-rel-20220711.tar.gz
 source_hash = f16c4cd2c880f270c1c73daa0a4bfdd11ae3155b92a2086863731e06d241300b
-lead_directory_missing = luaossl
 
 patch_directory = luaossl

@@ -1,7 +1,8 @@
 build/*
 extra/*
 lua/*
-subprojects/luaossl/*
+subprojects/luaossl-rel-20220711/*
+subprojects/lua-5.4.4/*
 subprojects/packagecache/*
 
 subprojects/freetype-2.12.1/*

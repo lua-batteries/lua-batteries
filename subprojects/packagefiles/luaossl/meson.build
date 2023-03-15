@@ -19,7 +19,7 @@ if system == 'windows'
   module_suffix = 'dll'
 endif
 
-lua_dep = get_option('luajit') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
+lua_dep = get_option('luajit') ? subproject('luajit').get_variable('luajit_dep') : dependency('lua')
 lua_ver = get_option('luajit') ? '5.1' : '5.4'
 project_deps = [lua_dep]
 
@@ -27,11 +27,9 @@ project_deps = [lua_dep]
 # LUA MODULE
 # -------------------------------------------------
 
-# diff_files = luaossl/config.h.diff
-
 luaossl_sources = [
-  'luaossl-rel-20220711/src/openssl.c',
-  'luaossl-rel-20220711/vendor/compat53/c-api/compat-5.3.c'
+  'src/openssl.c',
+  'vendor/compat53/c-api/compat-5.3.c'
 ]
 luaossl_defines = [
   '-D_REENTRANT',
@@ -89,25 +87,25 @@ lua__openssl = static_library(
 # -------------------------------------------------
 
 install_data(
-  'luaossl-rel-20220711/src/openssl.lua',
+  'src/openssl.lua',
   install_dir: get_option('datadir') / 'lua' / lua_ver
 )
 
 install_data(
   [
-    'luaossl-rel-20220711/src/openssl.auxlib.lua',
-    'luaossl-rel-20220711/src/openssl.bignum.lua',
-    'luaossl-rel-20220711/src/openssl.cipher.lua',
-    'luaossl-rel-20220711/src/openssl.des.lua',
-    'luaossl-rel-20220711/src/openssl.digest.lua',
-    'luaossl-rel-20220711/src/openssl.hmac.lua',
-    'luaossl-rel-20220711/src/openssl.kdf.lua',
-    'luaossl-rel-20220711/src/openssl.pkcs12.lua',
-    'luaossl-rel-20220711/src/openssl.pkey.lua',
-    'luaossl-rel-20220711/src/openssl.pubkey.lua',
-    'luaossl-rel-20220711/src/openssl.rand.lua',
-    'luaossl-rel-20220711/src/openssl.ssl.lua',
-    'luaossl-rel-20220711/src/openssl.x509.lua'
+    'src/openssl.auxlib.lua',
+    'src/openssl.bignum.lua',
+    'src/openssl.cipher.lua',
+    'src/openssl.des.lua',
+    'src/openssl.digest.lua',
+    'src/openssl.hmac.lua',
+    'src/openssl.kdf.lua',
+    'src/openssl.pkcs12.lua',
+    'src/openssl.pkey.lua',
+    'src/openssl.pubkey.lua',
+    'src/openssl.rand.lua',
+    'src/openssl.ssl.lua',
+    'src/openssl.x509.lua'
   ],
   rename: [
     'auxlib.lua',
@@ -129,8 +127,8 @@ install_data(
 
 install_data(
   [
-    'luaossl-rel-20220711/src/openssl.ocsp.basic.lua',
-    'luaossl-rel-20220711/src/openssl.ocsp.response.lua'
+    'src/openssl.ocsp.basic.lua',
+    'src/openssl.ocsp.response.lua'
   ],
   rename: [
     'basic.lua',
@@ -140,21 +138,21 @@ install_data(
 )
 
 install_data(
-  'luaossl-rel-20220711/src/openssl.ssl.context.lua',
+  'src/openssl.ssl.context.lua',
   rename: 'context.lua',
   install_dir: get_option('datadir') / 'lua' / lua_ver / 'openssl/ssl'
 )
 
 install_data(
   [
-    'luaossl-rel-20220711/src/openssl.x509.altname.lua',
-    'luaossl-rel-20220711/src/openssl.x509.chain.lua',
-    'luaossl-rel-20220711/src/openssl.x509.crl.lua',
-    'luaossl-rel-20220711/src/openssl.x509.csr.lua',
-    'luaossl-rel-20220711/src/openssl.x509.extension.lua',
-    'luaossl-rel-20220711/src/openssl.x509.name.lua',
-    'luaossl-rel-20220711/src/openssl.x509.store.lua',
-    'luaossl-rel-20220711/src/openssl.x509.verify_param.lua'
+    'src/openssl.x509.altname.lua',
+    'src/openssl.x509.chain.lua',
+    'src/openssl.x509.crl.lua',
+    'src/openssl.x509.csr.lua',
+    'src/openssl.x509.extension.lua',
+    'src/openssl.x509.name.lua',
+    'src/openssl.x509.store.lua',
+    'src/openssl.x509.verify_param.lua'
   ],
   rename: [
     'altname.lua',
@@ -182,12 +180,12 @@ install_data(
 )
 
 install_subdir(
-  'luaossl-rel-20220711/doc',
+  'doc',
   install_dir: data_dir
 )
 
 install_subdir(
-  'luaossl-rel-20220711/examples',
+  'examples',
   install_dir: data_dir
 )
 

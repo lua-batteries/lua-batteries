@@ -1,12 +1,4 @@
 option(
-  'readline',
-  type: 'boolean',
-  value: false,
-  description: 'link lua library with readline library',
-  yield: true
-)
-
-option(
   'apps',
   type: 'boolean',
   value : true,
