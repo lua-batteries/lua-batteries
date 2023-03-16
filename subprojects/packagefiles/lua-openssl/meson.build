@@ -18,7 +18,7 @@ if system == 'windows'
   module_suffix = 'dll'
 endif
 
-lua_dep = get_option('luajit') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
+lua_dep = get_option('luajit') ? dependency('luajit') : dependency('lua')
 lua_ver = get_option('luajit') ? '5.1' : '5.4'
 project_deps = [lua_dep]
 
@@ -27,46 +27,46 @@ project_deps = [lua_dep]
 # -------------------------------------------------
 
 lua_openssl_sources = [
-  'lua-openssl/deps/auxiliar/auxiliar.c',
-  'lua-openssl/deps/auxiliar/subsidiar.c',
-  'lua-openssl/src/asn1.c',
-  'lua-openssl/src/bio.c',
-  'lua-openssl/src/callback.c',
-  'lua-openssl/src/cipher.c',
-  'lua-openssl/src/cms.c',
-  'lua-openssl/src/compat.c',
-  'lua-openssl/src/crl.c',
-  'lua-openssl/src/csr.c',
-  'lua-openssl/src/dh.c',
-  'lua-openssl/src/digest.c',
-  'lua-openssl/src/dsa.c',
-  'lua-openssl/src/ec.c',
-  'lua-openssl/src/engine.c',
-  'lua-openssl/src/hmac.c',
-  'lua-openssl/src/lbn.c',
-  'lua-openssl/src/lhash.c',
-  'lua-openssl/src/misc.c',
-  'lua-openssl/src/ocsp.c',
-  'lua-openssl/src/openssl.c',
-  'lua-openssl/src/ots.c',
-  'lua-openssl/src/pkcs7.c',
-  'lua-openssl/src/pkcs12.c',
-  'lua-openssl/src/pkey.c',
-  'lua-openssl/src/rsa.c',
-  'lua-openssl/src/srp.c',
-  'lua-openssl/src/ssl.c',
-  'lua-openssl/src/th-lock.c',
-  'lua-openssl/src/util.c',
-  'lua-openssl/src/x509.c',
-  'lua-openssl/src/xalgor.c',
-  'lua-openssl/src/xattrs.c',
-  'lua-openssl/src/xexts.c',
-  'lua-openssl/src/xname.c',
-  'lua-openssl/src/xstore.c'
+  'deps/auxiliar/auxiliar.c',
+  'deps/auxiliar/subsidiar.c',
+  'src/asn1.c',
+  'src/bio.c',
+  'src/callback.c',
+  'src/cipher.c',
+  'src/cms.c',
+  'src/compat.c',
+  'src/crl.c',
+  'src/csr.c',
+  'src/dh.c',
+  'src/digest.c',
+  'src/dsa.c',
+  'src/ec.c',
+  'src/engine.c',
+  'src/hmac.c',
+  'src/lbn.c',
+  'src/lhash.c',
+  'src/misc.c',
+  'src/ocsp.c',
+  'src/openssl.c',
+  'src/ots.c',
+  'src/pkcs7.c',
+  'src/pkcs12.c',
+  'src/pkey.c',
+  'src/rsa.c',
+  'src/srp.c',
+  'src/ssl.c',
+  'src/th-lock.c',
+  'src/util.c',
+  'src/x509.c',
+  'src/xalgor.c',
+  'src/xattrs.c',
+  'src/xexts.c',
+  'src/xname.c',
+  'src/xstore.c'
 ]
 lua_openssl_include = [
-  include_directories('lua-openssl/deps/auxiliar'),
-  include_directories('lua-openssl/deps/lua-compat/c-api')
+  include_directories('deps/auxiliar'),
+  include_directories('deps/lua-compat/c-api')
 ]
 lua_openssl_defines = []
 
@@ -115,16 +115,16 @@ lua_openssl = static_library(
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'openssl/0.8.3-2'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'openssl/0.8.3-1'
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'luarocks/openssl-0.8.3-2.rockspec',
+  'luarocks/openssl-0.8.3-1.rockspec',
   install_dir: data_dir
 )
 
 install_data(
-  'lua-openssl/README.md',
+  'README.md',
   install_dir: data_dir / 'docs'
 )
 

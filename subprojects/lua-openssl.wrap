@@ -1,0 +1,8 @@
+[wrap-file]
+directory = openssl-0.8.3-1
+
+source_url = https://github.com/zhaozg/lua-openssl/releases/download/0.8.3-1/openssl-0.8.3-1.tar.gz
+source_filename = lua-openssl-0.8.3-1.tar.gz
+source_hash = d8c50601cb0a04e2dfbd8d8e57f4cf16a4fe59bdca8036deb8bc26f700f2eb8c
+
+patch_directory = lua-openssl

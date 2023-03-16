@@ -4,6 +4,7 @@ lua/*
 subprojects/luaossl-rel-20220711/*
 subprojects/lua-5.4.4/*
 subprojects/LuaJIT-2.1.0-beta3/*
+subprojects/openssl-0.8.3-1/*
 subprojects/packagecache/*
 
 subprojects/freetype-2.12.1/*

@@ -1,9 +1,9 @@
 package = "openssl"
-version = "0.8.3-2"
+version = "0.8.3-1"
 rockspec_format = "3.0"
 
 source = {
-  url = "https://github.com/zhaozg/lua-openssl/releases/download/0.8.3-2/openssl-0.8.3-2.tar.gz"
+  url = "https://github.com/zhaozg/lua-openssl/releases/download/0.8.3-1/openssl-0.8.3-1.tar.gz"
 }
 
 description = {
