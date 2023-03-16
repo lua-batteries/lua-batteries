@@ -19,7 +19,7 @@ if system == 'windows'
   module_suffix = 'dll'
 endif
 
-lua_dep = get_option('luajit') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
+lua_dep = get_option('luajit') ? dependency('luajit') : dependency('lua')
 lua_ver = get_option('luajit') ? '5.1' : '5.4'
 project_deps = [lua_dep]
 
@@ -28,18 +28,18 @@ project_deps = [lua_dep]
 # -------------------------------------------------
 
 lanes_sources = [
-  'lanes/src/cancel.c',
-  'lanes/src/compat.c',
-  'lanes/src/deep.c',
-  'lanes/src/keeper.c',
-  'lanes/src/lanes.c',
-  'lanes/src/linda.c',
-  'lanes/src/tools.c',
-  'lanes/src/state.c',
-  'lanes/src/threading.c',
-  'lanes/src/universe.c'
+  'src/cancel.c',
+  'src/compat.c',
+  'src/deep.c',
+  'src/keeper.c',
+  'src/lanes.c',
+  'src/linda.c',
+  'src/tools.c',
+  'src/state.c',
+  'src/threading.c',
+  'src/universe.c'
 ]
-lanes_include = include_directories('lanes/src')
+lanes_include = include_directories('src')
 project_deps += dependency('threads', required: false)
 
 shared_module(
@@ -68,7 +68,7 @@ lua_lanes = static_library(
 # -------------------------------------------------
 
 install_data(
-  'lanes/src/lanes.lua',
+  'src/lanes.lua',
   install_dir: get_option('datadir') / 'lua' / lua_ver
 )
 
@@ -76,16 +76,16 @@ install_data(
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'lanes/3.16.0-0'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / '3.16.0-0'
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'lanes/lanes-3.16.0-0.rockspec',
+  'lanes-3.16.0-0.rockspec',
   install_dir: data_dir
 )
 
 install_subdir(
-  'lanes/docs',
+  'docs',
   install_dir: data_dir
 )
 

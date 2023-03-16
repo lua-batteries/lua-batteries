@@ -1,0 +1,8 @@
+[wrap-file]
+directory = lanes-3.16.0
+
+source_url = https://github.com/LuaLanes/lanes/archive/refs/tags/v3.16.0.tar.gz
+source_filename = lanes-3.16.0.tar.gz
+source_hash = 4e6d2012ab8b47fdea7d7f778cb1cd196e8987e6a87dd463eeb710097d9b0ca7
+
+patch_directory = lanes
