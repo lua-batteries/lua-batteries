@@ -19,7 +19,7 @@ if system == 'windows'
   module_suffix = 'dll'
 endif
 
-lua_dep = get_option('luajit') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
+lua_dep = get_option('luajit') ? dependency('luajit') : dependency('lua')
 lua_ver = get_option('luajit') ? '5.1' : '5.4'
 project_deps = [lua_dep]
 
@@ -28,10 +28,10 @@ project_deps = [lua_dep]
 # -------------------------------------------------
 
 ltui_sources = [
-  'ltui/src/core/curses/curses.c'
+  'src/core/curses/curses.c'
 ]
 ltui_includes = [
-  include_directories('ltui/src/core/curses')
+  include_directories('src/core/curses')
 ]
 ltui_defines = []
 # ltui_defines = [
@@ -42,58 +42,58 @@ ltui_defines = []
 
 if system == 'windows'
   ltui_sources += [
-    'ltui/src/core/pdcurses/pdcurses/addch.c',
-    'ltui/src/core/pdcurses/pdcurses/addchstr.c',
-    'ltui/src/core/pdcurses/pdcurses/addstr.c',
-    'ltui/src/core/pdcurses/pdcurses/attr.c',
-    'ltui/src/core/pdcurses/pdcurses/beep.c',
-    'ltui/src/core/pdcurses/pdcurses/bkgd.c',
-    'ltui/src/core/pdcurses/pdcurses/border.c',
-    'ltui/src/core/pdcurses/pdcurses/clear.c',
-    'ltui/src/core/pdcurses/pdcurses/color.c',
-    'ltui/src/core/pdcurses/pdcurses/debug.c',
-    'ltui/src/core/pdcurses/pdcurses/delch.c',
-    'ltui/src/core/pdcurses/pdcurses/deleteln.c',
-    'ltui/src/core/pdcurses/pdcurses/deprec.c',
-    'ltui/src/core/pdcurses/pdcurses/getch.c',
-    'ltui/src/core/pdcurses/pdcurses/getstr.c',
-    'ltui/src/core/pdcurses/pdcurses/getyx.c',
-    'ltui/src/core/pdcurses/pdcurses/inch.c',
-    'ltui/src/core/pdcurses/pdcurses/inchstr.c',
-    'ltui/src/core/pdcurses/pdcurses/initscr.c',
-    'ltui/src/core/pdcurses/pdcurses/inopts.c',
-    'ltui/src/core/pdcurses/pdcurses/insch.c',
-    'ltui/src/core/pdcurses/pdcurses/insstr.c',
-    'ltui/src/core/pdcurses/pdcurses/instr.c',
-    'ltui/src/core/pdcurses/pdcurses/kernel.c',
-    'ltui/src/core/pdcurses/pdcurses/keyname.c',
-    'ltui/src/core/pdcurses/pdcurses/mouse.c',
-    'ltui/src/core/pdcurses/pdcurses/move.c',
-    'ltui/src/core/pdcurses/pdcurses/outopts.c',
-    'ltui/src/core/pdcurses/pdcurses/overlay.c',
-    'ltui/src/core/pdcurses/pdcurses/pad.c',
-    'ltui/src/core/pdcurses/pdcurses/panel.c',
-    'ltui/src/core/pdcurses/pdcurses/printw.c',
-    'ltui/src/core/pdcurses/pdcurses/refresh.c',
-    'ltui/src/core/pdcurses/pdcurses/scanw.c',
-    'ltui/src/core/pdcurses/pdcurses/scroll.c',
-    'ltui/src/core/pdcurses/pdcurses/scr_dump.c',
-    'ltui/src/core/pdcurses/pdcurses/slk.c',
-    'ltui/src/core/pdcurses/pdcurses/termattr.c',
-    'ltui/src/core/pdcurses/pdcurses/terminfo.c',
-    'ltui/src/core/pdcurses/pdcurses/touch.c',
-    'ltui/src/core/pdcurses/pdcurses/util.c',
-    'ltui/src/core/pdcurses/pdcurses/window.c',
-    'ltui/src/core/pdcurses/win32/pdcclip.c',
-    'ltui/src/core/pdcurses/win32/pdcdisp.c',
-    'ltui/src/core/pdcurses/win32/pdcgetsc.c',
-    'ltui/src/core/pdcurses/win32/pdckbd.c',
-    'ltui/src/core/pdcurses/win32/pdcscrn.c',
-    'ltui/src/core/pdcurses/win32/pdcsetsc.c',
-    'ltui/src/core/pdcurses/win32/pdcutil.c'
+    'src/core/pdcurses/pdcurses/addch.c',
+    'src/core/pdcurses/pdcurses/addchstr.c',
+    'src/core/pdcurses/pdcurses/addstr.c',
+    'src/core/pdcurses/pdcurses/attr.c',
+    'src/core/pdcurses/pdcurses/beep.c',
+    'src/core/pdcurses/pdcurses/bkgd.c',
+    'src/core/pdcurses/pdcurses/border.c',
+    'src/core/pdcurses/pdcurses/clear.c',
+    'src/core/pdcurses/pdcurses/color.c',
+    'src/core/pdcurses/pdcurses/debug.c',
+    'src/core/pdcurses/pdcurses/delch.c',
+    'src/core/pdcurses/pdcurses/deleteln.c',
+    'src/core/pdcurses/pdcurses/deprec.c',
+    'src/core/pdcurses/pdcurses/getch.c',
+    'src/core/pdcurses/pdcurses/getstr.c',
+    'src/core/pdcurses/pdcurses/getyx.c',
+    'src/core/pdcurses/pdcurses/inch.c',
+    'src/core/pdcurses/pdcurses/inchstr.c',
+    'src/core/pdcurses/pdcurses/initscr.c',
+    'src/core/pdcurses/pdcurses/inopts.c',
+    'src/core/pdcurses/pdcurses/insch.c',
+    'src/core/pdcurses/pdcurses/insstr.c',
+    'src/core/pdcurses/pdcurses/instr.c',
+    'src/core/pdcurses/pdcurses/kernel.c',
+    'src/core/pdcurses/pdcurses/keyname.c',
+    'src/core/pdcurses/pdcurses/mouse.c',
+    'src/core/pdcurses/pdcurses/move.c',
+    'src/core/pdcurses/pdcurses/outopts.c',
+    'src/core/pdcurses/pdcurses/overlay.c',
+    'src/core/pdcurses/pdcurses/pad.c',
+    'src/core/pdcurses/pdcurses/panel.c',
+    'src/core/pdcurses/pdcurses/printw.c',
+    'src/core/pdcurses/pdcurses/refresh.c',
+    'src/core/pdcurses/pdcurses/scanw.c',
+    'src/core/pdcurses/pdcurses/scroll.c',
+    'src/core/pdcurses/pdcurses/scr_dump.c',
+    'src/core/pdcurses/pdcurses/slk.c',
+    'src/core/pdcurses/pdcurses/termattr.c',
+    'src/core/pdcurses/pdcurses/terminfo.c',
+    'src/core/pdcurses/pdcurses/touch.c',
+    'src/core/pdcurses/pdcurses/util.c',
+    'src/core/pdcurses/pdcurses/window.c',
+    'src/core/pdcurses/win32/pdcclip.c',
+    'src/core/pdcurses/win32/pdcdisp.c',
+    'src/core/pdcurses/win32/pdcgetsc.c',
+    'src/core/pdcurses/win32/pdckbd.c',
+    'src/core/pdcurses/win32/pdcscrn.c',
+    'src/core/pdcurses/win32/pdcsetsc.c',
+    'src/core/pdcurses/win32/pdcutil.c'
   ]
   ltui_defines += ['-DPDCURSES', '-DPDC_WIDE']
-  ltui_includes += include_directories('ltui/src/core/pdcurses')
+  ltui_includes += include_directories('src/core/pdcurses')
   project_deps += cc.find_library('kernel32')
   project_deps += cc.find_library('user32')
   project_deps += cc.find_library('gdi32')
@@ -136,12 +136,12 @@ lua_ltui = static_library(
 # -------------------------------------------------
 
 install_data(
-  'ltui/src/ltui.lua',
+  'src/ltui.lua',
   install_dir: get_option('datadir') / 'lua' / lua_ver
 )
 
 install_subdir(
-  'ltui/src/ltui',
+  'src/ltui',
   install_dir: get_option('datadir') / 'lua' / lua_ver
 )
 
@@ -153,12 +153,12 @@ data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'ltui/2.7-1'
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'ltui/rockspec/ltui-2.7-1.rockspec',
+  'rockspec/ltui-2.7-1.rockspec',
   install_dir: data_dir
 )
 
 install_subdir(
-  'ltui/tests',
+  'tests',
   install_dir: data_dir
 )
 

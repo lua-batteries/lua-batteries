@@ -1,0 +1,8 @@
+[wrap-file]
+directory = ltui-2.7
+
+source_url = https://github.com/tboox/ltui/archive/refs/tags/v2.7.tar.gz
+source_filename = ltui-2.7.tar.gz
+source_hash = f660569e836677f3130c05239313956c13283625f4e02087075e9bb10d7937b5
+
+patch_directory = ltui

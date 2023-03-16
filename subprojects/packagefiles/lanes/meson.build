@@ -76,7 +76,7 @@ install_data(
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / '3.16.0-0'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'lanes/3.16.0-0'
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
