@@ -1,0 +1,8 @@
+[wrap-file]
+directory = lua-protobuf-0.4.2
+
+source_url = https://github.com/starwing/lua-protobuf/archive/refs/tags/0.4.2.tar.gz
+source_filename = lua-protobuf-0.4.2.tar.gz
+source_hash = 8dfb5e4cbe89ae0edacb706a19ccc5e89343f7dd64c04dbe256045921862a853
+
+patch_directory = lua-protobuf

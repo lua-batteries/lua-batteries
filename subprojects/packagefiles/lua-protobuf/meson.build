@@ -19,7 +19,7 @@ if system == 'windows'
   module_suffix = 'dll'
 endif
 
-lua_dep = get_option('luajit') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
+lua_dep = get_option('luajit') ? dependency('luajit') : dependency('lua')
 lua_ver = get_option('luajit') ? '5.1' : '5.4'
 project_deps = [lua_dep]
 
@@ -42,7 +42,7 @@ endif
 
 shared_module(
   'pb',
-  'lua-protobuf/pb.c',
+  'pb.c',
   link_args: lua_protobuf_link_args,
   dependencies: project_deps,
   name_prefix: '',
@@ -53,7 +53,7 @@ shared_module(
 
 lua_pb = static_library(
   'lua.pb',
-  'lua-protobuf/pb.c',
+  'pb.c',
   link_args: lua_protobuf_link_args,
   dependencies: project_deps,
   pic: true,
@@ -66,7 +66,7 @@ lua_pb = static_library(
 # -------------------------------------------------
 
 install_data(
-  'lua-protobuf/protoc.lua',
+  'protoc.lua',
   install_dir: get_option('datadir') / 'lua' / lua_ver
 )
 
@@ -83,7 +83,7 @@ install_data(
 )
 
 install_data(
-  ['lua-protobuf/README.md', 'lua-protobuf/README.zh.md'],
+  ['README.md', 'README.zh.md'],
   install_dir: data_dir / 'docs'
 )
 
