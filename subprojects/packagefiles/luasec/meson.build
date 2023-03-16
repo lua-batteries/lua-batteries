@@ -18,7 +18,7 @@ if system == 'windows'
   module_suffix = 'dll'
 endif
 
-lua_dep = get_option('luajit') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
+lua_dep = get_option('luajit') ? dependency('luajit') : dependency('lua')
 lua_ver = get_option('luajit') ? '5.1' : '5.4'
 project_deps = [lua_dep]
 
@@ -27,19 +27,19 @@ project_deps = [lua_dep]
 # -------------------------------------------------
 
 luasec_sources = [
-  'luasec/src/options.c',
-  'luasec/src/config.c',
-  'luasec/src/ec.c', 
-  'luasec/src/x509.c',
-  'luasec/src/context.c',
-  'luasec/src/ssl.c', 
-  'luasec/src/luasocket/buffer.c',
-  'luasec/src/luasocket/io.c',
-  'luasec/src/luasocket/timeout.c'
+  'src/options.c',
+  'src/config.c',
+  'src/ec.c', 
+  'src/x509.c',
+  'src/context.c',
+  'src/ssl.c', 
+  'src/luasocket/buffer.c',
+  'src/luasocket/io.c',
+  'src/luasocket/timeout.c'
 ]
 luasec_include = [
-  include_directories('luasec/src'),
-  include_directories('luasec/src/luasocket')
+  include_directories('src'),
+  include_directories('src/luasocket')
 ]
 luasec_defines = []
 
@@ -49,11 +49,11 @@ if system == 'windows'
     '-DLSEC_API=__declspec(dllexport)', '-DWITH_LUASOCKET', '-DLUASOCKET_DEBUG', '-DLUASEC_INET_NTOP', 
     '-DWINVER=0x0501', '-D_WIN32_WINNT=0x0501', '-DNTDDI_VERSION=0x05010300'
   ]
-  luasec_sources += 'luasec/src/luasocket/wsocket.c'
+  luasec_sources += 'src/luasocket/wsocket.c'
   project_deps += cc.find_library('ws2_32')
 else
   luasec_defines += ['-DWITH_LUASOCKET', '-DLUASOCKET_DEBUG']
-  luasec_sources += 'luasec/src/luasocket/usocket.c'
+  luasec_sources += 'src/luasocket/usocket.c'
 endif
 
 openssl_dep = dependency('openssl', required: false)
@@ -93,12 +93,12 @@ lua_ssl = static_library(
 # -------------------------------------------------
 
 install_data(
-  'luasec/src/ssl.lua',
+  'src/ssl.lua',
   install_dir: get_option('datadir') / 'lua' / lua_ver
 )
 
 install_data(
-  'luasec/src/https.lua',
+  'src/https.lua',
   install_dir: get_option('datadir') / 'lua' / lua_ver / 'ssl'
 )
 
@@ -110,12 +110,12 @@ data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'luasec/1.3.0-1'
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'luasec/luasec-1.3.0-1.rockspec',
+  'luasec-1.3.0-1.rockspec',
   install_dir: data_dir
 )
 
 install_subdir(
-  'luasec/samples',
+  'samples',
   install_dir: data_dir
 )
 
