@@ -1,0 +1,8 @@
+[wrap-file]
+directory = luautf8-0.1.5
+
+source_url = https://github.com/starwing/luautf8/archive/refs/tags/0.1.5.tar.gz
+source_filename = luautf8-0.1.5.tar.gz
+source_hash = f4bddecc87521c53d37c09b9e9edd70a4ab35b0074040f303cbe3a0e088af21c
+
+patch_directory = luautf8
