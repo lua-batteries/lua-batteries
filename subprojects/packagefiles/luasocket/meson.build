@@ -19,7 +19,7 @@ if system == 'windows'
   module_suffix = 'dll'
 endif
 
-lua_dep = get_option('luajit') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
+lua_dep = get_option('luajit') ? dependency('luajit') : dependency('lua')
 lua_ver = get_option('luajit') ? '5.1' : '5.4'
 project_deps = [lua_dep]
 
@@ -29,20 +29,20 @@ project_deps = [lua_dep]
 
 pkg_config_libs = []
 luasocket_socket_sources = [
-  'luasocket/src/luasocket.c',
-  'luasocket/src/timeout.c',
-  'luasocket/src/buffer.c',
-  'luasocket/src/io.c',
-  'luasocket/src/auxiliar.c',
-  'luasocket/src/options.c',
-  'luasocket/src/inet.c',
-  'luasocket/src/except.c',
-  'luasocket/src/select.c',
-  'luasocket/src/tcp.c',
-  'luasocket/src/udp.c',
-  'luasocket/src/compat.c'
+  'src/luasocket.c',
+  'src/timeout.c',
+  'src/buffer.c',
+  'src/io.c',
+  'src/auxiliar.c',
+  'src/options.c',
+  'src/inet.c',
+  'src/except.c',
+  'src/select.c',
+  'src/tcp.c',
+  'src/udp.c',
+  'src/compat.c'
 ]
-luasocket_include = include_directories('luasocket/src')
+luasocket_include = include_directories('src')
 luasocket_defines = []
 
 if system == 'windows'
@@ -60,26 +60,26 @@ elif system == 'linux'
 endif
 
 if system == 'windows'
-  luasocket_socket_sources += 'luasocket/src/wsocket.c'
+  luasocket_socket_sources += 'src/wsocket.c'
   project_deps += cc.find_library('ws2_32')
 else
-  luasocket_socket_sources += 'luasocket/src/usocket.c'
+  luasocket_socket_sources += 'src/usocket.c'
 
   if system == 'haiku'
     project_deps += cc.find_library('network')
   endif
 
   unix_sources = [
-    'luasocket/src/buffer.c',
-    'luasocket/src/compat.c',
-    'luasocket/src/auxiliar.c',
-    'luasocket/src/options.c',
-    'luasocket/src/timeout.c',
-    'luasocket/src/io.c',
-    'luasocket/src/usocket.c',
-    'luasocket/src/unix.c',
-    'luasocket/src/unixdgram.c',
-    'luasocket/src/unixstream.c'
+    'src/buffer.c',
+    'src/compat.c',
+    'src/auxiliar.c',
+    'src/options.c',
+    'src/timeout.c',
+    'src/io.c',
+    'src/usocket.c',
+    'src/unix.c',
+    'src/unixdgram.c',
+    'src/unixstream.c'
   ]
 
   shared_module(
@@ -106,14 +106,14 @@ else
   )
 
   serial_sources = [
-    'luasocket/src/buffer.c',
-    'luasocket/src/compat.c',
-    'luasocket/src/auxiliar.c',
-    'luasocket/src/options.c',
-    'luasocket/src/timeout.c',
-    'luasocket/src/io.c',
-    'luasocket/src/usocket.c',
-    'luasocket/src/serial.c'
+    'src/buffer.c',
+    'src/compat.c',
+    'src/auxiliar.c',
+    'src/options.c',
+    'src/timeout.c',
+    'src/io.c',
+    'src/usocket.c',
+    'src/serial.c'
   ]
 
   shared_module(
@@ -143,7 +143,7 @@ endif
 # mime.core
 shared_module(
   '_core',
-  ['luasocket/src/mime.c', 'luasocket/src/compat.c'],
+  ['src/mime.c', 'src/compat.c'],
   c_args: luasocket_defines,
   include_directories: luasocket_include,
   dependencies: project_deps,
@@ -155,7 +155,7 @@ shared_module(
 
 pkg_config_libs += static_library(
   'lua.mime.core',
-  ['luasocket/src/mime.c', 'luasocket/src/compat.c'],
+  ['src/mime.c', 'src/compat.c'],
   c_args: luasocket_defines,
   include_directories: luasocket_include,
   dependencies: project_deps,
@@ -194,21 +194,21 @@ pkg_config_libs += static_library(
 
 install_data(
   [
-    'luasocket/src/ltn12.lua',
-    'luasocket/src/mime.lua',
-    'luasocket/src/socket.lua'
+    'src/ltn12.lua',
+    'src/mime.lua',
+    'src/socket.lua'
   ],
   install_dir: get_option('datadir') / 'lua' / lua_ver
 )
 
 install_data(
   [
-    'luasocket/src/ftp.lua',
-    'luasocket/src/headers.lua',
-    'luasocket/src/http.lua',
-    'luasocket/src/smtp.lua',
-    'luasocket/src/tp.lua',
-    'luasocket/src/url.lua'
+    'src/ftp.lua',
+    'src/headers.lua',
+    'src/http.lua',
+    'src/smtp.lua',
+    'src/tp.lua',
+    'src/url.lua'
   ],
   install_dir: get_option('datadir') / 'lua' / lua_ver / 'socket'
 )
@@ -221,27 +221,27 @@ data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'luasocket/3.1.0
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'luasocket/rockspecs/luasocket-3.1.0-1.rockspec',
+  'rockspecs/luasocket-3.1.0-1.rockspec',
   install_dir: data_dir
 )
 
 install_subdir(
-  'luasocket/docs',
+  'docs',
   install_dir: data_dir
 )
 
 install_subdir(
-  'luasocket/samples',
+  'samples',
   install_dir: data_dir
 )
 
 install_subdir(
-  'luasocket/etc',
+  'etc',
   install_dir: data_dir
 )
 
 install_subdir(
-  'luasocket/test',
+  'test',
   install_dir: data_dir
 )
 
