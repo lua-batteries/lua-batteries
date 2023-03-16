@@ -1,0 +1,8 @@
+[wrap-file]
+directory = lua-cjson-2.1.0.12
+
+source_url = https://github.com/openresty/lua-cjson/archive/refs/tags/2.1.0.12.tar.gz
+source_filename = lua-cjson-2.1.0.12.tar.gz
+source_hash = 97daf9b1626c30abac3cfa8160c88e0e95d0aac33dc5eafbd27fe507fbd86499
+
+patch_directory = lua-cjson

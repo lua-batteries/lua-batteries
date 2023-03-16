@@ -1,7 +1,7 @@
 project(
   'lua-cjson',
   'c',
-  version: '2.1.0.10',
+  version: '2.1.0.12',
   license: 'MIT',
   meson_version: '>=1.0.0'
 )
@@ -19,7 +19,7 @@ if system == 'windows'
   module_suffix = 'dll'
 endif
 
-lua_dep = get_option('luajit') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
+lua_dep = get_option('luajit') ? dependency('luajit') : dependency('lua')
 lua_ver = get_option('luajit') ? '5.1' : '5.4'
 project_deps = [lua_dep]
 
@@ -28,9 +28,9 @@ project_deps = [lua_dep]
 # -------------------------------------------------
 
 lua_cjson_sources = [
-  'lua-cjson/lua_cjson.c',
-  'lua-cjson/strbuf.c',
-  'lua-cjson/fpconv.c'
+  'lua_cjson.c',
+  'strbuf.c',
+  'fpconv.c'
 ]
 lua_cjson_defines = []
 lua_cjson_link_args = []
@@ -76,7 +76,7 @@ lua_cjson = static_library(
 # -------------------------------------------------
 
 install_data(
-  'lua-cjson/lua/cjson/util.lua',
+  'lua/cjson/util.lua',
   install_dir: get_option('datadir') / 'lua' / lua_ver / 'cjson'
 )
 
@@ -84,11 +84,11 @@ install_data(
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'lua-cjson/2.1.0.10-1'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'lua-cjson/2.1.0.12-1'
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'lua-cjson/lua-cjson-2.1.0.10-1.rockspec',
+  'luarocks/lua-cjson-2.1.0.12-1.rockspec',
   install_dir: data_dir
 )
 
@@ -97,14 +97,14 @@ install_data(
 # -------------------------------------------------
 
 install_data(
-  ['lua-cjson/lua/json2lua.lua', 'lua-cjson/lua/lua2json.lua'],
+  ['lua/json2lua.lua', 'lua/lua2json.lua'],
   install_dir: data_dir / 'bin'
 )
 
 scripts_conf = configuration_data({
   'BIN': get_option('luajit') ? 'luajit' : 'lua',
   'LUA_VER': lua_ver,
-  'ROCKSPEC_VER': '2.1.0.10-1'
+  'ROCKSPEC_VER': '2.1.0.12-1'
 })
 
 install_data(

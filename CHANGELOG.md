@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - [luaossl](https://github.com/wahern/luaossl) v20220711
+- [lua-cjson](https://github.com/openresty/lua-cjson) v2.1.0.10 -> v2.1.0.12
 - [luasec](https://github.com/brunoos/luasec) v1.2.0 -> v1.3.0
 - [openssl](https://github.com/zhaozg/lua-openssl) v0.8.2 -> v0.8.3
 - [lua-protobuf](https://github.com/starwing/lua-protobuf) v0.5.1 -> v0.5.2

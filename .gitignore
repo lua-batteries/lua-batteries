@@ -8,6 +8,7 @@ subprojects/openssl-0.8.3-1/*
 subprojects/lanes-3.16.0/*
 subprojects/ltui-2.7/*
 subprojects/lua-protobuf-0.4.2/*
+subprojects/lua-cjson-2.1.0.12/*
 subprojects/packagecache/*
 
 subprojects/freetype-2.12.1/*
