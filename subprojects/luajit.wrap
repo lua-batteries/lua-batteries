@@ -1,0 +1,11 @@
+[wrap-file]
+directory = LuaJIT-2.1.0-beta3
+
+source_url = https://github.com/LuaJIT/LuaJIT/archive/refs/tags/v2.1.0-beta3.tar.gz
+source_filename = LuaJIT-2.1.0-beta3.tar.gz
+source_hash = 409f7fe570d3c16558e594421c47bdd130238323c9d6fd6c83dedd2aaeb082a8
+
+patch_directory = luajit
+
+[provide]
+luajit = luajit_dep

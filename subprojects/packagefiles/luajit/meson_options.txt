@@ -1,11 +1,4 @@
 option(
-  'ios',
-  type: 'boolean',
-  value: false,
-  description: 'target ios devices',
-)
-
-option(
   'apps',
   type: 'boolean',
   value : true,

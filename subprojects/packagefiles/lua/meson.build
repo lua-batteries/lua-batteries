@@ -4,7 +4,7 @@ project(
   version: '5.4.4',
   license: 'MIT',
   default_options: ['c_std=gnu99'],
-  meson_version: '>=0.64.0'
+  meson_version: '>=1.0.0'
 )
 
 cc = meson.get_compiler('c')

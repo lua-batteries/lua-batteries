@@ -19,7 +19,7 @@ if system == 'windows'
   module_suffix = 'dll'
 endif
 
-lua_dep = get_option('luajit') ? subproject('luajit').get_variable('luajit_dep') : dependency('lua')
+lua_dep = get_option('luajit') ? dependency('luajit') : dependency('lua')
 lua_ver = get_option('luajit') ? '5.1' : '5.4'
 project_deps = [lua_dep]
 

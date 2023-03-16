@@ -3,16 +3,15 @@ project(
   'c',
   version: '2.1.0-beta3',
   license: 'MIT',
-  meson_version: '>=0.64.0'
+  meson_version: '>=1.0.0'
 )
 
 cc = meson.get_compiler('c')
 cc_id = cc.get_id()
 system = host_machine.system()
 system_ps3 = false
-system_ios = get_option('ios')
 
-luajit_source_dir = include_directories('LuaJIT/src')
+luajit_source_dir = include_directories('src')
 libm = cc.find_library('m', required: false) # required on linux and darwin
 luajit_dependencies = [
   libm,
@@ -29,13 +28,13 @@ lj_defines = [
   '-DLUA_ROOT="' + get_option('prefix') + '"'
 ]
 
-if system == 'darwin' and not system_ios
+if system == 'darwin'
   lj_defines += '-mmacosx-version-min=10.11'
 endif
 
 minilua = executable(
   'minilua',
-  'LuaJIT/src/host/minilua.c',
+  'src/host/minilua.c',
   dependencies: libm,
   native: true
 )
@@ -180,7 +179,7 @@ if target_ljarch == 'x64'
     buildvm_defines += '-DLUAJIT_ENABLE_GC64'
     lj_defines += '-DLUAJIT_ENABLE_GC64'
   endif
-elif system_ios
+elif system == 'ios'
   dasm_arch = ['-D', 'IOS']
 elif target_ljarch == 'ppc'
   if cc.compiles(lj_arch_test.format('LJ_ARCH_SQRT == 1'), include_directories: luajit_source_dir)
@@ -211,11 +210,11 @@ message('Creating "buildvm_arch.h" with "@0@"'.format(' '.join(dasm_flags)))
 
 buildvm_arch_h = custom_target(
   'buildvm_arch.h',
-  input: 'LuaJIT/src/vm_' + dasm_arch + '.dasc',
+  input: 'src/vm_' + dasm_arch + '.dasc',
   output: 'buildvm_arch.h',
   command: [
     minilua,
-    files('LuaJIT/dynasm/dynasm.lua'),
+    files('dynasm/dynasm.lua'),
     dasm_flags,
     '-o', '@OUTPUT@', '@INPUT@'
   ]
@@ -225,11 +224,11 @@ message('Building "buildvm" with "@0@"'.format(' '.join(buildvm_defines)))
 
 buildvm = executable('buildvm',
   [
-    'LuaJIT/src/host/buildvm.c',
-    'LuaJIT/src/host/buildvm_asm.c',
-    'LuaJIT/src/host/buildvm_fold.c',
-    'LuaJIT/src/host/buildvm_lib.c',
-    'LuaJIT/src/host/buildvm_peobj.c',
+    'src/host/buildvm.c',
+    'src/host/buildvm_asm.c',
+    'src/host/buildvm_fold.c',
+    'src/host/buildvm_lib.c',
+    'src/host/buildvm_peobj.c',
     buildvm_arch_h
   ],
   include_directories: luajit_source_dir,
@@ -239,74 +238,74 @@ buildvm = executable('buildvm',
 )
 
 ljlib_sources = [
-  'LuaJIT/src/lib_base.c',
-  'LuaJIT/src/lib_bit.c',
-  'LuaJIT/src/lib_debug.c',
-  'LuaJIT/src/lib_ffi.c',
-  'LuaJIT/src/lib_io.c',
-  'LuaJIT/src/lib_jit.c',
-  'LuaJIT/src/lib_math.c',
-  'LuaJIT/src/lib_os.c',
-  'LuaJIT/src/lib_package.c',
-  'LuaJIT/src/lib_string.c',
-  'LuaJIT/src/lib_table.c'
+  'src/lib_base.c',
+  'src/lib_bit.c',
+  'src/lib_debug.c',
+  'src/lib_ffi.c',
+  'src/lib_io.c',
+  'src/lib_jit.c',
+  'src/lib_math.c',
+  'src/lib_os.c',
+  'src/lib_package.c',
+  'src/lib_string.c',
+  'src/lib_table.c'
 ]
 
 ljcore_sources = [
-  'LuaJIT/src/lib_aux.c',
-  'LuaJIT/src/lib_init.c',
-  'LuaJIT/src/lj_alloc.c',
-  'LuaJIT/src/lj_api.c',
-  'LuaJIT/src/lj_asm.c',
-  'LuaJIT/src/lj_bc.c',
-  'LuaJIT/src/lj_bcread.c',
-  'LuaJIT/src/lj_bcwrite.c',
-  'LuaJIT/src/lj_buf.c',
-  'LuaJIT/src/lj_carith.c',
-  'LuaJIT/src/lj_ccall.c',
-  'LuaJIT/src/lj_ccallback.c',
-  'LuaJIT/src/lj_cconv.c',
-  'LuaJIT/src/lj_cdata.c',
-  'LuaJIT/src/lj_char.c',
-  'LuaJIT/src/lj_clib.c',
-  'LuaJIT/src/lj_cparse.c',
-  'LuaJIT/src/lj_crecord.c',
-  'LuaJIT/src/lj_ctype.c',
-  'LuaJIT/src/lj_debug.c',
-  'LuaJIT/src/lj_dispatch.c',
-  'LuaJIT/src/lj_err.c',
-  'LuaJIT/src/lj_ffrecord.c',
-  'LuaJIT/src/lj_func.c',
-  'LuaJIT/src/lj_gc.c',
-  'LuaJIT/src/lj_gdbjit.c',
-  'LuaJIT/src/lj_ir.c',
-  'LuaJIT/src/lj_lex.c',
-  'LuaJIT/src/lj_lib.c',
-  'LuaJIT/src/lj_load.c',
-  'LuaJIT/src/lj_mcode.c',
-  'LuaJIT/src/lj_meta.c',
-  'LuaJIT/src/lj_obj.c',
-  'LuaJIT/src/lj_opt_dce.c',
-  'LuaJIT/src/lj_opt_fold.c',
-  'LuaJIT/src/lj_opt_loop.c',
-  'LuaJIT/src/lj_opt_mem.c',
-  'LuaJIT/src/lj_opt_narrow.c',
-  'LuaJIT/src/lj_opt_sink.c',
-  'LuaJIT/src/lj_opt_split.c',
-  'LuaJIT/src/lj_parse.c',
-  'LuaJIT/src/lj_profile.c',
-  'LuaJIT/src/lj_record.c',
-  'LuaJIT/src/lj_snap.c',
-  'LuaJIT/src/lj_state.c',
-  'LuaJIT/src/lj_str.c',
-  'LuaJIT/src/lj_strfmt.c',
-  'LuaJIT/src/lj_strfmt_num.c',
-  'LuaJIT/src/lj_strscan.c',
-  'LuaJIT/src/lj_tab.c',
-  'LuaJIT/src/lj_trace.c',
-  'LuaJIT/src/lj_udata.c',
-  'LuaJIT/src/lj_vmevent.c',
-  'LuaJIT/src/lj_vmmath.c'
+  'src/lib_aux.c',
+  'src/lib_init.c',
+  'src/lj_alloc.c',
+  'src/lj_api.c',
+  'src/lj_asm.c',
+  'src/lj_bc.c',
+  'src/lj_bcread.c',
+  'src/lj_bcwrite.c',
+  'src/lj_buf.c',
+  'src/lj_carith.c',
+  'src/lj_ccall.c',
+  'src/lj_ccallback.c',
+  'src/lj_cconv.c',
+  'src/lj_cdata.c',
+  'src/lj_char.c',
+  'src/lj_clib.c',
+  'src/lj_cparse.c',
+  'src/lj_crecord.c',
+  'src/lj_ctype.c',
+  'src/lj_debug.c',
+  'src/lj_dispatch.c',
+  'src/lj_err.c',
+  'src/lj_ffrecord.c',
+  'src/lj_func.c',
+  'src/lj_gc.c',
+  'src/lj_gdbjit.c',
+  'src/lj_ir.c',
+  'src/lj_lex.c',
+  'src/lj_lib.c',
+  'src/lj_load.c',
+  'src/lj_mcode.c',
+  'src/lj_meta.c',
+  'src/lj_obj.c',
+  'src/lj_opt_dce.c',
+  'src/lj_opt_fold.c',
+  'src/lj_opt_loop.c',
+  'src/lj_opt_mem.c',
+  'src/lj_opt_narrow.c',
+  'src/lj_opt_sink.c',
+  'src/lj_opt_split.c',
+  'src/lj_parse.c',
+  'src/lj_profile.c',
+  'src/lj_record.c',
+  'src/lj_snap.c',
+  'src/lj_state.c',
+  'src/lj_str.c',
+  'src/lj_strfmt.c',
+  'src/lj_strfmt_num.c',
+  'src/lj_strscan.c',
+  'src/lj_tab.c',
+  'src/lj_trace.c',
+  'src/lj_udata.c',
+  'src/lj_vmevent.c',
+  'src/lj_vmmath.c'
 ]
 
 lj_linkargs = []
@@ -330,7 +329,7 @@ elif system == 'darwin'
     command : [buildvm, '-m', 'machasm', '-o', '@OUTPUT@']
   )
 
-  if target_ljarch == 'x64' and not system_ios
+  if target_ljarch == 'x64' and system != 'ios'
     lj_linkargs += ['-pagezero_size', '10000', '-image_base', '100000000']
   endif
 else
@@ -347,7 +346,7 @@ buildvm_headers = []
 foreach target: [
     {'mode': 'bcdef',   'input': ljlib_sources,              'output': 'lj_bcdef.h'},
     {'mode': 'ffdef',   'input': ljlib_sources,              'output': 'lj_ffdef.h'},
-    {'mode': 'folddef', 'input': 'LuaJIT/src/lj_opt_fold.c', 'output': 'lj_folddef.h'},
+    {'mode': 'folddef', 'input': 'src/lj_opt_fold.c', 'output': 'lj_folddef.h'},
     {'mode': 'libdef',  'input': ljlib_sources,              'output': 'lj_libdef.h'},
     {'mode': 'recdef',  'input': ljlib_sources,              'output': 'lj_recdef.h'}
   ]
@@ -392,7 +391,7 @@ if get_option('apps')
   # install_rpath
   luajit = executable(
     'luajit',
-    ['LuaJIT/src/luajit.c'] + res,
+    ['src/luajit.c'] + res,
     c_args: lj_defines,
     include_directories: luajit_source_dir,
     link_args: lj_linkargs,
@@ -411,12 +410,12 @@ luajit_dep = declare_dependency(
 
 install_headers(
   [
-    'LuaJIT/src/lua.h',
-    'LuaJIT/src/lualib.h',
-    'LuaJIT/src/lauxlib.h',
-    'LuaJIT/src/luaconf.h',
-    'LuaJIT/src/lua.hpp',
-    'LuaJIT/src/luajit.h'
+    'src/lua.h',
+    'src/lualib.h',
+    'src/lauxlib.h',
+    'src/luaconf.h',
+    'src/lua.hpp',
+    'src/luajit.h'
   ],
   subdir: 'luajit-2.1'
 )
@@ -424,30 +423,30 @@ install_headers(
 if get_option('apps')
   install_data(
     [
-      'LuaJIT/src/jit/bc.lua',
-      'LuaJIT/src/jit/bcsave.lua',
-      'LuaJIT/src/jit/dis_arm.lua',
-      'LuaJIT/src/jit/dis_arm64.lua',
-      'LuaJIT/src/jit/dis_arm64be.lua',
-      'LuaJIT/src/jit/dis_mips.lua',
-      'LuaJIT/src/jit/dis_mips64.lua',
-      'LuaJIT/src/jit/dis_mips64el.lua',
-      'LuaJIT/src/jit/dis_mipsel.lua',
-      'LuaJIT/src/jit/dis_ppc.lua',
-      'LuaJIT/src/jit/dis_x64.lua',
-      'LuaJIT/src/jit/dis_x86.lua',
-      'LuaJIT/src/jit/dump.lua',
-      'LuaJIT/src/jit/p.lua',
-      'LuaJIT/src/jit/v.lua',
-      'LuaJIT/src/jit/zone.lua'
+      'src/jit/bc.lua',
+      'src/jit/bcsave.lua',
+      'src/jit/dis_arm.lua',
+      'src/jit/dis_arm64.lua',
+      'src/jit/dis_arm64be.lua',
+      'src/jit/dis_mips.lua',
+      'src/jit/dis_mips64.lua',
+      'src/jit/dis_mips64el.lua',
+      'src/jit/dis_mipsel.lua',
+      'src/jit/dis_ppc.lua',
+      'src/jit/dis_x64.lua',
+      'src/jit/dis_x86.lua',
+      'src/jit/dump.lua',
+      'src/jit/p.lua',
+      'src/jit/v.lua',
+      'src/jit/zone.lua'
     ],
     install_dir: jitlib_install_dir
   )
 endif
 
-install_man('LuaJIT/etc/luajit.1')
+install_man('etc/luajit.1')
 install_data(
-  'LuaJIT/COPYRIGHT',
+  'COPYRIGHT',
   install_dir: jitlib_install_dir / '..'
 )
 
