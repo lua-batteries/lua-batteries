@@ -1,0 +1,8 @@
+[wrap-file]
+directory = luarocks-3.9.2
+
+source_url = https://github.com/luarocks/luarocks/archive/refs/tags/v3.9.2.tar.gz
+source_filename = luarocks-3.9.2.tar.gz
+source_hash = a0b36cd68586cd79966d0106bb2e5a4f5523327867995fd66bee4237062b3e3b
+
+patch_directory = luarocks

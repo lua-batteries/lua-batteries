@@ -12,14 +12,14 @@ lua_ver = get_option('luajit') ? '5.1' : '5.4'
 luarocks_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'luarocks/3.9.2-1'
 
 install_subdir(
-  'luarocks/src/luarocks',
+  'src/luarocks',
   install_dir: get_option('datadir') / 'lua' / lua_ver
 )
 
 install_data(
   [
-    'luarocks/src/bin/luarocks',
-    'luarocks/src/bin/luarocks-admin'
+    'src/bin/luarocks',
+    'src/bin/luarocks-admin'
   ],
   rename: [
     'luarocks.lua',
@@ -57,15 +57,15 @@ install_data(
 if system == 'windows'
   install_data(
     [
-      'luarocks/win32/tools/7z.exe',
-      'luarocks/win32/tools/7z.dll',
-      'luarocks/win32/tools/cp.exe',
-      'luarocks/win32/tools/find.exe',
-      'luarocks/win32/tools/libiconv2.dll',
-      'luarocks/win32/tools/libintl3.dll',
-      'luarocks/win32/tools/ls.exe',
-      'luarocks/win32/tools/md5sum.exe',
-      'luarocks/win32/tools/wget.exe'
+      'win32/tools/7z.exe',
+      'win32/tools/7z.dll',
+      'win32/tools/cp.exe',
+      'win32/tools/find.exe',
+      'win32/tools/libiconv2.dll',
+      'win32/tools/libintl3.dll',
+      'win32/tools/ls.exe',
+      'win32/tools/md5sum.exe',
+      'win32/tools/wget.exe'
     ],
     install_dir: get_option('bindir') / 'tools'
   )
@@ -111,11 +111,11 @@ install_data(
 
 install_data(
   [
-    'luarocks/CHANGELOG.md',
-    'luarocks/CODE_OF_CONDUCT.md',
-    'luarocks/win32/COPYING',
-    'luarocks/README.md',
-    'luarocks/SECURITY.md',
+    'CHANGELOG.md',
+    'CODE_OF_CONDUCT.md',
+    'win32/COPYING',
+    'README.md',
+    'SECURITY.md',
   ],
   install_dir: luarocks_dir / 'doc'
 )

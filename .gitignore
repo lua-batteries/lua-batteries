@@ -17,6 +17,7 @@ subprojects/winapi-1.4.2/*
 subprojects/luaposix-36.1/*
 subprojects/argparse-0.7.1/*
 subprojects/Penlight-1.13.1/*
+subprojects/luarocks-3.9.2/*
 subprojects/packagecache/*
 
 subprojects/freetype-2.12.1/*
