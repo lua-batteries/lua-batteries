@@ -1,0 +1,8 @@
+[wrap-file]
+directory = luaposix-36.1
+
+source_url = https://github.com/luaposix/luaposix/archive/refs/tags/v36.1.tar.gz
+source_filename = luaposix-36.1.tar.gz
+source_hash = e680ba9b9c7ae28c0598942cb00df7c7fbc70b82863bb55f028ea7dc101e39ac
+
+patch_directory = luaposix
