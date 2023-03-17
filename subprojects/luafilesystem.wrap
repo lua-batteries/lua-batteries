@@ -1,0 +1,8 @@
+[wrap-file]
+directory = luafilesystem-1_8_0
+
+source_url = https://github.com/lunarmodules/luafilesystem/archive/refs/tags/v1_8_0.tar.gz
+source_filename = luafilesystem-1_8_0.tar.gz
+source_hash = 16d17c788b8093f2047325343f5e9b74cccb1ea96001e45914a58bbae8932495
+
+patch_directory = luafilesystem
