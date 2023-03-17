@@ -19,7 +19,7 @@ if system == 'windows'
   module_suffix = 'dll'
 endif
 
-lua_dep = get_option('luajit') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
+lua_dep = get_option('luajit') ? dependency('luajit') : dependency('lua')
 lua_ver = get_option('luajit') ? '5.1' : '5.4'
 project_deps = [lua_dep]
 
@@ -29,50 +29,50 @@ project_deps = [lua_dep]
 
 pkg_config_libs = []
 luasdl2_comman_sources = [
-  'luasdl2/common/array.c',
-  'luasdl2/common/common.c',
-  'luasdl2/common/rwops.c',
-  'luasdl2/common/surface.c',
-  'luasdl2/common/table.c',
-  'luasdl2/common/variant.c',
-  'luasdl2/common/video.c'
+  'common/array.c',
+  'common/common.c',
+  'common/rwops.c',
+  'common/surface.c',
+  'common/table.c',
+  'common/variant.c',
+  'common/video.c'
 ]
 luasdl2_sdl2_sources = [
-  'luasdl2/src/audio.c',
-  'luasdl2/src/channel.c',
-  'luasdl2/src/clipboard.c',
-  'luasdl2/src/cpu.c',
-  'luasdl2/src/display.c',
-  'luasdl2/src/events.c',
-  'luasdl2/src/filesystem.c',
-  'luasdl2/src/gamecontroller.c',
-  'luasdl2/src/gl.c',
-  'luasdl2/src/haptic.c',
-  'luasdl2/src/joystick.c',
-  'luasdl2/src/keyboard.c',
-  'luasdl2/src/logging.c',
-  'luasdl2/src/mouse.c',
-  'luasdl2/src/platform.c',
-  'luasdl2/src/power.c',
-  'luasdl2/src/rectangle.c',
-  'luasdl2/src/renderer.c',
-  'luasdl2/src/SDL.c',
-  'luasdl2/src/texture.c',
-  'luasdl2/src/thread.c',
-  'luasdl2/src/timer.c',
-  'luasdl2/src/window.c'
+  'src/audio.c',
+  'src/channel.c',
+  'src/clipboard.c',
+  'src/cpu.c',
+  'src/display.c',
+  'src/events.c',
+  'src/filesystem.c',
+  'src/gamecontroller.c',
+  'src/gl.c',
+  'src/haptic.c',
+  'src/joystick.c',
+  'src/keyboard.c',
+  'src/logging.c',
+  'src/mouse.c',
+  'src/platform.c',
+  'src/power.c',
+  'src/rectangle.c',
+  'src/renderer.c',
+  'src/SDL.c',
+  'src/texture.c',
+  'src/thread.c',
+  'src/timer.c',
+  'src/window.c'
 ] + luasdl2_comman_sources
 
-luasdl2_sdl2_image_sources = luasdl2_comman_sources + 'luasdl2/sdl-image/src/image.c'
-luasdl2_sdl2_mixer_sources = luasdl2_comman_sources + 'luasdl2/sdl-mixer/src/mixer.c'
-luasdl2_sdl2_net_sources = luasdl2_comman_sources + 'luasdl2/sdl-net/src/net.c'
-luasdl2_sdl2_ttf_sources = luasdl2_comman_sources + 'luasdl2/sdl-ttf/src/ttf.c'
+luasdl2_sdl2_image_sources = luasdl2_comman_sources + 'sdl-image/src/image.c'
+luasdl2_sdl2_mixer_sources = luasdl2_comman_sources + 'sdl-mixer/src/mixer.c'
+luasdl2_sdl2_net_sources = luasdl2_comman_sources + 'sdl-net/src/net.c'
+luasdl2_sdl2_ttf_sources = luasdl2_comman_sources + 'sdl-ttf/src/ttf.c'
 
 luasdl2_include = [
-  include_directories('luasdl2'),
-  include_directories('luasdl2/src'),
-  include_directories('luasdl2/extern/queue'),
-  include_directories('luasdl2/rocks')
+  include_directories('.'),
+  include_directories('src'),
+  include_directories('extern/queue'),
+  include_directories('rocks')
 ]
 
 sdl2_dep = dependency('SDL2', required: false)
@@ -226,12 +226,12 @@ install_data(
 )
 
 install_subdir(
-  'luasdl2/examples',
+  'examples',
   install_dir: data_dir
 )
 
 install_subdir(
-  'luasdl2/tutorials',
+  'tutorials',
   install_dir: data_dir
 )
 

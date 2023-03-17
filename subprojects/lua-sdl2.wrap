@@ -1,0 +1,8 @@
+[wrap-file]
+directory = luasdl2-2.0.5-6.0
+
+source_url = https://github.com/Tangent128/luasdl2/archive/refs/tags/v2.0.5-6.0.tar.gz
+source_filename = luasdl2-2.0.5-6.0.tar.gz
+source_hash = cee7875106062fbc00cf8acb3b2738e336e2327df73ede011968cb060c094bfb
+
+patch_directory = lua-sdl2

@@ -29,6 +29,7 @@ subprojects/lua-zlib-1.2/*
 subprojects/lua-zip-0.2.0/*
 subprojects/libzip-1.9.2/*
 subprojects/luasql-2.6.0/*
+subprojects/luasdl2-2.0.5-6.0/*
 subprojects/packagecache/*
 
 subprojects/freetype-2.12.1/*
@@ -50,15 +51,5 @@ subprojects/yaml-0.2.5/*
 subprojects/tiff-4.4.0/*
 subprojects/zlib-1.2.13/*
 
-subprojects/freetype2.wrap
 subprojects/libuv.wrap
-subprojects/libjpeg-turbo.wrap
-subprojects/libpng.wrap
-subprojects/libtiff.wrap
-subprojects/ogg.wrap
-subprojects/sdl2.wrap
-subprojects/sdl2_image.wrap
-subprojects/sdl2_mixer.wrap
-subprojects/sdl2_net.wrap
-subprojects/sdl2_ttf.wrap
-subprojects/vorbis.wrap
+
