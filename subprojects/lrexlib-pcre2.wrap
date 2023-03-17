@@ -1,0 +1,8 @@
+[wrap-file]
+directory = lrexlib-rel-2-9-1
+
+source_url = https://github.com/rrthomas/lrexlib/archive/refs/tags/rel-2-9-1.tar.gz
+source_filename = lrexlib-rel-2-9-1.tar.gz
+source_hash = 596c0c4fc38147c1002bf34904660e04dcec000c4422c8c4fdcc71a8d708f4db
+
+patch_directory = lrexlib-pcre2

@@ -24,6 +24,7 @@ subprojects/uuid-0.3/*
 subprojects/xml2lua-1.6-1/*
 subprojects/cffi-lua-0.2.3/*
 subprojects/lyaml-6.2.8/*
+subprojects/lrexlib-rel-2-9-1/*
 subprojects/packagecache/*
 
 subprojects/freetype-2.12.1/*
@@ -51,7 +52,6 @@ subprojects/libjpeg-turbo.wrap
 subprojects/libpng.wrap
 subprojects/libtiff.wrap
 subprojects/ogg.wrap
-subprojects/pcre2.wrap
 subprojects/sdl2.wrap
 subprojects/sdl2_image.wrap
 subprojects/sdl2_mixer.wrap

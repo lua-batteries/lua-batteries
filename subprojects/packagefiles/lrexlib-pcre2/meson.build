@@ -19,7 +19,7 @@ if system == 'windows'
   module_suffix = 'dll'
 endif
 
-lua_dep = get_option('luajit') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
+lua_dep = get_option('luajit') ? dependency('luajit') : dependency('lua')
 lua_ver = get_option('luajit') ? '5.1' : '5.4'
 project_deps = [lua_dep]
 
@@ -28,9 +28,9 @@ project_deps = [lua_dep]
 # -------------------------------------------------
 
 lrexlib_pcre2_sources = [
-  'lrexlib/src/common.c',
-  'lrexlib/src/pcre2/lpcre2.c',
-  'lrexlib/src/pcre2/lpcre2_f.c',
+  'src/common.c',
+  'src/pcre2/lpcre2.c',
+  'src/pcre2/lpcre2_f.c',
 ]
 lrexlib_pcre2_defines = ['-DVERSION="2.9.1"', '-DPCRE2_CODE_UNIT_WIDTH=8']
 lrexlib_pcre2_link_args = []
@@ -84,7 +84,7 @@ install_data(
 )
 
 install_subdir(
-  'lrexlib/doc',
+  'doc',
   install_dir: data_dir
 )
 
