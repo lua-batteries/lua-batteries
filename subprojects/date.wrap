@@ -1,0 +1,8 @@
+[wrap-file]
+directory = date-version_2.2
+
+source_url = https://github.com/Tieske/date/archive/refs/tags/version_2.2.tar.gz
+source_filename = date-version_2.2.tar.gz
+source_hash = ea8c34cb18245c5219806a00c97ef92f452a33f3528bac2ae72743e4420897db
+
+patch_directory = date
