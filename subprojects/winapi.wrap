@@ -1,0 +1,8 @@
+[wrap-file]
+directory = winapi-1.4.2
+
+source_url = https://github.com/stevedonovan/winapi/archive/refs/tags/1.4.2.tar.gz
+source_filename = winapi-1.4.2.tar.gz
+source_hash = 93fb4dda975a6bea6d1a649047f8e1352527065681443d65aee054ee32c68716
+
+patch_directory = winapi
