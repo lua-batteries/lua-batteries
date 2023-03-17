@@ -16,7 +16,7 @@ lua_ver = get_option('luajit') ? '5.1' : '5.4'
 # -------------------------------------------------
 
 install_data(
-  'inspect.lua/inspect.lua',
+  'inspect.lua',
   install_dir: get_option('datadir') / 'lua' / lua_ver
 )
 
@@ -33,6 +33,6 @@ install_data(
 )
 
 install_data(
-  'inspect.lua/README.md',
+  'README.md',
   install_dir: data_dir
 )
