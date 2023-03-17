@@ -28,6 +28,7 @@ subprojects/lrexlib-rel-2-9-1/*
 subprojects/lua-zlib-1.2/*
 subprojects/lua-zip-0.2.0/*
 subprojects/libzip-1.9.2/*
+subprojects/luasql-2.6.0/*
 subprojects/packagecache/*
 
 subprojects/freetype-2.12.1/*
@@ -60,5 +61,4 @@ subprojects/sdl2_image.wrap
 subprojects/sdl2_mixer.wrap
 subprojects/sdl2_net.wrap
 subprojects/sdl2_ttf.wrap
-subprojects/sqlite3.wrap
 subprojects/vorbis.wrap

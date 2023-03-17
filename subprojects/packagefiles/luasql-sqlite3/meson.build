@@ -19,7 +19,7 @@ if system == 'windows'
   module_suffix = 'dll'
 endif
 
-lua_dep = get_option('luajit') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
+lua_dep = get_option('luajit') ? dependency('luajit') : dependency('lua')
 lua_ver = get_option('luajit') ? '5.1' : '5.4'
 project_deps = [lua_dep]
 
@@ -44,7 +44,7 @@ endif
 
 shared_module(
   'sqlite3',
-  ['luasql/src/luasql.c', 'luasql/src/ls_sqlite3.c'],
+  ['src/luasql.c', 'src/ls_sqlite3.c'],
   link_args: luasql_sqlite3_link_args,
   dependencies: project_deps,
   name_prefix: '',
@@ -55,7 +55,7 @@ shared_module(
 
 lua_luasql_sqlite3 = static_library(
   'lua.luasql.sqlite3',
-  ['luasql/src/luasql.c', 'luasql/src/ls_sqlite3.c'],
+  ['src/luasql.c', 'src/ls_sqlite3.c'],
   link_args: luasql_sqlite3_link_args,
   dependencies: project_deps,
   pic: true,
@@ -71,12 +71,12 @@ data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'luasql-sqlite3/
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'luasql/rockspec/luasql-sqlite3-2.6.0-1.rockspec',
+  'rockspec/luasql-sqlite3-2.6.0-1.rockspec',
   install_dir: data_dir
 )
 
 install_subdir(
-  'luasql/doc',
+  'doc',
   install_dir: data_dir
 )
 
