@@ -48,7 +48,7 @@ List of included libraries and modules provided by lua-batteries:
 | [toml](https://github.com/LebJe/toml.lua)                             | ![lua-batteries](https://img.shields.io/badge/lua--batteries-v0.3.0--0-brightgreen?style=flat-square)    | ![luarocks](https://img.shields.io/luarocks/v/LebJe/toml?style=flat-square)                    |
 | [uuid](https://github.com/Tieske/uuid)                                | ![lua-batteries](https://img.shields.io/badge/lua--batteries-v0.3--1-brightgreen?style=flat-square)      | ![luarocks](https://img.shields.io/luarocks/v/tieske/uuid?style=flat-square)                   |
 | [winapi](https://github.com/stevedonovan/winapi)                      | ![lua-batteries](https://img.shields.io/badge/lua--batteries-v1.4.2--1-brightgreen?style=flat-square)    | ![luarocks](https://img.shields.io/luarocks/v/steved/winapi?style=flat-square)                 |
-| [xml2lua](https://github.com/manoelcampos/xml2lua)                    | ![lua-batteries](https://img.shields.io/badge/lua--batteries-v1.5--2-brightgreen?style=flat-square)      | ![luarocks](https://img.shields.io/luarocks/v/manoelcampos/xml2lua?style=flat-square)          |
+| [xml2lua](https://github.com/manoelcampos/xml2lua)                    | ![lua-batteries](https://img.shields.io/badge/lua--batteries-v1.6--1-brightgreen?style=flat-square)      | ![luarocks](https://img.shields.io/luarocks/v/manoelcampos/xml2lua?style=flat-square)          |
 
 ## Installation
 

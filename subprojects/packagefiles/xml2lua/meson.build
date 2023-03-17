@@ -1,6 +1,6 @@
 project(
   'xml2lua',
-  version: '1.5',
+  version: '1.6',
   license: 'MIT',
   meson_version: '>=1.0.0'
 )
@@ -16,15 +16,15 @@ lua_ver = get_option('luajit') ? '5.1' : '5.4'
 # -------------------------------------------------
 
 install_data(
-  ['xml2lua/xml2lua.lua', 'xml2lua/XmlParser.lua'],
+  ['xml2lua.lua', 'XmlParser.lua'],
   install_dir: get_option('datadir') / 'lua' / lua_ver
 )
 
 install_data(
   [
-    'xml2lua/xmlhandler/tree.lua',
-    'xml2lua/xmlhandler/print.lua',
-    'xml2lua/xmlhandler/dom.lua'
+    'xmlhandler/tree.lua',
+    'xmlhandler/print.lua',
+    'xmlhandler/dom.lua'
   ],
   install_dir: get_option('datadir') / 'lua' / lua_ver / 'xmlhandler'
 )
@@ -33,25 +33,25 @@ install_data(
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'xml2lua/1.5-2'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'xml2lua/1.6-1'
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'xml2lua/xml2lua-1.5-2.rockspec',
+  'xml2lua-1.6-1.rockspec',
   install_dir: data_dir
 )
 
 install_data(
-  'xml2lua/README.adoc',
+  'README.adoc',
   install_dir: data_dir / 'docs'
 )
 
 install_data(
   [
-    'xml2lua/example1.lua',
-    'xml2lua/example2.lua',
-    'xml2lua/example3.lua',
-    'xml2lua/example4-table2xml.lua',
+    'example1.lua',
+    'example2.lua',
+    'example3.lua',
+    'example4-table2xml.lua',
   ],
   install_dir: data_dir / 'examples'
 )
