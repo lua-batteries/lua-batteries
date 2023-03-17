@@ -1,0 +1,8 @@
+[wrap-file]
+directory = Penlight-1.13.1
+
+source_url = https://github.com/lunarmodules/Penlight/archive/refs/tags/1.13.1.tar.gz
+source_filename = Penlight-1.13.1.tar.gz
+source_hash = 530380e1a377df519c2e589f47823f79701f8e0e67f6bbd994e18d09a470b680
+
+patch_directory = penlight
