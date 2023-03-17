@@ -19,7 +19,7 @@ if system == 'windows'
   module_suffix = 'dll'
 endif
 
-lua_dep = get_option('luajit') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
+lua_dep = get_option('luajit') ? dependency('luajit') : dependency('lua')
 lua_ver = get_option('luajit') ? '5.1' : '5.4'
 project_deps = [lua_dep]
 
@@ -44,7 +44,7 @@ endif
 
 shared_module(
   'zlib',
-  'lua-zlib/lua_zlib.c',
+  'lua_zlib.c',
   c_args: ['-DLZLIB_COMPAT'],
   link_args: lua_zlib_link_args,
   dependencies: project_deps,
@@ -56,7 +56,7 @@ shared_module(
 
 lua_zlib = static_library(
   'lua.zlib',
-  'lua-zlib/lua_zlib.c',
+  'lua_zlib.c',
   c_args: ['-DLZLIB_COMPAT'],
   link_args: lua_zlib_link_args,
   dependencies: project_deps,
@@ -73,12 +73,12 @@ data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'lua-zlib/1.2-2'
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'lua-zlib/rockspecs/lua-zlib-1.2-2.rockspec',
+  'rockspecs/lua-zlib-1.2-2.rockspec',
   install_dir: data_dir
 )
 
 install_data(
-  'lua-zlib/README',
+  'README',
   install_dir: data_dir / 'docs'
 )
 

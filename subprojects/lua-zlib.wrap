@@ -1,0 +1,8 @@
+[wrap-file]
+directory = lua-zlib-1.2
+
+source_url = https://github.com/brimworks/lua-zlib/archive/refs/tags/v1.2.tar.gz
+source_filename = lua-zlib-1.2.tar.gz
+source_hash = 26b813ad39c94fc930b168c3418e2e746af3b2e80b92f94f306f6f954cc31e7d
+
+patch_directory = lua-zlib

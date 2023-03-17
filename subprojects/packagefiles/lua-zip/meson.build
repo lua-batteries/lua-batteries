@@ -19,7 +19,7 @@ if system == 'windows'
   module_suffix = 'dll'
 endif
 
-lua_dep = get_option('luajit') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
+lua_dep = get_option('luajit') ? dependency('luajit') : dependency('lua')
 lua_ver = get_option('luajit') ? '5.1' : '5.4'
 project_deps = [lua_dep]
 
@@ -38,7 +38,7 @@ project_deps += libzip.get_variable('libzip_dep')
 
 shared_module(
   'zip',
-  'lua-zip/lua_zip.c',
+  'lua_zip.c',
   link_args: lua_zip_link_args,
   dependencies: project_deps,
   name_prefix: '',
@@ -49,7 +49,7 @@ shared_module(
 
 lua_zip = static_library(
   'lua.brimworks.zip',
-  'lua-zip/lua_zip.c',
+  'lua_zip.c',
   link_args: lua_zip_link_args,
   dependencies: project_deps,
   pic: true,
@@ -65,12 +65,12 @@ data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'lua-zip/0.2-0'
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'lua-zip/rockspecs/lua-zip-0.2-0.rockspec',
+  'rockspecs/lua-zip-0.2-0.rockspec',
   install_dir: data_dir
 )
 
 install_data(
-  'lua-zip/README.txt',
+  'README.txt',
   install_dir: data_dir / 'docs'
 )
 

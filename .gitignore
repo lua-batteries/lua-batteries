@@ -25,6 +25,9 @@ subprojects/xml2lua-1.6-1/*
 subprojects/cffi-lua-0.2.3/*
 subprojects/lyaml-6.2.8/*
 subprojects/lrexlib-rel-2-9-1/*
+subprojects/lua-zlib-1.2/*
+subprojects/lua-zip-0.2.0/*
+subprojects/libzip-1.9.2/*
 subprojects/packagecache/*
 
 subprojects/freetype-2.12.1/*

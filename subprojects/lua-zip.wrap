@@ -1,0 +1,8 @@
+[wrap-file]
+directory = lua-zip-0.2.0
+
+source_url = https://github.com/brimworks/lua-zip/archive/refs/tags/v0.2.0.tar.gz
+source_filename = lua-zip-0.2.0.tar.gz
+source_hash = b0238402c37e2a06994017940a35968dcde614ffaa8119fb8dabf30a9ad6741a
+
+patch_directory = lua-zip
