@@ -15,6 +15,7 @@ subprojects/luasocket-3.1.0/*
 subprojects/luafilesystem-1_8_0/*
 subprojects/winapi-1.4.2/*
 subprojects/luaposix-36.1/*
+subprojects/argparse-0.7.1/*
 subprojects/packagecache/*
 
 subprojects/freetype-2.12.1/*

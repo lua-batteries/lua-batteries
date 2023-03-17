@@ -16,7 +16,7 @@ lua_ver = get_option('luajit') ? '5.1' : '5.4'
 # -------------------------------------------------
 
 install_data(
-  'argparse/src/argparse.lua',
+  'src/argparse.lua',
   install_dir: get_option('datadir') / 'lua' / lua_ver
 )
 
@@ -33,6 +33,6 @@ install_data(
 )
 
 install_subdir(
-  'argparse/docsrc',
+  'docsrc',
   install_dir: data_dir
 )

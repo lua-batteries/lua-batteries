@@ -1,0 +1,8 @@
+[wrap-file]
+directory = argparse-0.7.1
+
+source_url = https://github.com/luarocks/argparse/archive/refs/tags/0.7.1.tar.gz
+source_filename = argparse-0.7.1.tar.gz
+source_hash = d344e49404c3e7b3e7fa4fe6741c106f25909d9b24923cb08dcceda1f9754809
+
+patch_directory = argparse
