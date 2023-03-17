@@ -23,6 +23,7 @@ subprojects/date-version_2.2/*
 subprojects/uuid-0.3/*
 subprojects/xml2lua-1.6-1/*
 subprojects/cffi-lua-0.2.3/*
+subprojects/lyaml-6.2.8/*
 subprojects/packagecache/*
 
 subprojects/freetype-2.12.1/*
@@ -46,9 +47,7 @@ subprojects/zlib-1.2.13/*
 
 subprojects/freetype2.wrap
 subprojects/libuv.wrap
-subprojects/libffi.wrap
 subprojects/libjpeg-turbo.wrap
-subprojects/libyaml.wrap
 subprojects/libpng.wrap
 subprojects/libtiff.wrap
 subprojects/ogg.wrap

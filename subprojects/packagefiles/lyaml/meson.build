@@ -19,7 +19,7 @@ if system == 'windows'
   module_suffix = 'dll'
 endif
 
-lua_dep = get_option('luajit') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
+lua_dep = get_option('luajit') ? dependency('luajit') : dependency('lua')
 lua_ver = get_option('luajit') ? '5.1' : '5.4'
 project_deps = [lua_dep]
 
@@ -28,10 +28,10 @@ project_deps = [lua_dep]
 # -------------------------------------------------
 
 lyaml_sources = [
-  'lyaml/ext/yaml/yaml.c',
-  'lyaml/ext/yaml/emitter.c',
-  'lyaml/ext/yaml/parser.c',
-  'lyaml/ext/yaml/scanner.c'
+  'ext/yaml/yaml.c',
+  'ext/yaml/emitter.c',
+  'ext/yaml/parser.c',
+  'ext/yaml/scanner.c'
 ]
 lyaml_defines = ['-DVERSION="6.2.8"']
 lyaml_link_args = []
@@ -55,7 +55,7 @@ shared_module(
   lyaml_sources,
   c_args: lyaml_defines,
   link_args: lyaml_link_args,
-  include_directories: include_directories('lyaml/ext'),
+  include_directories: include_directories('ext'),
   dependencies: project_deps,
   name_prefix: '',
   name_suffix: module_suffix,
@@ -68,7 +68,7 @@ lua_yaml = static_library(
   lyaml_sources,
   c_args: lyaml_defines,
   link_args: lyaml_link_args,
-  include_directories: include_directories('lyaml/ext'),
+  include_directories: include_directories('ext'),
   dependencies: project_deps,
   pic: true,
   install: true,
@@ -80,7 +80,7 @@ lua_yaml = static_library(
 # -------------------------------------------------
 
 install_subdir(
-  'lyaml/lib/lyaml',
+  'lib/lyaml',
   install_dir: get_option('datadir') / 'lua' / lua_ver
 )
 
@@ -92,12 +92,12 @@ data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'lyaml/6.2.8-1'
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'lyaml/lyaml-6.2.8-1.rockspec',
+  'lyaml-6.2.8-1.rockspec',
   install_dir: data_dir
 )
 
 install_subdir(
-  'lyaml/doc',
+  'doc',
   install_dir: data_dir
 )
 
