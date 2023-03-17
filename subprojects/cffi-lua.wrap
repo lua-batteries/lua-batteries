@@ -1,0 +1,8 @@
+[wrap-file]
+directory = cffi-lua-0.2.3
+
+source_url = https://github.com/q66/cffi-lua/archive/refs/tags/v0.2.3.tar.gz
+source_filename = cffi-lua-0.2.3.tar.gz
+source_hash = 1d2577a62a843e5e6db35af1b58300d279b4df58eccef5e823441501f960d388
+
+patch_directory = cffi-lua

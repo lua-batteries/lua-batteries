@@ -34,13 +34,13 @@ project_deps = [lua_dep]
 # -------------------------------------------------
 
 cffi_lua_sources = [
-  'cffi-lua/src/util.cc',
-  'cffi-lua/src/ffilib.cc',
-  'cffi-lua/src/parser.cc',
-  'cffi-lua/src/ast.cc',
-  'cffi-lua/src/lib.cc',
-  'cffi-lua/src/ffi.cc',
-  'cffi-lua/src/main.cc'
+  'src/util.cc',
+  'src/ffilib.cc',
+  'src/parser.cc',
+  'src/ast.cc',
+  'src/lib.cc',
+  'src/ffi.cc',
+  'src/main.cc'
 ]
 cffi_lua_defines = []
 
@@ -78,7 +78,7 @@ shared_module(
   'cffi',
   cffi_lua_sources,
   cpp_args: cffi_lua_defines + ['-DCFFI_LUA_DLL'],
-  include_directories: include_directories('cffi-lua/src'),
+  include_directories: include_directories('src'),
   dependencies: project_deps,
   name_prefix: '',
   name_suffix: module_suffix,
@@ -90,7 +90,7 @@ lua_cffi = static_library(
   'lua.cffi',
   cffi_lua_sources,
   cpp_args: cffi_lua_defines,
-  include_directories: include_directories('cffi-lua/src'),
+  include_directories: include_directories('src'),
   dependencies: project_deps,
   pic: true,
   install: true,
@@ -105,12 +105,12 @@ data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'cffi-lua/0.2.3-
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'cffi-lua/cffi-lua-0.2.3-1.rockspec',
+  'cffi-lua-0.2.3-1.rockspec',
   install_dir: data_dir
 )
 
 install_subdir(
-  'cffi-lua/docs',
+  'docs',
   install_dir: data_dir
 )
 
