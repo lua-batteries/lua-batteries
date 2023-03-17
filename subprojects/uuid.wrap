@@ -1,0 +1,8 @@
+[wrap-file]
+directory = uuid-0.3
+
+source_url = https://github.com/Tieske/uuid/archive/refs/tags/0.3.tar.gz
+source_filename = uuid-0.3.tar.gz
+source_hash = d8f2237c7888b535dc9ee4ac14ef5119d28e66e6e402f500e052abc153d84e90
+
+patch_directory = uuid

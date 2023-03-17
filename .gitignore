@@ -20,6 +20,7 @@ subprojects/Penlight-1.13.1/*
 subprojects/luarocks-3.9.2/*
 subprojects/inspect.lua-3.1.3/*
 subprojects/date-version_2.2/*
+subprojects/uuid-0.3/*
 subprojects/packagecache/*
 
 subprojects/freetype-2.12.1/*
