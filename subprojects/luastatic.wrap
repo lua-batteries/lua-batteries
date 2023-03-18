@@ -1,0 +1,8 @@
+[wrap-git]
+directory = luastatic-scm-0
+
+url = https://github.com/lua-batteries/luastatic.git
+revision = f5da1fbbe5e1771ae6d6771e6258601cdfce75d8
+depth = 1
+
+patch_directory = luastatic

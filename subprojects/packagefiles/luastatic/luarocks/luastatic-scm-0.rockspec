@@ -1,5 +1,5 @@
 package = "luastatic"
-version = "scm-1"
+version = "scm-0"
 source =
 {
   url = "git://github.com/lua-batteries/luastatic.git",

@@ -105,7 +105,7 @@ install_data(
 # -------------------------------------------------
 
 install_data(
-  ['luarocks/luarocks-3.9.2-1.rockspec', 'config/rock_manifest'],
+  ['luarocks-3.9.2-1.rockspec', 'config/rock_manifest'],
   install_dir: luarocks_dir
 )
 

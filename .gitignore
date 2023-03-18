@@ -53,3 +53,4 @@ subprojects/zlib-1.2.13/*
 
 subprojects/libuv.wrap
 
+subprojects/luastatic-scm-0/*

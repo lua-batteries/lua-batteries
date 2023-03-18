@@ -14,16 +14,16 @@ lua_ver = get_option('luajit') ? '5.1' : '5.4'
 # EXTRA DATA
 # -------------------------------------------------
 
-data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'luastatic/scm-1'
+data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'luastatic/scm-0'
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'luarocks/luastatic-scm-1.rockspec',
+  'luarocks/luastatic-scm-0.rockspec',
   install_dir: data_dir
 )
 
 install_data(
-  'luastatic/readme.md',
+  'readme.md',
   install_dir: data_dir / 'docs'
 )
 
@@ -32,7 +32,7 @@ install_data(
 # -------------------------------------------------
 
 install_data(
-  'luastatic/luastatic.lua',
+  'luastatic.lua',
   install_dir: data_dir / 'bin'
 )
 
@@ -43,7 +43,7 @@ install_data(
     configuration: {
       'BIN': get_option('luajit') ? 'luajit' : 'lua',
       'LUA_VER': lua_ver,
-      'ROCKSPEC_VER': 'scm-1'
+      'ROCKSPEC_VER': 'scm-0'
     }
   ),
   install_mode: 'rwxr-xr-x',
