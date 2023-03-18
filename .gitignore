@@ -58,4 +58,6 @@ subprojects/luv-1.44.2-1/*
 subprojects/sol2-3.3.0
 subprojects/magic_enum-0.8.1
 subprojects/tomlplusplus-3.3.0
+subprojects/libui-fea45b2d5b75839be0af9acc842a147c5cba9295
+subprojects/lui-scm-0
 

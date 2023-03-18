@@ -1,0 +1,11 @@
+[wrap-git]
+directory = libui-fea45b2d5b75839be0af9acc842a147c5cba9295
+
+url = https://github.com/andlabs/libui.git
+revision = fea45b2d5b75839be0af9acc842a147c5cba9295
+depth = 1
+
+patch_directory = libui
+
+[provide]
+libui = libui_dep

@@ -1,0 +1,9 @@
+[wrap-git]
+directory = lui-scm-0
+
+url = https://github.com/zhaozg/lui.git
+revision = 08694befe287deb7a4c25e865c2184a8c9cd06e1
+depth = 1
+clone-recursive = true
+
+patch_directory = lui

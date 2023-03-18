@@ -18,7 +18,7 @@ if system == 'windows'
   module_suffix = 'dll'
 endif
 
-lua_dep = get_option('luajit') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
+lua_dep = get_option('luajit') ? dependency('luajit') : dependency('lua')
 lua_ver = get_option('luajit') ? '5.1' : '5.4'
 project_deps = [lua_dep]
 
@@ -27,13 +27,13 @@ project_deps = [lua_dep]
 # -------------------------------------------------
 
 lui_sources = [
-  'lui/src/lui.c',
-  'lui/deps/auxiliar/auxiliar.c'
+  'src/lui.c',
+  'deps/auxiliar/auxiliar.c'
 ]
 lui_include = [
-  include_directories('lui/deps/auxiliar'),
-  include_directories('lui/deps/compat'),
-  include_directories('lui/deps/compat/c-api'),
+  include_directories('deps/auxiliar'),
+  include_directories('deps/compat'),
+  include_directories('deps/compat/c-api'),
 ]
 lui_defines = []
 lui_link_args = []
@@ -91,7 +91,7 @@ install_data(
 )
 
 install_subdir(
-  'lui/examples',
+  'examples',
   install_dir: data_dir
 )
 
