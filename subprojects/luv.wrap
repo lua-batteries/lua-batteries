@@ -1,0 +1,9 @@
+[wrap-git]
+directory = luv-1.44.2-1
+
+url = https://github.com/luvit/luv.git
+revision = a36dc029d9fb760c3f4b9dd6de16d8d678bb68f0
+depth = 1
+clone-recursive = true
+
+patch_directory = luv

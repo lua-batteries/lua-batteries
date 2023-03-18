@@ -19,7 +19,7 @@ if system == 'windows'
   module_suffix = 'dll'
 endif
 
-lua_dep = get_option('luajit') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
+lua_dep = get_option('luajit') ? dependency('luajit') : dependency('lua')
 lua_ver = get_option('luajit') ? '5.1' : '5.4'
 project_deps = [lua_dep]
 
@@ -47,9 +47,9 @@ endif
 
 shared_module(
   'luv',
-  'luv/src/luv.c',
+  'src/luv.c',
   link_args: luv_link_args,
-  include_directories: include_directories('luv/deps/lua-compat-5.3/c-api'),
+  include_directories: include_directories('deps/lua-compat-5.3/c-api'),
   dependencies: project_deps,
   name_prefix: '',
   name_suffix: module_suffix,
@@ -59,9 +59,9 @@ shared_module(
 
 lua_luv = static_library(
   'lua.luv',
-  'luv/src/luv.c',
+  'src/luv.c',
   link_args: luv_link_args,
-  include_directories: include_directories('luv/deps/lua-compat-5.3/c-api'),
+  include_directories: include_directories('deps/lua-compat-5.3/c-api'),
   dependencies: project_deps,
   pic: true,
   install: true,
@@ -81,12 +81,12 @@ install_data(
 )
 
 install_data(
-  'luv/docs.md',
+  'docs.md',
   install_dir: data_dir / 'docs'
 )
 
 install_subdir(
-  'luv/examples',
+  'examples',
   install_dir: data_dir
 )
 

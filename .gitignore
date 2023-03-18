@@ -51,6 +51,5 @@ subprojects/yaml-0.2.5/*
 subprojects/tiff-4.4.0/*
 subprojects/zlib-1.2.13/*
 
-subprojects/libuv.wrap
-
 subprojects/luastatic-scm-0/*
+subprojects/luv-1.44.2-1/*
