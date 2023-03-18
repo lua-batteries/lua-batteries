@@ -20,7 +20,7 @@ if system == 'windows'
   module_suffix = 'dll'
 endif
 
-lua_dep = get_option('luajit') ? subproject('luajit').get_variable('luajit_dep') : subproject('lua').get_variable('lua_dep')
+lua_dep = get_option('luajit') ? dependency('luajit') : dependency('lua')
 lua_ver = get_option('luajit') ? '5.1' : '5.4'
 project_deps = [lua_dep]
 
@@ -29,18 +29,12 @@ project_deps = [lua_dep]
 # -------------------------------------------------
 
 toml_lua_sources = [
-  'toml.lua/src/toml.cpp',
-  'toml.lua/src/decoding/decoding.cpp',
-  'toml.lua/src/encoding/encoding.cpp',
-  'toml.lua/src/DataTypes/DateAndTime/dateAndTime.cpp',
-  'toml.lua/src/DataTypes/TOMLInt/TOMLInt.cpp',
-  'toml.lua/src/utilities/utilities.cpp'
-]
-toml_lua_include = [
-  include_directories('toml.lua/src'),
-  include_directories('tomlplusplus'),
-  include_directories('sol2/include'),
-  include_directories('magic_enum/include')
+  'src/toml.cpp',
+  'src/decoding/decoding.cpp',
+  'src/encoding/encoding.cpp',
+  'src/DataTypes/DateAndTime/dateAndTime.cpp',
+  'src/DataTypes/TOMLInt/TOMLInt.cpp',
+  'src/utilities/utilities.cpp'
 ]
 toml_lua_defines = []
 toml_lua_link_args = []
@@ -53,12 +47,16 @@ if system == 'windows'
   endif
 endif
 
+project_deps += dependency('sol2')
+project_deps += dependency('magic_enum')
+project_deps += dependency('tomlplusplus')
+
 shared_module(
   'toml',
   toml_lua_sources,
   c_args: toml_lua_defines,
   link_args: toml_lua_link_args,
-  include_directories: toml_lua_include,
+  include_directories: include_directories('src'),
   dependencies: project_deps,
   name_prefix: '',
   name_suffix: module_suffix,
@@ -71,7 +69,7 @@ lua_toml = static_library(
   toml_lua_sources,
   c_args: toml_lua_defines,
   link_args: toml_lua_link_args,
-  include_directories: toml_lua_include,
+  include_directories: include_directories('src'),
   dependencies: project_deps,
   pic: true,
   install: true,
@@ -86,17 +84,17 @@ data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'toml/0.3.0-0'
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'toml.lua/toml-0.3.0-0.rockspec',
+  'toml-0.3.0-0.rockspec',
   install_dir: data_dir
 )
 
 install_data(
-  'toml.lua/README.md',
+  'README.md',
   install_dir: data_dir / 'docs'
 )
 
 install_subdir(
-  'toml.lua/examples',
+  'examples',
   install_dir: data_dir
 )
 

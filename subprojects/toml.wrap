@@ -1,0 +1,8 @@
+[wrap-file]
+directory = toml.lua-0.3.0
+
+source_url = https://github.com/LebJe/toml.lua/archive/refs/tags/0.3.0.tar.gz
+source_filename = toml.lua-0.3.0.tar.gz
+source_hash = d04d6400f1c821d0fa5bc193463ce173fb0e74ea84899282b302bb9e3e0dadaa
+
+patch_directory = toml

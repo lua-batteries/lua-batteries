@@ -1,0 +1,11 @@
+[wrap-file]
+directory = sol2-3.3.0
+
+source_url = https://github.com/ThePhD/sol2/archive/refs/tags/v3.3.0.tar.gz
+source_filename = sol2-3.3.0.tar.gz
+source_hash = b82c5de030e18cb2bcbcefcd5f45afd526920c517a96413f0b59b4332d752a1e
+
+patch_directory = sol2
+
+[provide]
+sol2 = sol2_dep

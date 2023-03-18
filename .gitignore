@@ -30,6 +30,7 @@ subprojects/lua-zip-0.2.0/*
 subprojects/libzip-1.9.2/*
 subprojects/luasql-2.6.0/*
 subprojects/luasdl2-2.0.5-6.0/*
+subprojects/toml.lua-0.3.0/*
 subprojects/packagecache/*
 
 subprojects/freetype-2.12.1/*
@@ -53,3 +54,8 @@ subprojects/zlib-1.2.13/*
 
 subprojects/luastatic-scm-0/*
 subprojects/luv-1.44.2-1/*
+
+subprojects/sol2-3.3.0
+subprojects/magic_enum-0.8.1
+subprojects/tomlplusplus-3.3.0
+
