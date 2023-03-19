@@ -1,0 +1,8 @@
+[wrap-file]
+directory = lua-compat-5.3-0.10
+
+source_url = https://github.com/lunarmodules/lua-compat-5.3/archive/refs/tags/v0.10.tar.gz
+source_filename = lua-compat-5.3-0.10.tar.gz
+source_hash = d1ed32f091856f6fffab06232da79c48b437afd4cd89e5c1fc85d7905b011430
+
+patch_directory = compat53_bit32

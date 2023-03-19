@@ -6,6 +6,7 @@ option(
     'argparse',
     'binser',
     'cffi-lua',
+    'compat53+bit32',
     'date',
     'inspect',
     'lanes',

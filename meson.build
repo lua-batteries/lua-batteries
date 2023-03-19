@@ -1,6 +1,6 @@
 project(
   'lua-batteries',
-  version: '0.5.8',
+  version: '0.5.10',
   license: 'MIT',
   default_options: [
     'buildtype=release',
@@ -51,6 +51,12 @@ endif
 if 'all' in modules or 'cffi-lua' in modules
   subproject('cffi-lua')
   config += {'modules/cffi-lua': '0.2.3'}
+endif
+
+if 'all' in modules or 'compat53+bit32' in modules
+  subproject('compat53_bit32')
+  config += {'modules/compat53': '0.8'}
+  config += {'modules/bit32': '5.3.5'}
 endif
 
 if 'all' in modules or 'date' in modules

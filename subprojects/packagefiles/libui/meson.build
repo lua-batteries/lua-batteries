@@ -108,10 +108,10 @@ endif
 # TODO come up with a better way to do this, both for libui (the compiler define, used by winapi.hpp, and the manifest args) and for the binaries (the manifest args)
 # TODO (after the above TODO is resolved) move that below the part below that actually adds these arguments
 libui_manifest_args = []
-if libui_mode == 'static'
-	libui_project_compile_args += ['-D_UI_STATIC']
-	libui_manifest_args = ['-D_UI_STATIC']
-endif
+# if libui_mode == 'static'
+# 	libui_project_compile_args += ['-D_UI_STATIC']
+# 	libui_manifest_args = ['-D_UI_STATIC']
+# endif
 
 add_project_arguments(libui_project_compile_args,
 	language: ['c', 'cpp', 'objc'])

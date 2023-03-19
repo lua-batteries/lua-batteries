@@ -24,14 +24,14 @@ sudo apt install libgtk-3-0 libgtk-3-dev
 
 3. [os-modules](https://github.com/lua-batteries/lua-batteries/blob/main/meson_options.txt#L45-L50): The libraries which are specific to operating system and platform. It is [winapi](https://github.com/stevedonovan/winapi) on windows and [luaposix](https://github.com/luaposix/luaposix) on posix platforms. This option is turned on by default.
 
-## Building (with Lua 5.4.4)
+## Building (with Lua)
 
 1. Install [meson](https://mesonbuild.com/SimpleStart.html) build system. Then install any one of these c++ compiler: [msvc](https://visualstudio.microsoft.com), [gcc](https://gcc.gnu.org)>=9, [mingw](https://www.mingw-w64.org/downloads) or [clang](https://github.com/llvm/llvm-project).
 
-2. Now recursively clone lua-batteries repository. lua-batteries has many submodules which have sub-submodules so it may take few minutes to clone full repository. You can also download released tarball.
+2. Now clone lua-batteries repository. You can also use released tarball.
 
 ```bash
-git clone https://github.com/lua-batteries/lua-batteries --recursive --depth 1
+git clone https://github.com/lua-batteries/lua-batteries
 cd lua-batteries
 ```
 
@@ -58,14 +58,9 @@ mv $PREFIX/lib/lua/5.4/posix/_time.so $PREFIX/lib/lua/5.4/posix/time.so
 
 7. You can further read more information about building through meson from meson's quick [guide](https://mesonbuild.com/Quick-guide.html).
 
-## Building (with LuaJIT 2.0.5)
+## Building (with LuaJIT)
 
-Follow same steps as above but first apply some patches and run `meson setup` command with `-Dluajit=true` flag. You can use same prefix used for lua installation. Delete build directory if you have already built without luajit option.
-
-```bash
-cd subprojects/luajit/LuaJIT
-git apply ../patches/lua-batteries-updated-lua-search-path-on-windows.patch
-```
+Follow same steps as above but, run `meson setup` command with `-Dluajit=true` flag. You can use same prefix used for lua installation. Delete build directory if you have already built without luajit option.
 
 ## Setting Up LuaRocks
 
@@ -81,13 +76,13 @@ Now you can use `luarocks` and `luarocks-jit` command to install rocks. Rocks ar
 - Install rocks for lua installation
 
 ```bash
-luarocks install busted
+luarocks install tl
 ```
 
 - Install rocks for luajit installation
 
 ```bash
-luarocks-jit install busted
+luarocks-jit install tl
 ```
 
 ## Cross Compilation
@@ -98,12 +93,10 @@ See meson [cross compilation](https://mesonbuild.com/Cross-compilation.html) doc
 apt install mingw-w64
 ```
 
-Now clone lua-batteries repository and apply luajit patches.
+Now clone lua-batteries repository.
 
 ```bash
-$ git clone https://github.com/lua-batteries/lua-batteries --recursive --depth 1
-$ cd lua-batteries/subprojects/luajit/LuaJIT
-$ git apply ../patches/lua-batteries-updated-lua-search-path-on-windows.patch
+$ git clone https://github.com/lua-batteries/lua-batteries
 ```
 
 Now change directory to project root and build project using meson.
@@ -120,5 +113,5 @@ Now pack generated lua-batteries installation directory.
 
 ```bash
 $ cd $HOME/lua-batteries
-$ zip -r ../lua-batteries-v0.5.0-x86_64-w64-mingw32.zip *
+$ zip -r ../lua-batteries-x86_64-w64-mingw32.zip *
 ```
