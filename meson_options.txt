@@ -10,6 +10,7 @@ option(
     'date',
     'inspect',
     'lanes',
+    'lpeg',
     'lrexlib-pcre2',
     'lua-cjson',
     'luafilesystem',

@@ -1,6 +1,6 @@
 project(
   'lua-batteries',
-  version: '0.5.10',
+  version: '0.5.11',
   license: 'MIT',
   default_options: [
     'buildtype=release',
@@ -72,6 +72,11 @@ endif
 if 'all' in modules or 'lanes' in modules
   subproject('lanes')
   config += {'modules/lanes': '3.16.0'}
+endif
+
+if 'all' in modules or 'lpeg' in modules
+  subproject('lpeg')
+  config += {'modules/lpeg': '1.0.2'}
 endif
 
 if 'all' in modules or 'lrexlib-pcre2' in modules

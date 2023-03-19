@@ -27,6 +27,7 @@ List of included libraries and modules provided by lua-batteries:
 | [date](https://github.com/Tieske/date)                                | ![lua-batteries](https://img.shields.io/badge/lua--batteries-v2.2--2-brightgreen?style=flat-square)      | ![luarocks](https://img.shields.io/luarocks/v/tieske/date?style=flat-square)                   |
 | [inpsect](https://github.com/kikito/inspect.lua)                      | ![lua-batteries](https://img.shields.io/badge/lua--batteries-v3.1.3--0-brightgreen?style=flat-square)    | ![luarocks](https://img.shields.io/luarocks/v/kikito/inspect?style=flat-square)                |
 | [lanes](https://github.com/LuaLanes/lanes)                            | ![lua-batteries](https://img.shields.io/badge/lua--batteries-v3.16.0--0-brightgreen?style=flat-square)   | ![luarocks](https://img.shields.io/luarocks/v/benoitgermain/lanes?style=flat-square)           |
+| [lpeg](http://www.inf.puc-rio.br/~roberto/lpeg.html)                  | ![lua-batteries](https://img.shields.io/badge/lua--batteries-v1.0.2--1-brightgreen?style=flat-square)    | ![luarocks](https://img.shields.io/luarocks/v/gvvaughan/lpeg?style=flat-square)                |
 | [lrexlib-pcre2](https://github.com/rrthomas/lrexlib)                  | ![lua-batteries](https://img.shields.io/badge/lua--batteries-v2.9.1--1-brightgreen?style=flat-square)    | ![luarocks](https://img.shields.io/luarocks/v/rrt/lrexlib-pcre2?style=flat-square)             |
 | [lua-cjson](https://github.com/openresty/lua-cjson)                   | ![lua-batteries](https://img.shields.io/badge/lua--batteries-v2.1.0.12--1-brightgreen?style=flat-square) | ![luarocks](https://img.shields.io/luarocks/v/openresty/lua-cjson?style=flat-square)           |
 | [luafilesystem](https://github.com/lunarmodules/luafilesystem)        | ![lua-batteries](https://img.shields.io/badge/lua--batteries-v1.8.0--1-brightgreen?style=flat-square)    | ![luarocks](https://img.shields.io/luarocks/v/hisham/luafilesystem?style=flat-square)          |
@@ -60,16 +61,16 @@ These prebuilt binaries includes **Lua 5.4.4**, **LuaJIT 2.1.0-beta3** and **lua
 
 | Host    | Architecture | Compiler                                                                                                                                                                  | Download                                                                                                                                |
 |---------|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
-| Linux   | x86_64       | [GCC](https://gcc.gnu.org)                                                                                                                                                | [.tar.gz](https://github.com/lua-batteries/lua-batteries/releases/download/v0.5.4/lua-batteries-v0.5.4-x86_64-unknown-linux-gnu.tar.gz) |
-| Windows | x86_64       | [MinGW-W64](https://github.com/brechtsanders/winlibs_mingw/releases/download/12.2.0-15.0.7-10.0.0-ucrt-r4/winlibs-x86_64-posix-seh-gcc-12.2.0-mingw-w64ucrt-10.0.0-r4.7z) | [.7z](https://github.com/lua-batteries/lua-batteries/releases/download/v0.5.4/lua-batteries-v0.5.4-x86_64-w64-mingw32.7z)               |
-| Windows | x86_64       | [MSVC](https://visualstudio.microsoft.com)                                                                                                                                | [.7z](https://github.com/lua-batteries/lua-batteries/releases/download/v0.5.4/lua-batteries-v0.5.4-x86_64-pc-windows-msvc.7z)           |
+| Linux   | x86_64       | [GCC](https://gcc.gnu.org)                                                                                                                                                | [.tar.gz](https://github.com/lua-batteries/lua-batteries/releases/download/v0.5.11/lua-batteries-v0.5.11-x86_64-unknown-linux-gnu.tar.gz) |
+| Windows | x86_64       | [MinGW-W64](https://github.com/brechtsanders/winlibs_mingw/releases/download/12.2.0-15.0.7-10.0.0-ucrt-r4/winlibs-x86_64-posix-seh-gcc-12.2.0-mingw-w64ucrt-10.0.0-r4.7z) | [.7z](https://github.com/lua-batteries/lua-batteries/releases/download/v0.5.11/lua-batteries-v0.5.11-x86_64-w64-mingw32.7z)               |
+| Windows | x86_64       | [MSVC](https://visualstudio.microsoft.com)                                                                                                                                | [.7z](https://github.com/lua-batteries/lua-batteries/releases/download/v0.5.11/lua-batteries-v0.5.11-x86_64-pc-windows-msvc.7z)           |
 
 ### On Linux (x86_64)
 
 ```bash
 $ rm -rf /usr/local/lua-batteries
 $ mkdir /usr/local/lua-batteries
-$ curl -L https://github.com/lua-batteries/lua-batteries/releases/download/v0.5.4/lua-batteries-v0.5.4-x86_64-unknown-linux-gnu.tar.gz | tar xzC /usr/local/lua-batteries
+$ curl -L https://github.com/lua-batteries/lua-batteries/releases/download/v0.5.11/lua-batteries-v0.5.11-x86_64-unknown-linux-gnu.tar.gz | tar xzC /usr/local/lua-batteries
 $ printf "\nexport PATH=\"\$PATH:/usr/local/lua-batteries/bin\"\n" >> $HOME/.profile
 $ source $HOME/.profile
 $ lua -v

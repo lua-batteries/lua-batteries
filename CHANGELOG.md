@@ -7,9 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.11] - 2023-03-19
+
 ### Added
 
 - [luaossl](https://github.com/wahern/luaossl) v20220711
+- [lpeg](http://www.inf.puc-rio.br/~roberto/lpeg.html) v1.0.2
 - [bit32](https://github.com/lunarmodules/lua-compat-5.3) v5.3.5
 - [compat53](https://github.com/lunarmodules/lua-compat-5.3) v0.8
 - [xml2lua](https://github.com/manoelcampos/xml2lua) v1.5-2 -> v1.6-1
@@ -89,7 +92,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.0] - 2022-11-12
 
-[Unreleased]: https://github.com/lua-batteries/lua-batteries/compare/v0.5.4...HEAD
+[Unreleased]: https://github.com/lua-batteries/lua-batteries/compare/v0.5.11...HEAD
+[0.5.11]: https://github.com/lua-batteries/lua-batteries/compare/v0.5.4...v0.5.11
 [0.5.4]: https://github.com/lua-batteries/lua-batteries/compare/v0.5.3...v0.5.4
 [0.5.3]: https://github.com/lua-batteries/lua-batteries/compare/v0.5.1...v0.5.3
 [0.5.1]: https://github.com/lua-batteries/lua-batteries/compare/v0.5.0...v0.5.1
