@@ -62,7 +62,7 @@ data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'luautf8/0.1.5-2
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'luautf8/rockspecs/luautf8-0.1.5-2.rockspec',
+  'luarocks/luautf8-0.1.5-2.rockspec',
   install_dir: data_dir
 )
 

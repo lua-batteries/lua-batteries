@@ -73,7 +73,7 @@ data_dir = get_option('libdir') / 'luarocks/rocks-' + lua_ver / 'lua-zlib/1.2-2'
 install_data('luarocks/rock_manifest', install_dir: data_dir)
 
 install_data(
-  'rockspecs/lua-zlib-1.2-2.rockspec',
+  'luarocks/lua-zlib-1.2-2.rockspec',
   install_dir: data_dir
 )
 

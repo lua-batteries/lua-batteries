@@ -3,6 +3,6 @@ directory = xml2lua-1.6-1
 
 source_url = https://github.com/manoelcampos/xml2lua/archive/refs/tags/v1.6-1.tar.gz
 source_filename = xml2lua-1.6-1.tar.gz
-source_hash = ea883949b3502fd9a3bd412490477b83e21a1af861acda81fc45a2ae7d974c18
+source_hash = e3bbf2dde2a0c8b3927e49348de5e68147b76be7a3c73fbf73ef1d3d58363082
 
 patch_directory = xml2lua
