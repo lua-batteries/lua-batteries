@@ -32,10 +32,16 @@ project_deps = [lua_dep]
 # -------------------------------------------------
 
 compat53_pkg_config_libs = []
+compat53_link_args = []
+
+if system == 'windows' and cc_id in ['msvc', 'clang', 'clang-cl']
+  compat53_link_args = ['-export:luaopen_compat53_utf8']
+endif
 
 shared_module(
   'utf8',
   'lutf8lib.c',
+  link_args: compat53_link_args,
   dependencies: project_deps,
   name_prefix: '',
   name_suffix: module_suffix,
@@ -46,15 +52,21 @@ shared_module(
 compat53_pkg_config_libs += static_library(
   'lua.compat53.utf8',
   'lutf8lib.c',
+  link_args: compat53_link_args,
   dependencies: project_deps,
   pic: true,
   install: true,
   install_dir: get_option('libdir') / 'lua' / lua_ver + '-static'
 )
 
+if system == 'windows' and cc_id in ['msvc', 'clang', 'clang-cl']
+  compat53_link_args = ['-export:luaopen_compat53_table']
+endif
+
 shared_module(
   'table',
   'ltablib.c',
+  link_args: compat53_link_args,
   dependencies: project_deps,
   name_prefix: '',
   name_suffix: module_suffix,
@@ -65,15 +77,21 @@ shared_module(
 compat53_pkg_config_libs += static_library(
   'lua.compat53.table',
   'ltablib.c',
+  link_args: compat53_link_args,
   dependencies: project_deps,
   pic: true,
   install: true,
   install_dir: get_option('libdir') / 'lua' / lua_ver + '-static'
 )
 
+if system == 'windows' and cc_id in ['msvc', 'clang', 'clang-cl']
+  compat53_link_args = ['-export:luaopen_compat53_string']
+endif
+
 shared_module(
   'string',
   'lstrlib.c',
+  link_args: compat53_link_args,
   dependencies: project_deps,
   name_prefix: '',
   name_suffix: module_suffix,
@@ -84,6 +102,7 @@ shared_module(
 compat53_pkg_config_libs += static_library(
   'lua.compat53.string',
   'lstrlib.c',
+  link_args: compat53_link_args,
   dependencies: project_deps,
   pic: true,
   install: true,
@@ -137,10 +156,17 @@ import('pkgconfig').generate(
 # LUA MODULE
 # -------------------------------------------------
 
+bit32_link_args = []
+
+if system == 'windows' and cc_id in ['msvc', 'clang', 'clang-cl']
+  bit32_link_args += '-export:luaopen_bit32'
+endif
+
 shared_module(
   'bit32',
   'lbitlib.c',
   c_args: ['-DLUA_COMPAT_BITLIB'],
+  link_args: bit32_link_args,
   include_directories: include_directories('c-api'),
   dependencies: project_deps,
   name_prefix: '',
@@ -153,6 +179,7 @@ lua_bit32 = static_library(
   'lua.bit32',
   'lbitlib.c',
   c_args: ['-DLUA_COMPAT_BITLIB'],
+  link_args: bit32_link_args,
   include_directories: include_directories('c-api'),
   dependencies: project_deps,
   pic: true,
