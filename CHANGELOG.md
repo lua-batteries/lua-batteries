@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.13] - 2023-05-02
+
+### Added
+
+- [lua](https://www.lua.org/ftp/lua-5.4.5.tar.gz) v5.4.4 -> v5.4.5
+- [luasec](https://github.com/brunoos/luasec) v1.3.0 -> v1.3.1
+
 ## [0.5.11] - 2023-03-19
 
 ### Added
@@ -92,7 +99,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.0] - 2022-11-12
 
-[Unreleased]: https://github.com/lua-batteries/lua-batteries/compare/v0.5.11...HEAD
+[Unreleased]: https://github.com/lua-batteries/lua-batteries/compare/v0.5.13...HEAD
+[0.5.13]: https://github.com/lua-batteries/lua-batteries/compare/v0.5.11...v0.5.13
 [0.5.11]: https://github.com/lua-batteries/lua-batteries/compare/v0.5.4...v0.5.11
 [0.5.4]: https://github.com/lua-batteries/lua-batteries/compare/v0.5.3...v0.5.4
 [0.5.3]: https://github.com/lua-batteries/lua-batteries/compare/v0.5.1...v0.5.3

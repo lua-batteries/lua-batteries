@@ -1,7 +1,7 @@
 build
 subprojects/packagecache
 # wrap-file (lua interpreter)
-subprojects/lua-5.4.4
+subprojects/lua-5.4.5
 subprojects/LuaJIT-2.1.0-beta3
 # wrap-file (lua libs)
 subprojects/argparse-0.7.1

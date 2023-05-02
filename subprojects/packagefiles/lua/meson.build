@@ -1,7 +1,7 @@
 project(
   'lua',
   'c',
-  version: '5.4.4',
+  version: '5.4.5',
   license: 'MIT',
   default_options: ['c_std=gnu99'],
   meson_version: '>=1.0.0'
@@ -30,6 +30,8 @@ elif system == 'windows' and get_option('default_library') != 'static'
 elif system == 'sunos'
   lua_defines += ['-DLUA_USE_POSIX', '-DLUA_USE_DLOPEN', '-D_REENTRANT']
   lua_deps += cc.find_library('dl')
+elif system == 'ios'
+  lua_defines += '-DLUA_USE_IOS'
 else
   lua_defines += '-DLUA_USE_POSIX'
 endif

@@ -1,6 +1,6 @@
 project(
   'lua-batteries',
-  version: '0.5.11',
+  version: '0.5.13',
   license: 'MIT',
   default_options: [
     'buildtype=release',
@@ -19,7 +19,7 @@ if get_option('luajit')
   config += {'luajit': '2.1.0-beta3'}
 else
   subproject('lua')
-  config += {'lua': '5.4.4'}
+  config += {'lua': '5.4.5'}
 endif
 
 if system != 'windows'
@@ -106,7 +106,7 @@ endif
 
 if 'all' in modules or 'luasec' in modules
   subproject('luasec')
-  config += {'modules/luasec': '1.3.0'}
+  config += {'modules/luasec': '1.3.1'}
 endif
 
 if 'all' in modules or 'luasocket' in modules
