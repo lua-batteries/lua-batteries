@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - [lua](https://www.lua.org/ftp/lua-5.4.6.tar.gz) v5.4.5 -> v5.4.6
-- [lua-protobuf](https://github.com/starwing/lua-protobuf) v0.4.0 -> v0.5.0
+- [lua-protobuf](https://github.com/starwing/lua-protobuf) v0.4.2 -> v0.5.0
 
 ## [0.5.13] - 2023-05-02
 
