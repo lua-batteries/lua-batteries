@@ -70,7 +70,7 @@ These prebuilt binaries includes **Lua 5.4.6**, **LuaJIT 2.1.0-beta3** and **lua
 ```bash
 $ rm -rf /usr/local/lua-batteries
 $ mkdir /usr/local/lua-batteries
-$ curl -L https://github.com/lua-batteries/lua-batteries/releases/download/v0.5.15/lua-batteries-v0.5.15-x86_64-unknown-linux-gnu.tar.gz | tar xzC /usr/local/lua-batteries
+$ curl -L https://github.com/lua-batteries/lua-batteries/releases/download/v0.5.15/lua-batteries-v0.5.15-x86_64-unknown-linux-gnu.tar.xz | tar xJC /usr/local/lua-batteries
 $ printf "\nexport PATH=\"\$PATH:/usr/local/lua-batteries/bin\"\n" >> $HOME/.profile
 $ source $HOME/.profile
 $ lua -v
