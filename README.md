@@ -33,7 +33,7 @@ List of included libraries and modules provided by lua-batteries:
 | [luafilesystem](https://github.com/lunarmodules/luafilesystem)        | ![lua-batteries](https://img.shields.io/badge/lua--batteries-v1.8.0--1-brightgreen?style=flat-square)    | ![luarocks](https://img.shields.io/luarocks/v/hisham/luafilesystem?style=flat-square)          |
 | [luaossl](https://github.com/wahern/luaossl)                          | ![lua-batteries](https://img.shields.io/badge/lua--batteries-v20220711--0-brightgreen?style=flat-square) | ![luarocks](https://img.shields.io/luarocks/v/daurnimator/luaossl?style=flat-square)           |
 | [luaposix](https://github.com/luaposix/luaposix)                      | ![lua-batteries](https://img.shields.io/badge/lua--batteries-v36.1--1-brightgreen?style=flat-square)     | ![luarocks](https://img.shields.io/luarocks/v/gvvaughan/luaposix?style=flat-square)            |
-| [lua-protobuf](https://github.com/starwing/lua-protobuf)              | ![lua-batteries](https://img.shields.io/badge/lua--batteries-v0.4.2--1-brightgreen?style=flat-square)    | ![luarocks](https://img.shields.io/luarocks/v/xavier-wang/lua-protobuf?style=flat-square)      |
+| [lua-protobuf](https://github.com/starwing/lua-protobuf)              | ![lua-batteries](https://img.shields.io/badge/lua--batteries-v0.5.0--1-brightgreen?style=flat-square)    | ![luarocks](https://img.shields.io/luarocks/v/xavier-wang/lua-protobuf?style=flat-square)      |
 | [luasec](https://github.com/brunoos/luasec)                           | ![lua-batteries](https://img.shields.io/badge/lua--batteries-v1.3.1--1-brightgreen?style=flat-square)    | ![luarocks](https://img.shields.io/luarocks/v/brunoos/luasec?style=flat-square)                |
 | [luasocket](https://github.com/lunarmodules/luasocket)                | ![lua-batteries](https://img.shields.io/badge/lua--batteries-v3.1.0--1-brightgreen?style=flat-square)    | ![luarocks](https://img.shields.io/luarocks/v/lunarmodules/luasocket?style=flat-square)        |
 | [lua-sdl2](https://github.com/Tangent128/luasdl2)                     | ![lua-batteries](https://img.shields.io/badge/lua--batteries-v2.0.5--6-brightgreen?style=flat-square)    | ![luarocks](https://img.shields.io/luarocks/v/tangent128/lua-sdl2?style=flat-square)           |
@@ -57,20 +57,20 @@ List of included libraries and modules provided by lua-batteries:
 
 Visit [releases](https://github.com/lua-batteries/lua-batteries/releases) for prebuilt binaries. You just need to extract archive and add `bin` directory in your `PATH` environment variable. Also, see [INSTALL.md](https://github.com/lua-batteries/lua-batteries/blob/main/INSTALL.md) for installation instructions through meson. 
 
-These prebuilt binaries includes **Lua 5.4.5**, **LuaJIT 2.1.0-beta3** and **luarocks 3.9.2**
+These prebuilt binaries includes **Lua 5.4.6**, **LuaJIT 2.1.0-beta3** and **luarocks 3.9.2**
 
 | Host    | Architecture | Compiler                                                                                                                                                                  | Download                                                                                                                                |
 |---------|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
-| Linux   | x86_64       | [GCC](https://gcc.gnu.org)                                                                                                                                                | [.tar.gz](https://github.com/lua-batteries/lua-batteries/releases/download/v0.5.13/lua-batteries-v0.5.13-x86_64-unknown-linux-gnu.tar.gz) |
-| Windows | x86_64       | [MinGW-W64](https://github.com/brechtsanders/winlibs_mingw/releases/download/13.1.0-16.0.2-11.0.0-ucrt-r1/winlibs-x86_64-mcf-seh-gcc-13.1.0-mingw-w64ucrt-11.0.0-r1.7z) | [.7z](https://github.com/lua-batteries/lua-batteries/releases/download/v0.5.13/lua-batteries-v0.5.13-x86_64-w64-mingw32.7z)               |
-| Windows | x86_64       | [MSVC](https://visualstudio.microsoft.com)                                                                                                                                | [.7z](https://github.com/lua-batteries/lua-batteries/releases/download/v0.5.13/lua-batteries-v0.5.13-x86_64-pc-windows-msvc.7z)           |
+| Linux   | x86_64       | [GCC](https://gcc.gnu.org)                                                                                                                                                | [.tar.gz](https://github.com/lua-batteries/lua-batteries/releases/download/v0.5.15/lua-batteries-v0.5.15-x86_64-unknown-linux-gnu.tar.gz) |
+| Windows | x86_64       | [MinGW-W64](https://github.com/brechtsanders/winlibs_mingw/releases/download/13.1.0-16.0.2-11.0.0-ucrt-r1/winlibs-x86_64-mcf-seh-gcc-13.1.0-mingw-w64ucrt-11.0.0-r1.7z) | [.7z](https://github.com/lua-batteries/lua-batteries/releases/download/v0.5.15/lua-batteries-v0.5.15-x86_64-w64-mingw32.7z)               |
+| Windows | x86_64       | [MSVC](https://visualstudio.microsoft.com)                                                                                                                                | [.7z](https://github.com/lua-batteries/lua-batteries/releases/download/v0.5.15/lua-batteries-v0.5.15-x86_64-pc-windows-msvc.7z)           |
 
 ### On Linux (x86_64)
 
 ```bash
 $ rm -rf /usr/local/lua-batteries
 $ mkdir /usr/local/lua-batteries
-$ curl -L https://github.com/lua-batteries/lua-batteries/releases/download/v0.5.13/lua-batteries-v0.5.13-x86_64-unknown-linux-gnu.tar.gz | tar xzC /usr/local/lua-batteries
+$ curl -L https://github.com/lua-batteries/lua-batteries/releases/download/v0.5.15/lua-batteries-v0.5.15-x86_64-unknown-linux-gnu.tar.gz | tar xzC /usr/local/lua-batteries
 $ printf "\nexport PATH=\"\$PATH:/usr/local/lua-batteries/bin\"\n" >> $HOME/.profile
 $ source $HOME/.profile
 $ lua -v

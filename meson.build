@@ -1,6 +1,6 @@
 project(
   'lua-batteries',
-  version: '0.5.13',
+  version: '0.5.15',
   license: 'MIT',
   default_options: [
     'buildtype=release',
@@ -19,7 +19,7 @@ if get_option('luajit')
   config += {'luajit': '2.1.0-beta3'}
 else
   subproject('lua')
-  config += {'lua': '5.4.5'}
+  config += {'lua': '5.4.6'}
 endif
 
 if system != 'windows'
@@ -101,7 +101,7 @@ endif
 
 if 'all' in modules or 'lua-protobuf' in modules
   subproject('lua-protobuf')
-  config += {'modules/lua-protobuf': '0.4.2'}
+  config += {'modules/lua-protobuf': '0.5.0'}
 endif
 
 if 'all' in modules or 'luasec' in modules

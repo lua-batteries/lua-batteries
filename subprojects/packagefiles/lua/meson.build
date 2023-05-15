@@ -1,7 +1,7 @@
 project(
   'lua',
   'c',
-  version: '5.4.5',
+  version: '5.4.6',
   license: 'MIT',
   default_options: ['c_std=gnu99'],
   meson_version: '>=1.0.0'
